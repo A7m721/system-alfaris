@@ -1,0 +1,2236 @@
+<html dir="rtl" lang="ar">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>لوحة تحكم متقدمة + POS صالون الحلاقة</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet"/>
+  <style>
+   body {
+    font-family: 'Cairo', sans-serif;
+   }
+   /* Scrollbar styling for tables */
+   tbody::-webkit-scrollbar {
+    height: 8px;
+   }
+   tbody::-webkit-scrollbar-track {
+    background: #f1f1f1;
+   }
+   tbody::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+   }
+   tbody::-webkit-scrollbar-thumb:hover {
+    background: #555;
+   }
+   /* Smooth focus outlines */
+   button:focus-visible,
+   input:focus-visible,
+   select:focus-visible,
+   textarea:focus-visible {
+    outline-offset: 2px;
+    outline-width: 3px;
+   }
+   /* Table header sticky */
+   table thead tr {
+    position: sticky;
+    top: 0;
+    background-color: inherit;
+    z-index: 10;
+   }
+   /* Responsive table container */
+   .overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
+   }
+   /* Improve form input focus ring */
+   input:focus,
+   select:focus,
+   textarea:focus {
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.4);
+   }
+   /* Buttons hover and focus */
+   button:hover {
+    filter: brightness(1.05);
+   }
+   button:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: 2px;
+   }
+   /* Card hover shadow */
+   #home > div[tabindex="0"]:hover,
+   #home > div[tabindex="0"]:focus-visible {
+    box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.5);
+   }
+   /* Responsive text sizes */
+   h1, h2, h3, h4 {
+    line-height: 1.2;
+   }
+   /* Footer fix */
+   footer {
+    user-select: none;
+   }
+   /* Print styles for dashboard */
+   @media print {
+    body * {
+     visibility: hidden;
+    }
+    #printableInvoice,
+    #printableInvoice * {
+     visibility: visible;
+    }
+    #printableInvoice {
+     position: absolute;
+     left: 0;
+     top: 0;
+     width: 80mm;
+     font-size: 12px;
+     font-family: monospace, "Cairo", sans-serif;
+     direction: rtl;
+     padding: 8px 10px;
+     box-sizing: border-box;
+     white-space: pre-wrap;
+    }
+    #printableInvoice hr {
+     border: 1px dashed #000;
+     margin: 4px 0;
+    }
+    button,
+    form,
+    nav,
+    header,
+    footer,
+    #mobileMenu {
+     display: none !important;
+    }
+    @page {
+     size: 80mm auto;
+     margin: 0;
+    }
+   }
+   /* Print styles for POS receipt */
+   @media print {
+    body * {
+     visibility: hidden;
+    }
+    #printableReceipt, #printableReceipt * {
+     visibility: visible;
+    }
+    #printableReceipt {
+     position: absolute;
+     left: 0;
+     top: 0;
+     width: 80mm;
+     font-size: 12px;
+     font-family: monospace, "Cairo", sans-serif;
+     direction: rtl;
+     padding: 8px;
+     box-sizing: border-box;
+    }
+    #printableReceipt hr {
+     border: 1px dashed #000;
+     margin: 4px 0;
+    }
+   }
+  </style>
+ </head>
+ <body class="bg-gradient-to-tr from-gray-100 via-white to-gray-200 min-h-screen flex flex-col">
+
+  <!-- Login Page -->
+  <section class="flex-grow flex items-center justify-center p-6 max-w-md mx-auto w-full" id="login">
+   <div class="bg-white rounded-3xl shadow-2xl p-10 w-full max-w-md sm:max-w-lg flex flex-col items-center">
+    <div class="flex justify-center mb-8">
+     <h1 class="text-4xl font-['Pacifico'] text-primary">Alfaris</h1>
+    </div>
+    <h2 class="text-4xl font-extrabold mb-6 text-gray-900 text-center select-none tracking-wide">
+     تسجيل الدخول
+    </h2>
+    <form class="space-y-6 w-full" id="form-login" novalidate="">
+     <div>
+      <label class="block mb-2 font-semibold text-gray-800" for="username">
+       اسم المستخدم
+      </label>
+      <input aria-describedby="usernameHelp" autocomplete="username" class="w-full border border-gray-300 rounded-xl px-5 py-4 focus:outline-none focus:ring-4 focus:ring-blue-400 transition text-lg placeholder-gray-400" id="username" name="username" placeholder="أدخل اسم المستخدم" required="" type="text"/>
+     </div>
+     <div>
+      <label class="block mb-2 font-semibold text-gray-800" for="password">
+       كلمة المرور
+      </label>
+      <input aria-describedby="passwordHelp" autocomplete="current-password" class="w-full border border-gray-300 rounded-xl px-5 py-4 focus:outline-none focus:ring-4 focus:ring-blue-400 transition text-lg placeholder-gray-400" id="password" name="password" placeholder="أدخل كلمة المرور" required="" type="password"/>
+     </div>
+     <div class="flex items-center justify-between">
+      <div class="flex items-center">
+       <input id="remember-me" type="checkbox" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded" />
+       <label for="remember-me" class="mr-2 block text-sm text-gray-700">عرض كلمة المرور </label>
+      </div>
+      <div class="flex items-center gap-4">
+       <button type="button" class="text-sm font-medium text-primary hover:text-primary-dark focus:outline-none" id="forgotPasswordBtn" aria-label="نسيت كلمة المرور؟">
+        نسيت كلمة المرور؟
+       </button>
+       <button type="button" class="text-sm font-medium text-primary hover:text-primary-dark focus:outline-none" id="changePasswordBtn" aria-label="تغيير كلمة المرور">
+        تغيير كلمة المرور
+       </button>
+      </div>
+     </div>
+     <div>
+      <button aria-label="زر تسجيل الدخول" class="w-full bg-blue-600 text-white px-6 py-4 rounded-xl hover:bg-blue-700 transition focus:outline-none font-extrabold text-xl shadow-lg flex items-center justify-center gap-3" type="submit">
+       <i class="fas fa-sign-in-alt text-2xl"></i>
+       تسجيل الدخول
+      </button>
+     </div>
+     <div aria-live="assertive" class="text-red-600 font-semibold text-center select-none" id="loginError" role="alert"></div>
+    </form>
+    <p class="mt-6 text-gray-600 select-none text-center max-w-xs">
+     مركز الفارس للعناية بالرجل 
+    </p>
+   </div>
+  </section>
+
+  <!-- Change Password Modal -->
+  <div aria-hidden="true" aria-labelledby="changePasswordTitle" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden" id="changePasswordModal" role="dialog" aria-modal="true">
+   <div class="bg-white rounded-xl shadow-xl max-w-md w-full p-6 mx-4">
+    <h3 class="text-2xl font-bold mb-4 text-gray-900 text-center" id="changePasswordTitle">
+     تغيير كلمة المرور
+    </h3>
+    <form id="changePasswordForm" class="space-y-4" novalidate>
+     <div>
+      <label for="phoneInput" class="block mb-1 font-semibold text-gray-800">رقم الهاتف</label>
+      <input type="tel" id="phoneInput" name="phoneInput" placeholder="أدخل رقم الهاتف" required class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-blue-400 text-lg" pattern="^\d{10,15}$" aria-describedby="phoneHelp" />
+      <p class="text-sm text-gray-500 mt-1" id="phoneHelp">أدخل رقم الهاتف بدون رموز أو مسافات</p>
+     </div>
+     <div>
+      <label for="oldPasswordInput" class="block mb-1 font-semibold text-gray-800">كلمة المرور القديمة</label>
+      <input type="password" id="oldPasswordInput" name="oldPasswordInput" placeholder="أدخل كلمة المرور القديمة" required class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-blue-400 text-lg" />
+     </div>
+     <div>
+      <label for="newPasswordInput" class="block mb-1 font-semibold text-gray-800">كلمة المرور الجديدة</label>
+      <input type="password" id="newPasswordInput" name="newPasswordInput" placeholder="أدخل كلمة المرور الجديدة" required class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-blue-400 text-lg" minlength="6" />
+     </div>
+     <div class="flex justify-between items-center">
+      <button type="button" id="cancelChangePasswordBtn" class="px-6 py-3 rounded-lg bg-gray-300 hover:bg-gray-400 transition font-semibold focus:outline-none">
+       إلغاء
+      </button>
+      <button type="submit" class="px-6 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition font-semibold focus:outline-none flex items-center gap-2">
+       <i class="fas fa-key"></i>
+       تغيير
+      </button>
+     </div>
+     <div aria-live="assertive" class="text-red-600 font-semibold text-center select-none" id="changePasswordError" role="alert"></div>
+     <div aria-live="polite" class="text-green-600 font-semibold text-center select-none" id="changePasswordSuccess" role="alert"></div>
+    </form>
+   </div>
+  </div>
+
+  <!-- Main App Content -->
+  <div class="hidden flex flex-col min-h-screen" id="appContent">
+   <header class="bg-white shadow-md p-4 flex items-center justify-between sticky top-0 z-30">
+    <h1 class="text-3xl font-extrabold text-gray-900 tracking-wide flex items-center gap-3 select-none">
+     <i class="fas fa-tachometer-alt text-blue-600"></i>
+     لوحة تحكم متقدمة
+    </h1>
+    <nav aria-label="القائمة الرئيسية" class="hidden md:flex space-x-6 text-gray-700 font-semibold">
+     <button class="hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="home">الرئيسية</button>
+     <button class="hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="expenses">المصروفات</button>
+     <button class="hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="salaries">الرواتب</button>
+     <button class="hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="withdrawals">السحب</button>
+     <button class="hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="appointments">المواعيد</button>
+     <button class="hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="services">الخدمات</button>
+     <button class="hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="inventory">المخزون</button>
+     <button class="hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="reports">التقارير</button>
+     <button class="hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="salarySummary">ملخص رواتب العمال</button>
+     <button class="hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="dailySalary">حساب الراتب اليومي</button>
+     <button class="hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="monthlySalary">حساب الراتب الشهري</button>
+     <button class="hover:text-green-600 transition focus:outline-none focus:ring-2 focus:ring-green-400 rounded ml-6" data-page="posSection" aria-label="فتح نظام نقاط البيع">
+      <i></i> نظام نقاط البيع
+     </button>
+     <button class="hover:text-red-600 transition focus:outline-none focus:ring-2 focus:ring-red-400 rounded ml-6" id="logoutBtn">تسجيل الخروج</button>
+    </nav>
+    <button aria-label="فتح القائمة" class="md:hidden text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" id="mobileMenuBtn">
+     <i class="fas fa-bars text-2xl"></i>
+    </button>
+   </header>
+   <!-- Mobile menu -->
+   <div aria-labelledby="mobileMenuTitle" aria-modal="true" class="fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform translate-x-full transition-transform z-40 md:hidden" id="mobileMenu" role="dialog">
+    <div class="p-4 border-b border-gray-200 flex justify-between items-center">
+     <h2 class="text-xl font-bold text-gray-900 select-none" id="mobileMenuTitle">القائمة</h2>
+     <button aria-label="إغلاق القائمة" class="text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" id="mobileMenuClose">
+      <i class="fas fa-times text-2xl"></i>
+     </button>
+    </div>
+    <nav aria-label="القائمة الجانبية" class="flex flex-col p-4 space-y-4 text-gray-700 font-semibold">
+     <button class="text-right hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="home">الرئيسية</button>
+     <button class="text-right hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="expenses">المصروفات</button>
+     <button class="text-right hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="salaries">الرواتب</button>
+     <button class="text-right hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="withdrawals">السحب</button>
+     <button class="text-right hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="appointments">المواعيد</button>
+     <button class="text-right hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="services">الخدمات</button>
+     <button class="text-right hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="inventory">المخزون</button>
+     <button class="text-right hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="reports">التقارير</button>
+     <button class="text-right hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="salarySummary">ملخص رواتب العمال</button>
+     <button class="text-right hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="dailySalary">حساب الراتب اليومي</button>
+     <button class="text-right hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="monthlySalary">حساب الراتب الشهري</button>
+     <button class="text-right hover:text-green-600 transition focus:outline-none focus:ring-2 focus:ring-green-400 rounded mt-4 font-semibold" data-page="posSection" aria-label="فتح نظام نقاط البيع">نظام نقاط البيع</button>
+     <button class="text-right hover:text-red-600 transition focus:outline-none focus:ring-2 focus:ring-red-400 rounded mt-4 font-semibold" id="mobileLogoutBtn">تسجيل الخروج</button>
+    </nav>
+   </div>
+   <main class="flex-grow container mx-auto p-6 max-w-7xl overflow-auto">
+    <!-- الرئيسية -->
+    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="home">
+     <div aria-label="المصروفات - إدارة وتتبع المصروفات المالية" class="cursor-pointer bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition focus:outline-none focus:ring-4 focus:ring-blue-400 select-none" data-page="expenses" role="button" tabindex="0">
+      <i class="fas fa-wallet text-7xl text-blue-600 mb-4"></i>
+      <h2 class="text-2xl font-bold mb-2 text-gray-800">المصروفات</h2>
+      <p class="text-gray-600 text-center">إدارة وتتبع المصروفات المالية</p>
+     </div>
+     <div aria-label="الرواتب - إدارة دفع الرواتب للموظفين مع طرح السحب الشهري" class="cursor-pointer bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition focus:outline-none focus:ring-4 focus:ring-green-400 select-none" data-page="salaries" role="button" tabindex="0">
+      <i class="fas fa-money-check-alt text-7xl text-green-600 mb-4"></i>
+      <h2 class="text-2xl font-bold mb-2 text-gray-800">الرواتب</h2>
+      <p class="text-gray-600 text-center">عرض الراتب بعد طرح السحب الشهري لكل عامل</p>
+     </div>
+     <div aria-label="السحب - إدارة عمليات السحب النقدي وحساب السحب الشهري" class="cursor-pointer bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition focus:outline-none focus:ring-4 focus:ring-red-400 select-none" data-page="withdrawals" role="button" tabindex="0">
+      <i class="fas fa-hand-holding-usd text-7xl text-red-600 mb-4"></i>
+      <h2 class="text-2xl font-bold mb-2 text-gray-800">السحب</h2>
+      <p class="text-gray-600 text-center">إدارة عمليات السحب النقدي وحساب السحب الشهري</p>
+     </div>
+     <div aria-label="المواعيد - جدولة وإدارة المواعيد" class="cursor-pointer bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition focus:outline-none focus:ring-4 focus:ring-yellow-400 select-none" data-page="appointments" role="button" tabindex="0">
+      <i class="fas fa-calendar-alt text-7xl text-yellow-600 mb-4"></i>
+      <h2 class="text-2xl font-bold mb-2 text-gray-800">المواعيد</h2>
+      <p class="text-gray-600 text-center">جدولة وإدارة المواعيد</p>
+     </div>
+     <div aria-label="الخدمات - قائمة الخدمات المقدمة للعملاء" class="cursor-pointer bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition focus:outline-none focus:ring-4 focus:ring-pink-400 select-none" data-page="services" role="button" tabindex="0">
+      <i class="fas fa-cut text-7xl text-pink-600 mb-4"></i>
+      <h2 class="text-2xl font-bold mb-2 text-gray-800">الخدمات</h2>
+      <p class="text-gray-600 text-center">قائمة الخدمات المقدمة للعملاء</p>
+     </div>
+     <div aria-label="المخزون - إدارة المخزون والمنتجات" class="cursor-pointer bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition focus:outline-none focus:ring-4 focus:ring-teal-400 select-none" data-page="inventory" role="button" tabindex="0">
+      <i class="fas fa-boxes text-7xl text-teal-600 mb-4"></i>
+      <h2 class="text-2xl font-bold mb-2 text-gray-800">المخزون</h2>
+      <p class="text-gray-600 text-center">إدارة المخزون والمنتجات</p>
+     </div>
+     <div aria-label="التقارير - عرض تقارير مفصلة عن الأداء" class="cursor-pointer bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition focus:outline-none focus:ring-4 focus:ring-indigo-400 select-none" data-page="reports" role="button" tabindex="0">
+      <i class="fas fa-chart-line text-7xl text-indigo-600 mb-4"></i>
+      <h2 class="text-2xl font-bold mb-2 text-gray-800">التقارير</h2>
+      <p class="text-gray-600 text-center">عرض تقارير مفصلة عن الأداء</p>
+     </div>
+     <div aria-label="ملخص رواتب العمال - عرض ملخص مجموع رواتب العمال اليومية بناءً على الفواتير المسجلة" class="cursor-pointer bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition focus:outline-none focus:ring-4 focus:ring-purple-600 select-none" data-page="salarySummary" role="button" tabindex="0">
+      <i class="fas fa-file-invoice-dollar text-7xl text-purple-600 mb-4"></i>
+      <h2 class="text-2xl font-bold mb-2 text-gray-800">ملخص رواتب العمال</h2>
+      <p class="text-gray-600 text-center">عرض مجموع رواتب كل عامل يوميًا بناءً على الفواتير المسجلة باسم العامل</p>
+     </div>
+     <div aria-label="حساب الراتب اليومي - حساب رواتب العمال اليومية بناءً على الفواتير المسجلة" class="cursor-pointer bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition focus:outline-none focus:ring-4 focus:ring-yellow-600 select-none" data-page="dailySalary" role="button" tabindex="0">
+      <i class="fas fa-calendar-day text-7xl text-yellow-600 mb-4"></i>
+      <h2 class="text-2xl font-bold mb-2 text-gray-800">حساب الراتب اليومي</h2>
+      <p class="text-gray-600 text-center">حساب رواتب العمال اليومية بناءً على الفواتير المسجلة</p>
+     </div>
+     <div aria-label="حساب الراتب الشهري - حساب رواتب العمال الشهرية بناءً على الخدمات والسحب" class="cursor-pointer bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition focus:outline-none focus:ring-4 focus:ring-yellow-600 select-none" data-page="monthlySalary" role="button" tabindex="0">
+      <i class="fas fa-calendar-alt text-7xl text-yellow-600 mb-4"></i>
+      <h2 class="text-2xl font-bold mb-2 text-gray-800">حساب الراتب الشهري</h2>
+      <p class="text-gray-600 text-center">حساب رواتب العمال الشهرية بناءً على الخدمات المسجلة والسحب الشهري</p>
+     </div>
+     <div aria-label="نظام نقاط البيع - انشاء فاتورة الخدمات" class="cursor-pointer bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition focus:outline-none focus:ring-4 focus:ring-yellow-600 select-none" data-page="posSection" role="button" tabindex="0">
+      <i class="fas fa-cash-register text-7xl text-yellow-600 mb-4"></i>
+      <h2 class="text-2xl font-bold mb-2 text-gray-800">نظام نقاط البيع </h2>
+      <p class="text-gray-600 text-center">انشاء فاتورة الخدمات </p>
+     </div>
+    </section>
+
+    <!-- Daily Salary Page -->
+    <section class="hidden" id="dailySalary">
+     <button class="mb-6 px-5 py-3 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition focus:outline-none flex items-center gap-2" id="backFromDailySalary">
+      <i class="fas fa-arrow-right"></i>
+      العودة للرئيسية
+     </button>
+     <h2 class="text-2xl font-bold mb-6 text-gray-900 border-b-4 border-yellow-600 inline-block pb-1">
+      حساب الراتب اليومي للعمال بناءً على الفواتير المسجلة
+     </h2>
+     <form class="max-w-4xl grid grid-cols-1 md:grid-cols-3 gap-6 mb-6" id="dailySalaryForm">
+      <div>
+       <label for="dailyWorkerSelect" class="block mb-2 font-semibold text-gray-800">اختر اسم العامل</label>
+       <select id="dailyWorkerSelect" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-yellow-300" required>
+        <option disabled selected value="">اختر العامل</option>
+       </select>
+      </div>
+      <div>
+       <label for="dailyDateInput" class="block mb-2 font-semibold text-gray-800">التاريخ</label>
+       <input type="date" id="dailyDateInput" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-yellow-300" required />
+      </div>
+      <div class="md:col-span-3 flex justify-end">
+       <button type="submit" class="bg-yellow-600 text-white px-6 py-3 rounded-lg hover:bg-yellow-700 transition focus:outline-none font-semibold text-lg flex items-center gap-3" id="calculateDailySalaryBtn">
+        <i class="fas fa-calculator"></i>
+        حساب الراتب اليومي
+       </button>
+      </div>
+     </form>
+     <div class="max-w-4xl bg-yellow-100 p-6 rounded-lg text-yellow-900 hidden" id="dailySalaryResult">
+      <h3 class="text-xl font-bold mb-4">نتيجة حساب الراتب اليومي</h3>
+      <p id="dailySalaryText" class="text-lg whitespace-pre-line"></p>
+     </div>
+    </section>
+
+    <!-- Monthly Salary Page -->
+    <section class="hidden" id="monthlySalary">
+     <button class="mb-6 px-5 py-3 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition focus:outline-none flex items-center gap-2" id="backFromMonthlySalary">
+      <i class="fas fa-arrow-right"></i>
+      العودة للرئيسية
+     </button>
+     <h2 class="text-2xl font-bold mb-6 text-gray-900 border-b-4 border-yellow-600 inline-block pb-1">
+      حساب الراتب الشهري للعمال
+     </h2>
+     <form class="max-w-4xl grid grid-cols-1 md:grid-cols-3 gap-6 mb-6" id="monthlySalaryForm">
+      <div>
+       <label for="monthlyWorkerSelect" class="block mb-2 font-semibold text-gray-800">اختر اسم العامل</label>
+       <select id="monthlyWorkerSelect" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-yellow-300" required>
+        <option disabled selected value="">اختر العامل</option>
+       </select>
+      </div>
+      <div>
+       <label for="monthlyYearInput" class="block mb-2 font-semibold text-gray-800">السنة</label>
+       <input type="number" id="monthlyYearInput" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-yellow-300" min="2000" max="2100" placeholder="مثال: 2024" required />
+      </div>
+      <div>
+       <label for="monthlyMonthInput" class="block mb-2 font-semibold text-gray-800">الشهر</label>
+       <select id="monthlyMonthInput" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-yellow-300" required>
+        <option disabled selected value="">اختر الشهر</option>
+        <option value="01">يناير</option>
+        <option value="02">فبراير</option>
+        <option value="03">مارس</option>
+        <option value="04">أبريل</option>
+        <option value="05">مايو</option>
+        <option value="06">يونيو</option>
+        <option value="07">يوليو</option>
+        <option value="08">أغسطس</option>
+        <option value="09">سبتمبر</option>
+        <option value="10">أكتوبر</option>
+        <option value="11">نوفمبر</option>
+        <option value="12">ديسمبر</option>
+       </select>
+      </div>
+      <div class="md:col-span-3 flex justify-end">
+       <button type="submit" class="bg-yellow-600 text-white px-6 py-3 rounded-lg hover:bg-yellow-700 transition focus:outline-none font-semibold text-lg flex items-center gap-3" id="calculateMonthlySalaryBtn">
+        <i class="fas fa-calculator"></i>
+        حساب الراتب الشهري
+       </button>
+      </div>
+     </form>
+     <div class="max-w-4xl bg-yellow-100 p-6 rounded-lg text-yellow-900 hidden" id="monthlySalaryResult">
+      <h3 class="text-xl font-bold mb-4">نتيجة حساب الراتب الشهري</h3>
+      <p id="monthlySalaryText" class="text-lg whitespace-pre-line"></p>
+     </div>
+    </section>
+
+    <!-- Salaries Page with net salary calculation -->
+    <section class="hidden" id="salaries">
+     <button class="mb-6 px-5 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition focus:outline-none flex items-center gap-2" id="backFromSalaries">
+      <i class="fas fa-arrow-right"></i>
+      العودة للرئيسية
+     </button>
+     <h2 class="text-2xl font-bold mb-6 text-gray-900 border-b-4 border-green-600 inline-block pb-1">
+      إدارة دفع الرواتب للموظفين (صافي الراتب = رواتب الخدمات - السحب)
+     </h2>
+     <form class="max-w-4xl grid grid-cols-1 md:grid-cols-4 gap-6 mb-6" id="salaryForm">
+      <div>
+       <label class="block mb-2 font-semibold text-gray-800" for="salaryWorker">
+        اسم الموظف
+       </label>
+       <select class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-green-300" id="salaryWorker" required="">
+        <option disabled="" selected="" value="">
+         اختر الموظف
+        </option>
+       </select>
+      </div>
+      <div>
+       <label class="block mb-2 font-semibold text-gray-800" for="salaryAmount">
+        المبلغ (ريال)
+       </label>
+       <input class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-green-300" id="salaryAmount" min="0" placeholder="أدخل المبلغ" required="" step="0.01" type="number"/>
+      </div>
+      <div>
+       <label class="block mb-2 font-semibold text-gray-800" for="salaryDate">
+        تاريخ الدفع
+       </label>
+       <input class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-green-300" id="salaryDate" required="" type="date"/>
+      </div>
+      <div class="flex items-center gap-4">
+       <button class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition focus:outline-none font-semibold text-lg flex items-center gap-3" type="submit">
+        <i class="fas fa-plus"></i>
+        إضافة راتب
+       </button>
+       <button class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition focus:outline-none font-semibold text-lg flex items-center gap-3" id="clearSalariesBtn" type="button">
+        <i class="fas fa-trash-alt"></i>
+        مسح الرواتب
+       </button>
+      </div>
+     </form>
+     <div class="overflow-x-auto max-h-96 rounded-lg border border-gray-300 bg-white shadow">
+      <table class="w-full text-right table-auto border-collapse border border-gray-300">
+       <thead>
+        <tr class="bg-green-100 text-gray-900">
+         <th class="border border-gray-300 px-4 py-2">اسم الموظف</th>
+         <th class="border border-gray-300 px-4 py-2">الراتب الإجمالي (ريال)</th>
+         <th class="border border-gray-300 px-4 py-2">السحب الشهري (ريال)</th>
+         <th class="border border-gray-300 px-4 py-2">صافي الراتب (ريال)</th>
+         <th class="border border-gray-300 px-4 py-2">تاريخ الدفع</th>
+         <th class="border border-gray-300 px-4 py-2">إجراء</th>
+        </tr>
+       </thead>
+       <tbody class="text-gray-700" id="salariesTableBody"></tbody>
+      </table>
+     </div>
+    </section>
+
+    <!-- Withdrawals Page with Monthly Calculation -->
+    <section class="hidden" id="withdrawals">
+     <button class="mb-6 px-5 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition focus:outline-none flex items-center gap-2" id="backFromWithdrawals">
+      <i class="fas fa-arrow-right"></i>
+      العودة للرئيسية
+     </button>
+     <h2 class="text-2xl font-bold mb-6 text-gray-900 border-b-4 border-red-600 inline-block pb-1">
+      إدارة عمليات السحب النقدي وحساب السحب الشهري
+     </h2>
+     <form class="max-w-6xl grid grid-cols-1 md:grid-cols-5 gap-6 mb-6" id="withdrawalForm">
+      <div>
+       <label class="block mb-2 font-semibold text-gray-800" for="withdrawalDate">
+        تاريخ السحب
+       </label>
+       <input class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-red-300" id="withdrawalDate" required="" type="date"/>
+      </div>
+      <div>
+       <label class="block mb-2 font-semibold text-gray-800" for="withdrawalWorker">
+        اسم العامل
+       </label>
+       <select class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-red-300" id="withdrawalWorker" required="">
+        <option disabled="" selected="" value="">
+         اختر العامل
+        </option>
+       </select>
+      </div>
+      <div>
+       <label class="block mb-2 font-semibold text-gray-800" for="withdrawalAmount">
+        المبلغ (ريال)
+       </label>
+       <input class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-red-300" id="withdrawalAmount" min="0" placeholder="أدخل المبلغ" required="" step="0.01" type="number"/>
+      </div>
+      <div class="flex items-center gap-4 col-span-2">
+       <button class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition focus:outline-none font-semibold text-lg flex items-center gap-3" type="submit">
+        <i class="fas fa-plus"></i>
+        إضافة سحب
+       </button>
+       <button class="bg-red-800 text-white px-6 py-3 rounded-lg hover:bg-red-900 transition focus:outline-none font-semibold text-lg flex items-center gap-3" id="calculateMonthlyWithdrawalsBtn" type="button">
+        <i class="fas fa-calculator"></i>
+        حساب السحب الشهري
+       </button>
+      </div>
+     </form>
+     <div class="overflow-x-auto max-h-96 rounded-lg border border-gray-300 bg-white shadow mb-6">
+      <table class="w-full text-right table-auto border-collapse border border-gray-300">
+       <thead>
+        <tr class="bg-red-100 text-gray-900">
+         <th class="border border-gray-300 px-4 py-2">التاريخ</th>
+         <th class="border border-gray-300 px-4 py-2">اسم العامل</th>
+         <th class="border border-gray-300 px-4 py-2">المبلغ (ريال)</th>
+         <th class="border border-gray-300 px-4 py-2">إجراء</th>
+        </tr>
+       </thead>
+       <tbody class="text-gray-700" id="withdrawalsTableBody"></tbody>
+      </table>
+     </div>
+     <div class="max-w-4xl bg-red-100 p-6 rounded-lg text-red-800 hidden" id="monthlyWithdrawalSummary">
+      <h3 class="text-xl font-bold mb-4">ملخص السحب الشهري</h3>
+      <div class="space-y-2 text-lg" id="monthlyWithdrawalContent"></div>
+     </div>
+    </section>
+
+    <!-- Expenses Page -->
+    <section class="hidden" id="expenses">
+     <button class="mb-6 px-5 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition focus:outline-none flex items-center gap-2" id="backFromExpenses">
+      <i class="fas fa-arrow-right"></i>
+      العودة للرئيسية
+     </button>
+     <h2 class="text-2xl font-bold mb-6 text-gray-900 border-b-4 border-blue-600 inline-block pb-1">
+      إدارة وتتبع المصروفات المالية
+     </h2>
+     <form class="max-w-4xl grid grid-cols-1 md:grid-cols-4 gap-6 mb-6" id="expenseForm">
+      <div>
+       <label class="block mb-2 font-semibold text-gray-800" for="expenseDate">
+        تاريخ المصروف
+       </label>
+       <input class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-blue-300" id="expenseDate" required="" type="date"/>
+      </div>
+      <div>
+       <label class="block mb-2 font-semibold text-gray-800" for="expenseCategory">
+        الفئة
+       </label>
+       <select class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-blue-300" id="expenseCategory" required="">
+        <option disabled="" selected="" value="">اختر الفئة</option>
+        <option value="إيجار">إيجار</option>
+        <option value="مستلزمات">مستلزمات</option>
+        <option value="فواتير">فواتير</option>
+        <option value="أخرى">أخرى</option>
+       </select>
+      </div>
+      <div>
+       <label class="block mb-2 font-semibold text-gray-800" for="expenseAmount">
+        المبلغ (ريال)
+       </label>
+       <input class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-blue-300" id="expenseAmount" min="0" placeholder="أدخل المبلغ" required="" step="0.01" type="number"/>
+      </div>
+      <div>
+       <label class="block mb-2 font-semibold text-gray-800" for="expenseDescription">
+        الوصف
+       </label>
+       <input class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-blue-300" id="expenseDescription" placeholder="وصف المصروف" type="text"/>
+      </div>
+      <div class="md:col-span-4 flex justify-end">
+       <button class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition focus:outline-none font-semibold text-lg flex items-center gap-3" type="submit">
+        <i class="fas fa-plus"></i>
+        إضافة مصروف
+       </button>
+      </div>
+     </form>
+     <div class="overflow-x-auto max-h-96 rounded-lg border border-gray-300 bg-white shadow">
+      <table class="w-full text-right table-auto border-collapse border border-gray-300">
+       <thead>
+        <tr class="bg-blue-100 text-gray-900">
+         <th class="border border-gray-300 px-4 py-2">التاريخ</th>
+         <th class="border border-gray-300 px-4 py-2">الفئة</th>
+         <th class="border border-gray-300 px-4 py-2">المبلغ (ريال)</th>
+         <th class="border border-gray-300 px-4 py-2">الوصف</th>
+         <th class="border border-gray-300 px-4 py-2">إجراء</th>
+        </tr>
+       </thead>
+       <tbody class="text-gray-700" id="expensesTableBody"></tbody>
+      </table>
+     </div>
+    </section>
+
+    <!-- Appointments Page -->
+    <section class="hidden" id="appointments">
+     <button class="mb-6 px-5 py-3 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition focus:outline-none flex items-center gap-2" id="backFromAppointments">
+      <i class="fas fa-arrow-right"></i>
+      العودة للرئيسية
+     </button>
+     <h2 class="text-2xl font-bold mb-6 text-gray-900 border-b-4 border-yellow-600 inline-block pb-1">
+      جدولة وإدارة المواعيد
+     </h2>
+     <form class="max-w-4xl grid grid-cols-1 md:grid-cols-4 gap-6 mb-6" id="appointmentForm">
+      <div>
+       <label class="block mb-2 font-semibold text-gray-800" for="appointmentDate">
+        تاريخ الموعد
+       </label>
+       <input class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-yellow-300" id="appointmentDate" required="" type="date"/>
+      </div>
+      <div>
+       <label class="block mb-2 font-semibold text-gray-800" for="appointmentTime">
+        وقت الموعد
+       </label>
+       <input class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-yellow-300" id="appointmentTime" required="" type="time"/>
+      </div>
+      <div>
+       <label class="block mb-2 font-semibold text-gray-800" for="appointmentCustomer">
+        اسم العميل
+       </label>
+       <input class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-yellow-300" id="appointmentCustomer" placeholder="أدخل اسم العميل" required="" type="text"/>
+      </div>
+      <div class="flex items-center gap-4">
+       <button class="bg-yellow-600 text-white px-6 py-3 rounded-lg hover:bg-yellow-700 transition focus:outline-none font-semibold text-lg flex items-center gap-3" type="submit">
+        <i class="fas fa-plus"></i>
+        إضافة موعد
+       </button>
+      </div>
+     </form>
+     <div class="overflow-x-auto max-h-96 rounded-lg border border-gray-300 bg-white shadow">
+      <table class="w-full text-right table-auto border-collapse border border-gray-300">
+       <thead>
+        <tr class="bg-yellow-100 text-gray-900">
+         <th class="border border-gray-300 px-4 py-2">التاريخ</th>
+         <th class="border border-gray-300 px-4 py-2">الوقت</th>
+         <th class="border border-gray-300 px-4 py-2">اسم العميل</th>
+         <th class="border border-gray-300 px-4 py-2">إجراء</th>
+        </tr>
+       </thead>
+       <tbody class="text-gray-700" id="appointmentsTableBody"></tbody>
+      </table>
+     </div>
+    </section>
+
+    <!-- Services Page -->
+    <section class="hidden" id="services">
+     <button class="mb-6 px-5 py-3 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition focus:outline-none flex items-center gap-2" id="backFromServices">
+      <i class="fas fa-arrow-right"></i>
+      العودة للرئيسية
+     </button>
+     <h2 class="text-2xl font-bold mb-6 text-gray-900 border-b-4 border-pink-600 inline-block pb-1">
+      قائمة الخدمات المقدمة للعملاء
+     </h2>
+     <form class="max-w-4xl grid grid-cols-1 md:grid-cols-3 gap-6 mb-6" id="serviceForm">
+      <div>
+       <label class="block mb-2 font-semibold text-gray-800" for="serviceName">
+        اسم الخدمة
+       </label>
+       <input class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-pink-300" id="serviceName" placeholder="أدخل اسم الخدمة" required="" type="text"/>
+      </div>
+      <div>
+       <label class="block mb-2 font-semibold text-gray-800" for="servicePriceInput">
+        السعر (ريال)
+       </label>
+       <input class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-pink-300" id="servicePriceInput" min="0" placeholder="أدخل السعر" required="" step="0.01" type="number"/>
+      </div>
+      <div class="flex items-center gap-4">
+       <button class="bg-pink-600 text-white px-6 py-3 rounded-lg hover:bg-pink-700 transition focus:outline-none font-semibold text-lg flex items-center gap-3" type="submit" id="addServiceBtn">
+        <i class="fas fa-plus"></i>
+        إضافة خدمة
+       </button>
+      </div>
+     </form>
+     <div class="overflow-x-auto max-h-96 rounded-lg border border-gray-300 bg-white shadow">
+      <table class="w-full text-right table-auto border-collapse border border-gray-300">
+       <thead>
+        <tr class="bg-pink-100 text-gray-900">
+         <th class="border border-gray-300 px-4 py-2">اسم الخدمة</th>
+         <th class="border border-gray-300 px-4 py-2">السعر (ريال)</th>
+         <th class="border border-gray-300 px-4 py-2">إجراء</th>
+        </tr>
+       </thead>
+       <tbody class="text-gray-700" id="servicesTableBody"></tbody>
+      </table>
+     </div>
+    </section>
+
+    <!-- Inventory Page -->
+    <section class="hidden" id="inventory">
+     <button class="mb-6 px-5 py-3 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition focus:outline-none flex items-center gap-2" id="backFromInventory">
+      <i class="fas fa-arrow-right"></i>
+      العودة للرئيسية
+     </button>
+     <h2 class="text-2xl font-bold mb-6 text-gray-900 border-b-4 border-teal-600 inline-block pb-1">
+      إدارة المخزون والمنتجات
+     </h2>
+     <form class="max-w-4xl grid grid-cols-1 md:grid-cols-4 gap-6 mb-6" id="inventoryForm">
+      <div>
+       <label class="block mb-2 font-semibold text-gray-800" for="productName">
+        اسم المنتج
+       </label>
+       <input class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-teal-300" id="productName" placeholder="أدخل اسم المنتج" required="" type="text"/>
+      </div>
+      <div>
+       <label class="block mb-2 font-semibold text-gray-800" for="productQuantity">
+        الكمية
+       </label>
+       <input class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-teal-300" id="productQuantity" min="0" placeholder="أدخل الكمية" required="" step="1" type="number"/>
+      </div>
+      <div>
+       <label class="block mb-2 font-semibold text-gray-800" for="productPrice">
+        السعر (ريال)
+       </label>
+       <input class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-teal-300" id="productPrice" min="0" placeholder="أدخل السعر" required="" step="0.01" type="number"/>
+      </div>
+      <div class="flex items-center gap-4">
+       <button class="bg-teal-600 text-white px-6 py-3 rounded-lg hover:bg-teal-700 transition focus:outline-none font-semibold text-lg flex items-center gap-3" type="submit" id="addInventoryBtn">
+        <i class="fas fa-plus"></i>
+        إضافة منتج
+       </button>
+      </div>
+     </form>
+     <div class="overflow-x-auto max-h-96 rounded-lg border border-gray-300 bg-white shadow">
+      <table class="w-full text-right table-auto border-collapse border border-gray-300">
+       <thead>
+        <tr class="bg-teal-100 text-gray-900">
+         <th class="border border-gray-300 px-4 py-2">اسم المنتج</th>
+         <th class="border border-gray-300 px-4 py-2">الكمية</th>
+         <th class="border border-gray-300 px-4 py-2">السعر (ريال)</th>
+         <th class="border border-gray-300 px-4 py-2">إجراء</th>
+        </tr>
+       </thead>
+       <tbody class="text-gray-700" id="inventoryTableBody"></tbody>
+      </table>
+     </div>
+    </section>
+
+    <!-- Reports Page -->
+    <section class="hidden" id="reports">
+     <button class="mb-6 px-5 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition focus:outline-none flex items-center gap-2" id="backFromReports">
+      <i class="fas fa-arrow-right"></i>
+      العودة للرئيسية
+     </button>
+     <h2 class="text-2xl font-bold mb-6 text-gray-900 border-b-4 border-indigo-600 inline-block pb-1">
+      عرض تقارير مفصلة عن الأداء
+     </h2>
+     <div class="max-w-6xl space-y-6">
+      <div class="bg-white rounded-lg shadow p-6">
+       <h3 class="text-xl font-bold mb-4 text-gray-900">تقرير المصروفات</h3>
+       <p class="text-gray-700 mb-4">إجمالي المصروفات: <span id="totalExpenses">0.00</span> ريال</p>
+       <div class="overflow-x-auto max-h-64 rounded-lg border border-gray-300 bg-gray-50">
+        <table class="w-full text-right table-auto border-collapse border border-gray-300">
+         <thead>
+          <tr class="bg-indigo-100 text-gray-900">
+           <th class="border border-gray-300 px-4 py-2">الفئة</th>
+           <th class="border border-gray-300 px-4 py-2">المبلغ (ريال)</th>
+          </tr>
+         </thead>
+         <tbody class="text-gray-700" id="expenseReportBody"></tbody>
+        </table>
+       </div>
+      </div>
+      <div class="bg-white rounded-lg shadow p-6">
+       <h3 class="text-xl font-bold mb-4 text-gray-900">تقرير الرواتب</h3>
+       <p class="text-gray-700 mb-4">إجمالي الرواتب المدفوعة: <span id="totalSalaries">0.00</span> ريال</p>
+       <div class="overflow-x-auto max-h-64 rounded-lg border border-gray-300 bg-gray-50">
+        <table class="w-full text-right table-auto border-collapse border border-gray-300">
+         <thead>
+          <tr class="bg-indigo-100 text-gray-900">
+           <th class="border border-gray-300 px-4 py-2">اسم الموظف</th>
+           <th class="border border-gray-300 px-4 py-2">المبلغ (ريال)</th>
+          </tr>
+         </thead>
+         <tbody class="text-gray-700" id="salaryReportBody"></tbody>
+        </table>
+       </div>
+      </div>
+      <div class="bg-white rounded-lg shadow p-6">
+       <h3 class="text-xl font-bold mb-4 text-gray-900">تقرير السحب</h3>
+       <p class="text-gray-700 mb-4">إجمالي السحب: <span id="totalWithdrawals">0.00</span> ريال</p>
+       <div class="overflow-x-auto max-h-64 rounded-lg border border-gray-300 bg-gray-50">
+        <table class="w-full text-right table-auto border-collapse border border-gray-300">
+         <thead>
+          <tr class="bg-indigo-100 text-gray-900">
+           <th class="border border-gray-300 px-4 py-2">اسم العامل</th>
+           <th class="border border-gray-300 px-4 py-2">الشهر</th>
+           <th class="border border-gray-300 px-4 py-2">المبلغ (ريال)</th>
+          </tr>
+         </thead>
+         <tbody class="text-gray-700" id="withdrawalReportBody"></tbody>
+        </table>
+       </div>
+      </div>
+     </div>
+    </section>
+
+    <!-- Salary Summary Page -->
+    <section class="hidden" id="salarySummary">
+     <button class="mb-6 px-5 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition focus:outline-none flex items-center gap-2" id="backFromSalarySummary">
+      <i class="fas fa-arrow-right"></i>
+      العودة للرئيسية
+     </button>
+     <h2 class="text-2xl font-bold mb-6 text-gray-900 border-b-4 border-purple-600 inline-block pb-1">
+      ملخص مجموع رواتب العمال اليومية بناءً على الفواتير المسجلة
+     </h2>
+     <p class="mb-6 text-gray-700 max-w-3xl">
+      يعرض هذا الملخص مجموع رواتب كل عامل يوميًا بناءً على الفواتير المسجلة باسم العامل. يتم حساب الراتب الإجمالي لكل عامل في كل يوم بشكل منفصل.
+     </p>
+     <div class="overflow-x-auto max-h-[480px] rounded-lg border border-gray-300 bg-white shadow">
+      <table class="w-full text-right table-auto border-collapse border border-gray-300">
+       <thead>
+        <tr class="bg-purple-100 text-gray-900">
+         <th class="border border-gray-300 px-4 py-2">اسم العامل</th>
+         <th class="border border-gray-300 px-4 py-2">التاريخ</th>
+         <th class="border border-gray-300 px-4 py-2">مجموع الراتب (ريال)</th>
+        </tr>
+       </thead>
+       <tbody class="text-gray-700" id="salarySummaryTableBody"></tbody>
+      </table>
+     </div>
+    </section>
+
+    <!-- POS Section integrated inside main app -->
+    <section class="hidden" id="posSection" aria-label="نظام نقاط البيع">
+     <button class="mb-6 px-5 py-3 bg-green-700 text-white rounded-lg hover:bg-green-800 transition focus:outline-none flex items-center gap-2" id="backFromPOSBtn">
+      <i class="fas fa-arrow-right"></i>
+      العودة للرئيسية
+     </button>
+     <div class="max-w-[900px] mx-auto bg-white rounded-lg shadow-lg p-4 flex flex-col md:flex-row gap-4">
+      <!-- Left side: product grid -->
+      <div class="w-full md:w-1/3 bg-gray-50 rounded-lg p-3 flex flex-col">
+       <!-- Search input -->
+       <input aria-label="بحث عن خدمة أو منتج" class="mb-3 rounded border border-gray-300 p-1 text-sm text-right placeholder-gray-400" id="searchInput" oninput="filterProducts()" placeholder="بحث عن خدمة أو منتج..." type="text"/>
+       <!-- Product grid -->
+       <div class="grid grid-cols-3 gap-2 overflow-y-auto max-h-[400px]" id="productGrid"></div>
+       <button aria-label="عرض المزيد من الخدمات والمنتجات" class="mt-auto bg-blue-600 text-white text-xs rounded py-1 px-2 w-full" id="showMoreBtn" onclick="toggleShowMore()">
+        عرض المزيد
+       </button>
+      </div>
+      <!-- Right side: main content -->
+      <div aria-atomic="true" aria-live="polite" class="w-full md:w-2/3 bg-white rounded-lg p-4 flex flex-col">
+       <!-- Top bar -->
+       <div aria-label="معلومات الفاتورة" class="flex flex-col md:flex-row justify-between items-center mb-3 text-xs text-gray-600 gap-2" role="region">
+        <div>فاتورة رقم 000000000000</div>
+        <div class="flex gap-2 flex-wrap w-full md:w-auto justify-center md:justify-start">
+         <input aria-label="اسم العامل" class="border border-gray-300 rounded p-1 text-xs text-right w-full md:w-40" id="workerName" placeholder="اسم العامل" type="text" />
+         <input aria-label="اسم العميل" class="border border-gray-300 rounded p-1 text-xs text-right w-full md:w-40" id="customerName" placeholder="اسم العميل" type="text" />
+        </div>
+       </div>
+       <!-- Table header -->
+       <div class="grid grid-cols-6 gap-2 text-xs font-semibold text-gray-700 border-b border-gray-300 pb-1 mb-1">
+        <div>المنتج</div>
+        <div>الكمية</div>
+        <div>السعر</div>
+        <div>الخصم</div>
+        <div>الإجمالي</div>
+        <div></div>
+       </div>
+       <!-- Table rows container -->
+       <div aria-label="عناصر الفاتورة" class="flex flex-col gap-1 max-h-[300px] overflow-y-auto" id="invoiceItems"></div>
+       <!-- Add product input -->
+       <div class="flex items-center gap-2 mt-3 text-xs">
+        <input aria-label="أضف منتج أو خدمة" class="flex-grow border border-gray-300 rounded p-1 text-right" id="addProductInput" onkeydown="if(event.key==='Enter'){addProductByName()}" placeholder="أضف منتج أو خدمة" type="text"/>
+        <input aria-label="أدخل السعر يدوياً" class="w-24 border border-gray-300 rounded p-1 text-xs text-center" id="manualPriceInput" placeholder="السعر" type="number" min="0" step="0.01"/>
+        <button aria-label="إضافة المنتج أو الخدمة مع السعر" class="bg-blue-600 text-white rounded px-3 py-1" onclick="addProductByNameWithPrice()">
+         إضافة
+        </button>
+       </div>
+       <!-- Bottom summary and buttons -->
+       <div class="mt-auto flex flex-wrap gap-2 justify-between items-center pt-3 border-t border-gray-300 text-xs">
+        <div aria-live="polite" class="text-green-600 font-bold" id="totalAmount">المجموع: 0.00 ريال</div>
+        <div class="flex gap-2 flex-wrap">
+         <button aria-label="إلغاء الفاتورة" class="bg-red-600 text-white rounded px-3 py-1" onclick="clearInvoice()">
+          إلغاء
+         </button>
+         <button aria-label="إتمام البيع وطباعة الفاتورة" class="bg-green-600 text-white rounded px-3 py-1" onclick="completeSaleAndPrint()">
+          إتمام البيع
+         </button>
+         <button aria-label="عرض سجل الفواتير" class="bg-gray-600 text-white rounded px-3 py-1" id="showInvoiceLogBtn">
+          سجل الفواتير
+         </button>
+        </div>
+       </div>
+       <!-- Invoice Log Section -->
+       <div class="mt-4 overflow-auto max-h-64 rounded-lg border border-gray-300 bg-gray-50 shadow p-2 hidden" id="invoiceLogSection" aria-label="سجل الفواتير">
+        <h3 class="text-sm font-semibold text-gray-800 mb-2">سجل الفواتير</h3>
+        <table class="w-full text-right text-xs border-collapse border border-gray-300">
+         <thead>
+          <tr class="bg-gray-200 text-gray-900">
+           <th class="border border-gray-300 px-2 py-1">رقم الفاتورة</th>
+           <th class="border border-gray-300 px-2 py-1">التاريخ</th>
+           <th class="border border-gray-300 px-2 py-1">العامل</th>
+           <th class="border border-gray-300 px-2 py-1">العميل</th>
+           <th class="border border-gray-300 px-2 py-1">عدد العناصر</th>
+           <th class="border border-gray-300 px-2 py-1">المجموع (ريال)</th>
+           <th class="border border-gray-300 px-2 py-1">إجراء</th>
+          </tr>
+         </thead>
+         <tbody id="invoiceLogTableBody" class="text-gray-700"></tbody>
+        </table>
+        <button class="mt-2 bg-red-600 text-white rounded px-3 py-1 text-xs hover:bg-red-700 transition focus:outline-none" id="closeInvoiceLogBtn">
+         إغلاق السجل
+        </button>
+       </div>
+      </div>
+     </div>
+     <!-- Hidden printable receipt container -->
+     <div id="printableReceipt" class="hidden p-2 bg-white shadow-md rounded" role="region" aria-label="إيصال الطباعة" style="white-space: pre-line;"></div>
+    </section>
+   </main>
+   <footer class="bg-white shadow-inner p-4 text-center text-gray-600 text-sm select-none">
+    © 2024 جميع الحقوق محفوظة | تصميم وتطوير بواسطة خبير Tailwind
+   </footer>
+  </div>
+
+  <script>
+   // Mobile menu toggle
+   const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+   const mobileMenu = document.getElementById('mobileMenu');
+   const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+   mobileMenuBtn.addEventListener('click', () => {
+    mobileMenu.classList.remove('translate-x-full');
+    mobileMenuBtn.setAttribute('aria-expanded', 'true');
+   });
+   mobileMenuClose.addEventListener('click', () => {
+    mobileMenu.classList.add('translate-x-full');
+    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+    mobileMenuBtn.focus();
+   });
+
+   // Navigation and page display
+   const pages = [
+    'home',
+    'expenses',
+    'salaries',
+    'withdrawals',
+    'appointments',
+    'services',
+    'inventory',
+    'reports',
+    'salarySummary',
+    'dailySalary',
+    'monthlySalary',
+    'posSection'
+   ];
+
+   function showPage(pageId) {
+    pages.forEach((p) => {
+     const el = document.getElementById(p);
+     if (el) {
+      if (p === pageId) {
+       el.classList.remove('hidden');
+       el.scrollTop = 0;
+      } else {
+       el.classList.add('hidden');
+      }
+     }
+    });
+    // Close mobile menu if open
+    if (!mobileMenu.classList.contains('translate-x-full')) {
+     mobileMenu.classList.add('translate-x-full');
+     mobileMenuBtn.setAttribute('aria-expanded', 'false');
+    }
+   }
+
+   // Header nav buttons
+   document.querySelectorAll('header nav button:not(#logoutBtn)').forEach((btn) => {
+    btn.addEventListener('click', () => {
+     const page = btn.getAttribute('data-page');
+     if (page) showPage(page);
+    });
+   });
+
+   // Home cards clickable
+   document.querySelectorAll('#home > div[tabindex="0"]').forEach((card) => {
+    card.addEventListener('click', () => {
+     const page = card.getAttribute('data-page');
+     if (page) showPage(page);
+    });
+    card.addEventListener('keydown', (e) => {
+     if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      const page = card.getAttribute('data-page');
+      if (page) showPage(page);
+     }
+    });
+   });
+
+   // Back buttons
+   pages.forEach((p) => {
+    if (p === 'home') return;
+    const backBtn = document.getElementById('backFrom' + p.charAt(0).toUpperCase() + p.slice(1));
+    if (backBtn) {
+     backBtn.addEventListener('click', () => {
+      showPage('home');
+     });
+    }
+   });
+
+   // Data for workers
+   const workers = [
+    { id: 'w1', name: 'ياسر العوضي' },
+    { id: 'w2', name: 'علي الاتربي' },
+    { id: 'w3', name: 'ابراهيم العزازي' },
+    { id: 'w4', name: 'علي النجار' },
+    { id: 'w5', name: 'الفلاح ' },
+    { id: 'w6', name: 'رضا' },
+    { id: 'w7', name: 'ابراهيم' },
+    { id: 'w8', name: 'السعيد' },
+    { id: 'w9', name: 'السيد' },
+   ];
+
+   // Fill selects for withdrawals and salaries
+   const withdrawalWorkerSelect = document.getElementById('withdrawalWorker');
+   const salaryWorkerSelect = document.getElementById('salaryWorker');
+   workers.forEach(worker => {
+    const option1 = document.createElement('option');
+    option1.value = worker.id;
+    option1.textContent = worker.name;
+    withdrawalWorkerSelect.appendChild(option1);
+    const option2 = document.createElement('option');
+    option2.value = worker.id;
+    option2.textContent = worker.name;
+    salaryWorkerSelect.appendChild(option2);
+   });
+
+   // Fill daily salary worker select
+   const dailyWorkerSelect = document.getElementById('dailyWorkerSelect');
+   workers.forEach(worker => {
+    const option = document.createElement('option');
+    option.value = worker.id;
+    option.textContent = worker.name;
+    dailyWorkerSelect.appendChild(option);
+   });
+
+   // Fill monthly salary worker select
+   const monthlyWorkerSelect = document.getElementById('monthlyWorkerSelect');
+   workers.forEach(worker => {
+    const option = document.createElement('option');
+    option.value = worker.id;
+    option.textContent = worker.name;
+    monthlyWorkerSelect.appendChild(option);
+   });
+
+   // Withdrawals data
+   let withdrawals = JSON.parse(localStorage.getItem('withdrawals')) || [];
+
+   // Salaries data (manual entries)
+   let salaries = JSON.parse(localStorage.getItem('salaries')) || [];
+
+   const salariesTableBody = document.getElementById('salariesTableBody');
+   const withdrawalsTableBody = document.getElementById('withdrawalsTableBody');
+   const monthlyWithdrawalSummary = document.getElementById('monthlyWithdrawalSummary');
+   const monthlyWithdrawalContent = document.getElementById('monthlyWithdrawalContent');
+
+   // Update withdrawals table
+   function updateWithdrawalsTable() {
+    withdrawalsTableBody.innerHTML = '';
+    if(withdrawals.length === 0){
+     const tr = document.createElement('tr');
+     const td = document.createElement('td');
+     td.colSpan = 4;
+     td.className = 'text-center py-4 text-gray-500';
+     td.textContent = 'لا توجد عمليات سحب مسجلة.';
+     tr.appendChild(td);
+     withdrawalsTableBody.appendChild(tr);
+     monthlyWithdrawalSummary.classList.add('hidden');
+     return;
+    }
+    withdrawals.forEach((wd, idx) => {
+     const workerName = workers.find(w => w.id === wd.workerId)?.name || 'غير معروف';
+     const tr = document.createElement('tr');
+     tr.innerHTML = `
+      <td class="border border-gray-300 px-4 py-2">${wd.date}</td>
+      <td class="border border-gray-300 px-4 py-2">${workerName}</td>
+      <td class="border border-gray-300 px-4 py-2">${parseFloat(wd.amount).toFixed(2)}</td>
+      <td class="border border-gray-300 px-4 py-2 text-center">
+       <button data-index="${idx}" class="deleteWithdrawalBtn text-red-600 hover:text-red-800 focus:outline-none" aria-label="حذف السحب">
+        <i class="fas fa-trash-alt"></i>
+       </button>
+      </td>
+     `;
+     withdrawalsTableBody.appendChild(tr);
+    });
+    document.querySelectorAll('.deleteWithdrawalBtn').forEach(btn => {
+     btn.addEventListener('click', e => {
+      const idx = e.currentTarget.getAttribute('data-index');
+      withdrawals.splice(idx,1);
+      localStorage.setItem('withdrawals', JSON.stringify(withdrawals));
+      updateWithdrawalsTable();
+      updateSalariesTable();
+     });
+    });
+   }
+   updateWithdrawalsTable();
+
+   // Update salaries table with net salary calculation
+   function updateSalariesTable() {
+    salariesTableBody.innerHTML = '';
+    if(salaries.length === 0){
+     const tr = document.createElement('tr');
+     const td = document.createElement('td');
+     td.colSpan = 6;
+     td.className = 'text-center py-4 text-gray-500';
+     td.textContent = 'لا توجد رواتب مسجلة.';
+     tr.appendChild(td);
+     salariesTableBody.appendChild(tr);
+     return;
+    }
+
+    // Aggregate withdrawals by worker and month (YYYY-MM)
+    const withdrawalMap = {};
+    withdrawals.forEach(wd => {
+     const month = wd.date.slice(0,7);
+     const key = wd.workerId + '|' + month;
+     if(!withdrawalMap[key]) withdrawalMap[key] = 0;
+     withdrawalMap[key] += wd.amount;
+    });
+
+    salaries.forEach((sal, idx) => {
+     const workerName = workers.find(w => w.id === sal.workerId)?.name || 'غير معروف';
+     const month = sal.date.slice(0,7);
+     const key = sal.workerId + '|' + month;
+     const totalWithdrawal = withdrawalMap[key] || 0;
+     const netSalary = sal.amount - totalWithdrawal;
+
+     const tr = document.createElement('tr');
+     tr.innerHTML = `
+      <td class="border border-gray-300 px-4 py-2">${workerName}</td>
+      <td class="border border-gray-300 px-4 py-2">${sal.amount.toFixed(2)}</td>
+      <td class="border border-gray-300 px-4 py-2">${totalWithdrawal.toFixed(2)}</td>
+      <td class="border border-gray-300 px-4 py-2 font-semibold ${netSalary < 0 ? 'text-red-600' : ''}">${netSalary.toFixed(2)}</td>
+      <td class="border border-gray-300 px-4 py-2">${sal.date}</td>
+      <td class="border border-gray-300 px-4 py-2 text-center">
+       <button data-index="${idx}" class="deleteSalaryBtn text-red-600 hover:text-red-800 focus:outline-none" aria-label="حذف الراتب">
+        <i class="fas fa-trash-alt"></i>
+       </button>
+      </td>
+     `;
+     salariesTableBody.appendChild(tr);
+    });
+
+    document.querySelectorAll('.deleteSalaryBtn').forEach(btn => {
+     btn.addEventListener('click', e => {
+      const idx = e.currentTarget.getAttribute('data-index');
+      salaries.splice(idx,1);
+      localStorage.setItem('salaries', JSON.stringify(salaries));
+      updateSalariesTable();
+     });
+    });
+   }
+   updateSalariesTable();
+
+   // Handle withdrawal form submit
+   const withdrawalForm = document.getElementById('withdrawalForm');
+   withdrawalForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const date = document.getElementById('withdrawalDate').value;
+    const workerId = document.getElementById('withdrawalWorker').value;
+    const amount = parseFloat(document.getElementById('withdrawalAmount').value);
+    if(!date || !workerId || isNaN(amount) || amount < 0){
+     alert('يرجى ملء جميع الحقول بشكل صحيح.');
+     return;
+    }
+    withdrawals.push({date, workerId, amount});
+    localStorage.setItem('withdrawals', JSON.stringify(withdrawals));
+    updateWithdrawalsTable();
+    updateSalariesTable();
+    withdrawalForm.reset();
+   });
+
+   // Handle salary form submit
+   const salaryForm = document.getElementById('salaryForm');
+   salaryForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const workerId = document.getElementById('salaryWorker').value;
+    const amount = parseFloat(document.getElementById('salaryAmount').value);
+    const date = document.getElementById('salaryDate').value;
+    if(!workerId || isNaN(amount) || amount < 0 || !date){
+     alert('يرجى ملء جميع الحقول بشكل صحيح.');
+     return;
+    }
+    salaries.push({workerId, amount, date});
+    localStorage.setItem('salaries', JSON.stringify(salaries));
+    updateSalariesTable();
+    salaryForm.reset();
+   });
+
+   // Clear salaries
+   document.getElementById('clearSalariesBtn').addEventListener('click', () => {
+    if(confirm('هل أنت متأكد من مسح جميع الرواتب؟ لا يمكن التراجع عن هذا الإجراء.')) {
+     salaries = [];
+     localStorage.setItem('salaries', JSON.stringify(salaries));
+     updateSalariesTable();
+    }
+   });
+
+   // Simple login system
+   const loginSection = document.getElementById('login');
+   const appContent = document.getElementById('appContent');
+   const formLogin = document.getElementById('form-login');
+   const loginError = document.getElementById('loginError');
+   const logoutBtn = document.getElementById('logoutBtn');
+   const mobileLogoutBtn = document.getElementById('mobileLogoutBtn');
+   const rememberMeCheckbox = document.getElementById('remember-me');
+   const passwordInput = document.getElementById('password');
+   const forgotPasswordBtn = document.getElementById('forgotPasswordBtn');
+   const changePasswordBtn = document.getElementById('changePasswordBtn');
+   const changePasswordModal = document.getElementById('changePasswordModal');
+   const cancelChangePasswordBtn = document.getElementById('cancelChangePasswordBtn');
+   const changePasswordForm = document.getElementById('changePasswordForm');
+   const changePasswordError = document.getElementById('changePasswordError');
+   const changePasswordSuccess = document.getElementById('changePasswordSuccess');
+
+   // Load saved user credentials from localStorage or use default
+   let validUser = JSON.parse(localStorage.getItem('validUser')) || {
+    username: 'admin',
+    password: '123456',
+   };
+   const phoneNumber = '01091889366';
+
+   // Save validUser to localStorage whenever it changes
+   function saveValidUser() {
+    localStorage.setItem('validUser', JSON.stringify(validUser));
+   }
+
+   // Check if user is logged in
+   function isLoggedIn() {
+    return localStorage.getItem('loggedIn') === 'true';
+   }
+
+   function showApp() {
+    loginSection.classList.add('hidden');
+    appContent.classList.remove('hidden');
+    appContent.setAttribute('tabindex', '-1');
+    appContent.focus();
+   }
+
+   function showLogin() {
+    loginSection.classList.remove('hidden');
+    appContent.classList.add('hidden');
+    formLogin.reset();
+    loginError.textContent = '';
+    loginError.setAttribute('aria-hidden', 'true');
+    formLogin.username.setAttribute('aria-invalid', 'false');
+    formLogin.password.setAttribute('aria-invalid', 'false');
+    formLogin.username.focus();
+    // Reset password input type
+    passwordInput.type = 'password';
+    rememberMeCheckbox.checked = false;
+   }
+
+   if (isLoggedIn()) {
+    showApp();
+   } else {
+    showLogin();
+   }
+
+   formLogin.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const username = e.target.username.value.trim();
+    const password = e.target.password.value;
+    let valid = true;
+    loginError.textContent = '';
+    loginError.setAttribute('aria-hidden', 'true');
+    formLogin.username.setAttribute('aria-invalid', 'false');
+    formLogin.password.setAttribute('aria-invalid', 'false');
+
+    if (!username) {
+     formLogin.username.setAttribute('aria-invalid', 'true');
+     valid = false;
+    }
+    if (!password) {
+     formLogin.password.setAttribute('aria-invalid', 'true');
+     valid = false;
+    }
+    if (!valid) {
+     loginError.textContent = 'يرجى ملء جميع الحقول.';
+     loginError.setAttribute('aria-hidden', 'false');
+     loginError.focus();
+     return;
+    }
+
+    if (username === validUser.username && password === validUser.password) {
+     localStorage.setItem('loggedIn', 'true');
+     showApp();
+    } else {
+     loginError.textContent = 'اسم المستخدم أو كلمة المرور غير صحيحة';
+     loginError.setAttribute('aria-hidden', 'false');
+     loginError.focus();
+     formLogin.username.setAttribute('aria-invalid', 'true');
+     formLogin.password.setAttribute('aria-invalid', 'true');
+    }
+   });
+
+   function logout() {
+    localStorage.removeItem('loggedIn');
+    showLogin();
+    showPage('home');
+   }
+
+   logoutBtn.addEventListener('click', logout);
+   mobileLogoutBtn.addEventListener('click', () => {
+    logout();
+    mobileMenu.classList.add('translate-x-full');
+    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+   });
+
+   // Toggle password visibility on remember me checkbox
+   rememberMeCheckbox.addEventListener('change', () => {
+    if (rememberMeCheckbox.checked) {
+     passwordInput.type = 'text';
+     rememberMeCheckbox.setAttribute('aria-checked', 'true');
+    } else {
+     passwordInput.type = 'password';
+     rememberMeCheckbox.setAttribute('aria-checked', 'false');
+    }
+   });
+
+   // Handle forgot password button click - show phone prompt then password
+   forgotPasswordBtn.addEventListener('click', () => {
+    const userPhone = prompt('يرجى تسجيل رقم الهاتف لاستعادة كلمة المرور:');
+    if (userPhone === null) {
+     // User cancelled prompt
+     return;
+    }
+    const trimmedPhone = userPhone.trim();
+    if (trimmedPhone === phoneNumber) {
+     alert(`رقم الهاتف صحيح.\nكلمة المرور الخاصة بك هي: ${validUser.password}`);
+    } else if (trimmedPhone === '') {
+     alert('لم يتم إدخال رقم الهاتف.');
+    } else {
+     alert('رقم الهاتف غير صحيح. يرجى المحاولة مرة أخرى.');
+    }
+    forgotPasswordBtn.focus();
+   });
+
+   // Show change password modal
+   changePasswordBtn.addEventListener('click', () => {
+    changePasswordError.textContent = '';
+    changePasswordSuccess.textContent = '';
+    changePasswordForm.reset();
+    changePasswordModal.classList.remove('hidden');
+    changePasswordModal.setAttribute('aria-hidden', 'false');
+    document.getElementById('phoneInput').focus();
+   });
+
+   // Cancel change password modal
+   cancelChangePasswordBtn.addEventListener('click', () => {
+    changePasswordModal.classList.add('hidden');
+    changePasswordModal.setAttribute('aria-hidden', 'true');
+    changePasswordError.textContent = '';
+    changePasswordSuccess.textContent = '';
+    changePasswordForm.reset();
+    changePasswordBtn.focus();
+   });
+
+   // Handle change password form submit
+   changePasswordForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    changePasswordError.textContent = '';
+    changePasswordSuccess.textContent = '';
+
+    const phone = document.getElementById('phoneInput').value.trim();
+    const oldPass = document.getElementById('oldPasswordInput').value;
+    const newPass = document.getElementById('newPasswordInput').value;
+
+    if (!phone || !oldPass || !newPass) {
+     changePasswordError.textContent = 'يرجى ملء جميع الحقول.';
+     return;
+    }
+    if (phone !== phoneNumber) {
+     changePasswordError.textContent = 'رقم الهاتف غير صحيح.';
+     return;
+    }
+    if (oldPass !== validUser.password) {
+     changePasswordError.textContent = 'كلمة المرور القديمة غير صحيحة.';
+     return;
+    }
+    if (newPass.length < 6) {
+     changePasswordError.textContent = 'كلمة المرور الجديدة يجب أن تكون 6 أحرف على الأقل.';
+     return;
+    }
+    if (newPass === oldPass) {
+     changePasswordError.textContent = 'كلمة المرور الجديدة يجب أن تختلف عن القديمة.';
+     return;
+    }
+
+    // Update password and save to localStorage
+    validUser.password = newPass;
+    saveValidUser();
+    alert('تم تغيير كلمة المرور بنجاح. يرجى تسجيل الدخول باستخدام كلمة المرور الجديدة.');
+    changePasswordModal.classList.add('hidden');
+    changePasswordModal.setAttribute('aria-hidden', 'true');
+    changePasswordForm.reset();
+    showLogin();
+   });
+
+   // Expenses data and logic
+   let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
+   const expensesTableBody = document.getElementById('expensesTableBody');
+   const expenseForm = document.getElementById('expenseForm');
+
+   function updateExpensesTable() {
+    expensesTableBody.innerHTML = '';
+    if(expenses.length === 0){
+     const tr = document.createElement('tr');
+     const td = document.createElement('td');
+     td.colSpan = 5;
+     td.className = 'text-center py-4 text-gray-500';
+     td.textContent = 'لا توجد مصروفات مسجلة.';
+     tr.appendChild(td);
+     expensesTableBody.appendChild(tr);
+     return;
+    }
+    expenses.forEach((exp, idx) => {
+     const tr = document.createElement('tr');
+     tr.innerHTML = `
+      <td class="border border-gray-300 px-4 py-2">${exp.date}</td>
+      <td class="border border-gray-300 px-4 py-2">${exp.category}</td>
+      <td class="border border-gray-300 px-4 py-2">${parseFloat(exp.amount).toFixed(2)}</td>
+      <td class="border border-gray-300 px-4 py-2">${exp.description || ''}</td>
+      <td class="border border-gray-300 px-4 py-2 text-center">
+       <button data-index="${idx}" class="deleteExpenseBtn text-red-600 hover:text-red-800 focus:outline-none" aria-label="حذف المصروف">
+        <i class="fas fa-trash-alt"></i>
+       </button>
+      </td>
+     `;
+     expensesTableBody.appendChild(tr);
+    });
+    document.querySelectorAll('.deleteExpenseBtn').forEach(btn => {
+     btn.addEventListener('click', e => {
+      const idx = e.currentTarget.getAttribute('data-index');
+      expenses.splice(idx,1);
+      localStorage.setItem('expenses', JSON.stringify(expenses));
+      updateExpensesTable();
+     });
+    });
+   }
+   updateExpensesTable();
+
+   expenseForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const date = document.getElementById('expenseDate').value;
+    const category = document.getElementById('expenseCategory').value;
+    const amount = parseFloat(document.getElementById('expenseAmount').value);
+    const description = document.getElementById('expenseDescription').value.trim();
+    if(!date || !category || isNaN(amount) || amount < 0){
+     alert('يرجى ملء جميع الحقول بشكل صحيح.');
+     return;
+    }
+    expenses.push({date, category, amount, description});
+    localStorage.setItem('expenses', JSON.stringify(expenses));
+    updateExpensesTable();
+    expenseForm.reset();
+   });
+
+   // Appointments data and logic
+   let appointments = JSON.parse(localStorage.getItem('appointments')) || [];
+   const appointmentsTableBody = document.getElementById('appointmentsTableBody');
+   const appointmentForm = document.getElementById('appointmentForm');
+
+   function updateAppointmentsTable() {
+    appointmentsTableBody.innerHTML = '';
+    if(appointments.length === 0){
+     const tr = document.createElement('tr');
+     const td = document.createElement('td');
+     td.colSpan = 4;
+     td.className = 'text-center py-4 text-gray-500';
+     td.textContent = 'لا توجد مواعيد مسجلة.';
+     tr.appendChild(td);
+     appointmentsTableBody.appendChild(tr);
+     return;
+    }
+    appointments.forEach((app, idx) => {
+     const tr = document.createElement('tr');
+     tr.innerHTML = `
+      <td class="border border-gray-300 px-4 py-2">${app.date}</td>
+      <td class="border border-gray-300 px-4 py-2">${app.time}</td>
+      <td class="border border-gray-300 px-4 py-2">${app.customer}</td>
+      <td class="border border-gray-300 px-4 py-2 text-center">
+       <button data-index="${idx}" class="deleteAppointmentBtn text-red-600 hover:text-red-800 focus:outline-none" aria-label="حذف الموعد">
+        <i class="fas fa-trash-alt"></i>
+       </button>
+      </td>
+     `;
+     appointmentsTableBody.appendChild(tr);
+    });
+    document.querySelectorAll('.deleteAppointmentBtn').forEach(btn => {
+     btn.addEventListener('click', e => {
+      const idx = e.currentTarget.getAttribute('data-index');
+      appointments.splice(idx,1);
+      localStorage.setItem('appointments', JSON.stringify(appointments));
+      updateAppointmentsTable();
+     });
+    });
+   }
+   updateAppointmentsTable();
+
+   appointmentForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const date = document.getElementById('appointmentDate').value;
+    const time = document.getElementById('appointmentTime').value;
+    const customer = document.getElementById('appointmentCustomer').value.trim();
+    if(!date || !time || !customer){
+     alert('يرجى ملء جميع الحقول بشكل صحيح.');
+     return;
+    }
+    appointments.push({date, time, customer});
+    localStorage.setItem('appointments', JSON.stringify(appointments));
+    updateAppointmentsTable();
+    appointmentForm.reset();
+   });
+
+   // Services data and logic
+   let servicesData = JSON.parse(localStorage.getItem('services')) || [];
+   const servicesTableBody = document.getElementById('servicesTableBody');
+   const serviceForm = document.getElementById('serviceForm');
+
+   function updateServicesTable() {
+    servicesTableBody.innerHTML = '';
+    if(servicesData.length === 0){
+     const tr = document.createElement('tr');
+     const td = document.createElement('td');
+     td.colSpan = 3;
+     td.className = 'text-center py-4 text-gray-500';
+     td.textContent = 'لا توجد خدمات مسجلة.';
+     tr.appendChild(td);
+     servicesTableBody.appendChild(tr);
+     return;
+    }
+    servicesData.forEach((service, idx) => {
+     const tr = document.createElement('tr');
+     tr.innerHTML = `
+      <td class="border border-gray-300 px-4 py-2">${service.name}</td>
+      <td class="border border-gray-300 px-4 py-2">${parseFloat(service.price).toFixed(2)}</td>
+      <td class="border border-gray-300 px-4 py-2 text-center">
+       <button data-index="${idx}" class="deleteServiceBtn text-red-600 hover:text-red-800 focus:outline-none" aria-label="حذف الخدمة">
+        <i class="fas fa-trash-alt"></i>
+       </button>
+      </td>
+     `;
+     servicesTableBody.appendChild(tr);
+    });
+    document.querySelectorAll('.deleteServiceBtn').forEach(btn => {
+     btn.addEventListener('click', e => {
+      const idx = e.currentTarget.getAttribute('data-index');
+      servicesData.splice(idx,1);
+      localStorage.setItem('services', JSON.stringify(servicesData));
+      updateServicesTable();
+     });
+    });
+   }
+   updateServicesTable();
+
+   serviceForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const name = document.getElementById('serviceName').value.trim();
+    const price = parseFloat(document.getElementById('servicePriceInput').value);
+    if(!name || isNaN(price) || price < 0){
+     alert('يرجى ملء جميع الحقول بشكل صحيح.');
+     return;
+    }
+    servicesData.push({name, price});
+    localStorage.setItem('services', JSON.stringify(servicesData));
+    updateServicesTable();
+    serviceForm.reset();
+   });
+
+   // Inventory data and logic
+   let inventory = JSON.parse(localStorage.getItem('inventory')) || [];
+   const inventoryTableBody = document.getElementById('inventoryTableBody');
+   const inventoryForm = document.getElementById('inventoryForm');
+
+   function updateInventoryTable() {
+    inventoryTableBody.innerHTML = '';
+    if(inventory.length === 0){
+     const tr = document.createElement('tr');
+     const td = document.createElement('td');
+     td.colSpan = 4;
+     td.className = 'text-center py-4 text-gray-500';
+     td.textContent = 'لا توجد منتجات مسجلة.';
+     tr.appendChild(td);
+     inventoryTableBody.appendChild(tr);
+     return;
+    }
+    inventory.forEach((item, idx) => {
+     const tr = document.createElement('tr');
+     tr.innerHTML = `
+      <td class="border border-gray-300 px-4 py-2">${item.name}</td>
+      <td class="border border-gray-300 px-4 py-2">${item.quantity}</td>
+      <td class="border border-gray-300 px-4 py-2">${parseFloat(item.price).toFixed(2)}</td>
+      <td class="border border-gray-300 px-4 py-2 text-center">
+       <button data-index="${idx}" class="deleteInventoryBtn text-red-600 hover:text-red-800 focus:outline-none" aria-label="حذف المنتج">
+        <i class="fas fa-trash-alt"></i>
+       </button>
+      </td>
+     `;
+     inventoryTableBody.appendChild(tr);
+    });
+    document.querySelectorAll('.deleteInventoryBtn').forEach(btn => {
+     btn.addEventListener('click', e => {
+      const idx = e.currentTarget.getAttribute('data-index');
+      inventory.splice(idx,1);
+      localStorage.setItem('inventory', JSON.stringify(inventory));
+      updateInventoryTable();
+     });
+    });
+   }
+   updateInventoryTable();
+
+   // Reports calculations
+   function updateReports() {
+    // Expenses report
+    const expenseReportBody = document.getElementById('expenseReportBody');
+    const totalExpensesSpan = document.getElementById('totalExpenses');
+    const expenseCategoryTotals = {};
+    expenses.forEach(exp => {
+     if(!expenseCategoryTotals[exp.category]) expenseCategoryTotals[exp.category] = 0;
+     expenseCategoryTotals[exp.category] += exp.amount;
+    });
+    expenseReportBody.innerHTML = '';
+    let totalExpenses = 0;
+    for(const cat in expenseCategoryTotals){
+     const tr = document.createElement('tr');
+     tr.innerHTML = `
+      <td class="border border-gray-300 px-4 py-2">${cat}</td>
+      <td class="border border-gray-300 px-4 py-2">${expenseCategoryTotals[cat].toFixed(2)}</td>
+     `;
+     expenseReportBody.appendChild(tr);
+     totalExpenses += expenseCategoryTotals[cat];
+    }
+    totalExpensesSpan.textContent = totalExpenses.toFixed(2);
+
+    // Salaries report
+    const salaryReportBody = document.getElementById('salaryReportBody');
+    const totalSalariesSpan = document.getElementById('totalSalaries');
+    const salaryTotals = {};
+    salaries.forEach(sal => {
+     if(!salaryTotals[sal.workerId]) salaryTotals[sal.workerId] = 0;
+     salaryTotals[sal.workerId] += sal.amount;
+    });
+    salaryReportBody.innerHTML = '';
+    let totalSalaries = 0;
+    for(const workerId in salaryTotals){
+     const workerName = workers.find(w => w.id === workerId)?.name || 'غير معروف';
+     const tr = document.createElement('tr');
+     tr.innerHTML = `
+      <td class="border border-gray-300 px-4 py-2">${workerName}</td>
+      <td class="border border-gray-300 px-4 py-2">${salaryTotals[workerId].toFixed(2)}</td>
+     `;
+     salaryReportBody.appendChild(tr);
+     totalSalaries += salaryTotals[workerId];
+    }
+    totalSalariesSpan.textContent = totalSalaries.toFixed(2);
+
+    // Withdrawals report
+    const withdrawalReportBody = document.getElementById('withdrawalReportBody');
+    const totalWithdrawalsSpan = document.getElementById('totalWithdrawals');
+    const withdrawalTotals = {};
+    withdrawals.forEach(wd => {
+     const month = wd.date.slice(0,7);
+     const key = wd.workerId + '|' + month;
+     if(!withdrawalTotals[key]) withdrawalTotals[key] = 0;
+     withdrawalTotals[key] += wd.amount;
+    });
+    withdrawalReportBody.innerHTML = '';
+    let totalWithdrawals = 0;
+    for(const key in withdrawalTotals){
+     const [workerId, month] = key.split('|');
+     const workerName = workers.find(w => w.id === workerId)?.name || 'غير معروف';
+     const amount = withdrawalTotals[key];
+     const tr = document.createElement('tr');
+     tr.innerHTML = `
+      <td class="border border-gray-300 px-4 py-2">${workerName}</td>
+      <td class="border border-gray-300 px-4 py-2">${month}</td>
+      <td class="border border-gray-300 px-4 py-2">${amount.toFixed(2)}</td>
+     `;
+     withdrawalReportBody.appendChild(tr);
+     totalWithdrawals += amount;
+    }
+    totalWithdrawalsSpan.textContent = totalWithdrawals.toFixed(2);
+   }
+
+   // Update reports on page show
+   document.querySelector('button[data-page="reports"]').addEventListener('click', updateReports);
+
+   // Salary Summary Page Logic
+   const salarySummaryTableBody = document.getElementById('salarySummaryTableBody');
+
+   function updateSalarySummary() {
+    // We will calculate total salary per worker per date based on printed invoices
+    let printedInvoices = JSON.parse(localStorage.getItem("salon_printed_invoices")) || [];
+    // Map: workerName -> date -> totalAmount
+    const summaryMap = {};
+
+    printedInvoices.forEach(inv => {
+     const workerName = inv.worker || "غير محدد";
+     const dateObj = new Date(inv.date);
+     // Format date as yyyy-mm-dd
+     const dateStr = dateObj.toISOString().slice(0,10);
+     if (!summaryMap[workerName]) summaryMap[workerName] = {};
+     if (!summaryMap[workerName][dateStr]) summaryMap[workerName][dateStr] = 0;
+     // Sum total of invoice
+     summaryMap[workerName][dateStr] += parseFloat(inv.total);
+    });
+
+    // Clear table body
+    salarySummaryTableBody.innerHTML = '';
+
+    // If no data
+    if(Object.keys(summaryMap).length === 0){
+     const tr = document.createElement('tr');
+     const td = document.createElement('td');
+     td.colSpan = 3;
+     td.className = 'text-center py-4 text-gray-500';
+     td.textContent = 'لا توجد بيانات لعرضها.';
+     tr.appendChild(td);
+     salarySummaryTableBody.appendChild(tr);
+     return;
+    }
+
+    // Build rows sorted by worker then date
+    const rows = [];
+    Object.keys(summaryMap).forEach(workerName => {
+     const dates = Object.keys(summaryMap[workerName]).sort();
+     dates.forEach(dateStr => {
+      rows.push({
+       workerName,
+       dateStr,
+       total: summaryMap[workerName][dateStr]
+      });
+     });
+    });
+
+    // Sort rows by workerName then dateStr
+    rows.sort((a,b) => {
+     if(a.workerName < b.workerName) return -1;
+     if(a.workerName > b.workerName) return 1;
+     if(a.dateStr < b.dateStr) return -1;
+     if(a.dateStr > b.dateStr) return 1;
+     return 0;
+    });
+
+    rows.forEach(row => {
+     const tr = document.createElement('tr');
+     tr.innerHTML = `
+      <td class="border border-gray-300 px-4 py-2">${row.workerName}</td>
+      <td class="border border-gray-300 px-4 py-2">${row.dateStr}</td>
+      <td class="border border-gray-300 px-4 py-2">${row.total.toFixed(2)}</td>
+     `;
+     salarySummaryTableBody.appendChild(tr);
+    });
+   }
+
+   // Update salary summary when page shown
+   document.querySelector('button[data-page="salarySummary"]').addEventListener('click', updateSalarySummary);
+
+   // Daily Salary Calculation Logic
+   const dailySalaryForm = document.getElementById('dailySalaryForm');
+   const dailySalaryResult = document.getElementById('dailySalaryResult');
+   const dailySalaryText = document.getElementById('dailySalaryText');
+
+   dailySalaryForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const workerId = document.getElementById('dailyWorkerSelect').value;
+    const date = document.getElementById('dailyDateInput').value;
+
+    if (!workerId || !date) {
+     alert('يرجى ملء جميع الحقول بشكل صحيح.');
+     return;
+    }
+
+    // Calculate total services salary for the worker on the given date
+    let printedInvoices = JSON.parse(localStorage.getItem("salon_printed_invoices")) || [];
+
+    // Filter invoices for the worker and date
+    const filteredInvoices = printedInvoices.filter(inv => {
+     if (!inv.worker) return false;
+     const invWorker = workers.find(w => w.name === inv.worker);
+     if (!invWorker) return false;
+     if (invWorker.id !== workerId) return false;
+     const invDate = new Date(inv.date);
+     const invDateStr = invDate.toISOString().slice(0,10);
+     return invDateStr === date;
+    });
+
+    // Sum total of filtered invoices
+    let totalServicesSalary = 0;
+    filteredInvoices.forEach(inv => {
+     totalServicesSalary += parseFloat(inv.total);
+    });
+
+    // Calculate total withdrawals for the worker on the given date
+    const totalWithdrawals = withdrawals.reduce((sum, wd) => {
+     if (wd.workerId === workerId && wd.date === date) {
+      return sum + parseFloat(wd.amount);
+     }
+     return sum;
+    }, 0);
+
+    // Calculate net salary
+    const netSalary = totalServicesSalary - totalWithdrawals;
+
+    // Show result
+    dailySalaryText.textContent = `العامل: ${workers.find(w => w.id === workerId)?.name || 'غير معروف'}\n` +
+      `التاريخ: ${date}\n` +
+      `إجمالي رواتب الخدمات: ${totalServicesSalary.toFixed(2)} ريال\n` +
+      `إجمالي السحب: ${totalWithdrawals.toFixed(2)} ريال\n` +
+      `صافي الراتب: ${netSalary.toFixed(2)} ريال`;
+
+    dailySalaryResult.classList.remove('hidden');
+   });
+
+   // Monthly Salary Calculation Logic
+   const monthlySalaryForm = document.getElementById('monthlySalaryForm');
+   const monthlySalaryResult = document.getElementById('monthlySalaryResult');
+   const monthlySalaryText = document.getElementById('monthlySalaryText');
+
+   monthlySalaryForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const workerId = document.getElementById('monthlyWorkerSelect').value;
+    const year = document.getElementById('monthlyYearInput').value;
+    const month = document.getElementById('monthlyMonthInput').value;
+
+    if (!workerId || !year || !month) {
+     alert('يرجى ملء جميع الحقول بشكل صحيح.');
+     return;
+    }
+
+    // Calculate total services salary for the worker in the given month
+    // We use printed invoices data for services salary
+    let printedInvoices = JSON.parse(localStorage.getItem("salon_printed_invoices")) || [];
+
+    // Filter invoices for the worker and month
+    const filteredInvoices = printedInvoices.filter(inv => {
+     if (!inv.worker) return false;
+     const invWorker = workers.find(w => w.name === inv.worker);
+     if (!invWorker) return false;
+     if (invWorker.id !== workerId) return false;
+     const invDate = new Date(inv.date);
+     return invDate.getFullYear() === parseInt(year) && (invDate.getMonth() + 1) === parseInt(month);
+    });
+
+    // Sum total of filtered invoices
+    let totalServicesSalary = 0;
+    filteredInvoices.forEach(inv => {
+     totalServicesSalary += parseFloat(inv.total);
+    });
+
+    // Calculate total withdrawals for the worker in the given month
+    const totalWithdrawals = withdrawals.reduce((sum, wd) => {
+     if (wd.workerId === workerId && wd.date.startsWith(`${year}-${month}`)) {
+      return sum + parseFloat(wd.amount);
+     }
+     return sum;
+    }, 0);
+
+    // Calculate net salary
+    const netSalary = totalServicesSalary - totalWithdrawals;
+
+    // Show result
+    monthlySalaryText.textContent = `العامل: ${workers.find(w => w.id === workerId)?.name || 'غير معروف'}\n` +
+      `الشهر: ${year}-${month}\n` +
+      `إجمالي رواتب الخدمات: ${totalServicesSalary.toFixed(2)} ريال\n` +
+      `إجمالي السحب: ${totalWithdrawals.toFixed(2)} ريال\n` +
+      `صافي الراتب: ${netSalary.toFixed(2)} ريال`;
+
+    monthlySalaryResult.classList.remove('hidden');
+   });
+
+   // POS System Code
+
+   // Products database for lookup (extended with more items for "عرض المزيد")
+  const allProducts = [
+      
+      // Added new services
+      { name: "حلاقة شعر + ذقن", price: 35, iconClass: "fas fa-cut", alt: "أيقونة حلاقة شعر وذقن", img: "https://placehold.co/60x60/png?text=حلاقة+شعر+وذقن" },
+      { name: "حلاقة شعر نحته", price: 25, iconClass: "fas fa-cut", alt: "أيقونة حلاقة شعر نحته", img: "https://placehold.co/60x60/png?text=حلاقة+شعر+نحته" },
+      { name: "حلاقة ذقن تحديد", price: 20, iconClass: "fas fa-beard", alt: "أيقونة حلاقة ذقن تحديد", img: "https://placehold.co/60x60/png?text=حلاقة+ذقن+تحديد" },
+      { name: "حلاقة ذقن سكسوكه", price: 20, iconClass: "fas fa-beard", alt: "أيقونة حلاقة ذقن سكسوكه", img: "https://placehold.co/60x60/png?text=حلاقة+ذقن+سكسوكه" },
+      { name: "حلاقة ذقن موس كامل", price: 15, iconClass: "fas fa-beard", alt: "أيقونة حلاقة ذقن موس كامل", img: "https://placehold.co/60x60/png?text=حلاقة+ذقن+موس+كامل" },
+      { name: "حلاقة ذقن شعر طفل عادية", price: 20, iconClass: "fas fa-child", alt: "أيقونة حلاقة ذقن شعر طفل عادية", img: "https://placehold.co/60x60/png?text=حلاقة+ذقن+شعر+طفل" },
+      { name: "استشوار", price: 20, iconClass: "fas fa-wind", alt: "أيقونة استشوار", img: "https://placehold.co/60x60/png?text=استشوار" },
+      { name: "شمع", price: 25, iconClass: "fas fa-fire", alt: "أيقونة شمع", img: "https://placehold.co/60x60/png?text=شمع" },
+      { name: "سنفرة عادية", price: 20, iconClass: "fas fa-hand-paper", alt: "أيقونة سنفرة عادية", img: "https://placehold.co/60x60/png?text=سنفرة+عادية" },
+      { name: "قناع طين VIB", price: 50, iconClass: "fas fa-mask", alt: "أيقونة قناع طين VIB", img: "https://placehold.co/60x60/png?text=قناع+طين+VIB" },
+      { name: "سنفرة مع فوطة حارة", price: 25, iconClass: "fas fa-hand-paper", alt: "أيقونة سنفرة مع فوطة حارة", img: "https://placehold.co/60x60/png?text=سنفرة+مع+فوطة+حارة" },
+      { name: "سنفرة مع بخار", price: 30, iconClass: "fas fa-water", alt: "أيقونة سنفرة مع بخار", img: "https://placehold.co/60x60/png?text=سنفرة+مع+بخار" },
+      { name: "نص تنظيف", price: 80, iconClass: "fas fa-broom", alt: "أيقونة نصف تنظيف", img: "https://placehold.co/60x60/png?text=نص+تنظيف" },
+      { name: "صبغة بيجن", price: 40, iconClass: "fas fa-paint-brush", alt: "أيقونة صبغة بيجن", img: "https://placehold.co/60x60/png?text=صبغة+بيجن" },
+      { name: "صبغة شامبو", price: 45, iconClass: "fas fa-paint-brush", alt: "أيقونة صبغة شامبو", img: "https://placehold.co/60x60/png?text=صبغة+شامبو" },
+      { name: "صبغة ذقن", price: 30, iconClass: "fas fa-beard", alt: "أيقونة صبغة ذقن", img: "https://placehold.co/60x60/png?text=صبغة+ذقن" },
+      { name: "قناع نعناع", price: 25, iconClass: "fas fa-leaf", alt: "أيقونة قناع نعناع", img: "https://placehold.co/60x60/png?text=قناع+نعناع" },
+      { name: "قناع فلبيني", price: 50, iconClass: "fas fa-mask", alt: "أيقونة قناع فلبيني", img: "https://placehold.co/60x60/png?text=قناع+فلبيني" },
+      { name: "معالج للقشرة", price: 120, iconClass: "fas fa-bug", alt: "أيقونة معالج للقشرة", img: "https://placehold.co/60x60/png?text=معالج+للقشرة" },
+      { name: "معالج للشعر", price: 120, iconClass: "fas fa-spa", alt: "أيقونة معالج للشعر", img: "https://placehold.co/60x60/png?text=معالج+للشعر" },
+      { name: "تنظيف كامل ليزر مع شفط دهون", price: 150, iconClass: "fas fa-laser", alt: "أيقونة تنظيف كامل ليزر مع شفط دهون", img: "https://placehold.co/60x60/png?text=تنظيف+ليزر+وشفط" },
+      { name: "حمام مغربي", price: 150, iconClass: "fas fa-water", alt: "أيقونة حمام مغربي", img: "https://placehold.co/60x60/png?text=حمام+مغربي" },
+      { name: "بروتين للشعر", price: 250, iconClass: "fas fa-flask", alt: "أيقونة بروتين للشعر", img: "https://placehold.co/60x60/png?text=بروتين+للشعر" },
+      { name: "حمام زيت مع الجهاز", price: 40, iconClass: "fas fa-oil-can", alt: "أيقونة حمام زيت مع الجهاز", img: "https://placehold.co/60x60/png?text=حمام+زيت+مع+الجهاز" },
+      { name: "حمام زيت عادي", price: 25, iconClass: "fas fa-oil-can", alt: "أيقونة حمام زيت عادي", img: "https://placehold.co/60x60/png?text=حمام+زيت+عادي" }
+    ];
+
+   // Show only first 6 initially
+   let showAll = false;
+
+   // Current invoice items
+   let invoiceItems = [];
+
+   // Render product grid based on showAll
+   function renderProductGrid() {
+    const grid = document.getElementById("productGrid");
+    grid.innerHTML = "";
+    const productsToShow = showAll ? allProducts : allProducts.slice(0, 6);
+    productsToShow.forEach((product) => {
+     const btn = document.createElement("button");
+     btn.className = "bg-white rounded border border-gray-300 p-1 flex flex-col items-center text-xs text-center hover:border-blue-500 transition";
+     btn.setAttribute("aria-label", `إضافة خدمة أو منتج ${product.name} بسعر ${product.price} ريال`);
+     btn.title = product.name;
+     btn.onclick = () => addProductToInvoice(product.name, 1, product.price);
+     btn.innerHTML = `<img alt="${product.alt}" class="mb-1 w-14 h-14 object-contain" height="60" src="${product.img}" width="60"/>${product.name}`;
+     grid.appendChild(btn);
+    });
+    const showMoreBtn = document.getElementById("showMoreBtn");
+    showMoreBtn.textContent = showAll ? "عرض أقل" : "عرض المزيد";
+   }
+
+   // Toggle show more/less products
+   function toggleShowMore() {
+    showAll = !showAll;
+    renderProductGrid();
+   }
+
+   // Add product to invoice by name, quantity, price
+   function addProductToInvoice(name, quantity, price) {
+    const existingIndex = invoiceItems.findIndex(
+     (item) => item.name === name
+    );
+    if (existingIndex !== -1) {
+     invoiceItems[existingIndex].quantity += quantity;
+     invoiceItems[existingIndex].price = price; // update price if changed manually
+    } else {
+     invoiceItems.push({ name, quantity, price, discount: 0 });
+    }
+    renderInvoice();
+   }
+
+   // Add product by name and manual price from inputs
+   function addProductByNameWithPrice() {
+    const input = document.getElementById("addProductInput");
+    const priceInput = document.getElementById("manualPriceInput");
+    const name = input.value.trim();
+    let price = parseFloat(priceInput.value);
+    if (!name) {
+     alert("يرجى إدخال اسم المنتج أو الخدمة.");
+     return;
+    }
+    if (isNaN(price) || price < 0) {
+     alert("يرجى إدخال سعر صالح.");
+     return;
+    }
+    addProductToInvoice(name, 1, price);
+    input.value = "";
+    priceInput.value = "";
+   }
+
+   // Render invoice items in the table
+   function renderInvoice() {
+    const container = document.getElementById("invoiceItems");
+    container.innerHTML = "";
+    invoiceItems.forEach((item, index) => {
+     const totalPrice = (item.price * item.quantity * (1 - item.discount / 100)).toFixed(2);
+     const row = document.createElement("div");
+     row.className =
+      "grid grid-cols-6 gap-2 items-center text-xs text-gray-800 border-b border-gray-200 py-1";
+     row.innerHTML = `
+      <div>${item.name}</div>
+      <div>
+       <input type="number" min="1" value="${item.quantity}" class="w-full border border-gray-300 rounded text-xs text-center p-0.5" aria-label="كمية ${item.name}" data-index="${index}" data-type="quantity" />
+      </div>
+      <div>
+       <input type="number" min="0" step="0.01" value="${item.price.toFixed(2)}" class="w-full border border-gray-300 rounded text-xs text-center p-0.5" aria-label="سعر ${item.name}" data-index="${index}" data-type="price" />
+      </div>
+      <div>
+       <input type="number" min="0" max="100" value="${item.discount}" class="w-full border border-gray-300 rounded text-xs text-center p-0.5" aria-label="خصم ${item.name} %" data-index="${index}" data-type="discount" />
+      </div>
+      <div>${totalPrice}</div>
+      <div>
+       <button class="text-red-500 text-sm font-bold" aria-label="حذف ${item.name}" data-index="${index}" data-action="remove">×</button>
+      </div>
+     `;
+     container.appendChild(row);
+    });
+    updateTotal();
+    attachInputListeners();
+   }
+
+   // Attach listeners to quantity, price, discount inputs and remove buttons
+   function attachInputListeners() {
+    const container = document.getElementById("invoiceItems");
+    container.querySelectorAll("input").forEach((input) => {
+     input.oninput = (e) => {
+      const index = +e.target.getAttribute("data-index");
+      const type = e.target.getAttribute("data-type");
+      if (type === "quantity") {
+       let val = parseInt(e.target.value);
+       if (isNaN(val) || val < 1) val = 1;
+       invoiceItems[index].quantity = val;
+      } else if (type === "price") {
+       let val = parseFloat(e.target.value);
+       if (isNaN(val) || val < 0) val = 0;
+       invoiceItems[index].price = val;
+      } else if (type === "discount") {
+       let val = parseInt(e.target.value);
+       if (isNaN(val) || val < 0) val = 0;
+       if (val > 100) val = 100;
+       invoiceItems[index].discount = val;
+      }
+      renderInvoice();
+     };
+    });
+    container.querySelectorAll("button[data-action='remove']").forEach((btn) => {
+     btn.onclick = (e) => {
+      const index = +e.target.getAttribute("data-index");
+      invoiceItems.splice(index, 1);
+      renderInvoice();
+     };
+    });
+   }
+
+   // Update total amount display
+   function updateTotal() {
+    const totalEl = document.getElementById("totalAmount");
+    const total = invoiceItems.reduce((sum, item) => {
+     return (
+      sum +
+      item.price * item.quantity * (1 - item.discount / 100)
+     );
+    }, 0);
+    totalEl.textContent = `المجموع: ${total.toFixed(2)} ريال`;
+   }
+
+   // Clear invoice
+   function clearInvoice() {
+    if (confirm("هل أنت متأكد من إلغاء الفاتورة؟")) {
+     invoiceItems = [];
+     renderInvoice();
+     document.getElementById("workerName").value = "";
+     document.getElementById("customerName").value = "";
+    }
+   }
+
+   // Complete sale and print receipt
+   function completeSaleAndPrint() {
+    if (invoiceItems.length === 0) {
+     alert("لا توجد منتجات أو خدمات في الفاتورة.");
+     return;
+    }
+    printInvoice();
+    alert("تم إتمام البيع بنجاح!\nشكراً لاستخدامك نظام صالون الحلاقة.");
+    invoiceItems = [];
+    renderInvoice();
+    document.getElementById("workerName").value = "";
+    document.getElementById("customerName").value = "";
+   }
+
+   // Print thermal receipt on a single sheet with worker and customer name
+   function printInvoice() {
+    const worker = document.getElementById("workerName").value.trim() || "غير محدد";
+    const customer = document.getElementById("customerName").value.trim() || "عميل عابر";
+
+    const receiptDiv = document.getElementById("printableReceipt");
+    receiptDiv.innerHTML = ""; // Clear previous
+
+    // Compose receipt text with line breaks for monospace print
+    let receiptText = "";
+    receiptText += "صالون الحلاقة - إيصال البيع\n";
+    const date = new Date();
+    receiptText += `التاريخ: ${date.toLocaleDateString("ar-EG")} - الوقت: ${date.toLocaleTimeString("ar-EG")}\n`;
+    receiptText += `العامل: ${worker}\n`;
+    receiptText += `العميل: ${customer}\n`;
+    receiptText += "------------------------------\n";
+    invoiceItems.forEach(item => {
+     const totalPrice = (item.price * item.quantity * (1 - item.discount / 100)).toFixed(2);
+     receiptText += `${item.name} x${item.quantity} - ${item.price.toFixed(2)} ريال\n`;
+     if(item.discount > 0){
+      receiptText += `  خصم: ${item.discount}%\n`;
+     }
+     receiptText += `  الإجمالي: ${totalPrice} ريال\n`;
+     receiptText += "------------------------------\n";
+    });
+    const total = invoiceItems.reduce((sum, item) => {
+     return (
+      sum +
+      item.price * item.quantity * (1 - item.discount / 100)
+     );
+    }, 0);
+    receiptText += `المجموع: ${total.toFixed(2)} ريال\n`;
+    receiptText += "\nشكراً لزيارتكم صالون الحلاقة\n";
+
+    receiptDiv.textContent = receiptText;
+
+    // Save printed invoice to printedInvoices array and localStorage
+    const printedInvoice = {
+     id: Date.now(),
+     date: date.toISOString(),
+     worker,
+     customer,
+     items: JSON.parse(JSON.stringify(invoiceItems)),
+     total: total.toFixed(2)
+    };
+    let printedInvoices = JSON.parse(localStorage.getItem("salon_printed_invoices")) || [];
+    printedInvoices.push(printedInvoice);
+    localStorage.setItem("salon_printed_invoices", JSON.stringify(printedInvoices));
+
+    // Show receipt div and print
+    receiptDiv.classList.remove("hidden");
+    window.print();
+    receiptDiv.classList.add("hidden");
+   }
+
+   // Filter products in the left grid based on search input
+   function filterProducts() {
+    const filter = document.getElementById("searchInput").value.trim();
+    const grid = document.getElementById("productGrid");
+    const buttons = grid.querySelectorAll("button");
+    buttons.forEach((btn) => {
+     const text = btn.textContent.trim();
+     if (text.includes(filter)) {
+      btn.style.display = "flex";
+     } else {
+      btn.style.display = "none";
+     }
+    });
+   }
+
+   // Initialize empty invoice on load and render products
+   renderInvoice();
+   renderProductGrid();
+
+   // Open POS from main menu
+   const openPOSBtns = document.querySelectorAll('button[data-page="posSection"]');
+   const backFromPOSBtn = document.getElementById('backFromPOSBtn');
+
+   openPOSBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+     showPage('posSection');
+    });
+   });
+
+   backFromPOSBtn.addEventListener('click', () => {
+    showPage('home');
+   });
+
+   // Invoice Log UI Elements
+   const showInvoiceLogBtn = document.getElementById('showInvoiceLogBtn');
+   const invoiceLogSection = document.getElementById('invoiceLogSection');
+   const invoiceLogTableBody = document.getElementById('invoiceLogTableBody');
+   const closeInvoiceLogBtn = document.getElementById('closeInvoiceLogBtn');
+
+   // Render invoice log table
+   function renderInvoiceLog() {
+    let printedInvoices = JSON.parse(localStorage.getItem("salon_printed_invoices")) || [];
+    invoiceLogTableBody.innerHTML = '';
+    if(printedInvoices.length === 0){
+     const tr = document.createElement('tr');
+     const td = document.createElement('td');
+     td.colSpan = 7;
+     td.className = 'text-center py-4 text-gray-500';
+     td.textContent = 'لا توجد فواتير مسجلة.';
+     tr.appendChild(td);
+     invoiceLogTableBody.appendChild(tr);
+     return;
+    }
+    printedInvoices.forEach((inv, idx) => {
+     const tr = document.createElement('tr');
+     const dateObj = new Date(inv.date);
+     const formattedDate = dateObj.toLocaleDateString('ar-EG') + ' ' + dateObj.toLocaleTimeString('ar-EG');
+     tr.innerHTML = `
+      <td class="border border-gray-300 px-2 py-1">${inv.id}</td>
+      <td class="border border-gray-300 px-2 py-1">${formattedDate}</td>
+      <td class="border border-gray-300 px-2 py-1">${inv.worker}</td>
+      <td class="border border-gray-300 px-2 py-1">${inv.customer}</td>
+      <td class="border border-gray-300 px-2 py-1 text-center">${inv.items.length}</td>
+      <td class="border border-gray-300 px-2 py-1 text-center">${parseFloat(inv.total).toFixed(2)}</td>
+      <td class="border border-gray-300 px-2 py-1 text-center">
+       <button data-index="${idx}" class="deleteInvoiceBtn text-red-600 hover:text-red-800 focus:outline-none" aria-label="حذف الفاتورة">
+        <i class="fas fa-trash-alt"></i>
+       </button>
+      </td>
+     `;
+     invoiceLogTableBody.appendChild(tr);
+    });
+    // Attach delete handlers
+    document.querySelectorAll('.deleteInvoiceBtn').forEach(btn => {
+     btn.addEventListener('click', e => {
+      const idx = e.currentTarget.getAttribute('data-index');
+      if(confirm('هل أنت متأكد من حذف هذه الفاتورة؟ لا يمكن التراجع عن هذا الإجراء.')) {
+       let printedInvoices = JSON.parse(localStorage.getItem("salon_printed_invoices")) || [];
+       printedInvoices.splice(idx, 1);
+       localStorage.setItem("salon_printed_invoices", JSON.stringify(printedInvoices));
+       renderInvoiceLog();
+      }
+     });
+    });
+   }
+
+   // Show invoice log section
+   showInvoiceLogBtn.addEventListener('click', () => {
+    renderInvoiceLog();
+    invoiceLogSection.classList.remove('hidden');
+    invoiceLogSection.scrollTop = 0;
+   });
+
+   // Close invoice log section
+   closeInvoiceLogBtn.addEventListener('click', () => {
+    invoiceLogSection.classList.add('hidden');
+    showInvoiceLogBtn.focus();
+   });
+  </script>
+ </body>
+</html>
