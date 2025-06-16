@@ -2,7 +2,7 @@
  <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
-  <title>لوحة تحكم متقدمة + POS صالون الحلاقة</title>
+  <title>لوحة تحكم متقدمة مركز الفارس </title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet"/>
@@ -229,6 +229,7 @@
      لوحة تحكم متقدمة
     </h1>
     <nav aria-label="القائمة الرئيسية" class="hidden md:flex space-x-6 text-gray-700 font-semibold">
+     <br>
      <button class="hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="home">الرئيسية</button>
      <button class="hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="expenses">المصروفات</button>
      <button class="hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="salaries">الرواتب</button>
@@ -237,7 +238,6 @@
      <button class="hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="services">الخدمات</button>
      <button class="hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="inventory">المخزون</button>
      <button class="hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="reports">التقارير</button>
-     <button class="hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="salarySummary">ملخص رواتب العمال</button>
      <button class="hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="dailySalary">حساب الراتب اليومي</button>
      <button class="hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="monthlySalary">حساب الراتب الشهري</button>
      <button class="hover:text-green-600 transition focus:outline-none focus:ring-2 focus:ring-green-400 rounded ml-6" data-page="posSection" aria-label="فتح نظام نقاط البيع">
@@ -266,7 +266,6 @@
      <button class="text-right hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="services">الخدمات</button>
      <button class="text-right hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="inventory">المخزون</button>
      <button class="text-right hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="reports">التقارير</button>
-     <button class="text-right hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="salarySummary">ملخص رواتب العمال</button>
      <button class="text-right hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="dailySalary">حساب الراتب اليومي</button>
      <button class="text-right hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="monthlySalary">حساب الراتب الشهري</button>
      <button class="text-right hover:text-green-600 transition focus:outline-none focus:ring-2 focus:ring-green-400 rounded mt-4 font-semibold" data-page="posSection" aria-label="فتح نظام نقاط البيع">نظام نقاط البيع</button>
@@ -310,11 +309,6 @@
       <i class="fas fa-chart-line text-7xl text-indigo-600 mb-4"></i>
       <h2 class="text-2xl font-bold mb-2 text-gray-800">التقارير</h2>
       <p class="text-gray-600 text-center">عرض تقارير مفصلة عن الأداء</p>
-     </div>
-     <div aria-label="ملخص رواتب العمال - عرض ملخص مجموع رواتب العمال اليومية بناءً على الفواتير المسجلة" class="cursor-pointer bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition focus:outline-none focus:ring-4 focus:ring-purple-600 select-none" data-page="salarySummary" role="button" tabindex="0">
-      <i class="fas fa-file-invoice-dollar text-7xl text-purple-600 mb-4"></i>
-      <h2 class="text-2xl font-bold mb-2 text-gray-800">ملخص رواتب العمال</h2>
-      <p class="text-gray-600 text-center">عرض مجموع رواتب كل عامل يوميًا بناءً على الفواتير المسجلة باسم العامل</p>
      </div>
      <div aria-label="حساب الراتب اليومي - حساب رواتب العمال اليومية بناءً على الفواتير المسجلة" class="cursor-pointer bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition focus:outline-none focus:ring-4 focus:ring-yellow-600 select-none" data-page="dailySalary" role="button" tabindex="0">
       <i class="fas fa-calendar-day text-7xl text-yellow-600 mb-4"></i>
@@ -804,32 +798,6 @@
      </div>
     </section>
 
-    <!-- Salary Summary Page -->
-    <section class="hidden" id="salarySummary">
-     <button class="mb-6 px-5 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition focus:outline-none flex items-center gap-2" id="backFromSalarySummary">
-      <i class="fas fa-arrow-right"></i>
-      العودة للرئيسية
-     </button>
-     <h2 class="text-2xl font-bold mb-6 text-gray-900 border-b-4 border-purple-600 inline-block pb-1">
-      ملخص مجموع رواتب العمال اليومية بناءً على الفواتير المسجلة
-     </h2>
-     <p class="mb-6 text-gray-700 max-w-3xl">
-      يعرض هذا الملخص مجموع رواتب كل عامل يوميًا بناءً على الفواتير المسجلة باسم العامل. يتم حساب الراتب الإجمالي لكل عامل في كل يوم بشكل منفصل.
-     </p>
-     <div class="overflow-x-auto max-h-[480px] rounded-lg border border-gray-300 bg-white shadow">
-      <table class="w-full text-right table-auto border-collapse border border-gray-300">
-       <thead>
-        <tr class="bg-purple-100 text-gray-900">
-         <th class="border border-gray-300 px-4 py-2">اسم العامل</th>
-         <th class="border border-gray-300 px-4 py-2">التاريخ</th>
-         <th class="border border-gray-300 px-4 py-2">مجموع الراتب (ريال)</th>
-        </tr>
-       </thead>
-       <tbody class="text-gray-700" id="salarySummaryTableBody"></tbody>
-      </table>
-     </div>
-    </section>
-
     <!-- POS Section integrated inside main app -->
     <section class="hidden" id="posSection" aria-label="نظام نقاط البيع">
      <button class="mb-6 px-5 py-3 bg-green-700 text-white rounded-lg hover:bg-green-800 transition focus:outline-none flex items-center gap-2" id="backFromPOSBtn">
@@ -949,7 +917,6 @@
     'services',
     'inventory',
     'reports',
-    'salarySummary',
     'dailySalary',
     'monthlySalary',
     'posSection'
@@ -1695,77 +1662,6 @@
 
    // Update reports on page show
    document.querySelector('button[data-page="reports"]').addEventListener('click', updateReports);
-
-   // Salary Summary Page Logic
-   const salarySummaryTableBody = document.getElementById('salarySummaryTableBody');
-
-   function updateSalarySummary() {
-    // We will calculate total salary per worker per date based on printed invoices
-    let printedInvoices = JSON.parse(localStorage.getItem("salon_printed_invoices")) || [];
-    // Map: workerName -> date -> totalAmount
-    const summaryMap = {};
-
-    printedInvoices.forEach(inv => {
-     const workerName = inv.worker || "غير محدد";
-     const dateObj = new Date(inv.date);
-     // Format date as yyyy-mm-dd
-     const dateStr = dateObj.toISOString().slice(0,10);
-     if (!summaryMap[workerName]) summaryMap[workerName] = {};
-     if (!summaryMap[workerName][dateStr]) summaryMap[workerName][dateStr] = 0;
-     // Sum total of invoice
-     summaryMap[workerName][dateStr] += parseFloat(inv.total);
-    });
-
-    // Clear table body
-    salarySummaryTableBody.innerHTML = '';
-
-    // If no data
-    if(Object.keys(summaryMap).length === 0){
-     const tr = document.createElement('tr');
-     const td = document.createElement('td');
-     td.colSpan = 3;
-     td.className = 'text-center py-4 text-gray-500';
-     td.textContent = 'لا توجد بيانات لعرضها.';
-     tr.appendChild(td);
-     salarySummaryTableBody.appendChild(tr);
-     return;
-    }
-
-    // Build rows sorted by worker then date
-    const rows = [];
-    Object.keys(summaryMap).forEach(workerName => {
-     const dates = Object.keys(summaryMap[workerName]).sort();
-     dates.forEach(dateStr => {
-      rows.push({
-       workerName,
-       dateStr,
-       total: summaryMap[workerName][dateStr]
-      });
-     });
-    });
-
-    // Sort rows by workerName then dateStr
-    rows.sort((a,b) => {
-     if(a.workerName < b.workerName) return -1;
-     if(a.workerName > b.workerName) return 1;
-     if(a.dateStr < b.dateStr) return -1;
-     if(a.dateStr > b.dateStr) return 1;
-     return 0;
-    });
-
-    rows.forEach(row => {
-     const tr = document.createElement('tr');
-     tr.innerHTML = `
-      <td class="border border-gray-300 px-4 py-2">${row.workerName}</td>
-      <td class="border border-gray-300 px-4 py-2">${row.dateStr}</td>
-      <td class="border border-gray-300 px-4 py-2">${row.total.toFixed(2)}</td>
-     `;
-     salarySummaryTableBody.appendChild(tr);
-    });
-   }
-
-   // Update salary summary when page shown
-   document.querySelector('button[data-page="salarySummary"]').addEventListener('click', updateSalarySummary);
 
    // Daily Salary Calculation Logic
    const dailySalaryForm = document.getElementById('dailySalaryForm');
