@@ -2,7 +2,7 @@
  <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
-  <title>لوحة تحكم متقدمة مركز الفارس </title>
+  <title>لوحة تحكم مركز الفارس للعناية بالرجل </title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet"/>
@@ -1202,9 +1202,9 @@
     localStorage.setItem('validUser', JSON.stringify(validUser));
    }
 
-   // Check if user is logged in
+   // Always require login on page load (do not keep loggedIn flag)
    function isLoggedIn() {
-    return localStorage.getItem('loggedIn') === 'true';
+    return false; // Always false to force login every time
    }
 
    function showApp() {
@@ -1260,7 +1260,7 @@
     }
 
     if (username === validUser.username && password === validUser.password) {
-     localStorage.setItem('loggedIn', 'true');
+     // Do NOT set loggedIn flag to keep forcing login on reload
      showApp();
     } else {
      loginError.textContent = 'اسم المستخدم أو كلمة المرور غير صحيحة';
@@ -1272,7 +1272,7 @@
    });
 
    function logout() {
-    localStorage.removeItem('loggedIn');
+    // Remove loggedIn flag if any (not used)
     showLogin();
     showPage('home');
    }
