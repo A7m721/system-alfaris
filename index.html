@@ -1591,6 +1591,50 @@
    }
    updateInventoryTable();
 
+   // Add product button functionality in inventory page
+   inventoryForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const nameInput = document.getElementById('productName');
+    const quantityInput = document.getElementById('productQuantity');
+    const priceInput = document.getElementById('productPrice');
+
+    const name = nameInput.value.trim();
+    const quantity = parseInt(quantityInput.value);
+    const price = parseFloat(priceInput.value);
+
+    if (!name) {
+     alert('يرجى إدخال اسم المنتج.');
+     return;
+    }
+    if (isNaN(quantity) || quantity < 0) {
+     alert('يرجى إدخال كمية صحيحة.');
+     return;
+    }
+    if (isNaN(price) || price < 0) {
+     alert('يرجى إدخال سعر صحيح.');
+     return;
+    }
+
+    // Check if product already exists (case-insensitive)
+    const existingIndex = inventory.findIndex(item => item.name.toLowerCase() === name.toLowerCase());
+    if (existingIndex !== -1) {
+     // Update existing product quantity and price
+     inventory[existingIndex].quantity += quantity;
+     inventory[existingIndex].price = price;
+    } else {
+     // Add new product
+     inventory.push({ name, quantity, price });
+    }
+
+    localStorage.setItem('inventory', JSON.stringify(inventory));
+    updateInventoryTable();
+
+    // Reset form inputs
+    nameInput.value = '';
+    quantityInput.value = '';
+    priceInput.value = '';
+   });
+
    // Reports calculations
    function updateReports() {
     // Expenses report
