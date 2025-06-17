@@ -354,7 +354,7 @@
        </button>
       </div>
      </form>
-     <div class="max-w-4xl bg-yellow-100 p-6 rounded-lg text-yellow-900 hidden" id="dailySalaryResult">
+     <div class="max-w-4xl bg-yellow-100 p-6 rounded-lg text-yellow-900" id="dailySalaryResult">
       <h3 class="text-xl font-bold mb-4">نتيجة حساب الراتب اليومي</h3>
       <p id="dailySalaryText" class="text-lg whitespace-pre-line"></p>
      </div>
@@ -938,6 +938,10 @@
     if (!mobileMenu.classList.contains('translate-x-full')) {
      mobileMenu.classList.add('translate-x-full');
      mobileMenuBtn.setAttribute('aria-expanded', 'false');
+    }
+    // If dailySalary page shown, auto update daily salary display
+    if(pageId === 'dailySalary'){
+     autoDisplayDailySalary();
     }
    }
 
@@ -1667,18 +1671,24 @@
    const dailySalaryForm = document.getElementById('dailySalaryForm');
    const dailySalaryResult = document.getElementById('dailySalaryResult');
    const dailySalaryText = document.getElementById('dailySalaryText');
+   const dailyDateInput = document.getElementById('dailyDateInput');
 
    dailySalaryForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const workerId = document.getElementById('dailyWorkerSelect').value;
-    const date = document.getElementById('dailyDateInput').value;
+    const date = dailyDateInput.value;
 
     if (!workerId || !date) {
      alert('يرجى ملء جميع الحقول بشكل صحيح.');
      return;
     }
 
+    calculateAndDisplayDailySalary(workerId, date);
+   });
+
+   // New function to calculate and display daily salary given workerId and date
+   function calculateAndDisplayDailySalary(workerId, date) {
     // Calculate total services salary for the worker on the given date
     let printedInvoices = JSON.parse(localStorage.getItem("salon_printed_invoices")) || [];
 
@@ -1688,8 +1698,9 @@
      const invWorker = workers.find(w => w.name === inv.worker);
      if (!invWorker) return false;
      if (invWorker.id !== workerId) return false;
-     const invDate = new Date(inv.date);
-     const invDateStr = invDate.toISOString().slice(0,10);
+     // Fix date comparison: compare only date parts ignoring timezones
+     const invDateObj = new Date(inv.date);
+     const invDateStr = invDateObj.getFullYear() + '-' + String(invDateObj.getMonth() + 1).padStart(2, '0') + '-' + String(invDateObj.getDate()).padStart(2, '0');
      return invDateStr === date;
     });
 
@@ -1718,7 +1729,47 @@
       `صافي الراتب: ${netSalary.toFixed(2)} ريال`;
 
     dailySalaryResult.classList.remove('hidden');
-   });
+   }
+
+   // New function to auto display daily salary for first worker and first date found in invoices
+   function autoDisplayDailySalary() {
+    let printedInvoices = JSON.parse(localStorage.getItem("salon_printed_invoices")) || [];
+    if(printedInvoices.length === 0){
+     dailySalaryText.textContent = 'لا توجد فواتير مسجلة لعرض الراتب اليومي.';
+     dailySalaryResult.classList.remove('hidden');
+     dailyWorkerSelect.value = "";
+     dailyDateInput.value = "";
+     return;
+    }
+    // Find first invoice with valid worker and date
+    let firstInvoice = null;
+    for(let inv of printedInvoices){
+     if(inv.worker && inv.date){
+      const invWorker = workers.find(w => w.name === inv.worker);
+      if(invWorker){
+       firstInvoice = inv;
+       break;
+      }
+     }
+    }
+    if(!firstInvoice){
+     dailySalaryText.textContent = 'لا توجد فواتير صالحة لعرض الراتب اليومي.';
+     dailySalaryResult.classList.remove('hidden');
+     dailyWorkerSelect.value = "";
+     dailyDateInput.value = "";
+     return;
+    }
+    const invWorker = workers.find(w => w.name === firstInvoice.worker);
+    const invDateObj = new Date(firstInvoice.date);
+    const invDateStr = invDateObj.getFullYear() + '-' + String(invDateObj.getMonth() + 1).padStart(2, '0') + '-' + String(invDateObj.getDate()).padStart(2, '0');
+
+    // Set selects inputs
+    dailyWorkerSelect.value = invWorker.id;
+    dailyDateInput.value = invDateStr;
+
+    // Calculate and display
+    calculateAndDisplayDailySalary(invWorker.id, invDateStr);
+   }
 
    // Monthly Salary Calculation Logic
    const monthlySalaryForm = document.getElementById('monthlySalaryForm');
