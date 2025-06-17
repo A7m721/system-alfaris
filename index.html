@@ -243,6 +243,9 @@
      <button class="hover:text-green-600 transition focus:outline-none focus:ring-2 focus:ring-green-400 rounded ml-6" data-page="posSection" aria-label="فتح نظام نقاط البيع">
       <i></i> نظام نقاط البيع
      </button>
+     <button class="hover:text-indigo-600 transition focus:outline-none focus:ring-2 focus:ring-indigo-400 rounded ml-6" data-page="paymentSummary" aria-label="عرض ملخص طرق الدفع">
+       ملخص طرق الدفع
+     </button>
      <button class="hover:text-red-600 transition focus:outline-none focus:ring-2 focus:ring-red-400 rounded ml-6" id="logoutBtn">تسجيل الخروج</button>
     </nav>
     <button aria-label="فتح القائمة" class="md:hidden text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" id="mobileMenuBtn">
@@ -269,6 +272,7 @@
      <button class="text-right hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="dailySalary">حساب الراتب اليومي</button>
      <button class="text-right hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="monthlySalary">حساب الراتب الشهري</button>
      <button class="text-right hover:text-green-600 transition focus:outline-none focus:ring-2 focus:ring-green-400 rounded mt-4 font-semibold" data-page="posSection" aria-label="فتح نظام نقاط البيع">نظام نقاط البيع</button>
+     <button class="text-right hover:text-indigo-600 transition focus:outline-none focus:ring-2 focus:ring-indigo-400 rounded mt-4 font-semibold" data-page="paymentSummary" aria-label="عرض ملخص طرق الدفع">ملخص طرق الدفع</button>
      <button class="text-right hover:text-red-600 transition focus:outline-none focus:ring-2 focus:ring-red-400 rounded mt-4 font-semibold" id="mobileLogoutBtn">تسجيل الخروج</button>
     </nav>
    </div>
@@ -324,6 +328,11 @@
       <i class="fas fa-cash-register text-7xl text-yellow-600 mb-4"></i>
       <h2 class="text-2xl font-bold mb-2 text-gray-800">نظام نقاط البيع </h2>
       <p class="text-gray-600 text-center">انشاء فاتورة الخدمات </p>
+     </div>
+     <div aria-label="ملخص طرق الدفع - عرض المبالغ المدفوعة نقداً وبطاقة فيزا" class="cursor-pointer bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition focus:outline-none focus:ring-4 focus:ring-indigo-600 select-none" data-page="paymentSummary" role="button" tabindex="0">
+      <i class="fas fa-wallet text-7xl text-indigo-600 mb-4"></i>
+      <h2 class="text-2xl font-bold mb-2 text-gray-800">ملخص طرق الدفع</h2>
+      <p class="text-gray-600 text-center">عرض المبالغ المدفوعة نقداً وبطاقة فيزا</p>
      </div>
     </section>
 
@@ -873,6 +882,15 @@
          <input aria-label="اسم العميل" class="border border-gray-300 rounded p-1 text-xs text-right w-full md:w-40" id="customerName" placeholder="اسم العميل" type="text" />
         </div>
        </div>
+       <!-- Payment method selection -->
+       <div class="mb-3 flex gap-4 items-center text-sm text-gray-700">
+        <label for="paymentMethod" class="font-semibold">طريقة الدفع:</label>
+        <select id="paymentMethod" class="border border-gray-300 rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+          <option value="cash" selected>كاش</option>
+         <option value="" selected></option>
+         <option value="visa">فيزا</option>
+        </select>
+       </div>
        <!-- Table header -->
        <div class="grid grid-cols-6 gap-2 text-xs font-semibold text-gray-700 border-b border-gray-300 pb-1 mb-1">
         <div>المنتج</div>
@@ -919,6 +937,7 @@
            <th class="border border-gray-300 px-2 py-1">العميل</th>
            <th class="border border-gray-300 px-2 py-1">عدد العناصر</th>
            <th class="border border-gray-300 px-2 py-1">المجموع (ريال)</th>
+           <th class="border border-gray-300 px-2 py-1">طريقة الدفع</th>
            <th class="border border-gray-300 px-2 py-1">إجراء</th>
           </tr>
          </thead>
@@ -938,6 +957,38 @@
      </div>
      <!-- Hidden printable receipt container -->
      <div id="printableReceipt" class="hidden p-2 bg-white shadow-md rounded" role="region" aria-label="إيصال الطباعة" style="white-space: pre-line;"></div>
+    </section>
+
+    <!-- Payment Summary Page -->
+    <section class="hidden" id="paymentSummary" aria-label="ملخص طرق الدفع">
+     <button class="mb-6 px-5 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition focus:outline-none flex items-center gap-2" id="backFromPaymentSummary">
+      <i class="fas fa-arrow-right"></i>
+      العودة للرئيسية
+     </button>
+     <h2 class="text-2xl font-bold mb-6 text-gray-900 border-b-4 border-indigo-600 inline-block pb-1">
+      ملخص طرق الدفع
+     </h2>
+     <div class="max-w-4xl bg-white rounded-lg shadow p-6">
+      <div class="mb-4 text-lg font-semibold text-gray-800">إجمالي المبالغ المدفوعة حسب طريقة الدفع</div>
+      <table class="w-full text-right table-auto border-collapse border border-gray-300">
+       <thead>
+        <tr class="bg-indigo-100 text-gray-900">
+         <th class="border border-gray-300 px-4 py-2">طريقة الدفع</th>
+         <th class="border border-gray-300 px-4 py-2">المبلغ الإجمالي (ريال)</th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td class="border border-gray-300 px-4 py-2">كاش</td>
+         <td class="border border-gray-300 px-4 py-2" id="totalCashAmount">0.00</td>
+        </tr>
+        <tr>
+         <td class="border border-gray-300 px-4 py-2">فيزا</td>
+         <td class="border border-gray-300 px-4 py-2" id="totalVisaAmount">0.00</td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
     </section>
    </main>
    <footer class="bg-white shadow-inner p-4 text-center text-gray-600 text-sm select-none">
@@ -973,7 +1024,8 @@
     'reports',
     'dailySalary',
     'monthlySalary',
-    'posSection'
+    'posSection',
+    'paymentSummary'
    ];
 
    function showPage(pageId) {
@@ -996,6 +1048,12 @@
     // If dailySalary page shown, auto update daily salary display
     if(pageId === 'dailySalary'){
      autoDisplayDailySalary();
+    }
+    if(pageId === 'reports'){
+     updateReports();
+    }
+    if(pageId === 'paymentSummary'){
+     updatePaymentSummary();
     }
    }
 
@@ -1502,7 +1560,6 @@
     expenses.push({date, category, amount, description});
     localStorage.setItem('expenses', JSON.stringify(expenses));
     updateExpensesTable();
-    expenseForm.reset();
    });
 
    // Appointments data and logic
@@ -2125,10 +2182,11 @@
      renderInvoice();
      document.getElementById("workerName").value = "";
      document.getElementById("customerName").value = "";
+     document.getElementById("paymentMethod").value = "cash";
     }
    }
 
-   // Complete sale and print receipt with validation for worker name
+   // Complete sale and print receipt with validation for worker name and payment method
    function completeSaleAndPrint() {
     if (invoiceItems.length === 0) {
      alert("لا توجد منتجات أو خدمات في الفاتورة.");
@@ -2140,16 +2198,18 @@
      document.getElementById("workerName").focus();
      return;
     }
-    printInvoice();
+    const paymentMethod = document.getElementById("paymentMethod").value;
+    printInvoice(paymentMethod);
     alert("تم إتمام البيع بنجاح!\nشكراً لاستخدامك نظام صالون الحلاقة.");
     invoiceItems = [];
     renderInvoice();
     document.getElementById("workerName").value = "";
     document.getElementById("customerName").value = "";
+    document.getElementById("paymentMethod").value = "cash";
    }
 
-   // Print thermal receipt on a single sheet with worker and customer name
-   function printInvoice() {
+   // Print thermal receipt on a single sheet with worker, customer name, and payment method
+   function printInvoice(paymentMethod) {
     const worker = document.getElementById("workerName").value.trim() || "غير محدد";
     const customer = document.getElementById("customerName").value.trim() || "عميل عابر";
 
@@ -2164,6 +2224,7 @@
     receiptText += `التاريخ: ${date.toLocaleDateString("ar-EG")} - الوقت: ${date.toLocaleTimeString("ar-EG")}\n`;
     receiptText += `العامل: ${worker}\n`;
     receiptText += `العميل: ${customer}\n`;
+    receiptText += `طريقة الدفع: ${paymentMethod === 'cash' ? 'كاش' : 'فيزا'}\n`;
     receiptText += "------------------------------\n";
     invoiceItems.forEach(item => {
      const totalPrice = (item.price * item.quantity * (1 - item.discount / 100)).toFixed(2);
@@ -2185,14 +2246,15 @@
 
     receiptDiv.textContent = receiptText;
 
-    // Save printed invoice to printedInvoices array and localStorage
+    // Save printed invoice to printedInvoices array and localStorage, including payment method
     const printedInvoice = {
      id: Date.now(),
      date: date.toISOString(),
      worker,
      customer,
      items: JSON.parse(JSON.stringify(invoiceItems)),
-     total: total.toFixed(2)
+     total: total.toFixed(2),
+     paymentMethod
     };
     let printedInvoices = JSON.parse(localStorage.getItem("salon_printed_invoices")) || [];
     printedInvoices.push(printedInvoice);
@@ -2250,7 +2312,7 @@
     if(printedInvoices.length === 0){
      const tr = document.createElement('tr');
      const td = document.createElement('td');
-     td.colSpan = 7;
+     td.colSpan = 8;
      td.className = 'text-center py-4 text-gray-500';
      td.textContent = 'لا توجد فواتير مسجلة.';
      tr.appendChild(td);
@@ -2268,6 +2330,7 @@
       <td class="border border-gray-300 px-2 py-1">${inv.customer}</td>
       <td class="border border-gray-300 px-2 py-1 text-center">${inv.items.length}</td>
       <td class="border border-gray-300 px-2 py-1 text-center">${parseFloat(inv.total).toFixed(2)}</td>
+      <td class="border border-gray-300 px-2 py-1 text-center">${inv.paymentMethod === 'cash' ? 'كاش' : 'فيزا'}</td>
       <td class="border border-gray-300 px-2 py-1 text-center">
        <button data-index="${idx}" class="deleteInvoiceBtn text-red-600 hover:text-red-800 focus:outline-none" aria-label="حذف الفاتورة">
         <i class="fas fa-trash-alt"></i>
@@ -2390,6 +2453,24 @@
      monthlySalaryResult.classList.remove('hidden');
     }
    });
+
+   // Update Payment Summary Page
+   function updatePaymentSummary() {
+    let printedInvoices = JSON.parse(localStorage.getItem("salon_printed_invoices")) || [];
+    let totalCash = 0;
+    let totalVisa = 0;
+    printedInvoices.forEach(inv => {
+     const total = parseFloat(inv.total) || 0;
+     
+     if(inv.paymentMethod === 'cash'){
+      totalCash += total;
+     } else if(inv.paymentMethod === 'visa'){
+      totalVisa += total;
+     }
+    });
+    document.getElementById('totalCashAmount').textContent = totalCash.toFixed(2);
+    document.getElementById('totalVisaAmount').textContent = totalVisa.toFixed(2);
+   }
   </script>
  </body>
 </html>
