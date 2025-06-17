@@ -358,6 +358,12 @@
       <h3 class="text-xl font-bold mb-4">نتيجة حساب الراتب اليومي</h3>
       <p id="dailySalaryText" class="text-lg whitespace-pre-line"></p>
      </div>
+     <div class="max-w-4xl flex justify-end mt-4">
+      <button id="deleteAllDailySalaryBtn" class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition focus:outline-none font-semibold text-lg flex items-center gap-3">
+       <i class="fas fa-trash-alt"></i>
+       حذف الكل
+      </button>
+     </div>
     </section>
 
     <!-- Monthly Salary Page -->
@@ -408,6 +414,12 @@
      <div class="max-w-4xl bg-yellow-100 p-6 rounded-lg text-yellow-900 hidden" id="monthlySalaryResult">
       <h3 class="text-xl font-bold mb-4">نتيجة حساب الراتب الشهري</h3>
       <p id="monthlySalaryText" class="text-lg whitespace-pre-line"></p>
+     </div>
+     <div class="max-w-4xl flex justify-end mt-4">
+      <button id="deleteAllMonthlySalaryBtn" class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition focus:outline-none font-semibold text-lg flex items-center gap-3">
+       <i class="fas fa-trash-alt"></i>
+       حذف الكل
+      </button>
      </div>
     </section>
 
@@ -468,6 +480,12 @@
        </thead>
        <tbody class="text-gray-700" id="salariesTableBody"></tbody>
       </table>
+     </div>
+     <div class="max-w-4xl flex justify-end mt-4">
+      <button id="deleteAllSalariesBtn" class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition focus:outline-none font-semibold text-lg flex items-center gap-3">
+       <i class="fas fa-trash-alt"></i>
+       حذف الكل
+      </button>
      </div>
     </section>
 
@@ -530,6 +548,12 @@
      <div class="max-w-4xl bg-red-100 p-6 rounded-lg text-red-800 hidden" id="monthlyWithdrawalSummary">
       <h3 class="text-xl font-bold mb-4">ملخص السحب الشهري</h3>
       <div class="space-y-2 text-lg" id="monthlyWithdrawalContent"></div>
+     </div>
+     <div class="max-w-4xl flex justify-end mt-4">
+      <button id="deleteAllWithdrawalsBtn" class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition focus:outline-none font-semibold text-lg flex items-center gap-3">
+       <i class="fas fa-trash-alt"></i>
+       حذف الكل
+      </button>
      </div>
     </section>
 
@@ -594,6 +618,12 @@
        <tbody class="text-gray-700" id="expensesTableBody"></tbody>
       </table>
      </div>
+     <div class="max-w-4xl flex justify-end mt-4">
+      <button id="deleteAllExpensesBtn" class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition focus:outline-none font-semibold text-lg flex items-center gap-3">
+       <i class="fas fa-trash-alt"></i>
+       حذف الكل
+      </button>
+     </div>
     </section>
 
     <!-- Appointments Page -->
@@ -644,6 +674,12 @@
        <tbody class="text-gray-700" id="appointmentsTableBody"></tbody>
       </table>
      </div>
+     <div class="max-w-4xl flex justify-end mt-4">
+      <button id="deleteAllAppointmentsBtn" class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition focus:outline-none font-semibold text-lg flex items-center gap-3">
+       <i class="fas fa-trash-alt"></i>
+       حذف الكل
+      </button>
+     </div>
     </section>
 
     <!-- Services Page -->
@@ -686,6 +722,12 @@
        </thead>
        <tbody class="text-gray-700" id="servicesTableBody"></tbody>
       </table>
+     </div>
+     <div class="max-w-4xl flex justify-end mt-4">
+      <button id="deleteAllServicesBtn" class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition focus:outline-none font-semibold text-lg flex items-center gap-3">
+       <i class="fas fa-trash-alt"></i>
+       حذف الكل
+      </button>
      </div>
     </section>
 
@@ -736,6 +778,12 @@
        </thead>
        <tbody class="text-gray-700" id="inventoryTableBody"></tbody>
       </table>
+     </div>
+     <div class="max-w-4xl flex justify-end mt-4">
+      <button id="deleteAllInventoryBtn" class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition focus:outline-none font-semibold text-lg flex items-center gap-3">
+       <i class="fas fa-trash-alt"></i>
+       حذف الكل
+      </button>
      </div>
     </section>
 
@@ -878,6 +926,12 @@
         </table>
         <button class="mt-2 bg-red-600 text-white rounded px-3 py-1 text-xs hover:bg-red-700 transition focus:outline-none" id="closeInvoiceLogBtn">
          إغلاق السجل
+        </button>
+       </div>
+       <div class="max-w-4xl flex justify-end mt-4">
+        <button id="deleteAllInvoicesBtn" class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition focus:outline-none font-semibold text-lg flex items-center gap-3">
+         <i class="fas fa-trash-alt"></i>
+         حذف الكل
         </button>
        </div>
       </div>
@@ -1035,6 +1089,16 @@
    const monthlyWithdrawalSummary = document.getElementById('monthlyWithdrawalSummary');
    const monthlyWithdrawalContent = document.getElementById('monthlyWithdrawalContent');
 
+   // Password prompt function for delete confirmation
+   function confirmPasswordPrompt() {
+    const validUser = JSON.parse(localStorage.getItem('validUser')) || { username: 'alfaris', password: '123456' };
+    const input = prompt('يرجى إدخال كلمة المرور لتأكيد الحذف:');
+    if (input === null) return false; // Cancelled
+    if (input === validUser.password) return true;
+    alert('كلمة المرور غير صحيحة.');
+    return false;
+   }
+
    // Update withdrawals table
    function updateWithdrawalsTable() {
     withdrawalsTableBody.innerHTML = '';
@@ -1065,7 +1129,8 @@
      withdrawalsTableBody.appendChild(tr);
     });
     document.querySelectorAll('.deleteWithdrawalBtn').forEach(btn => {
-     btn.addEventListener('click', e => {
+     btn.addEventListener('click', async e => {
+      if(!confirmPasswordPrompt()) return;
       const idx = e.currentTarget.getAttribute('data-index');
       withdrawals.splice(idx,1);
       localStorage.setItem('withdrawals', JSON.stringify(withdrawals));
@@ -1124,6 +1189,7 @@
 
     document.querySelectorAll('.deleteSalaryBtn').forEach(btn => {
      btn.addEventListener('click', e => {
+      if(!confirmPasswordPrompt()) return;
       const idx = e.currentTarget.getAttribute('data-index');
       salaries.splice(idx,1);
       localStorage.setItem('salaries', JSON.stringify(salaries));
@@ -1170,6 +1236,7 @@
 
    // Clear salaries
    document.getElementById('clearSalariesBtn').addEventListener('click', () => {
+    if(!confirmPasswordPrompt()) return;
     if(confirm('هل أنت متأكد من مسح جميع الرواتب؟ لا يمكن التراجع عن هذا الإجراء.')) {
      salaries = [];
      localStorage.setItem('salaries', JSON.stringify(salaries));
@@ -1196,7 +1263,7 @@
 
    // Load saved user credentials from localStorage or use default
    let validUser = JSON.parse(localStorage.getItem('validUser')) || {
-    username: 'admin',
+    username: 'alfaris',
     password: '123456',
    };
    const phoneNumber = '01091889366';
@@ -1412,6 +1479,7 @@
     });
     document.querySelectorAll('.deleteExpenseBtn').forEach(btn => {
      btn.addEventListener('click', e => {
+      if(!confirmPasswordPrompt()) return;
       const idx = e.currentTarget.getAttribute('data-index');
       expenses.splice(idx,1);
       localStorage.setItem('expenses', JSON.stringify(expenses));
@@ -1470,6 +1538,7 @@
     });
     document.querySelectorAll('.deleteAppointmentBtn').forEach(btn => {
      btn.addEventListener('click', e => {
+      if(!confirmPasswordPrompt()) return;
       const idx = e.currentTarget.getAttribute('data-index');
       appointments.splice(idx,1);
       localStorage.setItem('appointments', JSON.stringify(appointments));
@@ -1526,6 +1595,7 @@
     });
     document.querySelectorAll('.deleteServiceBtn').forEach(btn => {
      btn.addEventListener('click', e => {
+      if(!confirmPasswordPrompt()) return;
       const idx = e.currentTarget.getAttribute('data-index');
       servicesData.splice(idx,1);
       localStorage.setItem('services', JSON.stringify(servicesData));
@@ -1582,6 +1652,7 @@
     });
     document.querySelectorAll('.deleteInventoryBtn').forEach(btn => {
      btn.addEventListener('click', e => {
+      if(!confirmPasswordPrompt()) return;
       const idx = e.currentTarget.getAttribute('data-index');
       inventory.splice(idx,1);
       localStorage.setItem('inventory', JSON.stringify(inventory));
@@ -2026,6 +2097,7 @@
     });
     container.querySelectorAll("button[data-action='remove']").forEach((btn) => {
      btn.onclick = (e) => {
+      if(!confirmPasswordPrompt()) return;
       const index = +e.target.getAttribute("data-index");
       invoiceItems.splice(index, 1);
       renderInvoice();
@@ -2047,6 +2119,7 @@
 
    // Clear invoice
    function clearInvoice() {
+    if(!confirmPasswordPrompt()) return;
     if (confirm("هل أنت متأكد من إلغاء الفاتورة؟")) {
      invoiceItems = [];
      renderInvoice();
@@ -2085,7 +2158,8 @@
 
     // Compose receipt text with line breaks for monospace print
     let receiptText = "";
-    receiptText += "صالون الحلاقة - إيصال البيع\n";
+    receiptText += "مركز الفارس للعناية بالرجل\n";
+    receiptText += "------------------------------\n";
     const date = new Date();
     receiptText += `التاريخ: ${date.toLocaleDateString("ar-EG")} - الوقت: ${date.toLocaleTimeString("ar-EG")}\n`;
     receiptText += `العامل: ${worker}\n`;
@@ -2107,7 +2181,7 @@
      );
     }, 0);
     receiptText += `المجموع: ${total.toFixed(2)} ريال\n`;
-    receiptText += "\nشكراً لزيارتكم صالون الحلاقة\n";
+    receiptText += "\nشكراً لزيارتكم مركز الفارس \n";
 
     receiptDiv.textContent = receiptText;
 
@@ -2205,6 +2279,7 @@
     // Attach delete handlers
     document.querySelectorAll('.deleteInvoiceBtn').forEach(btn => {
      btn.addEventListener('click', e => {
+      if(!confirmPasswordPrompt()) return;
       const idx = e.currentTarget.getAttribute('data-index');
       if(confirm('هل أنت متأكد من حذف هذه الفاتورة؟ لا يمكن التراجع عن هذا الإجراء.')) {
        let printedInvoices = JSON.parse(localStorage.getItem("salon_printed_invoices")) || [];
@@ -2232,6 +2307,89 @@
    // Attach complete sale button event with validation
    const completeSaleBtn = document.getElementById('completeSaleBtn');
    completeSaleBtn.addEventListener('click', completeSaleAndPrint);
+
+   // Delete All buttons handlers with password confirmation and clearing data
+
+   document.getElementById('deleteAllSalariesBtn').addEventListener('click', () => {
+    if(!confirmPasswordPrompt()) return;
+    if(confirm('هل أنت متأكد من مسح جميع الرواتب؟ لا يمكن التراجع عن هذا الإجراء.')) {
+     salaries = [];
+     localStorage.setItem('salaries', JSON.stringify(salaries));
+     updateSalariesTable();
+    }
+   });
+
+   document.getElementById('deleteAllWithdrawalsBtn').addEventListener('click', () => {
+    if(!confirmPasswordPrompt()) return;
+    if(confirm('هل أنت متأكد من مسح جميع عمليات السحب؟ لا يمكن التراجع عن هذا الإجراء.')) {
+     withdrawals = [];
+     localStorage.setItem('withdrawals', JSON.stringify(withdrawals));
+     updateWithdrawalsTable();
+     updateSalariesTable();
+    }
+   });
+
+   document.getElementById('deleteAllExpensesBtn').addEventListener('click', () => {
+    if(!confirmPasswordPrompt()) return;
+    if(confirm('هل أنت متأكد من مسح جميع المصروفات؟ لا يمكن التراجع عن هذا الإجراء.')) {
+     expenses = [];
+     localStorage.setItem('expenses', JSON.stringify(expenses));
+     updateExpensesTable();
+    }
+   });
+
+   document.getElementById('deleteAllAppointmentsBtn').addEventListener('click', () => {
+    if(!confirmPasswordPrompt()) return;
+    if(confirm('هل أنت متأكد من مسح جميع المواعيد؟ لا يمكن التراجع عن هذا الإجراء.')) {
+     appointments = [];
+     localStorage.setItem('appointments', JSON.stringify(appointments));
+     updateAppointmentsTable();
+    }
+   });
+
+   document.getElementById('deleteAllServicesBtn').addEventListener('click', () => {
+    if(!confirmPasswordPrompt()) return;
+    if(confirm('هل أنت متأكد من مسح جميع الخدمات؟ لا يمكن التراجع عن هذا الإجراء.')) {
+     servicesData = [];
+     localStorage.setItem('services', JSON.stringify(servicesData));
+     updateServicesTable();
+    }
+   });
+
+   document.getElementById('deleteAllInventoryBtn').addEventListener('click', () => {
+    if(!confirmPasswordPrompt()) return;
+    if(confirm('هل أنت متأكد من مسح جميع المنتجات؟ لا يمكن التراجع عن هذا الإجراء.')) {
+     inventory = [];
+     localStorage.setItem('inventory', JSON.stringify(inventory));
+     updateInventoryTable();
+    }
+   });
+
+   document.getElementById('deleteAllInvoicesBtn').addEventListener('click', () => {
+    if(!confirmPasswordPrompt()) return;
+    if(confirm('هل أنت متأكد من مسح جميع الفواتير؟ لا يمكن التراجع عن هذا الإجراء.')) {
+     localStorage.removeItem('salon_printed_invoices');
+     renderInvoiceLog();
+    }
+   });
+
+   document.getElementById('deleteAllDailySalaryBtn').addEventListener('click', () => {
+    if(!confirmPasswordPrompt()) return;
+    if(confirm('هل أنت متأكد من مسح جميع بيانات الراتب اليومي؟ (سيتم مسح الفواتير المخزنة)')) {
+     localStorage.removeItem('salon_printed_invoices');
+     dailySalaryText.textContent = 'تم مسح بيانات الراتب اليومي.';
+     dailySalaryResult.classList.remove('hidden');
+    }
+   });
+
+   document.getElementById('deleteAllMonthlySalaryBtn').addEventListener('click', () => {
+    if(!confirmPasswordPrompt()) return;
+    if(confirm('هل أنت متأكد من مسح جميع بيانات الراتب الشهري؟ (سيتم مسح الفواتير المخزنة)')) {
+     localStorage.removeItem('salon_printed_invoices');
+     monthlySalaryText.textContent = 'تم مسح بيانات الراتب الشهري.';
+     monthlySalaryResult.classList.remove('hidden');
+    }
+   });
   </script>
  </body>
 </html>
