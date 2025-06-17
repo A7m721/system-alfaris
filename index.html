@@ -851,7 +851,7 @@
          <button aria-label="إلغاء الفاتورة" class="bg-red-600 text-white rounded px-3 py-1" onclick="clearInvoice()">
           إلغاء
          </button>
-         <button aria-label="إتمام البيع وطباعة الفاتورة" class="bg-green-600 text-white rounded px-3 py-1" onclick="completeSaleAndPrint()">
+         <button aria-label="إتمام البيع وطباعة الفاتورة" class="bg-green-600 text-white rounded px-3 py-1" id="completeSaleBtn">
           إتمام البيع
          </button>
          <button aria-label="عرض سجل الفواتير" class="bg-gray-600 text-white rounded px-3 py-1" id="showInvoiceLogBtn">
@@ -2055,10 +2055,16 @@
     }
    }
 
-   // Complete sale and print receipt
+   // Complete sale and print receipt with validation for worker name
    function completeSaleAndPrint() {
     if (invoiceItems.length === 0) {
      alert("لا توجد منتجات أو خدمات في الفاتورة.");
+     return;
+    }
+    const worker = document.getElementById("workerName").value.trim();
+    if (!worker) {
+     alert("يرجى كتابة اسم العامل قبل إتمام البيع.");
+     document.getElementById("workerName").focus();
      return;
     }
     printInvoice();
@@ -2222,6 +2228,10 @@
     invoiceLogSection.classList.add('hidden');
     showInvoiceLogBtn.focus();
    });
+
+   // Attach complete sale button event with validation
+   const completeSaleBtn = document.getElementById('completeSaleBtn');
+   completeSaleBtn.addEventListener('click', completeSaleAndPrint);
   </script>
  </body>
 </html>
