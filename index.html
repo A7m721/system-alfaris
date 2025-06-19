@@ -3476,6 +3476,10 @@
       showMoreBtn.textContent = showAll ? "عرض أقل" : "عرض المزيد";
     }
 
+    document.getElementById('backFromPOSBtn').addEventListener('click', () => {
+  showPage('home');
+});
+    
     function addProductToInvoice(name, quantity, price) {
       const existingIndex = invoiceItems.findIndex(item => item.name === name);
       if (existingIndex !== -1) {
