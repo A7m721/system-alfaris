@@ -1952,31 +1952,33 @@
 
     // Products data for POS
     const allProducts = [
-      { name: "حلاقة شعر + ذقن", price: 35, iconClass: "fas fa-cut", alt: "أيقونة حلاقة شعر وذقن", img: "https://images.pexels.com/photos/1813272/pexels-photo-1813272.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&fit=crop" },
-      { name: "حلاقة شعر نحته", price: 25, iconClass: "fas fa-cut", alt: "أيقونة حلاقة شعر نحته", img: "https://images.pexels.com/photos/1570807/pexels-photo-1570807.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&fit=crop" },
-      { name: "حلاقة ذقن تحديد", price: 20, iconClass: "fas fa-beard", alt: "أيقونة حلاقة ذقن تحديد", img: "https://images.pexels.com/photos/1656684/pexels-photo-1656684.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&fit=crop" },
-      { name: "حلاقة ذقن سكسوكه", price: 20, iconClass: "fas fa-beard", alt: "أيقونة حلاقة ذقن سكسوكه", img: "https://images.pexels.com/photos/1570807/pexels-photo-1570807.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&fit=crop" },
-      { name: "حلاقة ذقن موس كامل", price: 15, iconClass: "fas fa-beard", alt: "أيقونة حلاقة ذقن موس كامل", img: "https://images.pexels.com/photos/1813272/pexels-photo-1813272.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&fit=crop" },
-      { name: "حلاقة ذقن شعر طفل عادية", price: 20, iconClass: "fas fa-child", alt: "أيقونة حلاقة ذقن شعر طفل عادية", img: "https://images.pexels.com/photos/1656684/pexels-photo-1656684.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&fit=crop" },
-      { name: "استشوار", price: 20, iconClass: "fas fa-wind", alt: "أيقونة استشوار", img: "https://images.pexels.com/photos/1570807/pexels-photo-1570807.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&fit=crop" },
-      { name: "شمع", price: 25, iconClass: "fas fa-fire", alt: "أيقونة شمع", img: "https://images.pexels.com/photos/1813272/pexels-photo-1813272.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&fit=crop" },
-      { name: "سنفرة عادية", price: 20, iconClass: "fas fa-hand-paper", alt: "أيقونة سنفرة عادية", img: "https://images.pexels.com/photos/1656684/pexels-photo-1656684.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&fit=crop" },
-      { name: "قناع طين VIB", price: 50, iconClass: "fas fa-mask", alt: "أيقونة قناع طين VIB", img: "https://images.pexels.com/photos/1570807/pexels-photo-1570807.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&fit=crop" },
-      { name: "سنفرة مع فوطة حارة", price: 25, iconClass: "fas fa-hand-paper", alt: "أيقونة سنفرة مع فوطة حارة", img: "https://images.pexels.com/photos/1813272/pexels-photo-1813272.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&fit=crop" },
-      { name: "سنفرة مع بخار", price: 30, iconClass: "fas fa-water", alt: "أيقونة سنفرة مع بخار", img: "https://images.pexels.com/photos/1656684/pexels-photo-1656684.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&fit=crop" },
-      { name: "نص تنظيف", price: 80, iconClass: "fas fa-broom", alt: "أيقونة نصف تنظيف", img: "https://images.pexels.com/photos/1570807/pexels-photo-1570807.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&fit=crop" },
-      { name: "صبغة بيجن", price: 40, iconClass: "fas fa-paint-brush", alt: "أيقونة صبغة بيجن", img: "https://images.pexels.com/photos/1813272/pexels-photo-1813272.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&fit=crop" },
-      { name: "صبغة شامبو", price: 45, iconClass: "fas fa-paint-brush", alt: "أيقونة صبغة شامبو", img: "https://images.pexels.com/photos/1656684/pexels-photo-1656684.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&fit=crop" },
-      { name: "صبغة ذقن", price: 30, iconClass: "fas fa-beard", alt: "أيقونة صبغة ذقن", img: "https://images.pexels.com/photos/1570807/pexels-photo-1570807.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&fit=crop" },
-      { name: "قناع نعناع", price: 25, iconClass: "fas fa-leaf", alt: "أيقونة قناع نعناع", img: "https://images.pexels.com/photos/1813272/pexels-photo-1813272.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&fit=crop" },
-      { name: "قناع فلبيني", price: 50, iconClass: "fas fa-mask", alt: "أيقونة قناع فلبيني", img: "https://images.pexels.com/photos/1656684/pexels-photo-1656684.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&fit=crop" },
-      { name: "معالج للقشرة", price: 120, iconClass: "fas fa-bug", alt: "أيقونة معالج للقشرة", img: "https://images.pexels.com/photos/1570807/pexels-photo-1570807.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&fit=crop" },
-      { name: "معالج للشعر", price: 120, iconClass: "fas fa-spa", alt: "أيقونة معالج للشعر", img: "https://images.pexels.com/photos/1813272/pexels-photo-1813272.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&fit=crop" },
-      { name: "تنظيف كامل ليزر مع شفط دهون", price: 150, iconClass: "fas fa-laser", alt: "أيقونة تنظيف كامل ليزر مع شفط دهون", img: "https://images.pexels.com/photos/1656684/pexels-photo-1656684.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&fit=crop" },
-      { name: "حمام مغربي", price: 150, iconClass: "fas fa-water", alt: "أيقونة حمام مغربي", img: "https://images.pexels.com/photos/1570807/pexels-photo-1570807.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&fit=crop" },
-      { name: "بروتين للشعر", price: 250, iconClass: "fas fa-flask", alt: "أيقونة بروتين للشعر", img: "https://images.pexels.com/photos/1813272/pexels-photo-1813272.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&fit=crop" },
-      { name: "حمام زيت مع الجهاز", price: 40, iconClass: "fas fa-oil-can", alt: "أيقونة حمام زيت مع الجهاز", img: "https://images.pexels.com/photos/1656684/pexels-photo-1656684.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&fit=crop" },
-      { name: "حمام زيت عادي", price: 25, iconClass: "fas fa-oil-can", alt: "أيقونة حمام زيت عادي", img: "https://images.pexels.com/photos/1570807/pexels-photo-1570807.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&fit=crop" }
+      
+      // Added new services
+      { name: "حلاقة شعر + ذقن", price: 35, iconClass: "fas fa-cut", alt: "أيقونة حلاقة شعر وذقن", img: "https://placehold.co/60x60/png?text=حلاقة+شعر+وذقن" },
+      { name: "حلاقة شعر نحته", price: 25, iconClass: "fas fa-cut", alt: "أيقونة حلاقة شعر نحته", img: "https://placehold.co/60x60/png?text=حلاقة+شعر+نحته" },
+      { name: "حلاقة ذقن تحديد", price: 20, iconClass: "fas fa-beard", alt: "أيقونة حلاقة ذقن تحديد", img: "https://placehold.co/60x60/png?text=حلاقة+ذقن+تحديد" },
+      { name: "حلاقة ذقن سكسوكه", price: 20, iconClass: "fas fa-beard", alt: "أيقونة حلاقة ذقن سكسوكه", img: "https://placehold.co/60x60/png?text=حلاقة+ذقن+سكسوكه" },
+      { name: "حلاقة ذقن موس كامل", price: 15, iconClass: "fas fa-beard", alt: "أيقونة حلاقة ذقن موس كامل", img: "https://placehold.co/60x60/png?text=حلاقة+ذقن+موس+كامل" },
+      { name: "حلاقة ذقن شعر طفل عادية", price: 20, iconClass: "fas fa-child", alt: "أيقونة حلاقة ذقن شعر طفل عادية", img: "https://placehold.co/60x60/png?text=حلاقة+ذقن+شعر+طفل" },
+      { name: "استشوار", price: 20, iconClass: "fas fa-wind", alt: "أيقونة استشوار", img: "https://placehold.co/60x60/png?text=استشوار" },
+      { name: "شمع", price: 25, iconClass: "fas fa-fire", alt: "أيقونة شمع", img: "https://placehold.co/60x60/png?text=شمع" },
+      { name: "سنفرة عادية", price: 20, iconClass: "fas fa-hand-paper", alt: "أيقونة سنفرة عادية", img: "https://placehold.co/60x60/png?text=سنفرة+عادية" },
+      { name: "قناع طين VIB", price: 50, iconClass: "fas fa-mask", alt: "أيقونة قناع طين VIB", img: "https://placehold.co/60x60/png?text=قناع+طين+VIB" },
+      { name: "سنفرة مع فوطة حارة", price: 25, iconClass: "fas fa-hand-paper", alt: "أيقونة سنفرة مع فوطة حارة", img: "https://placehold.co/60x60/png?text=سنفرة+مع+فوطة+حارة" },
+      { name: "سنفرة مع بخار", price: 30, iconClass: "fas fa-water", alt: "أيقونة سنفرة مع بخار", img: "https://placehold.co/60x60/png?text=سنفرة+مع+بخار" },
+      { name: "نص تنظيف", price: 80, iconClass: "fas fa-broom", alt: "أيقونة نصف تنظيف", img: "https://placehold.co/60x60/png?text=نص+تنظيف" },
+      { name: "صبغة بيجن", price: 40, iconClass: "fas fa-paint-brush", alt: "أيقونة صبغة بيجن", img: "https://placehold.co/60x60/png?text=صبغة+بيجن" },
+      { name: "صبغة شامبو", price: 45, iconClass: "fas fa-paint-brush", alt: "أيقونة صبغة شامبو", img: "https://placehold.co/60x60/png?text=صبغة+شامبو" },
+      { name: "صبغة ذقن", price: 30, iconClass: "fas fa-beard", alt: "أيقونة صبغة ذقن", img: "https://placehold.co/60x60/png?text=صبغة+ذقن" },
+      { name: "قناع نعناع", price: 25, iconClass: "fas fa-leaf", alt: "أيقونة قناع نعناع", img: "https://placehold.co/60x60/png?text=قناع+نعناع" },
+      { name: "قناع فلبيني", price: 50, iconClass: "fas fa-mask", alt: "أيقونة قناع فلبيني", img: "https://placehold.co/60x60/png?text=قناع+فلبيني" },
+      { name: "معالج للقشرة", price: 120, iconClass: "fas fa-bug", alt: "أيقونة معالج للقشرة", img: "https://placehold.co/60x60/png?text=معالج+للقشرة" },
+      { name: "معالج للشعر", price: 120, iconClass: "fas fa-spa", alt: "أيقونة معالج للشعر", img: "https://placehold.co/60x60/png?text=معالج+للشعر" },
+      { name: "تنظيف كامل ليزر مع شفط دهون", price: 150, iconClass: "fas fa-laser", alt: "أيقونة تنظيف كامل ليزر مع شفط دهون", img: "https://placehold.co/60x60/png?text=تنظيف+ليزر+وشفط" },
+      { name: "حمام مغربي", price: 150, iconClass: "fas fa-water", alt: "أيقونة حمام مغربي", img: "https://placehold.co/60x60/png?text=حمام+مغربي" },
+      { name: "بروتين للشعر", price: 250, iconClass: "fas fa-flask", alt: "أيقونة بروتين للشعر", img: "https://placehold.co/60x60/png?text=بروتين+للشعر" },
+      { name: "حمام زيت مع الجهاز", price: 40, iconClass: "fas fa-oil-can", alt: "أيقونة حمام زيت مع الجهاز", img: "https://placehold.co/60x60/png?text=حمام+زيت+مع+الجهاز" },
+      { name: "حمام زيت عادي", price: 25, iconClass: "fas fa-oil-can", alt: "أيقونة حمام زيت عادي", img: "https://placehold.co/60x60/png?text=حمام+زيت+عادي" }
     ];
 
     // POS variables
