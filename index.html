@@ -3901,6 +3901,10 @@ ements.filter(m => m.productName === productName);
           renderInvoiceLog();
         }
       });
+       document.getElementById('backFromPOSBtn').addEventListener('click', () => {
+    document.getElementById('posSection').classList.add('hidden');
+    document.getElementById('home').classList.remove('hidden');
+  });
     }
 
     // Initialize Application
