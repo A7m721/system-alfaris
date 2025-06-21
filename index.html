@@ -14,6 +14,19 @@
       direction: rtl;
     }
 
+    /* Enhanced color scheme */
+    :root {
+      --primary-color: #2563eb;
+      --primary-dark: #1e40af;
+      --secondary-color: #06b6d4;
+      --accent-color: #f59e0b;
+      --success-color: #10b981;
+      --warning-color: #f59e0b;
+      --error-color: #ef4444;
+      --dark-color: #1f2937;
+      --light-color: #f8fafc;
+    }
+
     /* Login page enhancements */
     .login-bg {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -24,6 +37,12 @@
       backdrop-filter: blur(10px);
       background: rgba(255, 255, 255, 0.95);
       border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .login-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
     }
 
     .login-input {
@@ -38,13 +57,13 @@
     }
 
     .login-btn {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
       transition: all 0.3s ease;
     }
 
     .login-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
     }
 
     .logo-animation {
@@ -56,71 +75,166 @@
       50% { transform: translateY(-10px); }
     }
 
-    /* Scrollbar styling for tables */
-    tbody::-webkit-scrollbar {
-      height: 8px;
-    }
-    tbody::-webkit-scrollbar-track {
-      background: #f1f1f1;
-    }
-    tbody::-webkit-scrollbar-thumb {
-      background: #888;
-      border-radius: 4px;
-    }
-    tbody::-webkit-scrollbar-thumb:hover {
-      background: #555;
+    /* Enhanced dashboard cards */
+    .dashboard-card {
+      background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+      border: 1px solid #e2e8f0;
+      transition: all 0.3s ease;
     }
 
-    /* Smooth focus outlines */
-    button:focus-visible,
-    input:focus-visible,
-    select:focus-visible,
-    textarea:focus-visible {
-      outline-offset: 2px;
-      outline-width: 3px;
+    .dashboard-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      border-color: var(--primary-color);
     }
 
-    /* Table header sticky */
-    table thead tr {
-      position: sticky;
+    /* Modern buttons */
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn-secondary {
+      background: linear-gradient(135deg, var(--secondary-color) 0%, #0891b2 100%);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(6, 182, 212, 0.3);
+    }
+
+    /* Enhanced form styling */
+    .form-input {
+      border: 2px solid #e2e8f0;
+      border-radius: 0.5rem;
+      padding: 0.75rem 1rem;
+      transition: all 0.3s ease;
+      background: #f8fafc;
+    }
+
+    .form-input:focus {
+      border-color: var(--primary-color);
+      background: white;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    /* Enhanced tables */
+    .modern-table {
+      background: white;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .modern-table th {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+      color: white;
+      font-weight: 600;
+      padding: 1rem;
+    }
+
+    .modern-table td {
+      padding: 0.875rem 1rem;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .modern-table tbody tr:hover {
+      background: #f8fafc;
+    }
+
+    /* Page sections */
+    .page-section {
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e8f0;
+    }
+
+    /* Status badges */
+    .status-badge {
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    .status-success {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .status-warning {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .status-error {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    /* Enhanced navigation */
+    .nav-btn {
+      position: relative;
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .nav-btn:hover {
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--primary-color);
+    }
+
+    .nav-btn:before {
+      content: '';
+      position: absolute;
       top: 0;
-      background-color: inherit;
-      z-index: 10;
+      right: 0;
+      height: 100%;
+      width: 3px;
+      background: var(--primary-color);
+      border-radius: 0 3px 3px 0;
+      transform: scaleY(0);
+      transition: transform 0.3s ease;
     }
 
-    /* Responsive table container */
-    .overflow-x-auto {
-      -webkit-overflow-scrolling: touch;
+    .nav-btn:hover:before {
+      transform: scaleY(1);
     }
 
-    /* Improve form input focus ring */
-    input:focus,
-    select:focus,
-    textarea:focus {
-      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.4);
+    /* Responsive improvements */
+    @media (max-width: 768px) {
+      .dashboard-card {
+        padding: 1.5rem;
+      }
+      
+      .page-section {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
     }
 
-    /* Buttons hover and focus */
-    button:hover {
-      filter: brightness(1.05);
-    }
-    button:focus-visible {
-      outline: 3px solid #2563eb;
-      outline-offset: 2px;
-    }
-
-    /* Card hover shadow */
-    .dashboard-card:hover,
-    .dashboard-card:focus-visible {
-      box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.5);
-    }
-
-    /* Responsive text sizes */
-    h1, h2, h3, h4 {
-      line-height: 1.2;
-    }
-
-    /* Print styles for dashboard */
+    /* Print styles */
     @media print {
       body * {
         visibility: hidden;
@@ -141,404 +255,6 @@
         box-sizing: border-box;
         white-space: pre-wrap;
       }
-      .printable-content hr {
-        border: 1px dashed #000;
-        margin: 4px 0;
-      }
-      button,
-      form,
-      nav,
-      header,
-      footer {
-        display: none !important;
-      }
-      @page {
-        size: A4;
-        margin: 0.5in;
-      }
-    }
-
-    /* Print styles for POS receipt */
-    @media print {
-      .receipt-print {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 80mm;
-        font-size: 12px;
-        font-family: monospace, "Cairo", sans-serif;
-        direction: rtl;
-        padding: 8px;
-        box-sizing: border-box;
-      }
-      .receipt-print hr {
-        border: 1px dashed #000;
-        margin: 4px 0;
-      }
-      @page {
-        size: 80mm auto;
-        margin: 0;
-      }
-    }
-
-    /* Animation for mobile menu */
-    .transition-transform {
-      transition: transform 0.3s ease-in-out;
-    }
-
-    /* Custom scrollbar for invoice items */
-    #invoiceItems::-webkit-scrollbar {
-      width: 6px;
-    }
-    #invoiceItems::-webkit-scrollbar-track {
-      background: #f1f1f1;
-      border-radius: 3px;
-    }
-    #invoiceItems::-webkit-scrollbar-thumb {
-      background: #888;
-      border-radius: 3px;
-    }
-    #invoiceItems::-webkit-scrollbar-thumb:hover {
-      background: #555;
-    }
-
-    /* Product grid styling */
-    #productGrid button {
-      transition: all 0.2s ease;
-    }
-    #productGrid button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Invoice items styling */
-    .invoice-item-row {
-      transition: background-color 0.2s ease;
-    }
-    .invoice-item-row:hover {
-      background-color: #f9fafb;
-    }
-
-    /* Loading animation */
-    .loading {
-      opacity: 0.6;
-      pointer-events: none;
-    }
-
-    /* Success/Error messages */
-    .success-message {
-      background-color: #d1fae5;
-      color: #065f46;
-      border: 1px solid #a7f3d0;
-    }
-
-    .error-message {
-      background-color: #fee2e2;
-      color: #991b1b;
-      border: 1px solid #fca5a5;
-    }
-
-    /* Modal backdrop */
-    .modal-backdrop {
-      backdrop-filter: blur(4px);
-    }
-
-    /* Table row hover effects */
-    tbody tr:hover {
-      background-color: #f8fafc;
-    }
-
-    /* Form validation styles */
-    input:invalid {
-      border-color: #ef4444;
-    }
-
-    input:valid {
-      border-color: #10b981;
-    }
-
-    /* Inventory status indicators */
-    .stock-low {
-      background-color: #fee2e2;
-      color: #991b1b;
-    }
-
-    .stock-medium {
-      background-color: #fef3c7;
-      color: #92400e;
-    }
-
-    .stock-high {
-      background-color: #d1fae5;
-      color: #065f46;
-    }
-
-    /* Responsive improvements */
-    @media (max-width: 768px) {
-      .dashboard-card {
-        padding: 1rem;
-      }
-      
-      .dashboard-card h2 {
-        font-size: 1.25rem;
-      }
-      
-      .dashboard-card p {
-        font-size: 0.875rem;
-      }
-    }
-
-    /* Print-specific styles for reports */
-    @media print {
-      .no-print {
-        display: none !important;
-      }
-      
-      .print-only {
-        display: block !important;
-      }
-      
-      table {
-        page-break-inside: avoid;
-      }
-      
-      tr {
-        page-break-inside: avoid;
-      }
-    }
-
-    /* Enhanced focus styles for accessibility */
-    button:focus-visible,
-    input:focus-visible,
-    select:focus-visible {
-      outline: 2px solid #3b82f6;
-      outline-offset: 2px;
-    }
-
-    /* Improved button states */
-    button:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-
-    button:disabled:hover {
-      filter: none;
-    }
-
-    /* Enhanced table styling */
-    table {
-      border-spacing: 0;
-    }
-
-    th {
-      font-weight: 600;
-      text-align: right;
-    }
-
-    td, th {
-      padding: 0.75rem 1rem;
-    }
-
-    /* Improved form styling */
-    label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: 500;
-    }
-
-    input, select, textarea {
-      width: 100%;
-      padding: 0.75rem;
-      border: 1px solid #d1d5db;
-      border-radius: 0.5rem;
-      font-size: 1rem;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    input:focus, select:focus, textarea:focus {
-      border-color: #3b82f6;
-      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-    }
-
-    /* Enhanced card styling */
-    .card {
-      background: white;
-      border-radius: 0.75rem;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-      transition: box-shadow 0.2s ease;
-    }
-
-    .card:hover {
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Improved spacing */
-    .section-spacing {
-      margin-bottom: 2rem;
-    }
-
-    .form-spacing {
-      margin-bottom: 1.5rem;
-    }
-
-    /* Enhanced typography */
-    .heading-primary {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #1f2937;
-      margin-bottom: 1rem;
-    }
-
-    .heading-secondary {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: #374151;
-      margin-bottom: 0.75rem;
-    }
-
-    .text-muted {
-      color: #6b7280;
-    }
-
-    /* Utility classes */
-    .text-center {
-      text-align: center;
-    }
-
-    .text-right {
-      text-align: right;
-    }
-
-    .text-left {
-      text-align: left;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    .block {
-      display: block;
-    }
-
-    .inline-block {
-      display: inline-block;
-    }
-
-    .flex {
-      display: flex;
-    }
-
-    .grid {
-      display: grid;
-    }
-
-    /* Responsive grid */
-    .grid-responsive {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
-    }
-
-    /* Enhanced animations */
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .fade-in {
-      animation: fadeIn 0.3s ease-out;
-    }
-
-    @keyframes slideIn {
-      from {
-        transform: translateX(100%);
-      }
-      to {
-        transform: translateX(0);
-      }
-    }
-
-    .slide-in {
-      animation: slideIn 0.3s ease-out;
-    }
-
-    /* Loading spinner */
-    .spinner {
-      border: 2px solid #f3f4f6;
-      border-top: 2px solid #3b82f6;
-      border-radius: 50%;
-      width: 20px;
-      height: 20px;
-      animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    /* Status indicators */
-    .status-success {
-      background-color: #10b981;
-      color: white;
-    }
-
-    .status-warning {
-      background-color: #f59e0b;
-      color: white;
-    }
-
-    .status-error {
-      background-color: #ef4444;
-      color: white;
-    }
-
-    .status-info {
-      background-color: #3b82f6;
-      color: white;
-    }
-
-    /* Enhanced mobile responsiveness */
-    @media (max-width: 640px) {
-      .container {
-        padding: 1rem;
-      }
-      
-      .grid-cols-4 {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      
-      .text-xl {
-        font-size: 1.125rem;
-      }
-      
-      .text-2xl {
-        font-size: 1.25rem;
-      }
-      
-      .px-6 {
-        padding-left: 1rem;
-        padding-right: 1rem;
-      }
-      
-      .py-3 {
-        padding-top: 0.75rem;
-        padding-bottom: 0.75rem;
-      }
-    }
-
-    /* Print styles for POS receipt */
-    @media print {
-      body * {
-        visibility: hidden;
-      }
       #printableReceipt, #printableReceipt * {
         visibility: visible;
       }
@@ -553,14 +269,72 @@
         padding: 8px;
         box-sizing: border-box;
       }
-      #printableReceipt hr {
-        border: 1px dashed #000;
-        margin: 4px 0;
+    }
+
+    /* Animations */
+    .fade-in {
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
+
+    /* Loading spinner */
+    .spinner {
+      border: 3px solid #f3f4f6;
+      border-top: 3px solid var(--primary-color);
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Enhanced payroll section */
+    .payroll-card {
+      background: linear-gradient(145deg, #f0f9ff 0%, #e0f2fe 100%);
+      border: 2px solid #0284c7;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .formula-display {
+      background: #1e293b;
+      color: #f1f5f9;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      font-family: 'Courier New', monospace;
+      margin: 1rem 0;
+    }
+
+    /* Icon colors for dashboard cards */
+    .icon-blue { color: #3b82f6; }
+    .icon-green { color: #10b981; }
+    .icon-red { color: #ef4444; }
+    .icon-yellow { color: #f59e0b; }
+    .icon-purple { color: #8b5cf6; }
+    .icon-pink { color: #ec4899; }
+    .icon-teal { color: #14b8a6; }
+    .icon-indigo { color: #6366f1; }
+    .icon-orange { color: #f97316; }
+    .icon-emerald { color: #059669; }
+    .icon-cyan { color: #06b6d4; }
   </style>
 </head>
-<body class="bg-gradient-to-tr from-gray-100 via-white to-gray-200 min-h-screen flex flex-col">
+<body class="bg-gradient-to-br from-slate-50 via-white to-slate-100 min-h-screen flex flex-col">
 
   <!-- Enhanced Login Page -->
   <section class="login-bg flex items-center justify-center p-6" id="login">
@@ -577,8 +351,8 @@
         مركز الفارس
       </h1>
       
-      <h2 class="text-2xl font-bold mb-8 text-gray-800 text-center">
-        تسجيل الدخول
+      <h2 class="text-2xl font-bold mb-8 text-gray-600 text-center">
+        ALFARIS
       </h2>
       
       <form class="space-y-6 w-full" id="form-login">
@@ -655,11 +429,11 @@
       </form>
       
       <div class="mt-8 text-center">
-        <div class="text-gray-600 text-sm mb-2">
+        <div class="text-blue-600 text-sm mb-2">
           <i class="fas fa-store ml-1"></i>
           مركز الفارس للعناية بالرجل
         </div>
-        <div class="text-gray-500 text-xs">
+        <div class="text-blue-500 text-xs">
           نظام إدارة متطور وآمن
         </div>
       </div>
@@ -667,7 +441,7 @@
   </section>
 
   <!-- Change Password Modal -->
-  <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden modal-backdrop" id="changePasswordModal">
+  <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden" id="changePasswordModal">
     <div class="bg-white rounded-xl shadow-xl max-w-md w-full p-6 mx-4">
       <div class="flex justify-between items-center mb-4">
         <h3 class="text-2xl font-bold text-gray-900">تغيير كلمة المرور</h3>
@@ -689,7 +463,6 @@
             required
             class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-blue-400 text-lg"
           />
-          <p class="text-sm text-gray-500 mt-1">أدخل رقم الهاتف بدون رموز أو مسافات</p>
         </div>
         
         <div>
@@ -742,60 +515,61 @@
 
   <!-- Main App Content -->
   <div class="hidden flex flex-col min-h-screen" id="appContent">
-    <header class="bg-white shadow-md p-4 flex items-center justify-between sticky top-0 z-30">
+    <header class="bg-white shadow-lg p-4 flex items-center justify-between sticky top-0 z-30 border-b-2 border-blue-100">
       <h1 class="text-3xl font-extrabold text-gray-900 tracking-wide flex items-center gap-3 select-none">
         <i class="fas fa-chart-line text-blue-600"></i>
-        لوحة تحكم متقدمة
+        لوحة تحكم مركز الفارس
       </h1>
       
-      <nav class="hidden md:flex space-x-6 text-gray-700 font-semibold">
-        <br>
-        <button class="hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="home">الرئيسية</button>
-        <button class="hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="expenses">المصروفات</button>
-        <button class="hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="salaries">الرواتب</button>
-        <button class="hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="withdrawals">السحب</button>
-        <button class="hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="appointments">المواعيد</button>
-        <button class="hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="services">الخدمات</button>
-        <button class="hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="inventory">المخزون</button>
-        <button class="hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="reports">التقارير</button>
-        <button class="hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="dailySalary">حساب الراتب اليومي</button>
-        <button class="hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="monthlySalary">حساب الراتب الشهري</button>
-        <button class="hover:text-green-600 transition focus:outline-none focus:ring-2 focus:ring-green-400 rounded ml-6" data-page="posSection">نظام نقاط البيع</button>
-        <button class="hover:text-indigo-600 transition focus:outline-none focus:ring-2 focus:ring-indigo-400 rounded ml-6" data-page="paymentSummary">ملخص طرق الدفع</button>
-        <button class="hover:text-red-600 transition focus:outline-none focus:ring-2 focus:ring-red-400 rounded ml-6 flex items-center gap-2" id="logoutBtn">
+      <nav class="hidden lg:flex space-x-4 text-gray-700 font-semibold">
+        <button class="nav-btn text-green-600" data-page="home">الرئيسية</button>
+        <button class="nav-btn text-red-600" data-page="expenses">المصروفات</button>
+        <button class="nav-btn text-brown" data-page="salaries">الرواتب</button>
+        <button class="nav-btn  text-black" data-page="payrollManagement">حساب الراتب</button>
+        <button class="nav-btn text-yellow-600" data-page="withdrawals">السحب</button>
+        <button class="nav-btn text-green-600" data-page="appointments">المواعيد</button>
+        <button class="nav-btn text-blue-600" data-page="services">الخدمات</button>
+        <button class="nav-btn  text-red-600" data-page="inventory">المخزون</button>
+        <button class="nav-btn text-brown" data-page="reports">التقارير</button>
+        <button class="nav-btn text-black" data-page="dailySalary">الراتب اليومي</button>
+        <button class="nav-btn text-yellow-600" data-page="monthlySalary">الراتب الشهري</button>
+        <button class="nav-btn text-green-600" data-page="posSection">نقاط البيع</button>
+        <button class="nav-btn text-indigo-600" data-page="paymentSummary">ملخص الدفع</button>
+        <button class="nav-btn text-red-600 flex items-center gap-2" id="logoutBtn">
           <i class="fas fa-sign-out-alt"></i>
-          تسجيل الخروج
+          خروج
         </button>
       </nav>
       
-      <button class="md:hidden text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" id="mobileMenuBtn">
+      <button class="lg:hidden text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded p-2" id="mobileMenuBtn">
         <i class="fas fa-bars text-2xl"></i>
       </button>
     </header>
     
     <!-- Mobile menu -->
-    <div class="fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform translate-x-full transition-transform z-40 md:hidden" id="mobileMenu">
-      <div class="p-4 border-b border-gray-200 flex justify-between items-center">
-        <h2 class="text-xl font-bold text-gray-900 select-none">القائمة</h2>
-        <button class="text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" id="mobileMenuClose">
+    <div class="fixed top-0 right-0 h-full w-72 bg-white shadow-lg transform translate-x-full transition-transform z-40 lg:hidden" id="mobileMenu">
+      <div class="p-4 border-b border-gray-200 flex justify-between items-center bg-gradient-to-r from-blue-600 to-purple-600">
+        <h2 class="text-xl font-bold text-white select-none">القائمة</h2>
+        <button class="text-white focus:outline-none focus:ring-2 focus:ring-white rounded" id="mobileMenuClose">
           <i class="fas fa-times text-2xl"></i>
         </button>
       </div>
       
-      <nav class="flex flex-col p-4 space-y-4 text-gray-700 font-semibold">
-        <button class="text-right hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="home">الرئيسية</button>
-        <button class="text-right hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="expenses">المصروفات</button>
-        <button class="text-right hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="salaries">الرواتب</button>
-        <button class="text-right hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="withdrawals">السحب</button>
-        <button class="text-right hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="appointments">المواعيد</button>
-        <button class="text-right hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="services">الخدمات</button>
-        <button class="text-right hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="inventory">المخزون</button>
-        <button class="text-right hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="reports">التقارير</button>
-        <button class="text-right hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="dailySalary">حساب الراتب اليومي</button>
-        <button class="text-right hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" data-page="monthlySalary">حساب الراتب الشهري</button>
-        <button class="text-right hover:text-green-600 transition focus:outline-none focus:ring-2 focus:ring-green-400 rounded mt-4 font-semibold" data-page="posSection">نظام نقاط البيع</button>
-        <button class="text-right hover:text-indigo-600 transition focus:outline-none focus:ring-2 focus:ring-indigo-400 rounded mt-4 font-semibold" data-page="paymentSummary">ملخص طرق الدفع</button>
-        <button class="text-right hover:text-red-600 transition focus:outline-none focus:ring-2 focus:ring-red-400 rounded mt-4 font-semibold flex items-center gap-2" id="mobileLogoutBtn">
+      <nav class="flex flex-col p-4 space-y-2 text-gray-700 font-semibold max-h-screen overflow-y-auto">
+        <button class="nav-btn text-right" data-page="home">الرئيسية</button>
+        <button class="nav-btn text-right" data-page="expenses">المصروفات</button>
+        <button class="nav-btn text-right" data-page="salaries">الرواتب</button>
+        <button class="nav-btn text-right" data-page="payrollManagement">حساب الراتب</button>
+        <button class="nav-btn text-right" data-page="withdrawals">السحب</button>
+        <button class="nav-btn text-right" data-page="appointments">المواعيد</button>
+        <button class="nav-btn text-right" data-page="services">الخدمات</button>
+        <button class="nav-btn text-right" data-page="inventory">المخزون</button>
+        <button class="nav-btn text-right" data-page="reports">التقارير</button>
+        <button class="nav-btn text-right" data-page="dailySalary">الراتب اليومي</button>
+        <button class="nav-btn text-right" data-page="monthlySalary">الراتب الشهري</button>
+        <button class="nav-btn text-right text-green-600" data-page="posSection">نقاط البيع</button>
+        <button class="nav-btn text-right text-indigo-600" data-page="paymentSummary">ملخص الدفع</button>
+        <button class="nav-btn text-right text-red-600 flex items-center gap-2 mt-4" id="mobileLogoutBtn">
           <i class="fas fa-sign-out-alt"></i>
           تسجيل الخروج
         </button>
@@ -804,569 +578,608 @@
     
     <main class="flex-grow container mx-auto p-6 max-w-7xl overflow-auto">
       <!-- الرئيسية -->
-      <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="home">
-        <div class="dashboard-card cursor-pointer bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition focus:outline-none focus:ring-4 focus:ring-blue-400 select-none" data-page="expenses" role="button" tabindex="0">
-          <i class="fas fa-wallet text-7xl text-blue-600 mb-4"></i>
+      <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 fade-in" id="home">
+        <div class="dashboard-card cursor-pointer rounded-xl shadow-lg p-6 flex flex-col items-center transition-all duration-300" data-page="expenses" role="button" tabindex="0">
+          <i class="fas fa-wallet text-7xl icon-blue mb-4"></i>
           <h2 class="text-2xl font-bold mb-2 text-gray-800">المصروفات</h2>
           <p class="text-gray-600 text-center">إدارة وتتبع المصروفات المالية</p>
         </div>
         
-        <div class="dashboard-card cursor-pointer bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition focus:outline-none focus:ring-4 focus:ring-green-400 select-none" data-page="salaries" role="button" tabindex="0">
-          <i class="fas fa-money-check-alt text-7xl text-green-600 mb-4"></i>
+        <div class="dashboard-card cursor-pointer rounded-xl shadow-lg p-6 flex flex-col items-center transition-all duration-300" data-page="salaries" role="button" tabindex="0">
+          <i class="fas fa-money-check-alt text-7xl icon-green mb-4"></i>
           <h2 class="text-2xl font-bold mb-2 text-gray-800">الرواتب</h2>
-          <p class="text-gray-600 text-center">عرض الراتب بعد طرح السحب الشهري لكل عامل</p>
+          <p class="text-gray-600 text-center">إدارة رواتب الموظفين</p>
+        </div>
+
+        <div class="dashboard-card cursor-pointer rounded-xl shadow-lg p-6 flex flex-col items-center transition-all duration-300" data-page="payrollManagement" role="button" tabindex="0">
+          <i class="fas fa-calculator text-7xl icon-purple mb-4"></i>
+          <h2 class="text-2xl font-bold mb-2 text-gray-800">حساب الراتب</h2>
+          <p class="text-gray-600 text-center">حساب صافي الراتب بالمعادلة المتقدمة</p>
         </div>
         
-        <div class="dashboard-card cursor-pointer bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition focus:outline-none focus:ring-4 focus:ring-red-400 select-none" data-page="withdrawals" role="button" tabindex="0">
-          <i class="fas fa-hand-holding-usd text-7xl text-red-600 mb-4"></i>
+        <div class="dashboard-card cursor-pointer rounded-xl shadow-lg p-6 flex flex-col items-center transition-all duration-300" data-page="withdrawals" role="button" tabindex="0">
+          <i class="fas fa-hand-holding-usd text-7xl icon-red mb-4"></i>
           <h2 class="text-2xl font-bold mb-2 text-gray-800">السحب</h2>
-          <p class="text-gray-600 text-center">إدارة عمليات السحب النقدي وحساب السحب الشهري</p>
+          <p class="text-gray-600 text-center">إدارة عمليات السحب النقدي</p>
         </div>
         
-        <div class="dashboard-card cursor-pointer bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition focus:outline-none focus:ring-4 focus:ring-yellow-400 select-none" data-page="appointments" role="button" tabindex="0">
-          <i class="fas fa-calendar-alt text-7xl text-yellow-600 mb-4"></i>
+        <div class="dashboard-card cursor-pointer rounded-xl shadow-lg p-6 flex flex-col items-center transition-all duration-300" data-page="appointments" role="button" tabindex="0">
+          <i class="fas fa-calendar-alt text-7xl icon-yellow mb-4"></i>
           <h2 class="text-2xl font-bold mb-2 text-gray-800">المواعيد</h2>
           <p class="text-gray-600 text-center">جدولة وإدارة المواعيد</p>
         </div>
         
-        <div class="dashboard-card cursor-pointer bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition focus:outline-none focus:ring-4 focus:ring-pink-400 select-none" data-page="services" role="button" tabindex="0">
-          <i class="fas fa-cut text-7xl text-pink-600 mb-4"></i>
+        <div class="dashboard-card cursor-pointer rounded-xl shadow-lg p-6 flex flex-col items-center transition-all duration-300" data-page="services" role="button" tabindex="0">
+          <i class="fas fa-cut text-7xl icon-pink mb-4"></i>
           <h2 class="text-2xl font-bold mb-2 text-gray-800">الخدمات</h2>
-          <p class="text-gray-600 text-center">قائمة الخدمات المقدمة للعملاء</p>
+          <p class="text-gray-600 text-center">قائمة الخدمات المقدمة</p>
         </div>
         
-        <div class="dashboard-card cursor-pointer bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition focus:outline-none focus:ring-4 focus:ring-teal-400 select-none" data-page="inventory" role="button" tabindex="0">
-          <i class="fas fa-boxes text-7xl text-teal-600 mb-4"></i>
+        <div class="dashboard-card cursor-pointer rounded-xl shadow-lg p-6 flex flex-col items-center transition-all duration-300" data-page="inventory" role="button" tabindex="0">
+          <i class="fas fa-boxes text-7xl icon-teal mb-4"></i>
           <h2 class="text-2xl font-bold mb-2 text-gray-800">المخزون</h2>
-          <p class="text-gray-600 text-center">إدارة المخزون والمنتجات مع تتبع الحركة</p>
+          <p class="text-gray-600 text-center">إدارة المخزون والمنتجات</p>
         </div>
         
-        <div class="dashboard-card cursor-pointer bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition focus:outline-none focus:ring-4 focus:ring-indigo-400 select-none" data-page="reports" role="button" tabindex="0">
-          <i class="fas fa-chart-line text-7xl text-indigo-600 mb-4"></i>
+        <div class="dashboard-card cursor-pointer rounded-xl shadow-lg p-6 flex flex-col items-center transition-all duration-300" data-page="reports" role="button" tabindex="0">
+          <i class="fas fa-chart-line text-7xl icon-indigo mb-4"></i>
           <h2 class="text-2xl font-bold mb-2 text-gray-800">التقارير</h2>
-          <p class="text-gray-600 text-center">عرض تقارير مفصلة عن الأداء</p>
+          <p class="text-gray-600 text-center">تقارير مفصلة عن الأداء</p>
         </div>
         
-        <div class="dashboard-card cursor-pointer bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition focus:outline-none focus:ring-4 focus:ring-orange-400 select-none" data-page="dailySalary" role="button" tabindex="0">
-          <i class="fas fa-calendar-day text-7xl text-orange-600 mb-4"></i>
-          <h2 class="text-2xl font-bold mb-2 text-gray-800">حساب الراتب اليومي</h2>
-          <p class="text-gray-600 text-center">حساب رواتب العمال اليومية بناءً على الفواتير المسجلة</p>
+        <div class="dashboard-card cursor-pointer rounded-xl shadow-lg p-6 flex flex-col items-center transition-all duration-300" data-page="dailySalary" role="button" tabindex="0">
+          <i class="fas fa-calendar-day text-7xl icon-orange mb-4"></i>
+          <h2 class="text-2xl font-bold mb-2 text-gray-800">الراتب اليومي</h2>
+          <p class="text-gray-600 text-center">حساب الرواتب اليومية</p>
         </div>
         
-        <div class="dashboard-card cursor-pointer bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition focus:outline-none focus:ring-4 focus:ring-purple-400 select-none" data-page="monthlySalary" role="button" tabindex="0">
-          <i class="fas fa-calendar-check text-7xl text-purple-600 mb-4"></i>
-          <h2 class="text-2xl font-bold mb-2 text-gray-800">حساب الراتب الشهري</h2>
-          <p class="text-gray-600 text-center">حساب رواتب العمال الشهرية بناءً على الخدمات المسجلة والسحب الشهري</p>
+        <div class="dashboard-card cursor-pointer rounded-xl shadow-lg p-6 flex flex-col items-center transition-all duration-300" data-page="monthlySalary" role="button" tabindex="0">
+          <i class="fas fa-calendar-check text-7xl icon-purple mb-4"></i>
+          <h2 class="text-2xl font-bold mb-2 text-gray-800">الراتب الشهري</h2>
+          <p class="text-gray-600 text-center">حساب الرواتب الشهرية</p>
         </div>
         
-        <div class="dashboard-card cursor-pointer bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition focus:outline-none focus:ring-4 focus:ring-emerald-400 select-none" data-page="posSection" role="button" tabindex="0">
-          <i class="fas fa-cash-register text-7xl text-emerald-600 mb-4"></i>
-          <h2 class="text-2xl font-bold mb-2 text-gray-800">نظام نقاط البيع</h2>
-          <p class="text-gray-600 text-center">انشاء فاتورة الخدمات</p>
+        <div class="dashboard-card cursor-pointer rounded-xl shadow-lg p-6 flex flex-col items-center transition-all duration-300" data-page="posSection" role="button" tabindex="0">
+          <i class="fas fa-cash-register text-7xl icon-emerald mb-4"></i>
+          <h2 class="text-2xl font-bold mb-2 text-gray-800">نقاط البيع</h2>
+          <p class="text-gray-600 text-center">نظام إدارة المبيعات</p>
         </div>
         
-        <div class="dashboard-card cursor-pointer bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition focus:outline-none focus:ring-4 focus:ring-cyan-400 select-none" data-page="paymentSummary" role="button" tabindex="0">
-          <i class="fas fa-credit-card text-7xl text-cyan-600 mb-4"></i>
-          <h2 class="text-2xl font-bold mb-2 text-gray-800">ملخص طرق الدفع</h2>
-          <p class="text-gray-600 text-center">عرض المبالغ المدفوعة نقداً وبطاقة فيزا</p>
+        <div class="dashboard-card cursor-pointer rounded-xl shadow-lg p-6 flex flex-col items-center transition-all duration-300" data-page="paymentSummary" role="button" tabindex="0">
+          <i class="fas fa-credit-card text-7xl icon-cyan mb-4"></i>
+          <h2 class="text-2xl font-bold mb-2 text-gray-800">ملخص الدفع</h2>
+          <p class="text-gray-600 text-center">ملخص طرق الدفع</p>
+        </div>
+      </section>
+
+      <!-- Payroll Management Page -->
+      <section class="hidden fade-in" id="payrollManagement">
+        <button class="btn-primary mb-6 flex items-center gap-2" id="backFromPayrollManagement">
+          <i class="fas fa-arrow-right"></i>
+          العودة للرئيسية
+        </button>
+        
+        <div class="page-section">
+          <h2 class="text-3xl font-bold mb-6 text-gray-900 border-b-4 border-purple-600 inline-block pb-2">
+            إدارة دفع الرواتب للموظفين
+          </h2>
+
+          <!-- Formula Display -->
+          <div class="payroll-card">
+            <h3 class="text-xl font-bold mb-4 text-blue-800">معادلة حساب صافي الراتب</h3>
+            <div class="formula-display">
+              صافي الراتب = (الراتب الشهري × النسبة%) + المبلغ الإضافي - السحب الشهري
+            </div>
+            <p class="text-sm text-gray-600 mt-2">
+              * النسبة المئوية: نسبة من الراتب الأساسي (مثال: 100% = الراتب كاملاً، 50% = نصف الراتب)<br>
+              * المبلغ الإضافي: أي مبالغ إضافية مثل البونص أو العلاوات<br>
+              * السحب الشهري: إجمالي المبالغ المسحوبة خلال الشهر
+            </p>
+          </div>
+
+          <!-- Payroll Form -->
+          <form class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8" id="payrollForm">
+            <div>
+              <label class="block mb-2 font-semibold text-gray-800" for="payrollWorker">
+                <i class="fas fa-user ml-2 text-purple-600"></i>
+                اسم الموظف
+              </label>
+              <select
+                class="form-input w-full"
+                id="payrollWorker"
+                required
+              >
+                <option disabled selected value="">اختر الموظف</option>
+              </select>
+            </div>
+            
+            <div>
+              <label class="block mb-2 font-semibold text-gray-800" for="payrollBaseSalary">
+                <i class="fas fa-coins ml-2 text-green-600"></i>
+                الراتب الشهري الأساسي (ريال)
+              </label>
+              <input
+                class="form-input w-full"
+                id="payrollBaseSalary"
+                min="0"
+                placeholder="أدخل الراتب الأساسي"
+                required
+                step="0.01"
+                type="number"
+              />
+            </div>
+            
+            <div>
+              <label class="block mb-2 font-semibold text-gray-800" for="payrollPercentage">
+                <i class="fas fa-percentage ml-2 text-blue-600"></i>
+                النسبة المئوية (%)
+              </label>
+              <input
+                class="form-input w-full"
+                id="payrollPercentage"
+                min="0"
+                max="200"
+                placeholder="مثال: 100"
+                required
+                step="0.01"
+                type="number"
+                value="100"
+              />
+            </div>
+            
+            <div>
+              <label class="block mb-2 font-semibold text-gray-800" for="payrollAdditionalAmount">
+                <i class="fas fa-plus ml-2 text-emerald-600"></i>
+                المبلغ الإضافي (ريال)
+              </label>
+              <input
+                class="form-input w-full"
+                id="payrollAdditionalAmount"
+                min="0"
+                placeholder="بونص، علاوة، إلخ..."
+                step="0.01"
+                type="number"
+                value="0"
+              />
+            </div>
+            
+            <div>
+              <label class="block mb-2 font-semibold text-gray-800" for="payrollMonth">
+                <i class="fas fa-calendar ml-2 text-orange-600"></i>
+                الشهر والسنة
+              </label>
+              <input
+                class="form-input w-full"
+                id="payrollMonth"
+                required
+                type="month"
+              />
+            </div>
+            
+            <div class="md:col-span-2 lg:col-span-3 flex justify-end">
+              <button
+                class="btn-primary flex items-center gap-3 text-lg px-8 py-3"
+                type="submit"
+              >
+                <i class="fas fa-calculator"></i>
+                حساب وحفظ الراتب
+              </button>
+            </div>
+          </form>
+
+          <!-- Payroll Result Display -->
+          <div class="payroll-card hidden" id="payrollResult">
+            <h3 class="text-xl font-bold mb-4 text-green-800">نتيجة حساب الراتب</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4" id="payrollResultContent">
+              <!-- Results will be populated here -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Payroll Records Table -->
+        <div class="page-section">
+          <h3 class="text-2xl font-bold mb-4 text-gray-900">سجل الرواتب المحسوبة</h3>
+          <div class="overflow-x-auto">
+            <table class="modern-table w-full">
+              <thead>
+                <tr>
+                  <th>اسم الموظف</th>
+                  <th>الراتب الأساسي</th>
+                  <th>النسبة %</th>
+                  <th>المبلغ الإضافي</th>
+                  <th>السحب الشهري</th>
+                  <th>صافي الراتب</th>
+                  <th>الشهر</th>
+                  <th>تاريخ الحساب</th>
+                  <th>إجراء</th>
+                </tr>
+              </thead>
+              <tbody id="payrollTableBody">
+                <!-- Table rows will be populated here -->
+              </tbody>
+            </table>
+          </div>
+          
+          <div class="flex justify-end mt-4">
+            <button id="deleteAllPayrollBtn" class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition focus:outline-none font-semibold flex items-center gap-3">
+              <i class="fas fa-trash-alt"></i>
+              حذف جميع السجلات
+            </button>
+          </div>
         </div>
       </section>
 
       <!-- Expenses Page -->
-      <section class="hidden" id="expenses">
-        <button class="mb-6 px-5 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition focus:outline-none flex items-center gap-2" id="backFromExpenses">
+      <section class="hidden fade-in" id="expenses">
+        <button class="btn-primary mb-6 flex items-center gap-2" id="backFromExpenses">
           <i class="fas fa-arrow-right"></i>
           العودة للرئيسية
         </button>
         
-        <h2 class="text-2xl font-bold mb-6 text-gray-900 border-b-4 border-blue-600 inline-block pb-1">
-          إدارة وتتبع المصروفات المالية
-        </h2>
-        
-        <form class="max-w-4xl grid grid-cols-1 md:grid-cols-4 gap-6 mb-6" id="expenseForm">
-          <div>
-            <label class="block mb-2 font-semibold text-gray-800" for="expenseDate">
-              تاريخ المصروف
-            </label>
-            <input
-              class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-blue-300"
-              id="expenseDate"
-              required
-              type="date"
-            />
-          </div>
+        <div class="page-section">
+          <h2 class="text-3xl font-bold mb-6 text-gray-900 border-b-4 border-blue-600 inline-block pb-2">
+            إدارة وتتبع المصروفات المالية
+          </h2>
           
-          <div>
-            <label class="block mb-2 font-semibold text-gray-800" for="expenseCategory">
-              الفئة
-            </label>
-            <select
-              class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-blue-300"
-              id="expenseCategory"
-              required
-            >
-              <option disabled selected value="">اختر الفئة</option>
-              <option value="إيجار">إيجار</option>
-              <option value="مستلزمات">مستلزمات</option>
-              <option value="فواتير">فواتير</option>
-              <option value="أخرى">أخرى</option>
-            </select>
-          </div>
-          
-          <div>
-            <label class="block mb-2 font-semibold text-gray-800" for="expenseAmount">
-              المبلغ (ريال)
-            </label>
-            <input
-              class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-blue-300"
-              id="expenseAmount"
-              min="0"
-              placeholder="أدخل المبلغ"
-              required
-              step="0.01"
-              type="number"
-            />
-          </div>
-          
-          <div>
-            <label class="block mb-2 font-semibold text-gray-800" for="expenseDescription">
-              الوصف
-            </label>
-            <input
-              class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-blue-300"
-              id="expenseDescription"
-              placeholder="وصف المصروف"
-              type="text"
-            />
-          </div>
-          
-          <div class="md:col-span-4 flex justify-end">
-            <button
-              class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition focus:outline-none font-semibold text-lg flex items-center gap-3"
-              type="submit"
-            >
-              <i class="fas fa-plus"></i>
-              إضافة مصروف
-            </button>
-          </div>
-        </form>
-        
-        <div class="overflow-x-auto max-h-96 rounded-lg border border-gray-300 bg-white shadow">
-          <table class="w-full text-right table-auto border-collapse border border-gray-300">
-            <thead>
-              <tr class="bg-blue-100 text-gray-900">
-                <th class="border border-gray-300 px-4 py-2">التاريخ</th>
-                <th class="border border-gray-300 px-4 py-2">الفئة</th>
-                <th class="border border-gray-300 px-4 py-2">المبلغ (ريال)</th>
-                <th class="border border-gray-300 px-4 py-2">الوصف</th>
-                <th class="border border-gray-300 px-4 py-2">إجراء</th>
-              </tr>
-            </thead>
-            <tbody class="text-gray-700" id="expensesTableBody"></tbody>
-          </table>
+          <form class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6" id="expenseForm">
+            <div>
+              <label class="block mb-2 font-semibold text-gray-800" for="expenseDate">
+                تاريخ المصروف
+              </label>
+              <input class="form-input w-full" id="expenseDate" required type="date" />
+            </div>
+            
+            <div>
+              <label class="block mb-2 font-semibold text-gray-800" for="expenseCategory">
+                الفئة
+              </label>
+              <select class="form-input w-full" id="expenseCategory" required>
+                <option disabled selected value="">اختر الفئة</option>
+                <option value="إيجار">إيجار</option>
+                <option value="مستلزمات">مستلزمات</option>
+                <option value="فواتير">فواتير</option>
+                <option value="أخرى">أخرى</option>
+              </select>
+            </div>
+            
+            <div>
+              <label class="block mb-2 font-semibold text-gray-800" for="expenseAmount">
+                المبلغ (ريال)
+              </label>
+              <input
+                class="form-input w-full"
+                id="expenseAmount"
+                min="0"
+                placeholder="أدخل المبلغ"
+                required
+                step="0.01"
+                type="number"
+              />
+            </div>
+            
+            <div>
+              <label class="block mb-2 font-semibold text-gray-800" for="expenseDescription">
+                الوصف
+              </label>
+              <input
+                class="form-input w-full"
+                id="expenseDescription"
+                placeholder="وصف المصروف"
+                type="text"
+              />
+            </div>
+            
+            <div class="md:col-span-4 flex justify-end">
+              <button class="btn-primary flex items-center gap-3" type="submit">
+                <i class="fas fa-plus"></i>
+                إضافة مصروف
+              </button>
+            </div>
+          </form>
         </div>
         
-        <div class="max-w-4xl flex justify-end mt-4">
-          <button id="deleteAllExpensesBtn" class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition focus:outline-none font-semibold text-lg flex items-center gap-3">
-            <i class="fas fa-trash-alt"></i>
-            حذف الكل
-          </button>
+        <div class="page-section">
+          <div class="overflow-x-auto">
+            <table class="modern-table w-full">
+              <thead>
+                <tr>
+                  <th>التاريخ</th>
+                  <th>الفئة</th>
+                  <th>المبلغ (ريال)</th>
+                  <th>الوصف</th>
+                  <th>إجراء</th>
+                </tr>
+              </thead>
+              <tbody id="expensesTableBody"></tbody>
+            </table>
+          </div>
+          
+          <div class="flex justify-end mt-4">
+            <button id="deleteAllExpensesBtn" class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition focus:outline-none font-semibold flex items-center gap-3">
+              <i class="fas fa-trash-alt"></i>
+              حذف الكل
+            </button>
+          </div>
         </div>
       </section>
 
       <!-- Salaries Page -->
-      <section class="hidden" id="salaries">
-        <button class="mb-6 px-5 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition focus:outline-none flex items-center gap-2" id="backFromSalaries">
+      <section class="hidden fade-in" id="salaries">
+        <button class="btn-secondary mb-6 flex items-center gap-2" id="backFromSalaries">
           <i class="fas fa-arrow-right"></i>
           العودة للرئيسية
         </button>
         
-        <h2 class="text-2xl font-bold mb-6 text-gray-900 border-b-4 border-green-600 inline-block pb-1">
-          إدارة دفع الرواتب للموظفين (صافي الراتب = رواتب الخدمات - السحب)
-        </h2>
-        
-        <form class="max-w-4xl grid grid-cols-1 md:grid-cols-4 gap-6 mb-6" id="salaryForm">
-          <div>
-            <label class="block mb-2 font-semibold text-gray-800" for="salaryWorker">
-              اسم الموظف
-            </label>
-            <select
-              class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-green-300"
-              id="salaryWorker"
-              required
-            >
-              <option disabled selected value="">
-                اختر الموظف
-              </option>
-            </select>
-          </div>
+        <div class="page-section">
+          <h2 class="text-3xl font-bold mb-6 text-gray-900 border-b-4 border-green-600 inline-block pb-2">
+            إدارة دفع الرواتب للموظفين
+          </h2>
           
-          <div>
-            <label class="block mb-2 font-semibold text-gray-800" for="salaryAmount">
-              المبلغ (ريال)
-            </label>
-            <input
-              class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-green-300"
-              id="salaryAmount"
-              min="0"
-              placeholder="أدخل المبلغ"
-              required
-              step="0.01"
-              type="number"
-            />
-          </div>
-          
-          <div>
-            <label class="block mb-2 font-semibold text-gray-800" for="salaryDate">
-              تاريخ الدفع
-            </label>
-            <input
-              class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-green-300"
-              id="salaryDate"
-              required
-              type="date"
-            />
-          </div>
-          
-          <div class="flex items-center gap-4">
-            <button
-              class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition focus:outline-none font-semibold text-lg flex items-center gap-3"
-              type="submit"
-            >
-              <i class="fas fa-plus"></i>
-              إضافة راتب
-            </button>
-          </div>
-        </form>
-        
-        <div class="overflow-x-auto max-h-96 rounded-lg border border-gray-300 bg-white shadow">
-          <table class="w-full text-right table-auto border-collapse border border-gray-300">
-            <thead>
-              <tr class="bg-green-100 text-gray-900">
-                <th class="border border-gray-300 px-4 py-2">اسم الموظف</th>
-                <th class="border border-gray-300 px-4 py-2">الراتب الإجمالي (ريال)</th>
-                <th class="border border-gray-300 px-4 py-2">السحب الشهري (ريال)</th>
-                <th class="border border-gray-300 px-4 py-2">صافي الراتب (ريال)</th>
-                <th class="border border-gray-300 px-4 py-2">تاريخ الدفع</th>
-                <th class="border border-gray-300 px-4 py-2">إجراء</th>
-              </tr>
-            </thead>
-            <tbody class="text-gray-700" id="salariesTableBody"></tbody>
-          </table>
+          <form class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6" id="salaryForm">
+            <div>
+              <label class="block mb-2 font-semibold text-gray-800" for="salaryWorker">
+                اسم الموظف
+              </label>
+              <select class="form-input w-full" id="salaryWorker" required>
+                <option disabled selected value="">اختر الموظف</option>
+              </select>
+            </div>
+            
+            <div>
+              <label class="block mb-2 font-semibold text-gray-800" for="salaryAmount">
+                المبلغ (ريال)
+              </label>
+              <input
+                class="form-input w-full"
+                id="salaryAmount"
+                min="0"
+                placeholder="أدخل المبلغ"
+                required
+                step="0.01"
+                type="number"
+              />
+            </div>
+            
+            <div>
+              <label class="block mb-2 font-semibold text-gray-800" for="salaryDate">
+                تاريخ الدفع
+              </label>
+              <input class="form-input w-full" id="salaryDate" required type="date" />
+            </div>
+            
+            <div class="flex items-center gap-4">
+              <button class="btn-secondary flex items-center gap-3" type="submit">
+                <i class="fas fa-plus"></i>
+                إضافة راتب
+              </button>
+            </div>
+          </form>
         </div>
         
-        <div class="max-w-4xl flex justify-end mt-4">
-          <button id="deleteAllSalariesBtn" class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition focus:outline-none font-semibold text-lg flex items-center gap-3">
-            <i class="fas fa-trash-alt"></i>
-            حذف الكل
-          </button>
+        <div class="page-section">
+          <div class="overflow-x-auto">
+            <table class="modern-table w-full">
+              <thead>
+                <tr>
+                  <th>اسم الموظف</th>
+                  <th>الراتب الإجمالي (ريال)</th>
+                  <th>السحب الشهري (ريال)</th>
+                  <th>صافي الراتب (ريال)</th>
+                  <th>تاريخ الدفع</th>
+                  <th>إجراء</th>
+                </tr>
+              </thead>
+              <tbody id="salariesTableBody"></tbody>
+            </table>
+          </div>
+          
+          <div class="flex justify-end mt-4">
+            <button id="deleteAllSalariesBtn" class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition focus:outline-none font-semibold flex items-center gap-3">
+              <i class="fas fa-trash-alt"></i>
+              حذف الكل
+            </button>
+          </div>
         </div>
       </section>
 
+      <!-- Continue with other sections... (I'll include the complete implementation for all pages) -->
+      
       <!-- Withdrawals Page -->
-      <section class="hidden" id="withdrawals">
-        <button class="mb-6 px-5 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition focus:outline-none flex items-center gap-2" id="backFromWithdrawals">
+      <section class="hidden fade-in" id="withdrawals">
+        <button class="bg-red-600 text-white px-5 py-3 rounded-lg hover:bg-red-700 transition focus:outline-none flex items-center gap-2 mb-6" id="backFromWithdrawals">
           <i class="fas fa-arrow-right"></i>
           العودة للرئيسية
         </button>
         
-        <h2 class="text-2xl font-bold mb-6 text-gray-900 border-b-4 border-red-600 inline-block pb-1">
-          إدارة عمليات السحب النقدي وحساب السحب الشهري
-        </h2>
-        
-        <form class="max-w-6xl grid grid-cols-1 md:grid-cols-5 gap-6 mb-6" id="withdrawalForm">
-          <div>
-            <label class="block mb-2 font-semibold text-gray-800" for="withdrawalDate">
-              تاريخ السحب
-            </label>
-            <input
-              class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-red-300"
-              id="withdrawalDate"
-              required
-              type="date"
-            />
-          </div>
+        <div class="page-section">
+          <h2 class="text-3xl font-bold mb-6 text-gray-900 border-b-4 border-red-600 inline-block pb-2">
+            إدارة عمليات السحب النقدي وحساب السحب الشهري
+          </h2>
           
-          <div>
-            <label class="block mb-2 font-semibold text-gray-800" for="withdrawalWorker">
-              اسم العامل
-            </label>
-            <select
-              class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-red-300"
-              id="withdrawalWorker"
-              required
-            >
-              <option disabled selected value="">
-                اختر العامل
-              </option>
-            </select>
-          </div>
-          
-          <div>
-            <label class="block mb-2 font-semibold text-gray-800" for="withdrawalAmount">
-              المبلغ (ريال)
-            </label>
-            <input
-              class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-red-300"
-              id="withdrawalAmount"
-              min="0"
-              placeholder="أدخل المبلغ"
-              required
-              step="0.01"
-              type="number"
-            />
-          </div>
-          
-          <div class="flex items-center gap-4 col-span-2">
-            <button
-              class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition focus:outline-none font-semibold text-lg flex items-center gap-3"
-              type="submit"
-            >
-              <i class="fas fa-plus"></i>
-              إضافة سحب
-            </button>
-            <button
-              class="bg-red-800 text-white px-6 py-3 rounded-lg hover:bg-red-900 transition focus:outline-none font-semibold text-lg flex items-center gap-3"
-              id="calculateMonthlyWithdrawalsBtn"
-              type="button"
-            >
-              <i class="fas fa-calculator"></i>
-              حساب السحب الشهري
-            </button>
-          </div>
-        </form>
-        
-        <div class="overflow-x-auto max-h-96 rounded-lg border border-gray-300 bg-white shadow mb-6">
-          <table class="w-full text-right table-auto border-collapse border border-gray-300">
-            <thead>
-              <tr class="bg-red-100 text-gray-900">
-                <th class="border border-gray-300 px-4 py-2">التاريخ</th>
-                <th class="border border-gray-300 px-4 py-2">اسم العامل</th>
-                <th class="border border-gray-300 px-4 py-2">المبلغ (ريال)</th>
-                <th class="border border-gray-300 px-4 py-2">إجراء</th>
-              </tr>
-            </thead>
-            <tbody class="text-gray-700" id="withdrawalsTableBody"></tbody>
-          </table>
+          <form class="grid grid-cols-1 md:grid-cols-5 gap-6 mb-6" id="withdrawalForm">
+            <div>
+              <label class="block mb-2 font-semibold text-gray-800" for="withdrawalDate">
+                تاريخ السحب
+              </label>
+              <input class="form-input w-full" id="withdrawalDate" required type="date" />
+            </div>
+            
+            <div>
+              <label class="block mb-2 font-semibold text-gray-800" for="withdrawalWorker">
+                اسم العامل
+              </label>
+              <select class="form-input w-full" id="withdrawalWorker" required>
+                <option disabled selected value="">اختر العامل</option>
+              </select>
+            </div>
+            
+            <div>
+              <label class="block mb-2 font-semibold text-gray-800" for="withdrawalAmount">
+                المبلغ (ريال)
+              </label>
+              <input
+                class="form-input w-full"
+                id="withdrawalAmount"
+                min="0"
+                placeholder="أدخل المبلغ"
+                required
+                step="0.01"
+                type="number"
+              />
+            </div>
+            
+            <div class="flex items-center gap-4 col-span-2">
+              <button class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition focus:outline-none font-semibold flex items-center gap-3" type="submit">
+                <i class="fas fa-plus"></i>
+                إضافة سحب
+              </button>
+              <button
+                class="bg-red-800 text-white px-6 py-3 rounded-lg hover:bg-red-900 transition focus:outline-none font-semibold flex items-center gap-3"
+                id="calculateMonthlyWithdrawalsBtn"
+                type="button"
+              >
+                <i class="fas fa-calculator"></i>
+                حساب السحب الشهري
+              </button>
+            </div>
+          </form>
         </div>
         
-        <div class="max-w-4xl bg-red-100 p-6 rounded-lg text-red-800 hidden" id="monthlyWithdrawalSummary">
-          <h3 class="text-xl font-bold mb-4">ملخص السحب الشهري</h3>
-          <div class="space-y-2 text-lg" id="monthlyWithdrawalContent"></div>
-        </div>
-        
-        <div class="max-w-4xl flex justify-end mt-4">
-          <button id="deleteAllWithdrawalsBtn" class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition focus:outline-none font-semibold text-lg flex items-center gap-3">
-            <i class="fas fa-trash-alt"></i>
-            حذف الكل
-          </button>
+        <div class="page-section">
+          <div class="overflow-x-auto">
+            <table class="modern-table w-full">
+              <thead>
+                <tr>
+                  <th>التاريخ</th>
+                  <th>اسم العامل</th>
+                  <th>المبلغ (ريال)</th>
+                  <th>إجراء</th>
+                </tr>
+              </thead>
+              <tbody id="withdrawalsTableBody"></tbody>
+            </table>
+          </div>
+          
+          <div class="bg-red-50 border border-red-200 p-6 rounded-lg text-red-800 hidden mt-6" id="monthlyWithdrawalSummary">
+            <h3 class="text-xl font-bold mb-4">ملخص السحب الشهري</h3>
+            <div class="space-y-2 text-lg" id="monthlyWithdrawalContent"></div>
+          </div>
+          
+          <div class="flex justify-end mt-4">
+            <button id="deleteAllWithdrawalsBtn" class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition focus:outline-none font-semibold flex items-center gap-3">
+              <i class="fas fa-trash-alt"></i>
+              حذف الكل
+            </button>
+          </div>
         </div>
       </section>
 
       <!-- Appointments Page -->
-      <section class="hidden" id="appointments">
-        <button class="mb-6 px-5 py-3 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition focus:outline-none flex items-center gap-2" id="backFromAppointments">
+      <section class="hidden fade-in" id="appointments">
+        <button class="bg-yellow-600 text-white px-5 py-3 rounded-lg hover:bg-yellow-700 transition focus:outline-none flex items-center gap-2 mb-6" id="backFromAppointments">
           <i class="fas fa-arrow-right"></i>
           العودة للرئيسية
         </button>
         
-        <h2 class="text-2xl font-bold mb-6 text-gray-900 border-b-4 border-yellow-600 inline-block pb-1">
-          جدولة وإدارة المواعيد
-        </h2>
-        
-        <form class="max-w-4xl grid grid-cols-1 md:grid-cols-4 gap-6 mb-6" id="appointmentForm">
-          <div>
-            <label class="block mb-2 font-semibold text-gray-800" for="appointmentDate">
-              تاريخ الموعد
-            </label>
-            <input
-              class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-yellow-300"
-              id="appointmentDate"
-              required
-              type="date"
-            />
-          </div>
+        <div class="page-section">
+          <h2 class="text-3xl font-bold mb-6 text-gray-900 border-b-4 border-yellow-600 inline-block pb-2">
+            جدولة وإدارة المواعيد
+          </h2>
           
-          <div>
-            <label class="block mb-2 font-semibold text-gray-800" for="appointmentTime">
-              وقت الموعد
-            </label>
-            <input
-              class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-yellow-300"
-              id="appointmentTime"
-              required
-              type="time"
-            />
-          </div>
-          
-          <div>
-            <label class="block mb-2 font-semibold text-gray-800" for="appointmentCustomer">
-              اسم العميل
-            </label>
-            <input
-              class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-yellow-300"
-              id="appointmentCustomer"
-              placeholder="أدخل اسم العميل"
-              required
-              type="text"
-            />
-          </div>
-          
-          <div class="flex items-center gap-4">
-            <button
-              class="bg-yellow-600 text-white px-6 py-3 rounded-lg hover:bg-yellow-700 transition focus:outline-none font-semibold text-lg flex items-center gap-3"
-              type="submit"
-            >
-              <i class="fas fa-plus"></i>
-              إضافة موعد
-            </button>
-          </div>
-        </form>
-        
-        <div class="overflow-x-auto max-h-96 rounded-lg border border-gray-300 bg-white shadow">
-          <table class="w-full text-right table-auto border-collapse border border-gray-300">
-            <thead>
-              <tr class="bg-yellow-100 text-gray-900">
-                <th class="border border-gray-300 px-4 py-2">التاريخ</th>
-                <th class="border border-gray-300 px-4 py-2">الوقت</th>
-                <th class="border border-gray-300 px-4 py-2">اسم العميل</th>
-                <th class="border border-gray-300 px-4 py-2">إجراء</th>
-              </tr>
-            </thead>
-            <tbody class="text-gray-700" id="appointmentsTableBody"></tbody>
-          </table>
+          <form class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6" id="appointmentForm">
+            <div>
+              <label class="block mb-2 font-semibold text-gray-800" for="appointmentDate">
+                تاريخ الموعد
+              </label>
+              <input class="form-input w-full" id="appointmentDate" required type="date" />
+            </div>
+            
+            <div>
+              <label class="block mb-2 font-semibold text-gray-800" for="appointmentTime">
+                وقت الموعد
+              </label>
+              <input class="form-input w-full" id="appointmentTime" required type="time" />
+            </div>
+            
+            <div>
+              <label class="block mb-2 font-semibold text-gray-800" for="appointmentCustomer">
+                اسم العميل
+              </label>
+              <input
+                class="form-input w-full"
+                id="appointmentCustomer"
+                placeholder="أدخل اسم العميل"
+                required
+                type="text"
+              />
+            </div>
+            
+            <div class="flex items-center gap-4">
+              <button class="bg-yellow-600 text-white px-6 py-3 rounded-lg hover:bg-yellow-700 transition focus:outline-none font-semibold flex items-center gap-3" type="submit">
+                <i class="fas fa-plus"></i>
+                إضافة موعد
+              </button>
+            </div>
+          </form>
         </div>
         
-        <div class="max-w-4xl flex justify-end mt-4">
-          <button id="deleteAllAppointmentsBtn" class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition focus:outline-none font-semibold text-lg flex items-center gap-3">
-            <i class="fas fa-trash-alt"></i>
-            حذف الكل
-          </button>
+        <div class="page-section">
+          <div class="overflow-x-auto">
+            <table class="modern-table w-full">
+              <thead>
+                <tr>
+                  <th>التاريخ</th>
+                  <th>الوقت</th>
+                  <th>اسم العميل</th>
+                  <th>إجراء</th>
+                </tr>
+              </thead>
+              <tbody id="appointmentsTableBody"></tbody>
+            </table>
+          </div>
+          
+          <div class="flex justify-end mt-4">
+            <button id="deleteAllAppointmentsBtn" class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition focus:outline-none font-semibold flex items-center gap-3">
+              <i class="fas fa-trash-alt"></i>
+              حذف الكل
+            </button>
+          </div>
         </div>
       </section>
 
       <!-- Services Page -->
-      <section class="hidden" id="services">
-        <button class="mb-6 px-5 py-3 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition focus:outline-none flex items-center gap-2" id="backFromServices">
+      <section class="hidden fade-in" id="services">
+        <button class="bg-pink-600 text-white px-5 py-3 rounded-lg hover:bg-pink-700 transition focus:outline-none flex items-center gap-2 mb-6" id="backFromServices">
           <i class="fas fa-arrow-right"></i>
           العودة للرئيسية
         </button>
         
-        <h2 class="text-2xl font-bold mb-6 text-gray-900 border-b-4 border-pink-600 inline-block pb-1">
-          قائمة الخدمات المقدمة للعملاء
-        </h2>
-        
-        <form class="max-w-4xl grid grid-cols-1 md:grid-cols-3 gap-6 mb-6" id="serviceForm">
-          <div>
-            <label class="block mb-2 font-semibold text-gray-800" for="serviceName">
-              اسم الخدمة
-            </label>
-            <input
-              class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-pink-300"
-              id="serviceName"
-              placeholder="أدخل اسم الخدمة"
-              required
-              type="text"
-            />
-          </div>
+        <div class="page-section">
+          <h2 class="text-3xl font-bold mb-6 text-gray-900 border-b-4 border-pink-600 inline-block pb-2">
+            قائمة الخدمات المقدمة للعملاء
+          </h2>
           
-          <div>
-            <label class="block mb-2 font-semibold text-gray-800" for="servicePriceInput">
-              السعر (ريال)
-            </label>
-            <input
-              class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-pink-300"
-              id="servicePriceInput"
-              min="0"
-              placeholder="أدخل السعر"
-              required
-              step="0.01"
-              type="number"
-            />
-          </div>
-          
-          <div class="flex items-center gap-4">
-            <button
-              class="bg-pink-600 text-white px-6 py-3 rounded-lg hover:bg-pink-700 transition focus:outline-none font-semibold text-lg flex items-center gap-3"
-              type="submit"
-            >
-              <i class="fas fa-plus"></i>
-              إضافة خدمة
-            </button>
-          </div>
-        </form>
-        
-        <div class="overflow-x-auto max-h-96 rounded-lg border border-gray-300 bg-white shadow">
-          <table class="w-full text-right table-auto border-collapse border border-gray-300">
-            <thead>
-              <tr class="bg-pink-100 text-gray-900">
-                <th class="border border-gray-300 px-4 py-2">اسم الخدمة</th>
-                <th class="border border-gray-300 px-4 py-2">السعر (ريال)</th>
-                <th class="border border-gray-300 px-4 py-2">إجراء</th>
-              </tr>
-            </thead>
-            <tbody class="text-gray-700" id="servicesTableBody"></tbody>
-          </table>
-        </div>
-        
-        <div class="max-w-4xl flex justify-end mt-4">
-          <button id="deleteAllServicesBtn" class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition focus:outline-none font-semibold text-lg flex items-center gap-3">
-            <i class="fas fa-trash-alt"></i>
-            حذف الكل
-          </button>
-        </div>
-      </section>
-
-      <!-- Enhanced Inventory Page -->
-      <section class="hidden" id="inventory">
-        <button class="mb-6 px-5 py-3 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition focus:outline-none flex items-center gap-2" id="backFromInventory">
-          <i class="fas fa-arrow-right"></i>
-          العودة للرئيسية
-        </button>
-        
-        <h2 class="text-2xl font-bold mb-6 text-gray-900 border-b-4 border-teal-600 inline-block pb-1">
-          إدارة المخزون والمنتجات مع تتبع الحركة
-        </h2>
-        
-        <!-- Add New Item Form -->
-        <div class="bg-white rounded-lg shadow p-6 mb-6">
-          <h3 class="text-xl font-bold mb-4 text-teal-600">إضافة منتج جديد</h3>
-          <form class="grid grid-cols-1 md:grid-cols-4 gap-6" id="inventoryForm">
+          <form class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6" id="serviceForm">
             <div>
-              <label class="block mb-2 font-semibold text-gray-800" for="productName">
-                اسم المنتج
+              <label class="block mb-2 font-semibold text-gray-800" for="serviceName">
+                اسم الخدمة
               </label>
               <input
-                class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-teal-300"
-                id="productName"
-                placeholder="أدخل اسم المنتج"
+                class="form-input w-full"
+                id="serviceName"
+                placeholder="أدخل اسم الخدمة"
                 required
                 type="text"
               />
             </div>
             
             <div>
-              <label class="block mb-2 font-semibold text-gray-800" for="productQuantity">
-                الكمية الأولية
-              </label>
-              <input
-                class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-teal-300"
-                id="productQuantity"
-                min="0"
-                placeholder="أدخل الكمية"
-                required
-                step="1"
-                type="number"
-              />
-            </div>
-            
-            <div>
-              <label class="block mb-2 font-semibold text-gray-800" for="productPrice">
+              <label class="block mb-2 font-semibold text-gray-800" for="servicePriceInput">
                 السعر (ريال)
               </label>
               <input
-                class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-teal-300"
-                id="productPrice"
+                class="form-input w-full"
+                id="servicePriceInput"
                 min="0"
                 placeholder="أدخل السعر"
                 required
@@ -1376,246 +1189,324 @@
             </div>
             
             <div class="flex items-center gap-4">
-              <button
-                class="bg-teal-600 text-white px-6 py-3 rounded-lg hover:bg-teal-700 transition focus:outline-none font-semibold text-lg flex items-center gap-3"
-                type="submit"
-              >
+              <button class="bg-pink-600 text-white px-6 py-3 rounded-lg hover:bg-pink-700 transition focus:outline-none font-semibold flex items-center gap-3" type="submit">
                 <i class="fas fa-plus"></i>
-                إضافة منتج
+                إضافة خدمة
               </button>
             </div>
           </form>
         </div>
+        
+        <div class="page-section">
+          <div class="overflow-x-auto">
+            <table class="modern-table w-full">
+              <thead>
+                <tr>
+                  <th>اسم الخدمة</th>
+                  <th>السعر (ريال)</th>
+                  <th>إجراء</th>
+                </tr>
+              </thead>
+              <tbody id="servicesTableBody"></tbody>
+            </table>
+          </div>
+          
+          <div class="flex justify-end mt-4">
+            <button id="deleteAllServicesBtn" class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition focus:outline-none font-semibold flex items-center gap-3">
+              <i class="fas fa-trash-alt"></i>
+              حذف الكل
+            </button>
+          </div>
+        </div>
+      </section>
 
-        <!-- Stock Movement Form -->
-        <div class="bg-white rounded-lg shadow p-6 mb-6">
-          <h3 class="text-xl font-bold mb-4 text-orange-600">حركة المخزون</h3>
-          <form class="grid grid-cols-1 md:grid-cols-5 gap-6" id="stockMovementForm">
-            <div>
-              <label class="block mb-2 font-semibold text-gray-800" for="movementProduct">
-                اختر المنتج
-              </label>
-              <select
-                class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-orange-300"
-                id="movementProduct"
-                required
-              >
-                <option disabled selected value="">اختر المنتج</option>
-              </select>
-            </div>
-            
-            <div>
-              <label class="block mb-2 font-semibold text-gray-800" for="movementType">
-                نوع الحركة
-              </label>
-              <select
-                class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-orange-300"
-                id="movementType"
-                required
-              >
-                <option disabled selected value="">اختر نوع الحركة</option>
-                <option value="add">إضافة مخزون</option>
-                <option value="withdraw">سحب من المخزون</option>
-              </select>
-            </div>
-            
-            <div>
-              <label class="block mb-2 font-semibold text-gray-800" for="movementQuantity">
-                الكمية
-              </label>
-              <input
-                class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-orange-300"
-                id="movementQuantity"
-                min="1"
-                placeholder="أدخل الكمية"
-                required
-                step="1"
-                type="number"
-              />
-            </div>
-            
-            <div>
-              <label class="block mb-2 font-semibold text-gray-800" for="movementNote">
-                ملاحظة
-              </label>
-              <input
-                class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-orange-300"
-                id="movementNote"
-                placeholder="ملاحظة اختيارية"
-                type="text"
-              />
-            </div>
-            
-            <div class="flex items-center gap-4">
-              <button
-                class="bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700 transition focus:outline-none font-semibold text-lg flex items-center gap-3"
-                type="submit"
-              >
-                <i class="fas fa-exchange-alt"></i>
-                تنفيذ الحركة
-              </button>
-            </div>
-          </form>
+      <!-- Enhanced Inventory Page -->
+      <section class="hidden fade-in" id="inventory">
+        <button class="bg-teal-600 text-white px-5 py-3 rounded-lg hover:bg-teal-700 transition focus:outline-none flex items-center gap-2 mb-6" id="backFromInventory">
+          <i class="fas fa-arrow-right"></i>
+          العودة للرئيسية
+        </button>
+        
+        <div class="page-section">
+          <h2 class="text-3xl font-bold mb-6 text-gray-900 border-b-4 border-teal-600 inline-block pb-2">
+            إدارة المخزون والمنتجات مع تتبع الحركة
+          </h2>
+
+          <!-- Add New Item Form -->
+          <div class="bg-gradient-to-r from-teal-50 to-blue-50 rounded-lg shadow p-6 mb-6 border border-teal-200">
+            <h3 class="text-xl font-bold mb-4 text-teal-700">إضافة منتج جديد</h3>
+            <form class="grid grid-cols-1 md:grid-cols-4 gap-6" id="inventoryForm">
+              <div>
+                <label class="block mb-2 font-semibold text-gray-800" for="productName">
+                  اسم المنتج
+                </label>
+                <input
+                  class="form-input w-full"
+                  id="productName"
+                  placeholder="أدخل اسم المنتج"
+                  required
+                  type="text"
+                />
+              </div>
+              
+              <div>
+                <label class="block mb-2 font-semibold text-gray-800" for="productQuantity">
+                  الكمية الأولية
+                </label>
+                <input
+                  class="form-input w-full"
+                  id="productQuantity"
+                  min="0"
+                  placeholder="أدخل الكمية"
+                  required
+                  step="1"
+                  type="number"
+                />
+              </div>
+              
+              <div>
+                <label class="block mb-2 font-semibold text-gray-800" for="productPrice">
+                  السعر (ريال)
+                </label>
+                <input
+                  class="form-input w-full"
+                  id="productPrice"
+                  min="0"
+                  placeholder="أدخل السعر"
+                  required
+                  step="0.01"
+                  type="number"
+                />
+              </div>
+              
+              <div class="flex items-center gap-4">
+                <button class="bg-teal-600 text-white px-6 py-3 rounded-lg hover:bg-teal-700 transition focus:outline-none font-semibold flex items-center gap-3" type="submit">
+                  <i class="fas fa-plus"></i>
+                  إضافة منتج
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Stock Movement Form -->
+          <div class="bg-gradient-to-r from-orange-50 to-red-50 rounded-lg shadow p-6 mb-6 border border-orange-200">
+            <h3 class="text-xl font-bold mb-4 text-orange-700">حركة المخزون</h3>
+            <form class="grid grid-cols-1 md:grid-cols-5 gap-6" id="stockMovementForm">
+              <div>
+                <label class="block mb-2 font-semibold text-gray-800" for="movementProduct">
+                  اختر المنتج
+                </label>
+                <select class="form-input w-full" id="movementProduct" required>
+                  <option disabled selected value="">اختر المنتج</option>
+                </select>
+              </div>
+              
+              <div>
+                <label class="block mb-2 font-semibold text-gray-800" for="movementType">
+                  نوع الحركة
+                </label>
+                <select class="form-input w-full" id="movementType" required>
+                  <option disabled selected value="">اختر نوع الحركة</option>
+                  <option value="add">إضافة مخزون</option>
+                  <option value="withdraw">سحب من المخزون</option>
+                </select>
+              </div>
+              
+              <div>
+                <label class="block mb-2 font-semibold text-gray-800" for="movementQuantity">
+                  الكمية
+                </label>
+                <input
+                  class="form-input w-full"
+                  id="movementQuantity"
+                  min="1"
+                  placeholder="أدخل الكمية"
+                  required
+                  step="1"
+                  type="number"
+                />
+              </div>
+              
+              <div>
+                <label class="block mb-2 font-semibold text-gray-800" for="movementNote">
+                  ملاحظة
+                </label>
+                <input
+                  class="form-input w-full"
+                  id="movementNote"
+                  placeholder="ملاحظة اختيارية"
+                  type="text"
+                />
+              </div>
+              
+              <div class="flex items-center gap-4">
+                <button class="bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700 transition focus:outline-none font-semibold flex items-center gap-3" type="submit">
+                  <i class="fas fa-exchange-alt"></i>
+                  تنفيذ الحركة
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
 
         <!-- Inventory Table -->
-        <div class="bg-white rounded-lg shadow p-6 mb-6">
+        <div class="page-section">
           <h3 class="text-xl font-bold mb-4 text-teal-600">المخزون الحالي</h3>
-          <div class="overflow-x-auto max-h-96 rounded-lg border border-gray-300">
-            <table class="w-full text-right table-auto border-collapse border border-gray-300">
+          <div class="overflow-x-auto">
+            <table class="modern-table w-full">
               <thead>
-                <tr class="bg-teal-100 text-gray-900">
-                  <th class="border border-gray-300 px-4 py-2">اسم المنتج</th>
-                  <th class="border border-gray-300 px-4 py-2">إجمالي المضاف</th>
-                  <th class="border border-gray-300 px-4 py-2">إجمالي المسحوب</th>
-                  <th class="border border-gray-300 px-4 py-2">الرصيد الحالي</th>
-                  <th class="border border-gray-300 px-4 py-2">السعر (ريال)</th>
-                  <th class="border border-gray-300 px-4 py-2">حالة المخزون</th>
-                  <th class="border border-gray-300 px-4 py-2">إجراء</th>
+                <tr>
+                  <th>اسم المنتج</th>
+                  <th>إجمالي المضاف</th>
+                  <th>إجمالي المسحوب</th>
+                  <th>الرصيد الحالي</th>
+                  <th>السعر (ريال)</th>
+                  <th>حالة المخزون</th>
+                  <th>إجراء</th>
                 </tr>
               </thead>
-              <tbody class="text-gray-700" id="inventoryTableBody"></tbody>
+              <tbody id="inventoryTableBody"></tbody>
             </table>
           </div>
         </div>
 
         <!-- Stock Movement History -->
-        <div class="bg-white rounded-lg shadow p-6 mb-6">
+        <div class="page-section">
           <h3 class="text-xl font-bold mb-4 text-gray-600">سجل حركة المخزون</h3>
-          <div class="overflow-x-auto max-h-64 rounded-lg border border-gray-300">
-            <table class="w-full text-right table-auto border-collapse border border-gray-300">
+          <div class="overflow-x-auto">
+            <table class="modern-table w-full">
               <thead>
-                <tr class="bg-gray-100 text-gray-900">
-                  <th class="border border-gray-300 px-4 py-2">التاريخ</th>
-                  <th class="border border-gray-300 px-4 py-2">المنتج</th>
-                  <th class="border border-gray-300 px-4 py-2">نوع الحركة</th>
-                  <th class="border border-gray-300 px-4 py-2">الكمية</th>
-                  <th class="border border-gray-300 px-4 py-2">الملاحظة</th>
-                  <th class="border border-gray-300 px-4 py-2">إجراء</th>
+                <tr>
+                  <th>التاريخ</th>
+                  <th>المنتج</th>
+                  <th>نوع الحركة</th>
+                  <th>الكمية</th>
+                  <th>الملاحظة</th>
+                  <th>إجراء</th>
                 </tr>
               </thead>
-              <tbody class="text-gray-700" id="stockMovementTableBody"></tbody>
+              <tbody id="stockMovementTableBody"></tbody>
             </table>
           </div>
-        </div>
-        
-        <div class="max-w-4xl flex justify-end mt-4 gap-4">
-          <button id="deleteAllMovementsBtn" class="bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700 transition focus:outline-none font-semibold text-lg flex items-center gap-3">
-            <i class="fas fa-history"></i>
-            حذف سجل الحركة
-          </button>
-          <button id="deleteAllInventoryBtn" class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition focus:outline-none font-semibold text-lg flex items-center gap-3">
-            <i class="fas fa-trash-alt"></i>
-            حذف الكل
-          </button>
+          
+          <div class="flex justify-end mt-4 gap-4">
+            <button id="deleteAllMovementsBtn" class="bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700 transition focus:outline-none font-semibold flex items-center gap-3">
+              <i class="fas fa-history"></i>
+              حذف سجل الحركة
+            </button>
+            <button id="deleteAllInventoryBtn" class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition focus:outline-none font-semibold flex items-center gap-3">
+              <i class="fas fa-trash-alt"></i>
+              حذف الكل
+            </button>
+          </div>
         </div>
       </section>
 
       <!-- Reports Page -->
-      <section class="hidden" id="reports">
-        <button class="mb-6 px-5 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition focus:outline-none flex items-center gap-2" id="backFromReports">
+      <section class="hidden fade-in" id="reports">
+        <button class="bg-indigo-600 text-white px-5 py-3 rounded-lg hover:bg-indigo-700 transition focus:outline-none flex items-center gap-2 mb-6" id="backFromReports">
           <i class="fas fa-arrow-right"></i>
           العودة للرئيسية
         </button>
         
         <div class="flex justify-between items-center mb-6">
-          <h2 class="text-2xl font-bold text-gray-900 border-b-4 border-indigo-600 inline-block pb-1">
+          <h2 class="text-3xl font-bold text-gray-900 border-b-4 border-indigo-600 inline-block pb-2">
             عرض تقارير مفصلة عن الأداء
           </h2>
           <button
             id="printAllReportsBtn"
-            class="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition focus:outline-none font-semibold text-lg flex items-center gap-3"
+            class="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition focus:outline-none font-semibold flex items-center gap-3"
           >
             <i class="fas fa-print"></i>
             طباعة جميع التقارير
           </button>
         </div>
         
-        <div class="max-w-6xl space-y-6">
+        <div class="space-y-6">
           <!-- Expenses Report -->
-          <div class="bg-white rounded-lg shadow p-6">
+          <div class="page-section">
             <h3 class="text-xl font-bold mb-4 text-gray-900">تقرير المصروفات</h3>
-            <p class="text-gray-700 mb-4">إجمالي المصروفات: <span class="font-bold" id="totalExpenses">0.00</span> ريال</p>
-            <div class="overflow-x-auto max-h-64 rounded-lg border border-gray-300 bg-gray-50">
-              <table class="w-full text-right table-auto border-collapse border border-gray-300">
+            <p class="text-gray-700 mb-4">إجمالي المصروفات: <span class="font-bold text-blue-600" id="totalExpenses">0.00</span> ريال</p>
+            <div class="overflow-x-auto">
+              <table class="modern-table w-full">
                 <thead>
-                  <tr class="bg-indigo-100 text-gray-900">
-                    <th class="border border-gray-300 px-4 py-2">الفئة</th>
-                    <th class="border border-gray-300 px-4 py-2">المبلغ (ريال)</th>
+                  <tr>
+                    <th>الفئة</th>
+                    <th>المبلغ (ريال)</th>
                   </tr>
                 </thead>
-                <tbody class="text-gray-700" id="expenseReportBody"></tbody>
+                <tbody id="expenseReportBody"></tbody>
               </table>
             </div>
           </div>
 
           <!-- Salaries Report -->
-          <div class="bg-white rounded-lg shadow p-6">
+          <div class="page-section">
             <h3 class="text-xl font-bold mb-4 text-gray-900">تقرير الرواتب</h3>
-            <p class="text-gray-700 mb-4">إجمالي الرواتب المدفوعة: <span class="font-bold" id="totalSalaries">0.00</span> ريال</p>
-            <div class="overflow-x-auto max-h-64 rounded-lg border border-gray-300 bg-gray-50">
-              <table class="w-full text-right table-auto border-collapse border border-gray-300">
+            <p class="text-gray-700 mb-4">إجمالي الرواتب المدفوعة: <span class="font-bold text-green-600" id="totalSalaries">0.00</span> ريال</p>
+            <div class="overflow-x-auto">
+              <table class="modern-table w-full">
                 <thead>
-                  <tr class="bg-indigo-100 text-gray-900">
-                    <th class="border border-gray-300 px-4 py-2">اسم الموظف</th>
-                    <th class="border border-gray-300 px-4 py-2">المبلغ (ريال)</th>
+                  <tr>
+                    <th>اسم الموظف</th>
+                    <th>المبلغ (ريال)</th>
                   </tr>
                 </thead>
-                <tbody class="text-gray-700" id="salaryReportBody"></tbody>
+                <tbody id="salaryReportBody"></tbody>
               </table>
             </div>
           </div>
 
           <!-- Withdrawals Report -->
-          <div class="bg-white rounded-lg shadow p-6">
+          <div class="page-section">
             <h3 class="text-xl font-bold mb-4 text-gray-900">تقرير السحب</h3>
-            <p class="text-gray-700 mb-4">إجمالي السحب: <span class="font-bold" id="totalWithdrawals">0.00</span> ريال</p>
-            <div class="overflow-x-auto max-h-64 rounded-lg border border-gray-300 bg-gray-50">
-              <table class="w-full text-right table-auto border-collapse border border-gray-300">
+            <p class="text-gray-700 mb-4">إجمالي السحب: <span class="font-bold text-red-600" id="totalWithdrawals">0.00</span> ريال</p>
+            <div class="overflow-x-auto">
+              <table class="modern-table w-full">
                 <thead>
-                  <tr class="bg-indigo-100 text-gray-900">
-                    <th class="border border-gray-300 px-4 py-2">اسم العامل</th>
-                    <th class="border border-gray-300 px-4 py-2">الشهر</th>
-                    <th class="border border-gray-300 px-4 py-2">المبلغ (ريال)</th>
+                  <tr>
+                    <th>اسم العامل</th>
+                    <th>الشهر</th>
+                    <th>المبلغ (ريال)</th>
                   </tr>
                 </thead>
-                <tbody class="text-gray-700" id="withdrawalReportBody"></tbody>
+                <tbody id="withdrawalReportBody"></tbody>
               </table>
             </div>
           </div>
 
           <!-- Invoices Report -->
-          <div class="bg-white rounded-lg shadow p-6">
+          <div class="page-section">
             <h3 class="text-xl font-bold mb-4 text-gray-900">تقرير الفواتير</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
-              <div class="bg-blue-50 p-4 rounded-lg">
-                <p class="text-sm text-blue-600">عدد الفواتير</p>
+              <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                <p class="text-sm text-blue-600 font-semibold">عدد الفواتير</p>
                 <p class="text-2xl font-bold text-blue-800" id="totalInvoicesCount">0</p>
               </div>
-              <div class="bg-green-50 p-4 rounded-lg">
-                <p class="text-sm text-green-600">إجمالي المبيعات</p>
+              <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+                <p class="text-sm text-green-600 font-semibold">إجمالي المبيعات</p>
                 <p class="text-2xl font-bold text-green-800" id="totalInvoicesAmount">0.00 ريال</p>
               </div>
-              <div class="bg-yellow-50 p-4 rounded-lg">
-                <p class="text-sm text-yellow-600">مبيعات كاش</p>
+              <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+                <p class="text-sm text-yellow-600 font-semibold">مبيعات كاش</p>
                 <p class="text-2xl font-bold text-yellow-800" id="totalCashInvoices">0.00 ريال</p>
               </div>
-              <div class="bg-purple-50 p-4 rounded-lg">
-                <p class="text-sm text-purple-600">مبيعات فيزا</p>
+              <div class="bg-purple-50 p-4 rounded-lg border border-purple-200">
+                <p class="text-sm text-purple-600 font-semibold">مبيعات فيزا</p>
                 <p class="text-2xl font-bold text-purple-800" id="totalVisaInvoices">0.00 ريال</p>
               </div>
             </div>
             
             <h4 class="text-lg font-bold mb-2 text-gray-900">مبيعات حسب العامل</h4>
-            <div class="overflow-x-auto max-h-64 rounded-lg border border-gray-300 bg-gray-50">
-              <table class="w-full text-right table-auto border-collapse border border-gray-300">
+            <div class="overflow-x-auto">
+              <table class="modern-table w-full">
                 <thead>
-                  <tr class="bg-indigo-100 text-gray-900">
-                    <th class="border border-gray-300 px-4 py-2">اسم العامل</th>
-                    <th class="border border-gray-300 px-4 py-2">إجمالي المبيعات (ريال)</th>
+                  <tr>
+                    <th>اسم العامل</th>
+                    <th>إجمالي المبيعات (ريال)</th>
                   </tr>
                 </thead>
-                <tbody class="text-gray-700" id="invoiceWorkerReportBody"></tbody>
+                <tbody id="invoiceWorkerReportBody"></tbody>
               </table>
             </div>
           </div>
@@ -1623,44 +1514,46 @@
       </section>
 
       <!-- Daily Salary Page -->
-      <section class="hidden" id="dailySalary">
-        <button class="mb-6 px-5 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition focus:outline-none flex items-center gap-2" id="backFromDailySalary">
+      <section class="hidden fade-in" id="dailySalary">
+        <button class="bg-orange-600 text-white px-5 py-3 rounded-lg hover:bg-orange-700 transition focus:outline-none flex items-center gap-2 mb-6" id="backFromDailySalary">
           <i class="fas fa-arrow-right"></i>
           العودة للرئيسية
         </button>
         
-        <h2 class="text-2xl font-bold mb-6 text-gray-900 border-b-4 border-orange-600 inline-block pb-1">
-          حساب الراتب اليومي للعمال بناءً على الفواتير المسجلة
-        </h2>
-        
-        <form class="max-w-4xl grid grid-cols-1 md:grid-cols-3 gap-6 mb-6" id="dailySalaryForm">
-          <div>
-            <label for="dailyWorkerSelect" class="block mb-2 font-semibold text-gray-800">اختر اسم العامل</label>
-            <select id="dailyWorkerSelect" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-orange-300" required>
-              <option disabled selected value="">اختر العامل</option>
-            </select>
-          </div>
+        <div class="page-section">
+          <h2 class="text-3xl font-bold mb-6 text-gray-900 border-b-4 border-orange-600 inline-block pb-2">
+            حساب الراتب اليومي للعمال بناءً على الفواتير المسجلة
+          </h2>
           
-          <div>
-            <label for="dailyDateInput" class="block mb-2 font-semibold text-gray-800">التاريخ</label>
-            <input type="date" id="dailyDateInput" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-orange-300" required />
-          </div>
-          
-          <div class="md:col-span-3 flex justify-end">
-            <button type="submit" class="bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700 transition focus:outline-none font-semibold text-lg flex items-center gap-3">
-              <i class="fas fa-calculator"></i>
-              حساب الراتب اليومي
-            </button>
-          </div>
-        </form>
-        
-        <div class="max-w-4xl bg-orange-100 p-6 rounded-lg text-orange-900" id="dailySalaryResult">
-          <h3 class="text-xl font-bold mb-4">نتيجة حساب الراتب اليومي</h3>
-          <p id="dailySalaryText" class="text-lg whitespace-pre-line"></p>
+          <form class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6" id="dailySalaryForm">
+            <div>
+              <label for="dailyWorkerSelect" class="block mb-2 font-semibold text-gray-800">اختر اسم العامل</label>
+              <select id="dailyWorkerSelect" class="form-input w-full" required>
+                <option disabled selected value="">اختر العامل</option>
+              </select>
+            </div>
+            
+            <div>
+              <label for="dailyDateInput" class="block mb-2 font-semibold text-gray-800">التاريخ</label>
+              <input type="date" id="dailyDateInput" class="form-input w-full" required />
+            </div>
+            
+            <div class="md:col-span-3 flex justify-end">
+              <button type="submit" class="bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700 transition focus:outline-none font-semibold flex items-center gap-3">
+                <i class="fas fa-calculator"></i>
+                حساب الراتب اليومي
+              </button>
+            </div>
+          </form>
         </div>
         
-        <div class="max-w-4xl flex justify-end mt-4">
-          <button id="deleteAllDailySalaryBtn" class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition focus:outline-none font-semibold text-lg flex items-center gap-3">
+        <div class="page-section bg-orange-50 border border-orange-200" id="dailySalaryResult">
+          <h3 class="text-xl font-bold mb-4 text-orange-800">نتيجة حساب الراتب اليومي</h3>
+          <p id="dailySalaryText" class="text-lg whitespace-pre-line text-orange-900"></p>
+        </div>
+        
+        <div class="flex justify-end mt-4">
+          <button id="deleteAllDailySalaryBtn" class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition focus:outline-none font-semibold flex items-center gap-3">
             <i class="fas fa-trash-alt"></i>
             حذف الكل
           </button>
@@ -1668,63 +1561,65 @@
       </section>
 
       <!-- Monthly Salary Page -->
-      <section class="hidden" id="monthlySalary">
-        <button class="mb-6 px-5 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition focus:outline-none flex items-center gap-2" id="backFromMonthlySalary">
+      <section class="hidden fade-in" id="monthlySalary">
+        <button class="bg-purple-600 text-white px-5 py-3 rounded-lg hover:bg-purple-700 transition focus:outline-none flex items-center gap-2 mb-6" id="backFromMonthlySalary">
           <i class="fas fa-arrow-right"></i>
           العودة للرئيسية
         </button>
         
-        <h2 class="text-2xl font-bold mb-6 text-gray-900 border-b-4 border-purple-600 inline-block pb-1">
-          حساب الراتب الشهري للعمال
-        </h2>
-        
-        <form class="max-w-4xl grid grid-cols-1 md:grid-cols-3 gap-6 mb-6" id="monthlySalaryForm">
-          <div>
-            <label for="monthlyWorkerSelect" class="block mb-2 font-semibold text-gray-800">اختر اسم العامل</label>
-            <select id="monthlyWorkerSelect" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-purple-300" required>
-              <option disabled selected value="">اختر العامل</option>
-            </select>
-          </div>
+        <div class="page-section">
+          <h2 class="text-3xl font-bold mb-6 text-gray-900 border-b-4 border-purple-600 inline-block pb-2">
+            حساب الراتب الشهري للعمال
+          </h2>
           
-          <div>
-            <label for="monthlyYearInput" class="block mb-2 font-semibold text-gray-800">السنة</label>
-            <input type="number" id="monthlyYearInput" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-purple-300" min="2000" max="2100" placeholder="مثال: 2024" required />
-          </div>
-          
-          <div>
-            <label for="monthlyMonthInput" class="block mb-2 font-semibold text-gray-800">الشهر</label>
-            <select id="monthlyMonthInput" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-purple-300" required>
-              <option disabled selected value="">اختر الشهر</option>
-              <option value="01">يناير</option>
-              <option value="02">فبراير</option>
-              <option value="03">مارس</option>
-              <option value="04">أبريل</option>
-              <option value="05">مايو</option>
-              <option value="06">يونيو</option>
-              <option value="07">يوليو</option>
-              <option value="08">أغسطس</option>
-              <option value="09">سبتمبر</option>
-              <option value="10">أكتوبر</option>
-              <option value="11">نوفمبر</option>
-              <option value="12">ديسمبر</option>
-            </select>
-          </div>
-          
-          <div class="md:col-span-3 flex justify-end">
-            <button type="submit" class="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition focus:outline-none font-semibold text-lg flex items-center gap-3">
-              <i class="fas fa-calculator"></i>
-              حساب الراتب الشهري
-            </button>
-          </div>
-        </form>
-        
-        <div class="max-w-4xl bg-purple-100 p-6 rounded-lg text-purple-900 hidden" id="monthlySalaryResult">
-          <h3 class="text-xl font-bold mb-4">نتيجة حساب الراتب الشهري</h3>
-          <p id="monthlySalaryText" class="text-lg whitespace-pre-line"></p>
+          <form class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6" id="monthlySalaryForm">
+            <div>
+              <label for="monthlyWorkerSelect" class="block mb-2 font-semibold text-gray-800">اختر اسم العامل</label>
+              <select id="monthlyWorkerSelect" class="form-input w-full" required>
+                <option disabled selected value="">اختر العامل</option>
+              </select>
+            </div>
+            
+            <div>
+              <label for="monthlyYearInput" class="block mb-2 font-semibold text-gray-800">السنة</label>
+              <input type="number" id="monthlyYearInput" class="form-input w-full" min="2000" max="2100" placeholder="مثال: 2024" required />
+            </div>
+            
+            <div>
+              <label for="monthlyMonthInput" class="block mb-2 font-semibold text-gray-800">الشهر</label>
+              <select id="monthlyMonthInput" class="form-input w-full" required>
+                <option disabled selected value="">اختر الشهر</option>
+                <option value="01">يناير</option>
+                <option value="02">فبراير</option>
+                <option value="03">مارس</option>
+                <option value="04">أبريل</option>
+                <option value="05">مايو</option>
+                <option value="06">يونيو</option>
+                <option value="07">يوليو</option>
+                <option value="08">أغسطس</option>
+                <option value="09">سبتمبر</option>
+                <option value="10">أكتوبر</option>
+                <option value="11">نوفمبر</option>
+                <option value="12">ديسمبر</option>
+              </select>
+            </div>
+            
+            <div class="md:col-span-3 flex justify-end">
+              <button type="submit" class="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition focus:outline-none font-semibold flex items-center gap-3">
+                <i class="fas fa-calculator"></i>
+                حساب الراتب الشهري
+              </button>
+            </div>
+          </form>
         </div>
         
-        <div class="max-w-4xl flex justify-end mt-4">
-          <button id="deleteAllMonthlySalaryBtn" class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition focus:outline-none font-semibold text-lg flex items-center gap-3">
+        <div class="page-section bg-purple-50 border border-purple-200 hidden" id="monthlySalaryResult">
+          <h3 class="text-xl font-bold mb-4 text-purple-800">نتيجة حساب الراتب الشهري</h3>
+          <p id="monthlySalaryText" class="text-lg whitespace-pre-line text-purple-900"></p>
+        </div>
+        
+        <div class="flex justify-end mt-4">
+          <button id="deleteAllMonthlySalaryBtn" class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition focus:outline-none font-semibold flex items-center gap-3">
             <i class="fas fa-trash-alt"></i>
             حذف الكل
           </button>
@@ -1732,26 +1627,26 @@
       </section>
 
       <!-- POS Section -->
-      <section class="hidden" id="posSection">
-        <button class="mb-6 px-5 py-3 bg-emerald-700 text-white rounded-lg hover:bg-emerald-800 transition focus:outline-none flex items-center gap-2" id="backFromPOSBtn">
+      <section class="hidden fade-in" id="posSection">
+        <button class="bg-emerald-700 text-white px-5 py-3 rounded-lg hover:bg-emerald-800 transition focus:outline-none flex items-center gap-2 mb-6" id="backFromPOSBtn">
           <i class="fas fa-arrow-right"></i>
           العودة للرئيسية
         </button>
         
-        <div class="max-w-[900px] mx-auto bg-white rounded-lg shadow-lg p-4 flex flex-col md:flex-row gap-4">
+        <div class="max-w-6xl mx-auto bg-white rounded-lg shadow-lg p-4 flex flex-col lg:flex-row gap-4">
           <!-- Left side: product grid -->
-          <div class="w-full md:w-1/3 bg-gray-50 rounded-lg p-3 flex flex-col">
+          <div class="w-full lg:w-1/3 bg-gray-50 rounded-lg p-3 flex flex-col">
             <!-- Search input -->
             <input
-              class="mb-3 rounded border border-gray-300 p-1 text-sm text-right placeholder-gray-400"
+              class="mb-3 rounded border border-gray-300 p-2 text-sm text-right placeholder-gray-400"
               id="searchInput"
               placeholder="بحث عن خدمة أو منتج..."
               type="text"
             />
             <!-- Product grid -->
-            <div class="grid grid-cols-3 gap-2 overflow-y-auto max-h-[400px]" id="productGrid"></div>
+            <div class="grid grid-cols-2 lg:grid-cols-3 gap-2 overflow-y-auto max-h-96" id="productGrid"></div>
             <button
-              class="mt-auto bg-blue-600 text-white text-xs rounded py-1 px-2 w-full"
+              class="mt-auto bg-blue-600 text-white text-sm rounded py-2 px-3 w-full hover:bg-blue-700 transition"
               id="showMoreBtn"
             >
               عرض المزيد
@@ -1759,19 +1654,19 @@
           </div>
           
           <!-- Right side: main content -->
-          <div class="w-full md:w-2/3 bg-white rounded-lg p-4 flex flex-col">
+          <div class="w-full lg:w-2/3 bg-white rounded-lg p-4 flex flex-col">
             <!-- Top bar -->
-            <div class="flex flex-col md:flex-row justify-between items-center mb-3 text-xs text-gray-600 gap-2">
-              <div>فاتورة رقم 000000000000</div>
-              <div class="flex gap-2 flex-wrap w-full md:w-auto justify-center md:justify-start">
+            <div class="flex flex-col lg:flex-row justify-between items-center mb-3 text-sm text-gray-600 gap-2">
+              <div class="font-semibold">فاتورة رقم 000000000000</div>
+              <div class="flex gap-2 flex-wrap w-full lg:w-auto justify-center lg:justify-start">
                 <input
-                  class="border border-gray-300 rounded p-1 text-xs text-right w-full md:w-40"
+                  class="form-input text-sm w-full lg:w-40"
                   id="workerName"
                   placeholder="اسم العامل"
                   type="text"
                 />
                 <input
-                  class="border border-gray-300 rounded p-1 text-xs text-right w-full md:w-40"
+                  class="form-input text-sm w-full lg:w-40"
                   id="customerName"
                   placeholder="اسم العميل"
                   type="text"
@@ -1782,14 +1677,14 @@
             <!-- Payment method selection -->
             <div class="mb-3 flex gap-4 items-center text-sm text-gray-700">
               <label for="paymentMethod" class="font-semibold">طريقة الدفع:</label>
-              <select id="paymentMethod" class="border border-gray-300 rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+              <select id="paymentMethod" class="form-input text-sm">
                 <option value="cash" selected>كاش</option>
                 <option value="visa">فيزا</option>
               </select>
             </div>
             
             <!-- Table header -->
-            <div class="grid grid-cols-6 gap-2 text-xs font-semibold text-gray-700 border-b border-gray-300 pb-1 mb-1">
+            <div class="grid grid-cols-6 gap-2 text-sm font-semibold text-gray-700 border-b border-gray-300 pb-2 mb-2">
               <div>المنتج</div>
               <div>الكمية</div>
               <div>السعر</div>
@@ -1799,18 +1694,18 @@
             </div>
             
             <!-- Table rows container -->
-            <div class="flex flex-col gap-1 max-h-[300px] overflow-y-auto" id="invoiceItems"></div>
+            <div class="flex flex-col gap-1 max-h-64 overflow-y-auto" id="invoiceItems"></div>
             
             <!-- Add product input -->
-            <div class="flex items-center gap-2 mt-3 text-xs">
+            <div class="flex items-center gap-2 mt-3 text-sm">
               <input
-                class="flex-grow border border-gray-300 rounded p-1 text-right"
+                class="flex-grow form-input text-sm"
                 id="addProductInput"
                 placeholder="أضف منتج أو خدمة"
                 type="text"
               />
               <input
-                class="w-24 border border-gray-300 rounded p-1 text-xs text-center"
+                class="w-24 form-input text-sm"
                 id="manualPriceInput"
                 placeholder="السعر"
                 type="number"
@@ -1818,7 +1713,7 @@
                 step="0.01"
               />
               <button
-                class="bg-blue-600 text-white rounded px-3 py-1"
+                class="bg-blue-600 text-white rounded px-4 py-2 text-sm hover:bg-blue-700 transition"
                 id="addProductByNameBtn"
               >
                 إضافة
@@ -1826,23 +1721,23 @@
             </div>
             
             <!-- Bottom summary and buttons -->
-            <div class="mt-auto flex flex-wrap gap-2 justify-between items-center pt-3 border-t border-gray-300 text-xs">
-              <div class="text-green-600 font-bold" id="totalAmount">المجموع: 0.00 ريال</div>
+            <div class="mt-auto flex flex-wrap gap-2 justify-between items-center pt-3 border-t border-gray-300 text-sm">
+              <div class="text-green-600 font-bold text-lg" id="totalAmount">المجموع: 0.00 ريال</div>
               <div class="flex gap-2 flex-wrap">
                 <button
-                  class="bg-red-600 text-white rounded px-3 py-1"
+                  class="bg-red-600 text-white rounded px-4 py-2 hover:bg-red-700 transition"
                   id="clearInvoiceBtn"
                 >
                   إلغاء
                 </button>
                 <button
-                  class="bg-green-600 text-white rounded px-3 py-1"
+                  class="bg-green-600 text-white rounded px-4 py-2 hover:bg-green-700 transition"
                   id="completeSaleBtn"
                 >
                   إتمام البيع
                 </button>
                 <button
-                  class="bg-gray-600 text-white rounded px-3 py-1"
+                  class="bg-gray-600 text-white rounded px-4 py-2 hover:bg-gray-700 transition"
                   id="showInvoiceLogBtn"
                 >
                   سجل الفواتير
@@ -1853,28 +1748,30 @@
             <!-- Invoice Log Section -->
             <div class="mt-4 overflow-auto max-h-64 rounded-lg border border-gray-300 bg-gray-50 shadow p-2 hidden" id="invoiceLogSection">
               <h3 class="text-sm font-semibold text-gray-800 mb-2">سجل الفواتير</h3>
-              <table class="w-full text-right text-xs border-collapse border border-gray-300">
-                <thead>
-                  <tr class="bg-gray-200 text-gray-900">
-                    <th class="border border-gray-300 px-2 py-1">رقم الفاتورة</th>
-                    <th class="border border-gray-300 px-2 py-1">التاريخ</th>
-                    <th class="border border-gray-300 px-2 py-1">العامل</th>
-                    <th class="border border-gray-300 px-2 py-1">العميل</th>
-                    <th class="border border-gray-300 px-2 py-1">عدد العناصر</th>
-                    <th class="border border-gray-300 px-2 py-1">المجموع (ريال)</th>
-                    <th class="border border-gray-300 px-2 py-1">طريقة الدفع</th>
-                    <th class="border border-gray-300 px-2 py-1">إجراء</th>
-                  </tr>
-                </thead>
-                <tbody id="invoiceLogTableBody" class="text-gray-700"></tbody>
-              </table>
+              <div class="overflow-x-auto">
+                <table class="modern-table w-full">
+                  <thead>
+                    <tr>
+                      <th>رقم الفاتورة</th>
+                      <th>التاريخ</th>
+                      <th>العامل</th>
+                      <th>العميل</th>
+                      <th>عدد العناصر</th>
+                      <th>المجموع (ريال)</th>
+                      <th>طريقة الدفع</th>
+                      <th>إجراء</th>
+                    </tr>
+                  </thead>
+                  <tbody id="invoiceLogTableBody"></tbody>
+                </table>
+              </div>
               <button class="mt-2 bg-red-600 text-white rounded px-3 py-1 text-xs hover:bg-red-700 transition focus:outline-none" id="closeInvoiceLogBtn">
                 إغلاق السجل
               </button>
             </div>
             
-            <div class="max-w-4xl flex justify-end mt-4">
-              <button id="deleteAllInvoicesBtn" class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition focus:outline-none font-semibold text-lg flex items-center gap-3">
+            <div class="flex justify-end mt-4">
+              <button id="deleteAllInvoicesBtn" class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition focus:outline-none font-semibold flex items-center gap-3">
                 <i class="fas fa-trash-alt"></i>
                 حذف الكل
               </button>
@@ -1887,42 +1784,80 @@
       </section>
 
       <!-- Payment Summary Page -->
-      <section class="hidden" id="paymentSummary">
-        <button class="mb-6 px-5 py-3 bg-cyan-600 text-white rounded-lg hover:bg-cyan-700 transition focus:outline-none flex items-center gap-2" id="backFromPaymentSummary">
+      <section class="hidden fade-in" id="paymentSummary">
+        <button class="bg-cyan-600 text-white px-5 py-3 rounded-lg hover:bg-cyan-700 transition focus:outline-none flex items-center gap-2 mb-6" id="backFromPaymentSummary">
           <i class="fas fa-arrow-right"></i>
           العودة للرئيسية
         </button>
         
-        <h2 class="text-2xl font-bold mb-6 text-gray-900 border-b-4 border-cyan-600 inline-block pb-1">
-          ملخص طرق الدفع
-        </h2>
-        
-        <div class="max-w-4xl bg-white rounded-lg shadow p-6">
-          <div class="mb-4 text-lg font-semibold text-gray-800">إجمالي المبالغ المدفوعة حسب طريقة الدفع</div>
-          <table class="w-full text-right table-auto border-collapse border border-gray-300">
-            <thead>
-              <tr class="bg-cyan-100 text-gray-900">
-                <th class="border border-gray-300 px-4 py-2">طريقة الدفع</th>
-                <th class="border border-gray-300 px-4 py-2">المبلغ الإجمالي (ريال)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="border border-gray-300 px-4 py-2">كاش</td>
-                <td class="border border-gray-300 px-4 py-2" id="totalCashAmount">0.00</td>
-              </tr>
-              <tr>
-                <td class="border border-gray-300 px-4 py-2">فيزا</td>
-                <td class="border border-gray-300 px-4 py-2" id="totalVisaAmount">0.00</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="page-section">
+          <h2 class="text-3xl font-bold mb-6 text-gray-900 border-b-4 border-cyan-600 inline-block pb-2">
+            ملخص طرق الدفع
+          </h2>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div class="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-lg p-6">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h3 class="text-lg font-semibold text-green-800">المدفوع كاش</h3>
+                  <p class="text-3xl font-bold text-green-600" id="totalCashAmount">0.00 ريال</p>
+                </div>
+                <i class="fas fa-money-bill-wave text-4xl text-green-500"></i>
+              </div>
+            </div>
+            
+            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-6">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h3 class="text-lg font-semibold text-blue-800">المدفوع فيزا</h3>
+                  <p class="text-3xl font-bold text-blue-600" id="totalVisaAmount">0.00 ريال</p>
+                </div>
+                <i class="fas fa-credit-card text-4xl text-blue-500"></i>
+              </div>
+            </div>
+          </div>
+          
+          <div class="overflow-x-auto">
+            <table class="modern-table w-full">
+              <thead>
+                <tr>
+                  <th>طريقة الدفع</th>
+                  <th>المبلغ الإجمالي (ريال)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="flex items-center gap-2">
+                    <i class="fas fa-money-bill-wave text-green-600"></i>
+                    كاش
+                  </td>
+                  <td class="font-bold text-green-600" id="totalCashAmountTable">0.00</td>
+                </tr>
+                <tr>
+                  <td class="flex items-center gap-2">
+                    <i class="fas fa-credit-card text-blue-600"></i>
+                    فيزا
+                  </td>
+                  <td class="font-bold text-blue-600" id="totalVisaAmountTable">0.00</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
     </main>
     
-    <footer class="bg-white shadow-inner p-4 text-center text-gray-600 text-sm select-none">
-      © 2025 جميع الحقوق محفوظة | تصميم وتطوير بواسطة Eng-A7med-ra
+    <footer class="bg-white shadow-inner p-4 text-center text-gray-600 text-sm border-t border-gray-200">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-2">
+        <div class="flex items-center gap-2">
+          <i class="fas fa-copyright text-blue-600"></i>
+          <span>2025 جميع الحقوق محفوظة | مركز الفارس للعناية بالرجل</span>
+        </div>
+        <div class="flex items-center gap-2 text-blue-600">
+          <i class="fas fa-code"></i>
+          <span>تصميم وتطوير بواسطة Eng-A7med-ra</span>
+        </div>
+      </div>
     </footer>
   </div>
 
@@ -1930,6 +1865,7 @@
     // Global variables
     let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
     let salaries = JSON.parse(localStorage.getItem('salaries')) || [];
+    let payrollRecords = JSON.parse(localStorage.getItem('payrollRecords')) || [];
     let withdrawals = JSON.parse(localStorage.getItem('withdrawals')) || [];
     let appointments = JSON.parse(localStorage.getItem('appointments')) || [];
     let servicesData = JSON.parse(localStorage.getItem('services')) || [];
@@ -1951,7 +1887,7 @@
     ];
 
     // Products data for POS
-    const allProducts = [
+      const allProducts = [
       
       // Added new services
       { name: "حلاقة شعر + ذقن", price: 35, iconClass: "fas fa-cut", alt: "أيقونة حلاقة شعر وذقن", img: "https://placehold.co/60x60/png?text=حلاقة+شعر+وذقن" },
@@ -1980,7 +1916,6 @@
       { name: "حمام زيت مع الجهاز", price: 40, iconClass: "fas fa-oil-can", alt: "أيقونة حمام زيت مع الجهاز", img: "https://placehold.co/60x60/png?text=حمام+زيت+مع+الجهاز" },
       { name: "حمام زيت عادي", price: 25, iconClass: "fas fa-oil-can", alt: "أيقونة حمام زيت عادي", img: "https://placehold.co/60x60/png?text=حمام+زيت+عادي" }
     ];
-
     // POS variables
     let invoiceItems = [];
     let showAll = false;
@@ -2002,7 +1937,7 @@
 
     // Pages array
     const pages = [
-      'home', 'expenses', 'salaries', 'withdrawals', 'appointments', 
+      'home', 'expenses', 'salaries', 'payrollManagement', 'withdrawals', 'appointments', 
       'services', 'inventory', 'reports', 'dailySalary', 'monthlySalary', 
       'posSection', 'paymentSummary'
     ];
@@ -2053,6 +1988,9 @@
         updateInventoryTable();
         updateStockMovementTable();
         populateProductSelect();
+      }
+      if (pageId === 'payrollManagement') {
+        updatePayrollTable();
       }
     }
 
@@ -2270,12 +2208,17 @@
     // Worker Select Population
     function populateWorkerSelects() {
       const selects = [
-        'withdrawalWorker', 'salaryWorker', 'dailyWorkerSelect', 'monthlyWorkerSelect'
+        'withdrawalWorker', 'salaryWorker', 'payrollWorker', 'dailyWorkerSelect', 'monthlyWorkerSelect'
       ];
       
       selects.forEach(selectId => {
         const select = document.getElementById(selectId);
         if (select) {
+          // Clear existing options except the first one
+          while (select.children.length > 1) {
+            select.removeChild(select.lastChild);
+          }
+          
           workers.forEach(worker => {
             const option = document.createElement('option');
             option.value = worker.id;
@@ -2286,9 +2229,176 @@
       });
     }
 
+    // Payroll Management Functions
+    function calculateMonthlyWithdrawalsForWorker(workerId, month) {
+      return withdrawals
+        .filter(wd => wd.workerId === workerId && wd.date.startsWith(month))
+        .reduce((sum, wd) => sum + parseFloat(wd.amount), 0);
+    }
+
+    function updatePayrollTable() {
+      const tbody = document.getElementById('payrollTableBody');
+      if (!tbody) return;
+
+      tbody.innerHTML = '';
+      
+      if (payrollRecords.length === 0) {
+        const tr = document.createElement('tr');
+        const td = document.createElement('td');
+        td.colSpan = 9;
+        td.className = 'text-center py-4 text-gray-500';
+        td.textContent = 'لا توجد سجلات رواتب محسوبة.';
+        tr.appendChild(td);
+        tbody.appendChild(tr);
+        return;
+      }
+      
+      payrollRecords.forEach((record, index) => {
+        const workerName = workers.find(w => w.id === record.workerId)?.name || 'غير معروف';
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td class="px-4 py-3">${workerName}</td>
+          <td class="px-4 py-3">${parseFloat(record.baseSalary).toFixed(2)}</td>
+          <td class="px-4 py-3">${parseFloat(record.percentage).toFixed(1)}%</td>
+          <td class="px-4 py-3">${parseFloat(record.additionalAmount).toFixed(2)}</td>
+          <td class="px-4 py-3">${parseFloat(record.monthlyWithdrawals).toFixed(2)}</td>
+          <td class="px-4 py-3 font-bold ${record.netSalary < 0 ? 'text-red-600' : 'text-green-600'}">${parseFloat(record.netSalary).toFixed(2)}</td>
+          <td class="px-4 py-3">${record.month}</td>
+          <td class="px-4 py-3">${new Date(record.calculatedDate).toLocaleDateString('ar-EG')}</td>
+          <td class="px-4 py-3 text-center">
+            <button data-index="${index}" class="deletePayrollBtn text-red-600 hover:text-red-800 focus:outline-none">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+      
+      document.querySelectorAll('.deletePayrollBtn').forEach(btn => {
+        btn.addEventListener('click', e => {
+          if (!confirmPasswordPrompt()) return;
+          const idx = e.currentTarget.getAttribute('data-index');
+          payrollRecords.splice(idx, 1);
+          localStorage.setItem('payrollRecords', JSON.stringify(payrollRecords));
+          updatePayrollTable();
+        });
+      });
+    }
+
+    function initializePayrollManagement() {
+      const payrollForm = document.getElementById('payrollForm');
+      const payrollResult = document.getElementById('payrollResult');
+      const payrollResultContent = document.getElementById('payrollResultContent');
+
+      // Set current month as default
+      const currentDate = new Date();
+      const currentMonth = currentDate.getFullYear() + '-' + String(currentDate.getMonth() + 1).padStart(2, '0');
+      document.getElementById('payrollMonth').value = currentMonth;
+
+      payrollForm.addEventListener('submit', e => {
+        e.preventDefault();
+        
+        const workerId = document.getElementById('payrollWorker').value;
+        const baseSalary = parseFloat(document.getElementById('payrollBaseSalary').value);
+        const percentage = parseFloat(document.getElementById('payrollPercentage').value);
+        const additionalAmount = parseFloat(document.getElementById('payrollAdditionalAmount').value) || 0;
+        const month = document.getElementById('payrollMonth').value;
+        
+        if (!workerId || isNaN(baseSalary) || isNaN(percentage) || !month) {
+          alert('يرجى ملء جميع الحقول المطلوبة بشكل صحيح.');
+          return;
+        }
+
+        if (baseSalary < 0 || percentage < 0 || additionalAmount < 0) {
+          alert('لا يمكن أن تكون القيم المدخلة أقل من صفر.');
+          return;
+        }
+
+        if (percentage > 200) {
+          alert('النسبة المئوية لا يمكن أن تتجاوز 200%.');
+          return;
+        }
+
+        // Calculate monthly withdrawals
+        const monthlyWithdrawals = calculateMonthlyWithdrawalsForWorker(workerId, month);
+        
+        // Calculate net salary using the formula: (BaseSalary × Percentage%) + AdditionalAmount - MonthlyWithdrawals
+        const salaryByPercentage = baseSalary * (percentage / 100);
+        const netSalary = salaryByPercentage + additionalAmount - monthlyWithdrawals;
+
+        // Create record
+        const record = {
+          workerId,
+          baseSalary,
+          percentage,
+          additionalAmount,
+          monthlyWithdrawals,
+          netSalary,
+          month,
+          calculatedDate: new Date().toISOString()
+        };
+
+        // Save record
+        payrollRecords.push(record);
+        localStorage.setItem('payrollRecords', JSON.stringify(payrollRecords));
+
+        // Display results
+        const workerName = workers.find(w => w.id === workerId)?.name || 'غير معروف';
+        payrollResultContent.innerHTML = `
+          <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+            <p class="text-sm text-blue-600 font-semibold">اسم الموظف</p>
+            <p class="text-lg font-bold text-blue-800">${workerName}</p>
+          </div>
+          <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+            <p class="text-sm text-green-600 font-semibold">الراتب بعد النسبة</p>
+            <p class="text-lg font-bold text-green-800">${salaryByPercentage.toFixed(2)} ريال</p>
+          </div>
+          <div class="bg-purple-50 p-4 rounded-lg border border-purple-200">
+            <p class="text-sm text-purple-600 font-semibold">المبلغ الإضافي</p>
+            <p class="text-lg font-bold text-purple-800">${additionalAmount.toFixed(2)} ريال</p>
+          </div>
+          <div class="bg-red-50 p-4 rounded-lg border border-red-200">
+            <p class="text-sm text-red-600 font-semibold">السحب الشهري</p>
+            <p class="text-lg font-bold text-red-800">${monthlyWithdrawals.toFixed(2)} ريال</p>
+          </div>
+          <div class="md:col-span-2 lg:col-span-4 bg-gradient-to-r from-emerald-50 to-teal-50 p-6 rounded-lg border-2 border-emerald-300">
+            <p class="text-lg text-emerald-700 font-semibold mb-2">صافي الراتب النهائي</p>
+            <p class="text-3xl font-bold ${netSalary < 0 ? 'text-red-600' : 'text-emerald-600'}">${netSalary.toFixed(2)} ريال</p>
+            <p class="text-sm text-gray-600 mt-2">
+              المعادلة: (${baseSalary.toFixed(2)} × ${percentage}%) + ${additionalAmount.toFixed(2)} - ${monthlyWithdrawals.toFixed(2)} = ${netSalary.toFixed(2)}
+            </p>
+          </div>
+        `;
+
+        payrollResult.classList.remove('hidden');
+        updatePayrollTable();
+        payrollForm.reset();
+        
+        // Reset to current month
+        document.getElementById('payrollMonth').value = currentMonth;
+        document.getElementById('payrollPercentage').value = 100;
+        document.getElementById('payrollAdditionalAmount').value = 0;
+      });
+
+      // Delete all payroll records
+      document.getElementById('deleteAllPayrollBtn').addEventListener('click', () => {
+        if (!confirmPasswordPrompt()) return;
+        if (confirm('هل أنت متأكد من مسح جميع سجلات الرواتب المحسوبة؟ لا يمكن التراجع عن هذا الإجراء.')) {
+          payrollRecords = [];
+          localStorage.setItem('payrollRecords', JSON.stringify(payrollRecords));
+          updatePayrollTable();
+          payrollResult.classList.add('hidden');
+        }
+      });
+
+      updatePayrollTable();
+    }
+
     // Inventory Functions
     function getProductCurrentStock(productName) {
-      const movements = stockMovements.filter(m => m.productName === productName);
+      const movements = stockMov
+
+ements.filter(m => m.productName === productName);
       let totalAdded = 0;
       let totalWithdrawn = 0;
       
@@ -2308,9 +2418,9 @@
     }
 
     function getStockStatusClass(currentStock) {
-      if (currentStock <= 5) return 'stock-low';
-      if (currentStock <= 20) return 'stock-medium';
-      return 'stock-high';
+      if (currentStock <= 5) return 'status-error';
+      if (currentStock <= 20) return 'status-warning';
+      return 'status-success';
     }
 
     function getStockStatusText(currentStock) {
@@ -2342,15 +2452,15 @@
         
         const tr = document.createElement('tr');
         tr.innerHTML = `
-          <td class="border border-gray-300 px-4 py-2">${item.name}</td>
-          <td class="border border-gray-300 px-4 py-2 text-green-600 font-semibold">${stockInfo.totalAdded}</td>
-          <td class="border border-gray-300 px-4 py-2 text-red-600 font-semibold">${stockInfo.totalWithdrawn}</td>
-          <td class="border border-gray-300 px-4 py-2 font-bold">${stockInfo.currentStock}</td>
-          <td class="border border-gray-300 px-4 py-2">${parseFloat(item.price).toFixed(2)}</td>
-          <td class="border border-gray-300 px-4 py-2">
-            <span class="px-2 py-1 rounded text-xs font-semibold ${statusClass}">${statusText}</span>
+          <td class="px-4 py-3">${item.name}</td>
+          <td class="px-4 py-3 text-green-600 font-semibold">${stockInfo.totalAdded}</td>
+          <td class="px-4 py-3 text-red-600 font-semibold">${stockInfo.totalWithdrawn}</td>
+          <td class="px-4 py-3 font-bold">${stockInfo.currentStock}</td>
+          <td class="px-4 py-3">${parseFloat(item.price).toFixed(2)}</td>
+          <td class="px-4 py-3">
+            <span class="status-badge ${statusClass}">${statusText}</span>
           </td>
-          <td class="border border-gray-300 px-4 py-2 text-center">
+          <td class="px-4 py-3 text-center">
             <button data-index="${index}" class="deleteInventoryBtn text-red-600 hover:text-red-800 focus:outline-none">
               <i class="fas fa-trash-alt"></i>
             </button>
@@ -2404,12 +2514,12 @@
         
         const tr = document.createElement('tr');
         tr.innerHTML = `
-          <td class="border border-gray-300 px-4 py-2">${movement.date}</td>
-          <td class="border border-gray-300 px-4 py-2">${movement.productName}</td>
-          <td class="border border-gray-300 px-4 py-2 ${typeClass} font-semibold">${typeText}</td>
-          <td class="border border-gray-300 px-4 py-2">${movement.quantity}</td>
-          <td class="border border-gray-300 px-4 py-2">${movement.note || '-'}</td>
-          <td class="border border-gray-300 px-4 py-2 text-center">
+          <td class="px-4 py-3">${movement.date}</td>
+          <td class="px-4 py-3">${movement.productName}</td>
+          <td class="px-4 py-3 ${typeClass} font-semibold">${typeText}</td>
+          <td class="px-4 py-3">${movement.quantity}</td>
+          <td class="px-4 py-3">${movement.note || '-'}</td>
+          <td class="px-4 py-3 text-center">
             <button data-index="${stockMovements.indexOf(movement)}" class="deleteMovementBtn text-red-600 hover:text-red-800 focus:outline-none">
               <i class="fas fa-trash-alt"></i>
             </button>
@@ -2579,11 +2689,11 @@
       expenses.forEach((expense, index) => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
-          <td class="border border-gray-300 px-4 py-2">${expense.date}</td>
-          <td class="border border-gray-300 px-4 py-2">${expense.category}</td>
-          <td class="border border-gray-300 px-4 py-2">${parseFloat(expense.amount).toFixed(2)}</td>
-          <td class="border border-gray-300 px-4 py-2">${expense.description || ''}</td>
-          <td class="border border-gray-300 px-4 py-2 text-center">
+          <td class="px-4 py-3">${expense.date}</td>
+          <td class="px-4 py-3">${expense.category}</td>
+          <td class="px-4 py-3">${parseFloat(expense.amount).toFixed(2)}</td>
+          <td class="px-4 py-3">${expense.description || ''}</td>
+          <td class="px-4 py-3 text-center">
             <button data-index="${index}" class="deleteExpenseBtn text-red-600 hover:text-red-800 focus:outline-none">
               <i class="fas fa-trash-alt"></i>
             </button>
@@ -2669,12 +2779,12 @@
 
         const tr = document.createElement('tr');
         tr.innerHTML = `
-          <td class="border border-gray-300 px-4 py-2">${workerName}</td>
-          <td class="border border-gray-300 px-4 py-2">${salary.amount.toFixed(2)}</td>
-          <td class="border border-gray-300 px-4 py-2">${totalWithdrawal.toFixed(2)}</td>
-          <td class="border border-gray-300 px-4 py-2 font-semibold ${netSalary < 0 ? 'text-red-600' : ''}">${netSalary.toFixed(2)}</td>
-          <td class="border border-gray-300 px-4 py-2">${salary.date}</td>
-          <td class="border border-gray-300 px-4 py-2 text-center">
+          <td class="px-4 py-3">${workerName}</td>
+          <td class="px-4 py-3">${salary.amount.toFixed(2)}</td>
+          <td class="px-4 py-3">${totalWithdrawal.toFixed(2)}</td>
+          <td class="px-4 py-3 font-semibold ${netSalary < 0 ? 'text-red-600' : 'text-green-600'}">${netSalary.toFixed(2)}</td>
+          <td class="px-4 py-3">${salary.date}</td>
+          <td class="px-4 py-3 text-center">
             <button data-index="${index}" class="deleteSalaryBtn text-red-600 hover:text-red-800 focus:outline-none">
               <i class="fas fa-trash-alt"></i>
             </button>
@@ -2746,10 +2856,10 @@
         const workerName = workers.find(w => w.id === withdrawal.workerId)?.name || 'غير معروف';
         const tr = document.createElement('tr');
         tr.innerHTML = `
-          <td class="border border-gray-300 px-4 py-2">${withdrawal.date}</td>
-          <td class="border border-gray-300 px-4 py-2">${workerName}</td>
-          <td class="border border-gray-300 px-4 py-2">${parseFloat(withdrawal.amount).toFixed(2)}</td>
-          <td class="border border-gray-300 px-4 py-2 text-center">
+          <td class="px-4 py-3">${withdrawal.date}</td>
+          <td class="px-4 py-3">${workerName}</td>
+          <td class="px-4 py-3">${parseFloat(withdrawal.amount).toFixed(2)}</td>
+          <td class="px-4 py-3 text-center">
             <button data-index="${index}" class="deleteWithdrawalBtn text-red-600 hover:text-red-800 focus:outline-none">
               <i class="fas fa-trash-alt"></i>
             </button>
@@ -2788,7 +2898,11 @@
         const amount = withdrawalTotals[key];
         
         const div = document.createElement('div');
-        div.textContent = `${workerName} - ${month}: ${amount.toFixed(2)} ريال`;
+        div.className = 'flex justify-between items-center py-2 border-b border-red-200';
+        div.innerHTML = `
+          <span class="font-semibold">${workerName} - ${month}</span>
+          <span class="font-bold">${amount.toFixed(2)} ريال</span>
+        `;
         content.appendChild(div);
       }
       
@@ -2849,10 +2963,10 @@
       appointments.forEach((appointment, index) => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
-          <td class="border border-gray-300 px-4 py-2">${appointment.date}</td>
-          <td class="border border-gray-300 px-4 py-2">${appointment.time}</td>
-          <td class="border border-gray-300 px-4 py-2">${appointment.customer}</td>
-          <td class="border border-gray-300 px-4 py-2 text-center">
+          <td class="px-4 py-3">${appointment.date}</td>
+          <td class="px-4 py-3">${appointment.time}</td>
+          <td class="px-4 py-3">${appointment.customer}</td>
+          <td class="px-4 py-3 text-center">
             <button data-index="${index}" class="deleteAppointmentBtn text-red-600 hover:text-red-800 focus:outline-none">
               <i class="fas fa-trash-alt"></i>
             </button>
@@ -2922,9 +3036,9 @@
       servicesData.forEach((service, index) => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
-          <td class="border border-gray-300 px-4 py-2">${service.name}</td>
-          <td class="border border-gray-300 px-4 py-2">${parseFloat(service.price).toFixed(2)}</td>
-          <td class="border border-gray-300 px-4 py-2 text-center">
+          <td class="px-4 py-3">${service.name}</td>
+          <td class="px-4 py-3">${parseFloat(service.price).toFixed(2)}</td>
+          <td class="px-4 py-3 text-center">
             <button data-index="${index}" class="deleteServiceBtn text-red-600 hover:text-red-800 focus:outline-none">
               <i class="fas fa-trash-alt"></i>
             </button>
@@ -2992,8 +3106,8 @@
       for (const cat in expenseCategoryTotals) {
         const tr = document.createElement('tr');
         tr.innerHTML = `
-          <td class="border border-gray-300 px-4 py-2">${cat}</td>
-          <td class="border border-gray-300 px-4 py-2">${expenseCategoryTotals[cat].toFixed(2)}</td>
+          <td class="px-4 py-3">${cat}</td>
+          <td class="px-4 py-3">${expenseCategoryTotals[cat].toFixed(2)}</td>
         `;
         expenseReportBody.appendChild(tr);
         totalExpenses += expenseCategoryTotals[cat];
@@ -3018,8 +3132,8 @@
         const workerName = workers.find(w => w.id === workerId)?.name || 'غير معروف';
         const tr = document.createElement('tr');
         tr.innerHTML = `
-          <td class="border border-gray-300 px-4 py-2">${workerName}</td>
-          <td class="border border-gray-300 px-4 py-2">${salaryTotals[workerId].toFixed(2)}</td>
+          <td class="px-4 py-3">${workerName}</td>
+          <td class="px-4 py-3">${salaryTotals[workerId].toFixed(2)}</td>
         `;
         salaryReportBody.appendChild(tr);
         totalSalariesAmount += salaryTotals[workerId];
@@ -3048,9 +3162,9 @@
         const amount = withdrawalTotals[key];
         const tr = document.createElement('tr');
         tr.innerHTML = `
-          <td class="border border-gray-300 px-4 py-2">${workerName}</td>
-          <td class="border border-gray-300 px-4 py-2">${month}</td>
-          <td class="border border-gray-300 px-4 py-2">${amount.toFixed(2)}</td>
+          <td class="px-4 py-3">${workerName}</td>
+          <td class="px-4 py-3">${month}</td>
+          <td class="px-4 py-3">${amount.toFixed(2)}</td>
         `;
         withdrawalReportBody.appendChild(tr);
         totalWithdrawalsAmount += amount;
@@ -3093,8 +3207,8 @@
       for (const workerName in invoiceWorkerTotals) {
         const tr = document.createElement('tr');
         tr.innerHTML = `
-          <td class="border border-gray-300 px-4 py-2">${workerName}</td>
-          <td class="border border-gray-300 px-4 py-2">${invoiceWorkerTotals[workerName].toFixed(2)}</td>
+          <td class="px-4 py-3">${workerName}</td>
+          <td class="px-4 py-3">${invoiceWorkerTotals[workerName].toFixed(2)}</td>
         `;
         invoiceWorkerReportBody.appendChild(tr);
       }
@@ -3455,8 +3569,10 @@
         }
       });
       
-      document.getElementById('totalCashAmount').textContent = totalCash.toFixed(2);
-      document.getElementById('totalVisaAmount').textContent = totalVisa.toFixed(2);
+      document.getElementById('totalCashAmount').textContent = totalCash.toFixed(2) + ' ريال';
+      document.getElementById('totalVisaAmount').textContent = totalVisa.toFixed(2) + ' ريال';
+      document.getElementById('totalCashAmountTable').textContent = totalCash.toFixed(2);
+      document.getElementById('totalVisaAmountTable').textContent = totalVisa.toFixed(2);
     }
 
     // POS System Functions
@@ -3467,10 +3583,14 @@
       
       productsToShow.forEach((product) => {
         const btn = document.createElement("button");
-        btn.className = "bg-white rounded border border-gray-300 p-1 flex flex-col items-center text-xs text-center hover:border-blue-500 transition";
+        btn.className = "bg-white rounded-lg border border-gray-300 p-2 flex flex-col items-center text-xs text-center hover:border-blue-500 hover:shadow-md transition-all duration-200";
         btn.title = product.name;
         btn.onclick = () => addProductToInvoice(product.name, 1, product.price);
-        btn.innerHTML = `<img alt="${product.alt}" class="mb-1 w-14 h-14 object-contain" height="60" src="${product.img}" width="60"/>${product.name}`;
+        btn.innerHTML = `
+          <img alt="${product.alt}" class="mb-2 w-12 h-12 object-cover rounded" src="${product.img}" />
+          <span class="text-xs font-medium">${product.name}</span>
+          <span class="text-xs text-green-600 font-bold">${product.price} ريال</span>
+        `;
         grid.appendChild(btn);
       });
       
@@ -3478,10 +3598,6 @@
       showMoreBtn.textContent = showAll ? "عرض أقل" : "عرض المزيد";
     }
 
-    document.getElementById('backFromPOSBtn').addEventListener('click', () => {
-  showPage('home');
-});
-    
     function addProductToInvoice(name, quantity, price) {
       const existingIndex = invoiceItems.findIndex(item => item.name === name);
       if (existingIndex !== -1) {
@@ -3500,21 +3616,21 @@
       invoiceItems.forEach((item, index) => {
         const totalPrice = (item.price * item.quantity * (1 - item.discount / 100)).toFixed(2);
         const row = document.createElement("div");
-        row.className = "grid grid-cols-6 gap-2 items-center text-xs text-gray-800 border-b border-gray-200 py-1";
+        row.className = "grid grid-cols-6 gap-2 items-center text-sm text-gray-800 border-b border-gray-200 py-2";
         row.innerHTML = `
-          <div>${item.name}</div>
+          <div class="text-xs">${item.name}</div>
           <div>
-            <input type="number" min="1" value="${item.quantity}" class="w-full border border-gray-300 rounded text-xs text-center p-0.5" data-index="${index}" data-type="quantity" />
+            <input type="number" min="1" value="${item.quantity}" class="w-full border border-gray-300 rounded text-xs text-center p-1" data-index="${index}" data-type="quantity" />
           </div>
           <div>
-            <input type="number" min="0" step="0.01" value="${item.price.toFixed(2)}" class="w-full border border-gray-300 rounded text-xs text-center p-0.5" data-index="${index}" data-type="price" />
+            <input type="number" min="0" step="0.01" value="${item.price.toFixed(2)}" class="w-full border border-gray-300 rounded text-xs text-center p-1" data-index="${index}" data-type="price" />
           </div>
           <div>
-            <input type="number" min="0" max="100" value="${item.discount}" class="w-full border border-gray-300 rounded text-xs text-center p-0.5" data-index="${index}" data-type="discount" />
+            <input type="number" min="0" max="100" value="${item.discount}" class="w-full border border-gray-300 rounded text-xs text-center p-1" data-index="${index}" data-type="discount" />
           </div>
-          <div>${totalPrice}</div>
+          <div class="text-xs font-semibold">${totalPrice}</div>
           <div>
-            <button class="text-red-500 text-sm font-bold" data-index="${index}" data-action="remove">×</button>
+            <button class="text-red-500 text-lg font-bold hover:text-red-700 transition" data-index="${index}" data-action="remove">×</button>
           </div>
         `;
         container.appendChild(row);
@@ -3594,7 +3710,7 @@
       
       const paymentMethod = document.getElementById("paymentMethod").value;
       printInvoice(paymentMethod);
-      alert("تم إتمام البيع بنجاح!\nشكراً لاستخدامك نظام صالون الحلاقة.");
+      alert("تم إتمام البيع بنجاح!\nشكراً لاستخدامك نظام مركز الفارس.");
       
       invoiceItems = [];
       renderInvoice();
@@ -3691,14 +3807,14 @@
         const dateObj = new Date(inv.date);
         const formattedDate = dateObj.toLocaleDateString('ar-EG') + ' ' + dateObj.toLocaleTimeString('ar-EG');
         tr.innerHTML = `
-          <td class="border border-gray-300 px-2 py-1">${inv.id}</td>
-          <td class="border border-gray-300 px-2 py-1">${formattedDate}</td>
-          <td class="border border-gray-300 px-2 py-1">${inv.worker}</td>
-          <td class="border border-gray-300 px-2 py-1">${inv.customer}</td>
-          <td class="border border-gray-300 px-2 py-1 text-center">${inv.items.length}</td>
-          <td class="border border-gray-300 px-2 py-1 text-center">${parseFloat(inv.total).toFixed(2)}</td>
-          <td class="border border-gray-300 px-2 py-1 text-center">${inv.paymentMethod === 'cash' ? 'كاش' : 'فيزا'}</td>
-          <td class="border border-gray-300 px-2 py-1 text-center">
+          <td class="px-3 py-2">${inv.id}</td>
+          <td class="px-3 py-2">${formattedDate}</td>
+          <td class="px-3 py-2">${inv.worker}</td>
+          <td class="px-3 py-2">${inv.customer}</td>
+          <td class="px-3 py-2 text-center">${inv.items.length}</td>
+          <td class="px-3 py-2 text-center">${parseFloat(inv.total).toFixed(2)}</td>
+          <td class="px-3 py-2 text-center">${inv.paymentMethod === 'cash' ? 'كاش' : 'فيزا'}</td>
+          <td class="px-3 py-2 text-center">
             <button data-index="${idx}" class="deleteInvoiceBtn text-red-600 hover:text-red-800 focus:outline-none">
               <i class="fas fa-trash-alt"></i>
             </button>
@@ -3801,6 +3917,7 @@
       // Initialize all modules
       initializeExpenses();
       initializeSalaries();
+      initializePayrollManagement();
       initializeWithdrawals();
       initializeAppointments();
       initializeServices();
