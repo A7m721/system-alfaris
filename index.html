@@ -27,43 +27,78 @@
       --light-color: #f8fafc;
     }
 
-    /* Login page enhancements */
+    /* Enhanced login page */
     .login-bg {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .login-bg::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+      opacity: 0.3;
     }
 
     .login-card {
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(15px);
       background: rgba(255, 255, 255, 0.95);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      z-index: 10;
     }
 
     .login-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+      background: rgba(255, 255, 255, 0.98);
     }
 
     .login-input {
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       background: rgba(255, 255, 255, 0.9);
+      position: relative;
     }
 
     .login-input:focus {
       background: white;
       transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+      border-color: var(--primary-color);
     }
 
     .login-btn {
       background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .login-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .login-btn:hover::before {
+      left: 100%;
     }
 
     .login-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(37, 99, 235, 0.4);
     }
 
     .logo-animation {
@@ -71,20 +106,75 @@
     }
 
     @keyframes logoFloat {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(2deg); }
+    }
+
+    /* Enhanced form inputs */
+    .form-group {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-input-enhanced {
+      width: 100%;
+      padding: 1rem 3rem 1rem 1rem;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      background: rgba(248, 250, 252, 0.8);
+    }
+
+    .form-input-enhanced:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      background: white;
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+      transform: translateY(-1px);
+    }
+
+    .form-icon {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #6b7280;
+      transition: color 0.3s ease;
+    }
+
+    .form-input-enhanced:focus + .form-icon {
+      color: var(--primary-color);
     }
 
     /* Enhanced dashboard cards */
     .dashboard-card {
       background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
       border: 1px solid #e2e8f0;
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dashboard-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .dashboard-card:hover::before {
+      transform: scaleX(1);
     }
 
     .dashboard-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      transform: translateY(-12px);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
       border-color: var(--primary-color);
     }
 
@@ -94,14 +184,16 @@
       color: white;
       border: none;
       padding: 0.75rem 1.5rem;
-      border-radius: 0.5rem;
+      border-radius: 0.75rem;
       font-weight: 600;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
     }
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+      box-shadow: 0 12px 25px rgba(37, 99, 235, 0.3);
     }
 
     .btn-secondary {
@@ -109,20 +201,20 @@
       color: white;
       border: none;
       padding: 0.75rem 1.5rem;
-      border-radius: 0.5rem;
+      border-radius: 0.75rem;
       font-weight: 600;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .btn-secondary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(6, 182, 212, 0.3);
+      box-shadow: 0 12px 25px rgba(6, 182, 212, 0.3);
     }
 
     /* Enhanced form styling */
     .form-input {
       border: 2px solid #e2e8f0;
-      border-radius: 0.5rem;
+      border-radius: 0.75rem;
       padding: 0.75rem 1rem;
       transition: all 0.3s ease;
       background: #f8fafc;
@@ -132,6 +224,7 @@
       border-color: var(--primary-color);
       background: white;
       box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+      outline: none;
     }
 
     /* Enhanced tables */
@@ -195,7 +288,7 @@
     .nav-btn {
       position: relative;
       padding: 0.75rem 1rem;
-      border-radius: 0.5rem;
+      border-radius: 0.75rem;
       transition: all 0.3s ease;
       font-weight: 500;
     }
@@ -222,6 +315,67 @@
       transform: scaleY(1);
     }
 
+    /* Enhanced payroll section */
+    .payroll-card {
+      background: linear-gradient(145deg, #f0f9ff 0%, #e0f2fe 100%);
+      border: 2px solid #0284c7;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .formula-display {
+      background: #1e293b;
+      color: #f1f5f9;
+      padding: 1rem;
+      border-radius: 0.75rem;
+      font-family: 'Courier New', monospace;
+      margin: 1rem 0;
+    }
+
+    /* Icon colors for dashboard cards */
+    .icon-blue { color: #3b82f6; }
+    .icon-green { color: #10b981; }
+    .icon-red { color: #ef4444; }
+    .icon-yellow { color: #f59e0b; }
+    .icon-purple { color: #8b5cf6; }
+    .icon-pink { color: #ec4899; }
+    .icon-teal { color: #14b8a6; }
+    .icon-indigo { color: #6366f1; }
+    .icon-orange { color: #f97316; }
+    .icon-emerald { color: #059669; }
+    .icon-cyan { color: #06b6d4; }
+
+    /* Loading and animation enhancements */
+    .fade-in {
+      animation: fadeIn 0.6s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .spinner {
+      border: 3px solid #f3f4f6;
+      border-top: 3px solid var(--primary-color);
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
     /* Responsive improvements */
     @media (max-width: 768px) {
       .dashboard-card {
@@ -231,6 +385,11 @@
       .page-section {
         padding: 1.5rem;
         margin-bottom: 1.5rem;
+      }
+
+      .login-card {
+        margin: 1rem;
+        padding: 2rem;
       }
     }
 
@@ -271,78 +430,43 @@
       }
     }
 
-    /* Animations */
-    .fade-in {
-      animation: fadeIn 0.5s ease-out;
+    /* Error message enhancement */
+    .error-message {
+      background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+      border: 1px solid #f87171;
+      color: #dc2626;
+      padding: 0.75rem 1rem;
+      border-radius: 0.75rem;
+      font-weight: 500;
+      animation: shake 0.5s ease-in-out;
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
     }
 
-    /* Loading spinner */
-    .spinner {
-      border: 3px solid #f3f4f6;
-      border-top: 3px solid var(--primary-color);
-      border-radius: 50%;
-      width: 24px;
-      height: 24px;
-      animation: spin 1s linear infinite;
+    /* Success message enhancement */
+    .success-message {
+      background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+      border: 1px solid #4ade80;
+      color: #16a34a;
+      padding: 0.75rem 1rem;
+      border-radius: 0.75rem;
+      font-weight: 500;
     }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    /* Enhanced payroll section */
-    .payroll-card {
-      background: linear-gradient(145deg, #f0f9ff 0%, #e0f2fe 100%);
-      border: 2px solid #0284c7;
-      border-radius: 1rem;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .formula-display {
-      background: #1e293b;
-      color: #f1f5f9;
-      padding: 1rem;
-      border-radius: 0.5rem;
-      font-family: 'Courier New', monospace;
-      margin: 1rem 0;
-    }
-
-    /* Icon colors for dashboard cards */
-    .icon-blue { color: #3b82f6; }
-    .icon-green { color: #10b981; }
-    .icon-red { color: #ef4444; }
-    .icon-yellow { color: #f59e0b; }
-    .icon-purple { color: #8b5cf6; }
-    .icon-pink { color: #ec4899; }
-    .icon-teal { color: #14b8a6; }
-    .icon-indigo { color: #6366f1; }
-    .icon-orange { color: #f97316; }
-    .icon-emerald { color: #059669; }
-    .icon-cyan { color: #06b6d4; }
   </style>
 </head>
 <body class="bg-gradient-to-br from-slate-50 via-white to-slate-100 min-h-screen flex flex-col">
 
   <!-- Enhanced Login Page -->
   <section class="login-bg flex items-center justify-center p-6" id="login">
-    <div class="login-card rounded-3xl shadow-2xl p-10 w-full max-w-md">
+    <div class="login-card rounded-3xl shadow-2xl p-12 w-full max-w-md">
       <div class="flex justify-center mb-8">
         <div class="logo-animation">
-          <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
-            <i class="fas fa-cut text-white text-2xl"></i>
+          <div class="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
+            <i class="fas fa-cut text-white text-3xl"></i>
           </div>
         </div>
       </div>
@@ -352,53 +476,47 @@
       </h1>
       
       <h2 class="text-2xl font-bold mb-8 text-gray-600 text-center">
-        ALFARIS
+        للعناية بالرجل
       </h2>
       
       <form class="space-y-6 w-full" id="form-login">
-        <div>
-          <label class="block mb-2 font-semibold text-gray-700" for="username">
-            <i class="fas fa-user ml-2"></i>
-            اسم المستخدم
-          </label>
+        <div class="form-group">
           <input
-            class="login-input w-full border border-gray-300 rounded-xl px-5 py-4 focus:outline-none focus:ring-4 focus:ring-blue-400 text-lg placeholder-gray-400"
+            class="form-input-enhanced"
             id="username"
             name="username"
-            placeholder="أدخل اسم المستخدم"
+            placeholder="اسم المستخدم"
             required
             type="text"
+            autocomplete="username"
           />
+          <i class="fas fa-user form-icon"></i>
         </div>
         
-        <div>
-          <label class="block mb-2 font-semibold text-gray-700" for="password">
-            <i class="fas fa-lock ml-2"></i>
-            كلمة المرور
-          </label>
-          <div class="relative">
-            <input
-              class="login-input w-full border border-gray-300 rounded-xl px-5 py-4 focus:outline-none focus:ring-4 focus:ring-blue-400 text-lg placeholder-gray-400"
-              id="password"
-              name="password"
-              placeholder="أدخل كلمة المرور"
-              required
-              type="password"
-            />
-            <button
-              type="button"
-              class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 transition"
-              id="togglePassword"
-            >
-              <i class="fas fa-eye" id="eyeIcon"></i>
-            </button>
-          </div>
+        <div class="form-group">
+          <input
+            class="form-input-enhanced"
+            id="password"
+            name="password"
+            placeholder="كلمة المرور"
+            required
+            type="password"
+            autocomplete="current-password"
+          />
+          <i class="fas fa-lock form-icon"></i>
+          <button
+            type="button"
+            class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 transition"
+            id="togglePassword"
+          >
+            <i class="fas fa-eye" id="eyeIcon"></i>
+          </button>
         </div>
         
         <div class="flex items-center justify-between text-sm">
           <button
             type="button"
-            class="text-blue-600 hover:text-blue-800 focus:outline-none transition"
+            class="text-blue-600 hover:text-blue-800 focus:outline-none transition flex items-center"
             id="forgotPasswordBtn"
           >
             <i class="fas fa-question-circle ml-1"></i>
@@ -424,7 +542,7 @@
           </button>
         </div>
         
-        <div class="text-red-600 font-semibold text-center select-none hidden" id="loginError" role="alert">
+        <div class="error-message text-center select-none hidden" id="loginError" role="alert">
         </div>
       </form>
       
@@ -505,9 +623,9 @@
           </button>
         </div>
         
-        <div class="text-red-600 font-semibold text-center select-none hidden" id="changePasswordError" role="alert">
+        <div class="error-message text-center select-none hidden" id="changePasswordError" role="alert">
         </div>
-        <div class="text-green-600 font-semibold text-center select-none hidden" id="changePasswordSuccess" role="alert">
+        <div class="success-message text-center select-none hidden" id="changePasswordSuccess" role="alert">
         </div>
       </form>
     </div>
@@ -524,12 +642,11 @@
       <nav class="hidden lg:flex space-x-4 text-gray-700 font-semibold">
         <button class="nav-btn text-green-600" data-page="home">الرئيسية</button>
         <button class="nav-btn text-red-600" data-page="expenses">المصروفات</button>
-        <button class="nav-btn text-brown" data-page="salaries">الرواتب</button>
-        <button class="nav-btn  text-black" data-page="payrollManagement">حساب الراتب</button>
+        <button class="nav-btn text-brown" data-page="payrollManagement">حساب الراتب</button>
         <button class="nav-btn text-yellow-600" data-page="withdrawals">السحب</button>
         <button class="nav-btn text-green-600" data-page="appointments">المواعيد</button>
         <button class="nav-btn text-blue-600" data-page="services">الخدمات</button>
-        <button class="nav-btn  text-red-600" data-page="inventory">المخزون</button>
+        <button class="nav-btn text-red-600" data-page="inventory">المخزون</button>
         <button class="nav-btn text-brown" data-page="reports">التقارير</button>
         <button class="nav-btn text-black" data-page="dailySalary">الراتب اليومي</button>
         <button class="nav-btn text-yellow-600" data-page="monthlySalary">الراتب الشهري</button>
@@ -558,7 +675,6 @@
       <nav class="flex flex-col p-4 space-y-2 text-gray-700 font-semibold max-h-screen overflow-y-auto">
         <button class="nav-btn text-right" data-page="home">الرئيسية</button>
         <button class="nav-btn text-right" data-page="expenses">المصروفات</button>
-        <button class="nav-btn text-right" data-page="salaries">الرواتب</button>
         <button class="nav-btn text-right" data-page="payrollManagement">حساب الراتب</button>
         <button class="nav-btn text-right" data-page="withdrawals">السحب</button>
         <button class="nav-btn text-right" data-page="appointments">المواعيد</button>
@@ -583,12 +699,6 @@
           <i class="fas fa-wallet text-7xl icon-blue mb-4"></i>
           <h2 class="text-2xl font-bold mb-2 text-gray-800">المصروفات</h2>
           <p class="text-gray-600 text-center">إدارة وتتبع المصروفات المالية</p>
-        </div>
-        
-        <div class="dashboard-card cursor-pointer rounded-xl shadow-lg p-6 flex flex-col items-center transition-all duration-300" data-page="salaries" role="button" tabindex="0">
-          <i class="fas fa-money-check-alt text-7xl icon-green mb-4"></i>
-          <h2 class="text-2xl font-bold mb-2 text-gray-800">الرواتب</h2>
-          <p class="text-gray-600 text-center">إدارة رواتب الموظفين</p>
         </div>
 
         <div class="dashboard-card cursor-pointer rounded-xl shadow-lg p-6 flex flex-col items-center transition-all duration-300" data-page="payrollManagement" role="button" tabindex="0">
@@ -903,87 +1013,6 @@
         </div>
       </section>
 
-      <!-- Salaries Page -->
-      <section class="hidden fade-in" id="salaries">
-        <button class="btn-secondary mb-6 flex items-center gap-2" id="backFromSalaries">
-          <i class="fas fa-arrow-right"></i>
-          العودة للرئيسية
-        </button>
-        
-        <div class="page-section">
-          <h2 class="text-3xl font-bold mb-6 text-gray-900 border-b-4 border-green-600 inline-block pb-2">
-            إدارة دفع الرواتب للموظفين
-          </h2>
-          
-          <form class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6" id="salaryForm">
-            <div>
-              <label class="block mb-2 font-semibold text-gray-800" for="salaryWorker">
-                اسم الموظف
-              </label>
-              <select class="form-input w-full" id="salaryWorker" required>
-                <option disabled selected value="">اختر الموظف</option>
-              </select>
-            </div>
-            
-            <div>
-              <label class="block mb-2 font-semibold text-gray-800" for="salaryAmount">
-                المبلغ (ريال)
-              </label>
-              <input
-                class="form-input w-full"
-                id="salaryAmount"
-                min="0"
-                placeholder="أدخل المبلغ"
-                required
-                step="0.01"
-                type="number"
-              />
-            </div>
-            
-            <div>
-              <label class="block mb-2 font-semibold text-gray-800" for="salaryDate">
-                تاريخ الدفع
-              </label>
-              <input class="form-input w-full" id="salaryDate" required type="date" />
-            </div>
-            
-            <div class="flex items-center gap-4">
-              <button class="btn-secondary flex items-center gap-3" type="submit">
-                <i class="fas fa-plus"></i>
-                إضافة راتب
-              </button>
-            </div>
-          </form>
-        </div>
-        
-        <div class="page-section">
-          <div class="overflow-x-auto">
-            <table class="modern-table w-full">
-              <thead>
-                <tr>
-                  <th>اسم الموظف</th>
-                  <th>الراتب الإجمالي (ريال)</th>
-                  <th>السحب الشهري (ريال)</th>
-                  <th>صافي الراتب (ريال)</th>
-                  <th>تاريخ الدفع</th>
-                  <th>إجراء</th>
-                </tr>
-              </thead>
-              <tbody id="salariesTableBody"></tbody>
-            </table>
-          </div>
-          
-          <div class="flex justify-end mt-4">
-            <button id="deleteAllSalariesBtn" class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition focus:outline-none font-semibold flex items-center gap-3">
-              <i class="fas fa-trash-alt"></i>
-              حذف الكل
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <!-- Continue with other sections... (I'll include the complete implementation for all pages) -->
-      
       <!-- Withdrawals Page -->
       <section class="hidden fade-in" id="withdrawals">
         <button class="bg-red-600 text-white px-5 py-3 rounded-lg hover:bg-red-700 transition focus:outline-none flex items-center gap-2 mb-6" id="backFromWithdrawals">
@@ -1440,19 +1469,25 @@
             </div>
           </div>
 
-          <!-- Salaries Report -->
+          <!-- Payroll Calculations Report -->
           <div class="page-section">
-            <h3 class="text-xl font-bold mb-4 text-gray-900">تقرير الرواتب</h3>
-            <p class="text-gray-700 mb-4">إجمالي الرواتب المدفوعة: <span class="font-bold text-green-600" id="totalSalaries">0.00</span> ريال</p>
+            <h3 class="text-xl font-bold mb-4 text-gray-900">تقرير حساب الراتب</h3>
+            <p class="text-gray-700 mb-4">عرض سجلات حساب الرواتب المحسوبة باستخدام المعادلة المتقدمة</p>
             <div class="overflow-x-auto">
               <table class="modern-table w-full">
                 <thead>
                   <tr>
                     <th>اسم الموظف</th>
-                    <th>المبلغ (ريال)</th>
+                    <th>الراتب الأساسي</th>
+                    <th>النسبة %</th>
+                    <th>المبلغ الإضافي</th>
+                    <th>السحب الشهري</th>
+                    <th>صافي الراتب</th>
+                    <th>الشهر</th>
+                    <th>تاريخ الحساب</th>
                   </tr>
                 </thead>
-                <tbody id="salaryReportBody"></tbody>
+                <tbody id="payrollReportBody"></tbody>
               </table>
             </div>
           </div>
@@ -1864,7 +1899,6 @@
   <script>
     // Global variables
     let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
-    let salaries = JSON.parse(localStorage.getItem('salaries')) || [];
     let payrollRecords = JSON.parse(localStorage.getItem('payrollRecords')) || [];
     let withdrawals = JSON.parse(localStorage.getItem('withdrawals')) || [];
     let appointments = JSON.parse(localStorage.getItem('appointments')) || [];
@@ -1887,9 +1921,7 @@
     ];
 
     // Products data for POS
-      const allProducts = [
-      
-      // Added new services
+    const allProducts = [
       { name: "حلاقة شعر + ذقن", price: 35, iconClass: "fas fa-cut", alt: "أيقونة حلاقة شعر وذقن", img: "https://placehold.co/60x60/png?text=حلاقة+شعر+وذقن" },
       { name: "حلاقة شعر نحته", price: 25, iconClass: "fas fa-cut", alt: "أيقونة حلاقة شعر نحته", img: "https://placehold.co/60x60/png?text=حلاقة+شعر+نحته" },
       { name: "حلاقة ذقن تحديد", price: 20, iconClass: "fas fa-beard", alt: "أيقونة حلاقة ذقن تحديد", img: "https://placehold.co/60x60/png?text=حلاقة+ذقن+تحديد" },
@@ -1916,6 +1948,7 @@
       { name: "حمام زيت مع الجهاز", price: 40, iconClass: "fas fa-oil-can", alt: "أيقونة حمام زيت مع الجهاز", img: "https://placehold.co/60x60/png?text=حمام+زيت+مع+الجهاز" },
       { name: "حمام زيت عادي", price: 25, iconClass: "fas fa-oil-can", alt: "أيقونة حمام زيت عادي", img: "https://placehold.co/60x60/png?text=حمام+زيت+عادي" }
     ];
+
     // POS variables
     let invoiceItems = [];
     let showAll = false;
@@ -1935,9 +1968,9 @@
     const logoutBtn = document.getElementById('logoutBtn');
     const mobileLogoutBtn = document.getElementById('mobileLogoutBtn');
 
-    // Pages array
+    // Pages array (removed 'salaries')
     const pages = [
-      'home', 'expenses', 'salaries', 'payrollManagement', 'withdrawals', 'appointments', 
+      'home', 'expenses', 'payrollManagement', 'withdrawals', 'appointments', 
       'services', 'inventory', 'reports', 'dailySalary', 'monthlySalary', 
       'posSection', 'paymentSummary'
     ];
@@ -2012,9 +2045,9 @@
       showPage('home');
     }
 
-    // Authentication Functions
+    // Enhanced Authentication Functions
     function initializeAuth() {
-      // Password toggle
+      // Password toggle with enhanced animation
       const togglePassword = document.getElementById('togglePassword');
       const passwordInput = document.getElementById('password');
       const eyeIcon = document.getElementById('eyeIcon');
@@ -2023,55 +2056,104 @@
         if (passwordInput.type === 'password') {
           passwordInput.type = 'text';
           eyeIcon.className = 'fas fa-eye-slash';
+          togglePassword.style.color = '#3b82f6';
         } else {
           passwordInput.type = 'password';
           eyeIcon.className = 'fas fa-eye';
+          togglePassword.style.color = '#6b7280';
         }
       });
 
-      // Login form
+      // Enhanced login form with better validation
       formLogin.addEventListener('submit', (e) => {
         e.preventDefault();
+        
+        // Clear any existing errors
+        loginError.classList.add('hidden');
+        
         const username = e.target.username.value.trim();
         const password = e.target.password.value;
 
-        if (!username || !password) {
-          loginError.textContent = 'يرجى ملء جميع الحقول.';
-          loginError.classList.remove('hidden');
+        // Input validation with better feedback
+        if (!username) {
+          showLoginError('يرجى إدخال اسم المستخدم.');
+          document.getElementById('username').focus();
           return;
         }
 
+        if (!password) {
+          showLoginError('يرجى إدخال كلمة المرور.');
+          document.getElementById('password').focus();
+          return;
+        }
+
+        if (password.length < 3) {
+          showLoginError('كلمة المرور قصيرة جداً.');
+          document.getElementById('password').focus();
+          return;
+        }
+
+        // Authenticate user
         if (username === validUser.username && password === validUser.password) {
-          showApp();
+          // Success animation and login
+          const loginBtn = e.target.querySelector('button[type="submit"]');
+          loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري تسجيل الدخول...';
+          loginBtn.disabled = true;
+          
+          setTimeout(() => {
+            showApp();
+            loginBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> تسجيل الدخول';
+            loginBtn.disabled = false;
+          }, 1000);
         } else {
-          loginError.textContent = 'اسم المستخدم أو كلمة المرور غير صحيحة';
-          loginError.classList.remove('hidden');
+          showLoginError('اسم المستخدم أو كلمة المرور غير صحيحة');
+          // Shake animation for wrong credentials
+          const loginCard = document.querySelector('.login-card');
+          loginCard.style.animation = 'shake 0.5s ease-in-out';
+          setTimeout(() => {
+            loginCard.style.animation = '';
+          }, 500);
         }
       });
 
-      // Logout buttons
+      // Enhanced logout buttons
       logoutBtn.addEventListener('click', logout);
       mobileLogoutBtn.addEventListener('click', () => {
         logout();
         document.getElementById('mobileMenu').classList.add('translate-x-full');
       });
 
-      // Forgot password
+      // Enhanced forgot password
       document.getElementById('forgotPasswordBtn').addEventListener('click', () => {
         const userPhone = prompt('يرجى تسجيل رقم الهاتف لاستعادة كلمة المرور:');
         if (userPhone === null) return;
         
         const trimmedPhone = userPhone.trim();
         if (trimmedPhone === phoneNumber) {
-          alert(`رقم الهاتف صحيح.\nكلمة المرور الخاصة بك هي: ${validUser.password}`);
+          alert(`✅ رقم الهاتف صحيح.\n🔑 كلمة المرور الخاصة بك هي: ${validUser.password}`);
         } else if (trimmedPhone === '') {
-          alert('لم يتم إدخال رقم الهاتف.');
+          alert('❌ لم يتم إدخال رقم الهاتف.');
         } else {
-          alert('رقم الهاتف غير صحيح. يرجى المحاولة مرة أخرى.');
+          alert('❌ رقم الهاتف غير صحيح. يرجى المحاولة مرة أخرى.');
         }
       });
 
-      // Change password modal
+      // Enhanced change password modal
+      initializeChangePasswordModal();
+    }
+
+    function showLoginError(message) {
+      const loginError = document.getElementById('loginError');
+      loginError.textContent = message;
+      loginError.classList.remove('hidden');
+      
+      // Auto-hide after 5 seconds
+      setTimeout(() => {
+        loginError.classList.add('hidden');
+      }, 5000);
+    }
+
+    function initializeChangePasswordModal() {
       const changePasswordBtn = document.getElementById('changePasswordBtn');
       const changePasswordModal = document.getElementById('changePasswordModal');
       const closeChangePasswordModal = document.getElementById('closeChangePasswordModal');
@@ -2090,16 +2172,20 @@
 
       closeChangePasswordModal.addEventListener('click', () => {
         changePasswordModal.classList.add('hidden');
-        changePasswordError.classList.add('hidden');
-        changePasswordSuccess.classList.add('hidden');
-        changePasswordForm.reset();
+        resetChangePasswordForm();
       });
 
       cancelChangePasswordBtn.addEventListener('click', () => {
         changePasswordModal.classList.add('hidden');
-        changePasswordError.classList.add('hidden');
-        changePasswordSuccess.classList.add('hidden');
-        changePasswordForm.reset();
+        resetChangePasswordForm();
+      });
+
+      // Close modal when clicking outside
+      changePasswordModal.addEventListener('click', (e) => {
+        if (e.target === changePasswordModal) {
+          changePasswordModal.classList.add('hidden');
+          resetChangePasswordForm();
+        }
       });
 
       changePasswordForm.addEventListener('submit', (e) => {
@@ -2111,39 +2197,63 @@
         const oldPass = document.getElementById('oldPasswordInput').value;
         const newPass = document.getElementById('newPasswordInput').value;
 
+        // Enhanced validation
         if (!phone || !oldPass || !newPass) {
-          changePasswordError.textContent = 'يرجى ملء جميع الحقول.';
-          changePasswordError.classList.remove('hidden');
+          showChangePasswordError('يرجى ملء جميع الحقول.');
           return;
         }
+        
         if (phone !== phoneNumber) {
-          changePasswordError.textContent = 'رقم الهاتف غير صحيح.';
-          changePasswordError.classList.remove('hidden');
+          showChangePasswordError('رقم الهاتف غير صحيح.');
           return;
         }
+        
         if (oldPass !== validUser.password) {
-          changePasswordError.textContent = 'كلمة المرور القديمة غير صحيحة.';
-          changePasswordError.classList.remove('hidden');
+          showChangePasswordError('كلمة المرور القديمة غير صحيحة.');
           return;
         }
+        
         if (newPass.length < 6) {
-          changePasswordError.textContent = 'كلمة المرور الجديدة يجب أن تكون 6 أحرف على الأقل.';
-          changePasswordError.classList.remove('hidden');
+          showChangePasswordError('كلمة المرور الجديدة يجب أن تكون 6 أحرف على الأقل.');
           return;
         }
+        
         if (newPass === oldPass) {
-          changePasswordError.textContent = 'كلمة المرور الجديدة يجب أن تختلف عن القديمة.';
-          changePasswordError.classList.remove('hidden');
+          showChangePasswordError('كلمة المرور الجديدة يجب أن تختلف عن القديمة.');
           return;
         }
 
+        // Update password
         validUser.password = newPass;
         saveValidUser();
-        alert('تم تغيير كلمة المرور بنجاح. يرجى تسجيل الدخول باستخدام كلمة المرور الجديدة.');
-        changePasswordModal.classList.add('hidden');
-        changePasswordForm.reset();
-        showLogin();
+        
+        showChangePasswordSuccess('✅ تم تغيير كلمة المرور بنجاح!');
+        
+        setTimeout(() => {
+          changePasswordModal.classList.add('hidden');
+          resetChangePasswordForm();
+          alert('تم تغيير كلمة المرور بنجاح. يرجى تسجيل الدخول باستخدام كلمة المرور الجديدة.');
+          showLogin();
+        }, 2000);
       });
+    }
+
+    function showChangePasswordError(message) {
+      const errorEl = document.getElementById('changePasswordError');
+      errorEl.textContent = message;
+      errorEl.classList.remove('hidden');
+    }
+
+    function showChangePasswordSuccess(message) {
+      const successEl = document.getElementById('changePasswordSuccess');
+      successEl.textContent = message;
+      successEl.classList.remove('hidden');
+    }
+
+    function resetChangePasswordForm() {
+      document.getElementById('changePasswordForm').reset();
+      document.getElementById('changePasswordError').classList.add('hidden');
+      document.getElementById('changePasswordSuccess').classList.add('hidden');
     }
 
     // Navigation Functions
@@ -2208,7 +2318,7 @@
     // Worker Select Population
     function populateWorkerSelects() {
       const selects = [
-        'withdrawalWorker', 'salaryWorker', 'payrollWorker', 'dailyWorkerSelect', 'monthlyWorkerSelect'
+        'withdrawalWorker', 'payrollWorker', 'dailyWorkerSelect', 'monthlyWorkerSelect'
       ];
       
       selects.forEach(selectId => {
@@ -2374,7 +2484,7 @@
         updatePayrollTable();
         payrollForm.reset();
         
-        // Reset to current month
+        //Reset to current month
         document.getElementById('payrollMonth').value = currentMonth;
         document.getElementById('payrollPercentage').value = 100;
         document.getElementById('payrollAdditionalAmount').value = 0;
@@ -2396,9 +2506,7 @@
 
     // Inventory Functions
     function getProductCurrentStock(productName) {
-      const movements = stockMov
-
-ements.filter(m => m.productName === productName);
+      const movements = stockMovements.filter(m => m.productName === productName);
       let totalAdded = 0;
       let totalWithdrawn = 0;
       
@@ -2745,96 +2853,6 @@ ements.filter(m => m.productName === productName);
       });
     }
 
-    // Salaries Functions
-    function updateSalariesTable() {
-      const tbody = document.getElementById('salariesTableBody');
-      tbody.innerHTML = '';
-      
-      if (salaries.length === 0) {
-        const tr = document.createElement('tr');
-        const td = document.createElement('td');
-        td.colSpan = 6;
-        td.className = 'text-center py-4 text-gray-500';
-        td.textContent = 'لا توجد رواتب مسجلة.';
-        tr.appendChild(td);
-        tbody.appendChild(tr);
-        return;
-      }
-
-      // Aggregate withdrawals by worker and month
-      const withdrawalMap = {};
-      withdrawals.forEach(wd => {
-        const month = wd.date.slice(0, 7);
-        const key = wd.workerId + '|' + month;
-        if (!withdrawalMap[key]) withdrawalMap[key] = 0;
-        withdrawalMap[key] += wd.amount;
-      });
-
-      salaries.forEach((salary, index) => {
-        const workerName = workers.find(w => w.id === salary.workerId)?.name || 'غير معروف';
-        const month = salary.date.slice(0, 7);
-        const key = salary.workerId + '|' + month;
-        const totalWithdrawal = withdrawalMap[key] || 0;
-        const netSalary = salary.amount - totalWithdrawal;
-
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td class="px-4 py-3">${workerName}</td>
-          <td class="px-4 py-3">${salary.amount.toFixed(2)}</td>
-          <td class="px-4 py-3">${totalWithdrawal.toFixed(2)}</td>
-          <td class="px-4 py-3 font-semibold ${netSalary < 0 ? 'text-red-600' : 'text-green-600'}">${netSalary.toFixed(2)}</td>
-          <td class="px-4 py-3">${salary.date}</td>
-          <td class="px-4 py-3 text-center">
-            <button data-index="${index}" class="deleteSalaryBtn text-red-600 hover:text-red-800 focus:outline-none">
-              <i class="fas fa-trash-alt"></i>
-            </button>
-          </td>
-        `;
-        tbody.appendChild(tr);
-      });
-
-      document.querySelectorAll('.deleteSalaryBtn').forEach(btn => {
-        btn.addEventListener('click', e => {
-          if (!confirmPasswordPrompt()) return;
-          const idx = e.currentTarget.getAttribute('data-index');
-          salaries.splice(idx, 1);
-          localStorage.setItem('salaries', JSON.stringify(salaries));
-          updateSalariesTable();
-        });
-      });
-    }
-
-    function initializeSalaries() {
-      updateSalariesTable();
-      
-      const salaryForm = document.getElementById('salaryForm');
-      salaryForm.addEventListener('submit', e => {
-        e.preventDefault();
-        const workerId = document.getElementById('salaryWorker').value;
-        const amount = parseFloat(document.getElementById('salaryAmount').value);
-        const date = document.getElementById('salaryDate').value;
-        
-        if (!workerId || isNaN(amount) || amount < 0 || !date) {
-          alert('يرجى ملء جميع الحقول بشكل صحيح.');
-          return;
-        }
-        
-        salaries.push({ workerId, amount, date });
-        localStorage.setItem('salaries', JSON.stringify(salaries));
-        updateSalariesTable();
-        salaryForm.reset();
-      });
-      
-      document.getElementById('deleteAllSalariesBtn').addEventListener('click', () => {
-        if (!confirmPasswordPrompt()) return;
-        if (confirm('هل أنت متأكد من مسح جميع الرواتب؟ لا يمكن التراجع عن هذا الإجراء.')) {
-          salaries = [];
-          localStorage.setItem('salaries', JSON.stringify(salaries));
-          updateSalariesTable();
-        }
-      });
-    }
-
     // Withdrawals Functions
     function updateWithdrawalsTable() {
       const tbody = document.getElementById('withdrawalsTableBody');
@@ -2875,7 +2893,6 @@ ements.filter(m => m.productName === productName);
           withdrawals.splice(idx, 1);
           localStorage.setItem('withdrawals', JSON.stringify(withdrawals));
           updateWithdrawalsTable();
-          updateSalariesTable();
         });
       });
     }
@@ -2927,7 +2944,6 @@ ements.filter(m => m.productName === productName);
         withdrawals.push({ date, workerId, amount });
         localStorage.setItem('withdrawals', JSON.stringify(withdrawals));
         updateWithdrawalsTable();
-        updateSalariesTable();
         withdrawalForm.reset();
       });
       
@@ -2939,7 +2955,6 @@ ements.filter(m => m.productName === productName);
           withdrawals = [];
           localStorage.setItem('withdrawals', JSON.stringify(withdrawals));
           updateWithdrawalsTable();
-          updateSalariesTable();
         }
       });
     }
@@ -3088,74 +3103,57 @@ ements.filter(m => m.productName === productName);
       });
     }
 
-    // Reports Functions
     function updateReports() {
-      // Expenses report
-      const expenseReportBody = document.getElementById('expenseReportBody');
-      const totalExpensesSpan = document.getElementById('totalExpenses');
+      // Expenses Report
       const expenseCategoryTotals = {};
-      
-      expenses.forEach(exp => {
+      expenses.forEach((exp) => {
         if (!expenseCategoryTotals[exp.category]) expenseCategoryTotals[exp.category] = 0;
         expenseCategoryTotals[exp.category] += exp.amount;
       });
-      
+      const totalExpenses = Object.values(expenseCategoryTotals).reduce((sum, amount) => sum + amount, 0);
+
+      const expenseReportBody = document.getElementById('expenseReportBody');
       expenseReportBody.innerHTML = '';
-      let totalExpenses = 0;
-      
-      for (const cat in expenseCategoryTotals) {
+      for (const category in expenseCategoryTotals) {
         const tr = document.createElement('tr');
         tr.innerHTML = `
-          <td class="px-4 py-3">${cat}</td>
-          <td class="px-4 py-3">${expenseCategoryTotals[cat].toFixed(2)}</td>
+          <td class="px-4 py-3">${category}</td>
+          <td class="px-4 py-3">${expenseCategoryTotals[category].toFixed(2)}</td>
         `;
         expenseReportBody.appendChild(tr);
-        totalExpenses += expenseCategoryTotals[cat];
       }
-      
-      totalExpensesSpan.textContent = totalExpenses.toFixed(2);
+      document.getElementById('totalExpenses').textContent = totalExpenses.toFixed(2);
 
-      // Salaries report
-      const salaryReportBody = document.getElementById('salaryReportBody');
-      const totalSalariesSpan = document.getElementById('totalSalaries');
-      const salaryTotals = {};
-      
-      salaries.forEach(sal => {
-        if (!salaryTotals[sal.workerId]) salaryTotals[sal.workerId] = 0;
-        salaryTotals[sal.workerId] += sal.amount;
-      });
-      
-      salaryReportBody.innerHTML = '';
-      let totalSalariesAmount = 0;
-      
-      for (const workerId in salaryTotals) {
-        const workerName = workers.find(w => w.id === workerId)?.name || 'غير معروف';
+      // Payroll Report
+      const payrollReportBody = document.getElementById('payrollReportBody');
+      payrollReportBody.innerHTML = '';
+      payrollRecords.forEach(record => {
+        const workerName = workers.find(w => w.id === record.workerId)?.name || 'غير معروف';
         const tr = document.createElement('tr');
         tr.innerHTML = `
           <td class="px-4 py-3">${workerName}</td>
-          <td class="px-4 py-3">${salaryTotals[workerId].toFixed(2)}</td>
+          <td class="px-4 py-3">${parseFloat(record.baseSalary).toFixed(2)}</td>
+          <td class="px-4 py-3">${parseFloat(record.percentage).toFixed(1)}%</td>
+          <td class="px-4 py-3">${parseFloat(record.additionalAmount).toFixed(2)}</td>
+          <td class="px-4 py-3">${parseFloat(record.monthlyWithdrawals).toFixed(2)}</td>
+          <td class="px-4 py-3 font-bold ${record.netSalary < 0 ? 'text-red-600' : 'text-green-600'}">${parseFloat(record.netSalary).toFixed(2)}</td>
+          <td class="px-4 py-3">${record.month}</td>
+          <td class="px-4 py-3">${new Date(record.calculatedDate).toLocaleDateString('ar-EG')}</td>
         `;
-        salaryReportBody.appendChild(tr);
-        totalSalariesAmount += salaryTotals[workerId];
-      }
-      
-      totalSalariesSpan.textContent = totalSalariesAmount.toFixed(2);
+        payrollReportBody.appendChild(tr);
+      });
 
-      // Withdrawals report
+      // Withdrawals Report
       const withdrawalReportBody = document.getElementById('withdrawalReportBody');
-      const totalWithdrawalsSpan = document.getElementById('totalWithdrawals');
       const withdrawalTotals = {};
-      
-      withdrawals.forEach(wd => {
+      withdrawals.forEach((wd) => {
         const month = wd.date.slice(0, 7);
         const key = wd.workerId + '|' + month;
         if (!withdrawalTotals[key]) withdrawalTotals[key] = 0;
         withdrawalTotals[key] += wd.amount;
       });
-      
       withdrawalReportBody.innerHTML = '';
       let totalWithdrawalsAmount = 0;
-      
       for (const key in withdrawalTotals) {
         const [workerId, month] = key.split('|');
         const workerName = workers.find(w => w.id === workerId)?.name || 'غير معروف';
@@ -3169,25 +3167,23 @@ ements.filter(m => m.productName === productName);
         withdrawalReportBody.appendChild(tr);
         totalWithdrawalsAmount += amount;
       }
-      
-      totalWithdrawalsSpan.textContent = totalWithdrawalsAmount.toFixed(2);
+      document.getElementById('totalWithdrawals').textContent = totalWithdrawalsAmount.toFixed(2);
 
-      // Invoices report
-      updateInvoicesReport();
-    }
-
-    function updateInvoicesReport() {
-      const invoiceStats = printedInvoices.reduce((acc, invoice) => {
-        const total = parseFloat(invoice.total);
-        acc.totalInvoices += 1;
-        acc.totalAmount += total;
-        if (invoice.paymentMethod === 'cash') {
-          acc.cashAmount += total;
-        } else if (invoice.paymentMethod === 'visa') {
-          acc.visaAmount += total;
-        }
-        return acc;
-      }, { totalInvoices: 0, totalAmount: 0, cashAmount: 0, visaAmount: 0 });
+      // Invoices Report
+      const invoiceStats = printedInvoices.reduce(
+        (acc, invoice) => {
+          const total = parseFloat(invoice.total);
+          acc.totalInvoices += 1;
+          acc.totalAmount += total;
+          if (invoice.paymentMethod === 'cash') {
+            acc.cashAmount += total;
+          } else if (invoice.paymentMethod === 'visa') {
+            acc.visaAmount += total;
+          }
+          return acc;
+        },
+        { totalInvoices: 0, totalAmount: 0, cashAmount: 0, visaAmount: 0 }
+      );
 
       document.getElementById('totalInvoicesCount').textContent = invoiceStats.totalInvoices;
       document.getElementById('totalInvoicesAmount').textContent = invoiceStats.totalAmount.toFixed(2) + ' ريال';
@@ -3214,24 +3210,19 @@ ements.filter(m => m.productName === productName);
       }
     }
 
+    // Print all reports function with full implementation
     function printAllReports() {
+      
       // Calculate all totals
       const expenseCategoryTotals = {};
-      expenses.forEach(exp => {
+      expenses.forEach((exp) => {
         if (!expenseCategoryTotals[exp.category]) expenseCategoryTotals[exp.category] = 0;
         expenseCategoryTotals[exp.category] += exp.amount;
       });
       const totalExpenses = Object.values(expenseCategoryTotals).reduce((sum, amount) => sum + amount, 0);
 
-      const salaryTotals = {};
-      salaries.forEach(sal => {
-        if (!salaryTotals[sal.workerId]) salaryTotals[sal.workerId] = 0;
-        salaryTotals[sal.workerId] += sal.amount;
-      });
-      const totalSalaries = Object.values(salaryTotals).reduce((sum, amount) => sum + amount, 0);
-
       const withdrawalTotals = {};
-      withdrawals.forEach(wd => {
+      withdrawals.forEach((wd) => {
         const month = wd.date.slice(0, 7);
         const key = wd.workerId + '|' + month;
         if (!withdrawalTotals[key]) withdrawalTotals[key] = 0;
@@ -3239,17 +3230,20 @@ ements.filter(m => m.productName === productName);
       });
       const totalWithdrawals = Object.values(withdrawalTotals).reduce((sum, amount) => sum + amount, 0);
 
-      const invoiceStats = printedInvoices.reduce((acc, invoice) => {
-        const total = parseFloat(invoice.total);
-        acc.totalInvoices += 1;
-        acc.totalAmount += total;
-        if (invoice.paymentMethod === 'cash') {
-          acc.cashAmount += total;
-        } else if (invoice.paymentMethod === 'visa') {
-          acc.visaAmount += total;
-        }
-        return acc;
-      }, { totalInvoices: 0, totalAmount: 0, cashAmount: 0, visaAmount: 0 });
+      const invoiceStats = printedInvoices.reduce(
+        (acc, invoice) => {
+          const total = parseFloat(invoice.total);
+          acc.totalInvoices += 1;
+          acc.totalAmount += total;
+          if (invoice.paymentMethod === 'cash') {
+            acc.cashAmount += total;
+          } else if (invoice.paymentMethod === 'visa') {
+            acc.visaAmount += total;
+          }
+          return acc;
+        },
+        { totalInvoices: 0, totalAmount: 0, cashAmount: 0, visaAmount: 0 }
+      );
 
       const invoiceWorkerTotals = printedInvoices.reduce((acc, invoice) => {
         const workerName = invoice.worker || 'غير محدد';
@@ -3257,8 +3251,25 @@ ements.filter(m => m.productName === productName);
         return acc;
       }, {});
 
+      // Payroll calculations totals for print
+      const payrollRows = payrollRecords.map((record) => {
+        const workerName = workers.find((w) => w.id === record.workerId)?.name || 'غير معروف';
+        return `
+          <tr>
+            <td style="border: 1px solid #000; padding: 8px;">${workerName}</td>
+            <td style="border: 1px solid #000; padding: 8px;">${record.baseSalary.toFixed(2)}</td>
+            <td style="border: 1px solid #000; padding: 8px;">${record.percentage.toFixed(2)}</td>
+            <td style="border: 1px solid #000; padding: 8px;">${record.additionalAmount.toFixed(2)}</td>
+            <td style="border: 1px solid #000; padding: 8px;">${record.monthlyWithdrawals.toFixed(2)}</td>
+            <td style="border: 1px solid #000; padding: 8px;">${record.netSalary.toFixed(2)}</td>
+            <td style="border: 1px solid #000; padding: 8px;">${record.month}</td>
+            <td style="border: 1px solid #000; padding: 8px;">${new Date(record.calculatedDate).toLocaleDateString('ar-EG')}</td>
+          </tr>
+        `;
+      }).join('');
+
       const printContent = `
-        <div class="printable-content">
+        <div class="printable-content" style="font-family: 'Cairo', Arial, sans-serif; direction: rtl; max-width: 800px; margin: 0 auto;">
           <div style="text-align: center; margin-bottom: 20px;">
             <h1 style="font-size: 24px; font-weight: bold;">مركز الفارس للعناية بالرجل</h1>
             <h2 style="font-size: 20px; margin-top: 10px;">تقرير شامل</h2>
@@ -3276,34 +3287,37 @@ ements.filter(m => m.productName === productName);
                 </tr>
               </thead>
               <tbody>
-                ${Object.entries(expenseCategoryTotals).map(([category, amount]) => 
-                  `<tr>
+                ${Object.entries(expenseCategoryTotals)
+                  .map(
+                    ([category, amount]) => `
+                  <tr>
                     <td style="border: 1px solid #000; padding: 8px;">${category}</td>
                     <td style="border: 1px solid #000; padding: 8px;">${amount.toFixed(2)}</td>
                   </tr>`
-                ).join('')}
+                  )
+                  .join('')}
               </tbody>
             </table>
           </div>
 
           <div style="margin-bottom: 30px;">
-            <h3 style="font-size: 18px; font-weight: bold; border-bottom: 2px solid #000; padding-bottom: 5px;">تقرير الرواتب</h3>
-            <p style="margin: 10px 0;">إجمالي الرواتب المدفوعة: ${totalSalaries.toFixed(2)} ريال</p>
+            <h3 style="font-size: 18px; font-weight: bold; border-bottom: 2px solid #000; padding-bottom: 5px;">تقرير حساب الراتب</h3>
+            <p style="margin: 10px 0;">عرض سجلات حساب الرواتب المحسوبة باستخدام المعادلة المتقدمة</p>
             <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
               <thead>
                 <tr style="background-color: #f0f0f0;">
                   <th style="border: 1px solid #000; padding: 8px;">اسم الموظف</th>
-                  <th style="border: 1px solid #000; padding: 8px;">المبلغ (ريال)</th>
+                  <th style="border: 1px solid #000; padding: 8px;">الراتب الأساسي</th>
+                  <th style="border: 1px solid #000; padding: 8px;">النسبة %</th>
+                  <th style="border: 1px solid #000; padding: 8px;">المبلغ الإضافي</th>
+                  <th style="border: 1px solid #000; padding: 8px;">السحب الشهري</th>
+                  <th style="border: 1px solid #000; padding: 8px;">صافي الراتب</th>
+                  <th style="border: 1px solid #000; padding: 8px;">الشهر</th>
+                  <th style="border: 1px solid #000; padding: 8px;">تاريخ الحساب</th>
                 </tr>
               </thead>
               <tbody>
-                ${Object.entries(salaryTotals).map(([workerId, amount]) => {
-                  const workerName = workers.find(w => w.id === workerId)?.name || 'غير معروف';
-                  return `<tr>
-                    <td style="border: 1px solid #000; padding: 8px;">${workerName}</td>
-                    <td style="border: 1px solid #000; padding: 8px;">${amount.toFixed(2)}</td>
-                  </tr>`;
-                }).join('')}
+                ${payrollRows}
               </tbody>
             </table>
           </div>
@@ -3320,15 +3334,18 @@ ements.filter(m => m.productName === productName);
                 </tr>
               </thead>
               <tbody>
-                ${Object.entries(withdrawalTotals).map(([key, amount]) => {
-                  const [workerId, month] = key.split('|');
-                  const workerName = workers.find(w => w.id === workerId)?.name || 'غير معروف';
-                  return `<tr>
+                ${Object.entries(withdrawalTotals)
+                  .map(([key, amount]) => {
+                    const [workerId, month] = key.split('|');
+                    const workerName = workers.find((w) => w.id === workerId)?.name || 'غير معروف';
+                    return `
+                  <tr>
                     <td style="border: 1px solid #000; padding: 8px;">${workerName}</td>
                     <td style="border: 1px solid #000; padding: 8px;">${month}</td>
                     <td style="border: 1px solid #000; padding: 8px;">${amount.toFixed(2)}</td>
                   </tr>`;
-                }).join('')}
+                  })
+                  .join('')}
               </tbody>
             </table>
           </div>
@@ -3339,7 +3356,7 @@ ements.filter(m => m.productName === productName);
             <p style="margin: 10px 0;">إجمالي مبيعات الفواتير: ${invoiceStats.totalAmount.toFixed(2)} ريال</p>
             <p style="margin: 10px 0;">المبالغ المدفوعة كاش: ${invoiceStats.cashAmount.toFixed(2)} ريال</p>
             <p style="margin: 10px 0;">المبالغ المدفوعة فيزا: ${invoiceStats.visaAmount.toFixed(2)} ريال</p>
-            
+
             <h4 style="font-size: 16px; font-weight: bold; margin-top: 20px;">مبيعات حسب العامل:</h4>
             <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
               <thead>
@@ -3349,12 +3366,15 @@ ements.filter(m => m.productName === productName);
                 </tr>
               </thead>
               <tbody>
-                ${Object.entries(invoiceWorkerTotals).map(([workerName, amount]) => 
-                  `<tr>
+                ${Object.entries(invoiceWorkerTotals)
+                  .map(
+                    ([workerName, amount]) => `
+                  <tr>
                     <td style="border: 1px solid #000; padding: 8px;">${workerName}</td>
                     <td style="border: 1px solid #000; padding: 8px;">${amount.toFixed(2)}</td>
                   </tr>`
-                ).join('')}
+                  )
+                  .join('')}
               </tbody>
             </table>
           </div>
@@ -3368,12 +3388,15 @@ ements.filter(m => m.productName === productName);
       const printWindow = window.open('', '_blank');
       if (printWindow) {
         printWindow.document.write(`
-          <html dir="rtl">
+          <html dir="rtl" lang="ar">
             <head>
               <title>تقرير شامل - مركز الفارس</title>
               <style>
                 body { font-family: 'Cairo', Arial, sans-serif; direction: rtl; margin: 0; padding: 20px; }
                 .printable-content { max-width: 800px; margin: 0 auto; }
+                table { border-collapse: collapse; width: 100%; }
+                th, td { border: 1px solid #000; padding: 8px; text-align: right; }
+                thead tr { background-color: #f0f0f0; }
                 @media print {
                   body { margin: 0; padding: 10px; }
                   .printable-content { max-width: none; }
@@ -3382,7 +3405,7 @@ ements.filter(m => m.productName === productName);
             </head>
             <body>${printContent}</body>
           </html>
-        `);
+ `);
         printWindow.document.close();
         printWindow.print();
       }
@@ -3901,10 +3924,11 @@ ements.filter(m => m.productName === productName);
           renderInvoiceLog();
         }
       });
-       document.getElementById('backFromPOSBtn').addEventListener('click', () => {
-    document.getElementById('posSection').classList.add('hidden');
-    document.getElementById('home').classList.remove('hidden');
-  });
+      
+      document.getElementById('backFromPOSBtn').addEventListener('click', () => {
+        document.getElementById('posSection').classList.add('hidden');
+        document.getElementById('home').classList.remove('hidden');
+      });
     }
 
     // Initialize Application
@@ -3920,7 +3944,6 @@ ements.filter(m => m.productName === productName);
       
       // Initialize all modules
       initializeExpenses();
-      initializeSalaries();
       initializePayrollManagement();
       initializeWithdrawals();
       initializeAppointments();
@@ -3930,7 +3953,7 @@ ements.filter(m => m.productName === productName);
       initializeDailySalary();
       initializeMonthlySalary();
       initializePOS();
-      
+       
       // Show login page initially
       showLogin();
     }
