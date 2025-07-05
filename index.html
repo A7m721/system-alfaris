@@ -376,6 +376,129 @@
       100% { transform: rotate(360deg); }
     }
 
+    /* Multi-select dropdown styles */
+    .multi-select-container {
+      position: relative;
+    }
+
+    .multi-select-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      border: 2px solid #e2e8f0;
+      border-top: none;
+      border-radius: 0 0 0.75rem 0.75rem;
+      max-height: 200px;
+      overflow-y: auto;
+      z-index: 10;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .multi-select-option {
+      padding: 0.75rem 1rem;
+      cursor: pointer;
+      border-bottom: 1px solid #f1f5f9;
+      transition: background 0.2s ease;
+    }
+
+    .multi-select-option:hover {
+      background: #f8fafc;
+    }
+
+    .multi-select-option.selected {
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-weight: 600;
+    }
+
+    .selected-services {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .service-tag {
+      background: #dbeafe;
+      color: #1e40af;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .service-tag .remove-btn {
+      cursor: pointer;
+      color: #ef4444;
+      font-weight: bold;
+    }
+
+    .service-tag .remove-btn:hover {
+      color: #dc2626;
+    }
+
+    /* Appointment notification styles */
+    .appointment-notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(245, 158, 11, 0.3);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      animation: slideInFromRight 0.5s ease-out;
+      min-width: 350px;
+      border: 2px solid #fbbf24;
+    }
+
+    .appointment-notification.urgent {
+      background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+      border-color: #f87171;
+      box-shadow: 0 10px 25px rgba(239, 68, 68, 0.3);
+    }
+
+    .appointment-notification .notification-icon {
+      font-size: 1.5rem;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    @keyframes slideInFromRight {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .appointment-notification.fade-out {
+      animation: fadeOut 0.5s ease-out forwards;
+    }
+
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        transform: translateX(100%);
+      }
+    }
+
     /* Responsive improvements */
     @media (max-width: 768px) {
       .dashboard-card {
@@ -390,6 +513,12 @@
       .login-card {
         margin: 1rem;
         padding: 2rem;
+      }
+
+      .appointment-notification {
+        right: 10px;
+        left: 10px;
+        min-width: auto;
       }
     }
 
@@ -455,6 +584,74 @@
       padding: 0.75rem 1rem;
       border-radius: 0.75rem;
       font-weight: 500;
+    }
+
+    /* WhatsApp notification styling */
+    .whatsapp-notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, #25d366 0%, #20b358 100%);
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      animation: slideInFromRight 0.5s ease-out;
+      min-width: 300px;
+    }
+
+    .whatsapp-notification.fade-out {
+      animation: fadeOut 0.5s ease-out forwards;
+    }
+
+    /* Monthly Income Report Styles */
+    .income-card {
+      background: linear-gradient(145deg, #f0fdf4 0%, #dcfce7 100%);
+      border: 2px solid #16a34a;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .income-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .income-summary-card {
+      background: white;
+      border-radius: 0.75rem;
+      padding: 1rem;
+      border: 1px solid #e5e7eb;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .income-summary-card h4 {
+      font-size: 0.875rem;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .income-summary-card .amount {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #16a34a;
+    }
+
+    .month-selector {
+      background: white;
+      border: 2px solid #e5e7eb;
+      border-radius: 0.75rem;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
     }
   </style>
 </head>
@@ -552,7 +749,7 @@
           مركز الفارس للعناية بالرجل
         </div>
         <div class="text-blue-500 text-xs">
-          نظام إدارة متطور وآمن
+          نظام إدارة متطور وآمن 
         </div>
       </div>
     </div>
@@ -752,7 +949,7 @@
         <div class="dashboard-card cursor-pointer rounded-xl shadow-lg p-6 flex flex-col items-center transition-all duration-300" data-page="posSection" role="button" tabindex="0">
           <i class="fas fa-cash-register text-7xl icon-emerald mb-4"></i>
           <h2 class="text-2xl font-bold mb-2 text-gray-800">نقاط البيع</h2>
-          <p class="text-gray-600 text-center">نظام إدارة المبيعات</p>
+          <p class="text-gray-600 text-center">نظام إدارة المبيعات مع واتساب</p>
         </div>
         
         <div class="dashboard-card cursor-pointer rounded-xl shadow-lg p-6 flex flex-col items-center transition-all duration-300" data-page="paymentSummary" role="button" tabindex="0">
@@ -794,13 +991,13 @@
                 <i class="fas fa-user ml-2 text-purple-600"></i>
                 اسم الموظف
               </label>
-              <select
+              <input
                 class="form-input w-full"
                 id="payrollWorker"
+                placeholder="أدخل اسم الموظف"
                 required
-              >
-                <option disabled selected value="">اختر الموظف</option>
-              </select>
+                type="text"
+              />
             </div>
             
             <div>
@@ -1037,9 +1234,13 @@
               <label class="block mb-2 font-semibold text-gray-800" for="withdrawalWorker">
                 اسم العامل
               </label>
-              <select class="form-input w-full" id="withdrawalWorker" required>
-                <option disabled selected value="">اختر العامل</option>
-              </select>
+              <input
+                class="form-input w-full"
+                id="withdrawalWorker"
+                placeholder="أدخل اسم العامل"
+                required
+                type="text"
+              />
             </div>
             
             <div>
@@ -1103,7 +1304,7 @@
         </div>
       </section>
 
-      <!-- Appointments Page -->
+      <!-- Enhanced Appointments Page -->
       <section class="hidden fade-in" id="appointments">
         <button class="bg-yellow-600 text-white px-5 py-3 rounded-lg hover:bg-yellow-700 transition focus:outline-none flex items-center gap-2 mb-6" id="backFromAppointments">
           <i class="fas fa-arrow-right"></i>
@@ -1112,12 +1313,13 @@
         
         <div class="page-section">
           <h2 class="text-3xl font-bold mb-6 text-gray-900 border-b-4 border-yellow-600 inline-block pb-2">
-            جدولة وإدارة المواعيد
+            جدولة وإدارة المواعيد مع التنبيهات الذكية
           </h2>
           
-          <form class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6" id="appointmentForm">
+          <form class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6" id="appointmentForm">
             <div>
               <label class="block mb-2 font-semibold text-gray-800" for="appointmentDate">
+                <i class="fas fa-calendar ml-2 text-yellow-600"></i>
                 تاريخ الموعد
               </label>
               <input class="form-input w-full" id="appointmentDate" required type="date" />
@@ -1125,6 +1327,7 @@
             
             <div>
               <label class="block mb-2 font-semibold text-gray-800" for="appointmentTime">
+                <i class="fas fa-clock ml-2 text-yellow-600"></i>
                 وقت الموعد
               </label>
               <input class="form-input w-full" id="appointmentTime" required type="time" />
@@ -1132,6 +1335,7 @@
             
             <div>
               <label class="block mb-2 font-semibold text-gray-800" for="appointmentCustomer">
+                <i class="fas fa-user ml-2 text-yellow-600"></i>
                 اسم العميل
               </label>
               <input
@@ -1142,8 +1346,44 @@
                 type="text"
               />
             </div>
+
+            <div>
+              <label class="block mb-2 font-semibold text-gray-800" for="appointmentPhone">
+                <i class="fas fa-phone ml-2 text-yellow-600"></i>
+                رقم الهاتف
+              </label>
+              <input
+                class="form-input w-full"
+                id="appointmentPhone"
+                placeholder="أدخل رقم الهاتف"
+                required
+                type="tel"
+              />
+            </div>
+
+            <div class="md:col-span-2">
+              <label class="block mb-2 font-semibold text-gray-800">
+                <i class="fas fa-cut ml-2 text-yellow-600"></i>
+                الخدمات المطلوبة
+              </label>
+              <div class="multi-select-container">
+                <input
+                  class="form-input w-full cursor-pointer"
+                  id="servicesSelectInput"
+                  placeholder="اختر الخدمات المطلوبة"
+                  readonly
+                  type="text"
+                />
+                <div class="multi-select-dropdown hidden" id="servicesDropdown">
+                  <!-- Services options will be populated here -->
+                </div>
+              </div>
+              <div class="selected-services" id="selectedServices">
+                <!-- Selected services tags will appear here -->
+              </div>
+            </div>
             
-            <div class="flex items-center gap-4">
+            <div class="md:col-span-2 lg:col-span-3 flex justify-end">
               <button class="bg-yellow-600 text-white px-6 py-3 rounded-lg hover:bg-yellow-700 transition focus:outline-none font-semibold flex items-center gap-3" type="submit">
                 <i class="fas fa-plus"></i>
                 إضافة موعد
@@ -1153,6 +1393,7 @@
         </div>
         
         <div class="page-section">
+          <h3 class="text-xl font-bold mb-4 text-gray-900">جدول المواعيد</h3>
           <div class="overflow-x-auto">
             <table class="modern-table w-full">
               <thead>
@@ -1160,6 +1401,9 @@
                   <th>التاريخ</th>
                   <th>الوقت</th>
                   <th>اسم العميل</th>
+                  <th>رقم الهاتف</th>
+                  <th>الخدمات</th>
+                  <th>الحالة</th>
                   <th>إجراء</th>
                 </tr>
               </thead>
@@ -1452,6 +1696,104 @@
         </div>
         
         <div class="space-y-6">
+          <!-- Monthly Income Report -->
+          <div class="page-section">
+            <h3 class="text-xl font-bold mb-4 text-gray-900 flex items-center gap-2">
+              <i class="fas fa-chart-line text-green-600"></i>
+              تقرير الدخل الشهري
+            </h3>
+            
+            <!-- Month Selector -->
+            <div class="month-selector">
+              <div class="flex flex-col md:flex-row gap-4 items-center">
+                <label for="incomeReportMonth" class="font-semibold text-gray-800">اختر الشهر:</label>
+                <input
+                  type="month"
+                  id="incomeReportMonth"
+                  class="form-input"
+                  style="max-width: 200px;"
+                />
+                <button
+                  id="generateIncomeReportBtn"
+                  class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition focus:outline-none font-semibold flex items-center gap-2"
+                >
+                  <i class="fas fa-chart-bar"></i>
+                  إنشاء التقرير
+                </button>
+              </div>
+            </div>
+
+            <!-- Income Summary Cards -->
+            <div class="income-card">
+              <h4 class="text-lg font-bold mb-4 text-green-800">ملخص الدخل الشهري</h4>
+              <div class="income-summary-grid">
+                <div class="income-summary-card">
+                  <h4>إجمالي المبيعات</h4>
+                  <div class="amount" id="monthlyTotalSales">0.00 ريال</div>
+                </div>
+                <div class="income-summary-card">
+                  <h4>مبيعات كاش</h4>
+                  <div class="amount" id="monthlyCashSales">0.00 ريال</div>
+                </div>
+                <div class="income-summary-card">
+                  <h4>مبيعات فيزا</h4>
+                  <div class="amount" id="monthlyVisaSales">0.00 ريال</div>
+                </div>
+                <div class="income-summary-card">
+                  <h4>عدد الفواتير</h4>
+                  <div class="amount" id="monthlyInvoicesCount">0</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Monthly Income by Worker -->
+            <div class="overflow-x-auto">
+              <table class="modern-table w-full">
+                <thead>
+                  <tr>
+                    <th>اسم العامل</th>
+                    <th>عدد الفواتير</th>
+                    <th>إجمالي المبيعات (ريال)</th>
+                    <th>مبيعات كاش (ريال)</th>
+                    <th>مبيعات فيزا (ريال)</th>
+                  </tr>
+                </thead>
+                <tbody id="monthlyIncomeByWorkerBody">
+                  <tr>
+                    <td colspan="5" class="text-center py-4 text-gray-500">
+                      يرجى اختيار شهر لعرض التقرير
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Daily Income Breakdown -->
+            <div class="mt-6">
+              <h4 class="text-lg font-bold mb-4 text-gray-900">تفصيل الدخل اليومي</h4>
+              <div class="overflow-x-auto">
+                <table class="modern-table w-full">
+                  <thead>
+                    <tr>
+                      <th>التاريخ</th>
+                      <th>عدد الفواتير</th>
+                      <th>إجمالي المبيعات (ريال)</th>
+                      <th>مبيعات كاش (ريال)</th>
+                      <th>مبيعات فيزا (ريال)</th>
+                    </tr>
+                  </thead>
+                  <tbody id="dailyIncomeBreakdownBody">
+                    <tr>
+                      <td colspan="5" class="text-center py-4 text-gray-500">
+                        يرجى اختيار شهر لعرض التقرير
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
           <!-- Expenses Report -->
           <div class="page-section">
             <h3 class="text-xl font-bold mb-4 text-gray-900">تقرير المصروفات</h3>
@@ -1562,10 +1904,14 @@
           
           <form class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6" id="dailySalaryForm">
             <div>
-              <label for="dailyWorkerSelect" class="block mb-2 font-semibold text-gray-800">اختر اسم العامل</label>
-              <select id="dailyWorkerSelect" class="form-input w-full" required>
-                <option disabled selected value="">اختر العامل</option>
-              </select>
+              <label for="dailyWorkerSelect" class="block mb-2 font-semibold text-gray-800">اسم العامل</label>
+              <input
+                class="form-input w-full"
+                id="dailyWorkerSelect"
+                placeholder="أدخل اسم العامل"
+                required
+                type="text"
+              />
             </div>
             
             <div>
@@ -1609,10 +1955,14 @@
           
           <form class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6" id="monthlySalaryForm">
             <div>
-              <label for="monthlyWorkerSelect" class="block mb-2 font-semibold text-gray-800">اختر اسم العامل</label>
-              <select id="monthlyWorkerSelect" class="form-input w-full" required>
-                <option disabled selected value="">اختر العامل</option>
-              </select>
+              <label for="monthlyWorkerSelect" class="block mb-2 font-semibold text-gray-800">اسم العامل</label>
+              <input
+                class="form-input w-full"
+                id="monthlyWorkerSelect"
+                placeholder="أدخل اسم العامل"
+                required
+                type="text"
+              />
             </div>
             
             <div>
@@ -1766,9 +2116,10 @@
                   إلغاء
                 </button>
                 <button
-                  class="bg-green-600 text-white rounded px-4 py-2 hover:bg-green-700 transition"
+                  class="bg-green-600 text-white rounded px-4 py-2 hover:bg-green-700 transition flex items-center gap-2"
                   id="completeSaleBtn"
                 >
+                  <i class="fab fa-whatsapp"></i>
                   إتمام البيع
                 </button>
                 <button
@@ -1892,9 +2243,17 @@
           <i class="fas fa-code"></i>
           <span>تصميم وتطوير بواسطة Eng-A7med-ra</span>
         </div>
+        <div class="flex items-center gap-2 text-blue-600">
+          <i class="fas fa-phone"></i>
+          <span> Eng-A7med-ra-01091889366</span>
+        </div>
       </div>
     </footer>
   </div>
+
+  <!-- WhatsApp and Appointment Notification Container -->
+  <div id="whatsappNotifications"></div>
+  <div id="appointmentNotifications"></div>
 
   <script>
     // Global variables
@@ -1907,18 +2266,12 @@
     let stockMovements = JSON.parse(localStorage.getItem('stockMovements')) || [];
     let printedInvoices = JSON.parse(localStorage.getItem('salon_printed_invoices')) || [];
 
-    // Workers data
-    const workers = [
-      { id: 'w1', name: 'ياسر العوضي' },
-      { id: 'w2', name: 'علي الاتربي' },
-      { id: 'w3', name: 'ابراهيم العزازي' },
-      { id: 'w4', name: 'علي النجار' },
-      { id: 'w5', name: 'الفلاح' },
-      { id: 'w6', name: 'رضا' },
-      { id: 'w7', name: 'ابراهيم' },
-      { id: 'w8', name: 'السعيد' },
-      { id: 'w9', name: 'السيد' },
-    ];
+    // Enhanced appointments variables
+    let selectedServices = [];
+    let appointmentNotificationInterval;
+
+    // WhatsApp phone number
+    const WHATSAPP_PHONE = '+201091889366';
 
     // Products data for POS
     const allProducts = [
@@ -1953,12 +2306,13 @@
     let invoiceItems = [];
     let showAll = false;
 
-    // Authentication variables
+    // Authentication variables - MODIFIED FOR SEPARATE DELETE PASSWORD
     let validUser = JSON.parse(localStorage.getItem('validUser')) || {
       username: 'alfaris',
       password: '123456',
     };
     const phoneNumber = '01091889366';
+    const DELETE_PASSWORD = '666666'; // Separate delete password
 
     // DOM Elements
     const loginSection = document.getElementById('login');
@@ -1968,22 +2322,456 @@
     const logoutBtn = document.getElementById('logoutBtn');
     const mobileLogoutBtn = document.getElementById('mobileLogoutBtn');
 
-    // Pages array (removed 'salaries')
+    // Pages array
     const pages = [
       'home', 'expenses', 'payrollManagement', 'withdrawals', 'appointments', 
       'services', 'inventory', 'reports', 'dailySalary', 'monthlySalary', 
       'posSection', 'paymentSummary'
     ];
 
+    // Enhanced Appointments Functions
+    function showAppointmentNotification(message, type = 'warning', isUrgent = false) {
+      const container = document.getElementById('appointmentNotifications');
+      const notification = document.createElement('div');
+      notification.className = `appointment-notification ${isUrgent ? 'urgent' : ''}`;
+      
+      const icon = isUrgent ? 'fa-exclamation-triangle' : 'fa-clock';
+      notification.innerHTML = `
+        <i class="fas ${icon} notification-icon"></i>
+        <div>
+          <div class="font-semibold">${isUrgent ? 'تنبيه عاجل!' : 'تذكير موعد'}</div>
+          <div class="text-sm">${message}</div>
+        </div>
+        <button class="text-white hover:text-gray-200 focus:outline-none ml-2" onclick="this.parentElement.remove()">
+          <i class="fas fa-times"></i>
+        </button>
+      `;
+      
+      container.appendChild(notification);
+      
+      // Auto-remove after appropriate time
+      const timeout = isUrgent ? 10000 : 7000;
+      setTimeout(() => {
+        notification.classList.add('fade-out');
+        setTimeout(() => {
+          if (container.contains(notification)) {
+            container.removeChild(notification);
+          }
+        }, 500);
+      }, timeout);
+    }
+
+    function checkUpcomingAppointments() {
+      const now = new Date();
+      const nowTime = now.getTime();
+
+      appointments.forEach(appointment => {
+        const appointmentDateTime = new Date(`${appointment.date}T${appointment.time}`);
+        const appointmentTime = appointmentDateTime.getTime();
+        const timeDiff = appointmentTime - nowTime;
+        const minutesDiff = Math.floor(timeDiff / (1000 * 60));
+
+        // Show notification for appointments in next 30 minutes
+        if (minutesDiff > 0 && minutesDiff <= 30) {
+          const message = `موعد ${appointment.customer} خلال ${minutesDiff} دقيقة - ${appointment.time}`;
+          const isUrgent = minutesDiff <= 10;
+          
+          // Only show if not already shown (to prevent spam)
+          if (!appointment.notificationShown || (isUrgent && !appointment.urgentNotificationShown)) {
+            showAppointmentNotification(message, 'warning', isUrgent);
+            
+            if (isUrgent) {
+              appointment.urgentNotificationShown = true;
+            } else {
+              appointment.notificationShown = true;
+            }
+            
+            // Save updated appointments
+            localStorage.setItem('appointments', JSON.stringify(appointments));
+          }
+        }
+      });
+    }
+
+    function startAppointmentNotifications() {
+      // Check every minute
+      appointmentNotificationInterval = setInterval(checkUpcomingAppointments, 60000);
+      // Check immediately on start
+      checkUpcomingAppointments();
+    }
+
+    function stopAppointmentNotifications() {
+      if (appointmentNotificationInterval) {
+        clearInterval(appointmentNotificationInterval);
+      }
+    }
+
+    function isTimeSlotAvailable(date, time, excludeIndex = -1) {
+      const newDateTime = new Date(`${date}T${time}`);
+      const newTime = newDateTime.getTime();
+
+      for (let i = 0; i < appointments.length; i++) {
+        if (i === excludeIndex) continue; // Skip the appointment being edited
+        
+        const existingDateTime = new Date(`${appointments[i].date}T${appointments[i].time}`);
+        const existingTime = existingDateTime.getTime();
+        const timeDiff = Math.abs(newTime - existingTime);
+        const hoursDiff = timeDiff / (1000 * 60 * 60);
+
+        // Check if less than 2 hours apart
+        if (hoursDiff < 2) {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    function populateServicesDropdown() {
+      const dropdown = document.getElementById('servicesDropdown');
+      if (!dropdown) return;
+
+      dropdown.innerHTML = '';
+      
+      // Add services from allProducts (services available in POS)
+      allProducts.forEach(product => {
+        const option = document.createElement('div');
+        option.className = 'multi-select-option';
+        option.textContent = product.name;
+        option.setAttribute('data-service', product.name);
+        
+        option.addEventListener('click', () => {
+          toggleServiceSelection(product.name);
+        });
+        
+        dropdown.appendChild(option);
+      });
+
+      // Add custom services from servicesData
+      servicesData.forEach(service => {
+        // Avoid duplicates
+        if (!allProducts.find(p => p.name === service.name)) {
+          const option = document.createElement('div');
+          option.className = 'multi-select-option';
+          option.textContent = service.name;
+          option.setAttribute('data-service', service.name);
+          
+          option.addEventListener('click', () => {
+            toggleServiceSelection(service.name);
+          });
+          
+          dropdown.appendChild(option);
+        }
+      });
+    }
+
+    function toggleServiceSelection(serviceName) {
+      const index = selectedServices.indexOf(serviceName);
+      
+      if (index === -1) {
+        selectedServices.push(serviceName);
+      } else {
+        selectedServices.splice(index, 1);
+      }
+      
+      updateServicesDisplay();
+      updateServicesDropdownSelection();
+    }
+
+    function updateServicesDisplay() {
+      const input = document.getElementById('servicesSelectInput');
+      const selectedServicesContainer = document.getElementById('selectedServices');
+      
+      if (selectedServices.length === 0) {
+        input.value = '';
+        selectedServicesContainer.innerHTML = '';
+        return;
+      }
+      
+      input.value = `تم اختيار ${selectedServices.length} خدمة`;
+      
+      // Display service tags
+      selectedServicesContainer.innerHTML = '';
+      selectedServices.forEach(service => {
+        const tag = document.createElement('div');
+        tag.className = 'service-tag';
+        tag.innerHTML = `
+          <span>${service}</span>
+          <span class="remove-btn" onclick="removeService('${service}')">&times;</span>
+        `;
+        selectedServicesContainer.appendChild(tag);
+      });
+    }
+
+    function removeService(serviceName) {
+      const index = selectedServices.indexOf(serviceName);
+      if (index !== -1) {
+        selectedServices.splice(index, 1);
+        updateServicesDisplay();
+        updateServicesDropdownSelection();
+      }
+    }
+
+    function updateServicesDropdownSelection() {
+      const options = document.querySelectorAll('.multi-select-option');
+      options.forEach(option => {
+        const serviceName = option.getAttribute('data-service');
+        if (selectedServices.includes(serviceName)) {
+          option.classList.add('selected');
+        } else {
+          option.classList.remove('selected');
+        }
+      });
+    }
+
+    function getAppointmentStatus(appointment) {
+      const now = new Date();
+      const appointmentDateTime = new Date(`${appointment.date}T${appointment.time}`);
+      const timeDiff = appointmentDateTime.getTime() - now.getTime();
+      const minutesDiff = Math.floor(timeDiff / (1000 * 60));
+
+      if (timeDiff < 0) {
+        return { status: 'منتهي', class: 'status-error' };
+      } else if (minutesDiff <= 30) {
+        return { status: 'قريب', class: 'status-warning' };
+      } else {
+        return { status: 'مجدول', class: 'status-success' };
+      }
+    }
+
+    function updateAppointmentsTable() {
+      const tbody = document.getElementById('appointmentsTableBody');
+      tbody.innerHTML = '';
+      
+      if (appointments.length === 0) {
+        const tr = document.createElement('tr');
+        const td = document.createElement('td');
+        td.colSpan = 7;
+        td.className = 'text-center py-4 text-gray-500';
+        td.textContent = 'لا توجد مواعيد مسجلة.';
+        tr.appendChild(td);
+        tbody.appendChild(tr);
+        return;
+      }
+      
+      // Sort appointments by date and time
+      const sortedAppointments = [...appointments].sort((a, b) => {
+        const dateTimeA = new Date(`${a.date}T${a.time}`);
+        const dateTimeB = new Date(`${b.date}T${b.time}`);
+        return dateTimeA - dateTimeB;
+      });
+      
+      sortedAppointments.forEach((appointment, index) => {
+        const originalIndex = appointments.indexOf(appointment);
+        const statusInfo = getAppointmentStatus(appointment);
+        const servicesText = appointment.services ? appointment.services.join(', ') : 'غير محدد';
+        
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td class="px-4 py-3">${appointment.date}</td>
+          <td class="px-4 py-3">${appointment.time}</td>
+          <td class="px-4 py-3">${appointment.customer}</td>
+          <td class="px-4 py-3">${appointment.phone || 'غير محدد'}</td>
+          <td class="px-4 py-3" title="${servicesText}">${servicesText.length > 30 ? servicesText.substring(0, 30) + '...' : servicesText}</td>
+          <td class="px-4 py-3">
+            <span class="status-badge ${statusInfo.class}">${statusInfo.status}</span>
+          </td>
+          <td class="px-4 py-3 text-center">
+            <button data-index="${originalIndex}" class="deleteAppointmentBtn text-red-600 hover:text-red-800 focus:outline-none">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+      
+      document.querySelectorAll('.deleteAppointmentBtn').forEach(btn => {
+        btn.addEventListener('click', e => {
+          if (!confirmPasswordPrompt()) return;
+          const idx = e.currentTarget.getAttribute('data-index');
+          appointments.splice(idx, 1);
+          localStorage.setItem('appointments', JSON.stringify(appointments));
+          updateAppointmentsTable();
+        });
+      });
+    }
+
+    function initializeEnhancedAppointments() {
+      updateAppointmentsTable();
+      populateServicesDropdown();
+      
+      // Services dropdown toggle
+      const servicesInput = document.getElementById('servicesSelectInput');
+      const servicesDropdown = document.getElementById('servicesDropdown');
+      
+      servicesInput.addEventListener('click', () => {
+        servicesDropdown.classList.toggle('hidden');
+        populateServicesDropdown(); // Refresh services list
+      });
+
+      // Close dropdown when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.multi-select-container')) {
+          servicesDropdown.classList.add('hidden');
+        }
+      });
+      
+      const appointmentForm = document.getElementById('appointmentForm');
+      appointmentForm.addEventListener('submit', e => {
+        e.preventDefault();
+        const date = document.getElementById('appointmentDate').value;
+        const time = document.getElementById('appointmentTime').value;
+        const customer = document.getElementById('appointmentCustomer').value.trim();
+        const phone = document.getElementById('appointmentPhone').value.trim();
+        
+        if (!date || !time || !customer || !phone) {
+          alert('يرجى ملء جميع الحقول المطلوبة.');
+          return;
+        }
+
+        if (selectedServices.length === 0) {
+          alert('يرجى اختيار خدمة واحدة على الأقل.');
+          return;
+        }
+
+        // Check time slot availability
+        if (!isTimeSlotAvailable(date, time)) {
+          alert('هذا الوقت غير متاح. يجب أن يكون هناك ساعتان على الأقل بين المواعيد.');
+          return;
+        }
+
+        // Phone number validation (basic)
+        const phoneRegex = /^[\d\+\-\s\(\)]+$/;
+        if (!phoneRegex.test(phone)) {
+          alert('يرجى إدخال رقم هاتف صحيح.');
+          return;
+        }
+        
+        const appointment = {
+          date,
+          time,
+          customer,
+          phone,
+          services: [...selectedServices], // Copy selected services
+          createdAt: new Date().toISOString(),
+          notificationShown: false,
+          urgentNotificationShown: false
+        };
+        
+        appointments.push(appointment);
+        localStorage.setItem('appointments', JSON.stringify(appointments));
+        updateAppointmentsTable();
+        
+        // Reset form
+        appointmentForm.reset();
+        selectedServices = [];
+        updateServicesDisplay();
+        servicesDropdown.classList.add('hidden');
+        
+        alert('تم إضافة الموعد بنجاح!');
+      });
+      
+      document.getElementById('deleteAllAppointmentsBtn').addEventListener('click', () => {
+        if (!confirmPasswordPrompt()) return;
+        if (confirm('هل أنت متأكد من مسح جميع المواعيد؟ لا يمكن التراجع عن هذا الإجراء.')) {
+          appointments = [];
+          localStorage.setItem('appointments', JSON.stringify(appointments));
+          updateAppointmentsTable();
+        }
+      });
+      
+      // Start appointment notifications
+      startAppointmentNotifications();
+    }
+
+    // Make removeService globally accessible
+    window.removeService = removeService;
+
+    // WhatsApp Functions
+    function showWhatsAppNotification(message, type = 'success') {
+      const container = document.getElementById('whatsappNotifications');
+      const notification = document.createElement('div');
+      notification.className = 'whatsapp-notification';
+      
+      const icon = type === 'success' ? 'fa-check-circle' : 'fa-exclamation-triangle';
+      notification.innerHTML = `
+        <i class="fas ${icon}"></i>
+        <div>
+          <div class="font-semibold">${type === 'success' ? 'تم الإرسال بنجاح' : 'تنبيه'}</div>
+          <div class="text-sm">${message}</div>
+        
+        </div>
+      `;
+      
+      container.appendChild(notification);
+      
+      // Auto-remove after 5 seconds
+      setTimeout(() => {
+        notification.classList.add('fade-out');
+        setTimeout(() => {
+          if (container.contains(notification)) {
+            container.removeChild(notification);
+          }
+        }, 500);
+      }, 5000);
+    }
+
+    function sendWhatsAppMessage(invoiceData) {
+      try {
+        const { worker, customer, items, total, paymentMethod, date } = invoiceData;
+        
+        // Format the message
+        let message = `🏪 *مركز الفارس للعناية بالرجل*\n`;
+        message += `🧾 فاتورة جديدة\n\n`;
+        message += `👤 *العامل:* ${worker}\n`;
+        message += `🤵 *العميل:* ${customer}\n`;
+        message += `📅 *التاريخ:* ${new Date(date).toLocaleDateString('ar-EG')}\n`;
+        message += `⏰ *الوقت:* ${new Date(date).toLocaleTimeString('ar-EG')}\n`;
+        message += `💳 *طريقة الدفع:* ${paymentMethod === 'cash' ? 'نقدي' : 'بطاقة'}\n\n`;
+        
+        message += `📋 *تفاصيل الخدمات:*\n`;
+        items.forEach((item, index) => {
+          const itemTotal = (item.price * item.quantity * (1 - item.discount / 100)).toFixed(2);
+          message += `${index + 1}. ${item.name}\n`;
+          message += `   الكمية: ${item.quantity} × ${item.price.toFixed(2)} ريال`;
+          if (item.discount > 0) {
+            message += ` (خصم ${item.discount}%)`;
+          }
+          message += `\n   الإجمالي: ${itemTotal} ريال\n\n`;
+        });
+        
+        message += `💰 *المجموع الكلي: ${total} ريال*\n\n`;
+        message += `🙏 شكراً لاختياركم مركز الفارس`;
+
+        // Encode the message for URL
+        const encodedMessage = encodeURIComponent(message);
+        
+        // Create WhatsApp URL
+        const whatsappUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodedMessage}`;
+        
+        // Open WhatsApp
+        window.open(whatsappUrl, '_blank');
+        
+        // Show success notification
+        showWhatsAppNotification(`تم إرسال تفاصيل الفاتورة إلى واتساب (${total} ريال)`);
+        
+        return true;
+      } catch (error) {
+        console.error('Error sending WhatsApp message:', error);
+        showWhatsAppNotification('حدث خطأ أثناء إرسال الرسالة، يرجى المحاولة مرة أخرى', 'error');
+        return false;
+      }
+    }
+
     // Utility Functions
     function saveValidUser() {
       localStorage.setItem('validUser', JSON.stringify(validUser));
     }
 
+    // MODIFIED: Use separate delete password
     function confirmPasswordPrompt() {
-      const input = prompt('يرجى إدخال كلمة المرور لتأكيد الحذف:');
+      const input = prompt('يرجى إدخال كلمة المرور للحذف:');
       if (input === null) return false;
-      if (input === validUser.password) return true;
+      if (input === DELETE_PASSWORD) return true;
       alert('كلمة المرور غير صحيحة.');
       return false;
     }
@@ -2013,6 +2801,7 @@
       }
       if (pageId === 'reports') {
         updateReports();
+        initializeMonthlyIncomeReport();
       }
       if (pageId === 'paymentSummary') {
         updatePaymentSummary();
@@ -2025,11 +2814,19 @@
       if (pageId === 'payrollManagement') {
         updatePayrollTable();
       }
+      if (pageId === 'appointments') {
+        updateAppointmentsTable();
+        populateServicesDropdown();
+      }
+      if (pageId === 'services') {
+        updateServicesTable();
+      }
     }
 
     function showApp() {
       loginSection.classList.add('hidden');
       appContent.classList.remove('hidden');
+      startAppointmentNotifications();
     }
 
     function showLogin() {
@@ -2038,6 +2835,7 @@
       formLogin.reset();
       loginError.textContent = '';
       loginError.classList.add('hidden');
+      stopAppointmentNotifications();
     }
 
     function logout() {
@@ -2315,34 +3113,10 @@
       });
     }
 
-    // Worker Select Population
-    function populateWorkerSelects() {
-      const selects = [
-        'withdrawalWorker', 'payrollWorker', 'dailyWorkerSelect', 'monthlyWorkerSelect'
-      ];
-      
-      selects.forEach(selectId => {
-        const select = document.getElementById(selectId);
-        if (select) {
-          // Clear existing options except the first one
-          while (select.children.length > 1) {
-            select.removeChild(select.lastChild);
-          }
-          
-          workers.forEach(worker => {
-            const option = document.createElement('option');
-            option.value = worker.id;
-            option.textContent = worker.name;
-            select.appendChild(option);
-          });
-        }
-      });
-    }
-
-    // Payroll Management Functions
-    function calculateMonthlyWithdrawalsForWorker(workerId, month) {
+    // Payroll Management Functions - MODIFIED FOR MANUAL INPUT
+    function calculateMonthlyWithdrawalsForWorker(workerName, month) {
       return withdrawals
-        .filter(wd => wd.workerId === workerId && wd.date.startsWith(month))
+        .filter(wd => wd.workerName === workerName && wd.date.startsWith(month))
         .reduce((sum, wd) => sum + parseFloat(wd.amount), 0);
     }
 
@@ -2364,10 +3138,9 @@
       }
       
       payrollRecords.forEach((record, index) => {
-        const workerName = workers.find(w => w.id === record.workerId)?.name || 'غير معروف';
         const tr = document.createElement('tr');
         tr.innerHTML = `
-          <td class="px-4 py-3">${workerName}</td>
+          <td class="px-4 py-3">${record.workerName}</td>
           <td class="px-4 py-3">${parseFloat(record.baseSalary).toFixed(2)}</td>
           <td class="px-4 py-3">${parseFloat(record.percentage).toFixed(1)}%</td>
           <td class="px-4 py-3">${parseFloat(record.additionalAmount).toFixed(2)}</td>
@@ -2408,13 +3181,13 @@
       payrollForm.addEventListener('submit', e => {
         e.preventDefault();
         
-        const workerId = document.getElementById('payrollWorker').value;
+        const workerName = document.getElementById('payrollWorker').value.trim();
         const baseSalary = parseFloat(document.getElementById('payrollBaseSalary').value);
         const percentage = parseFloat(document.getElementById('payrollPercentage').value);
         const additionalAmount = parseFloat(document.getElementById('payrollAdditionalAmount').value) || 0;
         const month = document.getElementById('payrollMonth').value;
         
-        if (!workerId || isNaN(baseSalary) || isNaN(percentage) || !month) {
+        if (!workerName || isNaN(baseSalary) || isNaN(percentage) || !month) {
           alert('يرجى ملء جميع الحقول المطلوبة بشكل صحيح.');
           return;
         }
@@ -2430,7 +3203,7 @@
         }
 
         // Calculate monthly withdrawals
-        const monthlyWithdrawals = calculateMonthlyWithdrawalsForWorker(workerId, month);
+        const monthlyWithdrawals = calculateMonthlyWithdrawalsForWorker(workerName, month);
         
         // Calculate net salary using the formula: (BaseSalary × Percentage%) + AdditionalAmount - MonthlyWithdrawals
         const salaryByPercentage = baseSalary * (percentage / 100);
@@ -2438,7 +3211,7 @@
 
         // Create record
         const record = {
-          workerId,
+          workerName,
           baseSalary,
           percentage,
           additionalAmount,
@@ -2453,7 +3226,6 @@
         localStorage.setItem('payrollRecords', JSON.stringify(payrollRecords));
 
         // Display results
-        const workerName = workers.find(w => w.id === workerId)?.name || 'غير معروف';
         payrollResultContent.innerHTML = `
           <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
             <p class="text-sm text-blue-600 font-semibold">اسم الموظف</p>
@@ -2853,7 +3625,7 @@
       });
     }
 
-    // Withdrawals Functions
+    // Withdrawals Functions - MODIFIED FOR MANUAL INPUT
     function updateWithdrawalsTable() {
       const tbody = document.getElementById('withdrawalsTableBody');
       tbody.innerHTML = '';
@@ -2871,11 +3643,10 @@
       }
       
       withdrawals.forEach((withdrawal, index) => {
-        const workerName = workers.find(w => w.id === withdrawal.workerId)?.name || 'غير معروف';
         const tr = document.createElement('tr');
         tr.innerHTML = `
           <td class="px-4 py-3">${withdrawal.date}</td>
-          <td class="px-4 py-3">${workerName}</td>
+          <td class="px-4 py-3">${withdrawal.workerName}</td>
           <td class="px-4 py-3">${parseFloat(withdrawal.amount).toFixed(2)}</td>
           <td class="px-4 py-3 text-center">
             <button data-index="${index}" class="deleteWithdrawalBtn text-red-600 hover:text-red-800 focus:outline-none">
@@ -2901,7 +3672,7 @@
       const withdrawalTotals = {};
       withdrawals.forEach(wd => {
         const month = wd.date.slice(0, 7);
-        const key = wd.workerId + '|' + month;
+        const key = wd.workerName + '|' + month;
         if (!withdrawalTotals[key]) withdrawalTotals[key] = 0;
         withdrawalTotals[key] += wd.amount;
       });
@@ -2910,8 +3681,7 @@
       content.innerHTML = '';
       
       for (const key in withdrawalTotals) {
-        const [workerId, month] = key.split('|');
-        const workerName = workers.find(w => w.id === workerId)?.name || 'غير معروف';
+        const [workerName, month] = key.split('|');
         const amount = withdrawalTotals[key];
         
         const div = document.createElement('div');
@@ -2933,15 +3703,15 @@
       withdrawalForm.addEventListener('submit', e => {
         e.preventDefault();
         const date = document.getElementById('withdrawalDate').value;
-        const workerId = document.getElementById('withdrawalWorker').value;
+        const workerName = document.getElementById('withdrawalWorker').value.trim();
         const amount = parseFloat(document.getElementById('withdrawalAmount').value);
         
-        if (!date || !workerId || isNaN(amount) || amount < 0) {
+        if (!date || !workerName || isNaN(amount) || amount < 0) {
           alert('يرجى ملء جميع الحقول بشكل صحيح.');
           return;
         }
         
-        withdrawals.push({ date, workerId, amount });
+        withdrawals.push({ date, workerName, amount });
         localStorage.setItem('withdrawals', JSON.stringify(withdrawals));
         updateWithdrawalsTable();
         withdrawalForm.reset();
@@ -2955,79 +3725,6 @@
           withdrawals = [];
           localStorage.setItem('withdrawals', JSON.stringify(withdrawals));
           updateWithdrawalsTable();
-        }
-      });
-    }
-
-    // Appointments Functions
-    function updateAppointmentsTable() {
-      const tbody = document.getElementById('appointmentsTableBody');
-      tbody.innerHTML = '';
-      
-      if (appointments.length === 0) {
-        const tr = document.createElement('tr');
-        const td = document.createElement('td');
-        td.colSpan = 4;
-        td.className = 'text-center py-4 text-gray-500';
-        td.textContent = 'لا توجد مواعيد مسجلة.';
-        tr.appendChild(td);
-        tbody.appendChild(tr);
-        return;
-      }
-      
-      appointments.forEach((appointment, index) => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td class="px-4 py-3">${appointment.date}</td>
-          <td class="px-4 py-3">${appointment.time}</td>
-          <td class="px-4 py-3">${appointment.customer}</td>
-          <td class="px-4 py-3 text-center">
-            <button data-index="${index}" class="deleteAppointmentBtn text-red-600 hover:text-red-800 focus:outline-none">
-              <i class="fas fa-trash-alt"></i>
-            </button>
-          </td>
-        `;
-        tbody.appendChild(tr);
-      });
-      
-      document.querySelectorAll('.deleteAppointmentBtn').forEach(btn => {
-        btn.addEventListener('click', e => {
-          if (!confirmPasswordPrompt()) return;
-          const idx = e.currentTarget.getAttribute('data-index');
-          appointments.splice(idx, 1);
-          localStorage.setItem('appointments', JSON.stringify(appointments));
-          updateAppointmentsTable();
-        });
-      });
-    }
-
-    function initializeAppointments() {
-      updateAppointmentsTable();
-      
-      const appointmentForm = document.getElementById('appointmentForm');
-      appointmentForm.addEventListener('submit', e => {
-        e.preventDefault();
-        const date = document.getElementById('appointmentDate').value;
-        const time = document.getElementById('appointmentTime').value;
-        const customer = document.getElementById('appointmentCustomer').value.trim();
-        
-        if (!date || !time || !customer) {
-          alert('يرجى ملء جميع الحقول بشكل صحيح.');
-          return;
-        }
-        
-        appointments.push({ date, time, customer });
-        localStorage.setItem('appointments', JSON.stringify(appointments));
-        updateAppointmentsTable();
-        appointmentForm.reset();
-      });
-      
-      document.getElementById('deleteAllAppointmentsBtn').addEventListener('click', () => {
-        if (!confirmPasswordPrompt()) return;
-        if (confirm('هل أنت متأكد من مسح جميع المواعيد؟ لا يمكن التراجع عن هذا الإجراء.')) {
-          appointments = [];
-          localStorage.setItem('appointments', JSON.stringify(appointments));
-          updateAppointmentsTable();
         }
       });
     }
@@ -3069,6 +3766,8 @@
           servicesData.splice(idx, 1);
           localStorage.setItem('services', JSON.stringify(servicesData));
           updateServicesTable();
+          // Update services dropdown in appointments
+          populateServicesDropdown();
         });
       });
     }
@@ -3091,6 +3790,8 @@
         localStorage.setItem('services', JSON.stringify(servicesData));
         updateServicesTable();
         serviceForm.reset();
+        // Update services dropdown in appointments
+        populateServicesDropdown();
       });
       
       document.getElementById('deleteAllServicesBtn').addEventListener('click', () => {
@@ -3099,8 +3800,162 @@
           servicesData = [];
           localStorage.setItem('services', JSON.stringify(servicesData));
           updateServicesTable();
+          // Update services dropdown in appointments
+          populateServicesDropdown();
         }
       });
+    }
+
+    // Monthly Income Report Functions
+    function generateMonthlyIncomeReport(selectedMonth) {
+      if (!selectedMonth) {
+        alert('يرجى اختيار شهر لإنشاء التقرير.');
+        return;
+      }
+
+      // Filter invoices for the selected month
+      const monthlyInvoices = printedInvoices.filter(invoice => {
+        const invoiceDate = new Date(invoice.date);
+        const invoiceMonth = invoiceDate.getFullYear() + '-' + String(invoiceDate.getMonth() + 1).padStart(2, '0');
+        return invoiceMonth === selectedMonth;
+      });
+
+      // Calculate totals
+      let totalSales = 0;
+      let cashSales = 0;
+      let visaSales = 0;
+      const workerSales = {};
+      const dailySales = {};
+
+      monthlyInvoices.forEach(invoice => {
+        const total = parseFloat(invoice.total);
+        totalSales += total;
+
+        // Payment method breakdown
+        if (invoice.paymentMethod === 'cash') {
+          cashSales += total;
+        } else if (invoice.paymentMethod === 'visa') {
+          visaSales += total;
+        }
+
+        // Worker breakdown
+        const workerName = invoice.worker || 'غير محدد';
+        if (!workerSales[workerName]) {
+          workerSales[workerName] = {
+            totalSales: 0,
+            invoiceCount: 0,
+            cashSales: 0,
+            visaSales: 0
+          };
+        }
+        workerSales[workerName].totalSales += total;
+        workerSales[workerName].invoiceCount += 1;
+        if (invoice.paymentMethod === 'cash') {
+          workerSales[workerName].cashSales += total;
+        } else if (invoice.paymentMethod === 'visa') {
+          workerSales[workerName].visaSales += total;
+        }
+
+        // Daily breakdown
+        const invoiceDate = new Date(invoice.date);
+        const dayKey = invoiceDate.getDate();
+        if (!dailySales[dayKey]) {
+          dailySales[dayKey] = {
+            totalSales: 0,
+            invoiceCount: 0,
+            cashSales: 0,
+            visaSales: 0
+          };
+        }
+        dailySales[dayKey].totalSales += total;
+        dailySales[dayKey].invoiceCount += 1;
+        if (invoice.paymentMethod === 'cash') {
+          dailySales[dayKey].cashSales += total;
+        } else if (invoice.paymentMethod === 'visa') {
+          dailySales[dayKey].visaSales += total;
+        }
+      });
+
+      // Update summary cards
+      document.getElementById('monthlyTotalSales').textContent = totalSales.toFixed(2) + ' ريال';
+      document.getElementById('monthlyCashSales').textContent = cashSales.toFixed(2) + ' ريال';
+      document.getElementById('monthlyVisaSales').textContent = visaSales.toFixed(2) + ' ريال';
+      document.getElementById('monthlyInvoicesCount').textContent = monthlyInvoices.length;
+
+      // Update worker breakdown table
+      const workerTableBody = document.getElementById('monthlyIncomeByWorkerBody');
+      workerTableBody.innerHTML = '';
+
+      if (Object.keys(workerSales).length === 0) {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td colspan="5" class="text-center py-4 text-gray-500">
+            لا توجد مبيعات في الشهر المحدد
+          </td>
+        `;
+        workerTableBody.appendChild(tr);
+      } else {
+        Object.entries(workerSales).forEach(([workerName, data]) => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td class="px-4 py-3">${workerName}</td>
+            <td class="px-4 py-3 text-center">${data.invoiceCount}</td>
+            <td class="px-4 py-3 font-bold text-green-600">${data.totalSales.toFixed(2)}</td>
+            <td class="px-4 py-3 text-green-600">${data.cashSales.toFixed(2)}</td>
+            <td class="px-4 py-3 text-blue-600">${data.visaSales.toFixed(2)}</td>
+          `;
+          workerTableBody.appendChild(tr);
+        });
+      }
+
+      // Update daily breakdown table
+      const dailyTableBody = document.getElementById('dailyIncomeBreakdownBody');
+      dailyTableBody.innerHTML = '';
+
+      if (Object.keys(dailySales).length === 0) {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td colspan="5" class="text-center py-4 text-gray-500">
+            لا توجد مبيعات في الشهر المحدد
+          </td>
+        `;
+        dailyTableBody.appendChild(tr);
+      } else {
+        // Sort days numerically
+        const sortedDays = Object.keys(dailySales).sort((a, b) => parseInt(a) - parseInt(b));
+        
+        sortedDays.forEach(day => {
+          const data = dailySales[day];
+          const [year, month] = selectedMonth.split('-');
+          const fullDate = `${year}-${month}-${String(day).padStart(2, '0')}`;
+          
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td class="px-4 py-3">${new Date(fullDate).toLocaleDateString('ar-EG')}</td>
+            <td class="px-4 py-3 text-center">${data.invoiceCount}</td>
+            <td class="px-4 py-3 font-bold text-green-600">${data.totalSales.toFixed(2)}</td>
+            <td class="px-4 py-3 text-green-600">${data.cashSales.toFixed(2)}</td>
+            <td class="px-4 py-3 text-blue-600">${data.visaSales.toFixed(2)}</td>
+          `;
+          dailyTableBody.appendChild(tr);
+        });
+      }
+    }
+
+    function initializeMonthlyIncomeReport() {
+      // Set current month as default
+      const currentDate = new Date();
+      const currentMonth = currentDate.getFullYear() + '-' + String(currentDate.getMonth() + 1).padStart(2, '0');
+      document.getElementById('incomeReportMonth').value = currentMonth;
+
+      // Generate report button
+      document.getElementById('generateIncomeReportBtn').addEventListener('click', () => {
+        const selectedMonth = document.getElementById('incomeReportMonth').value;
+        generateMonthlyIncomeReport(selectedMonth);
+      });
+
+      // Generate report for current month by default
+      generateMonthlyIncomeReport(currentMonth);
     }
 
     function updateReports() {
@@ -3128,10 +3983,9 @@
       const payrollReportBody = document.getElementById('payrollReportBody');
       payrollReportBody.innerHTML = '';
       payrollRecords.forEach(record => {
-        const workerName = workers.find(w => w.id === record.workerId)?.name || 'غير معروف';
         const tr = document.createElement('tr');
         tr.innerHTML = `
-          <td class="px-4 py-3">${workerName}</td>
+          <td class="px-4 py-3">${record.workerName}</td>
           <td class="px-4 py-3">${parseFloat(record.baseSalary).toFixed(2)}</td>
           <td class="px-4 py-3">${parseFloat(record.percentage).toFixed(1)}%</td>
           <td class="px-4 py-3">${parseFloat(record.additionalAmount).toFixed(2)}</td>
@@ -3148,15 +4002,14 @@
       const withdrawalTotals = {};
       withdrawals.forEach((wd) => {
         const month = wd.date.slice(0, 7);
-        const key = wd.workerId + '|' + month;
+        const key = wd.workerName + '|' + month;
         if (!withdrawalTotals[key]) withdrawalTotals[key] = 0;
         withdrawalTotals[key] += wd.amount;
       });
       withdrawalReportBody.innerHTML = '';
       let totalWithdrawalsAmount = 0;
       for (const key in withdrawalTotals) {
-        const [workerId, month] = key.split('|');
-        const workerName = workers.find(w => w.id === workerId)?.name || 'غير معروف';
+        const [workerName, month] = key.split('|');
         const amount = withdrawalTotals[key];
         const tr = document.createElement('tr');
         tr.innerHTML = `
@@ -3210,7 +4063,7 @@
       }
     }
 
-    // Print all reports function with full implementation
+    // Print all reports function with full implementation including monthly income
     function printAllReports() {
       
       // Calculate all totals
@@ -3224,7 +4077,7 @@
       const withdrawalTotals = {};
       withdrawals.forEach((wd) => {
         const month = wd.date.slice(0, 7);
-        const key = wd.workerId + '|' + month;
+        const key = wd.workerName + '|' + month;
         if (!withdrawalTotals[key]) withdrawalTotals[key] = 0;
         withdrawalTotals[key] += wd.amount;
       });
@@ -3251,12 +4104,42 @@
         return acc;
       }, {});
 
+      // Monthly income data for current month
+      const currentDate = new Date();
+      const currentMonth = currentDate.getFullYear() + '-' + String(currentDate.getMonth() + 1).padStart(2, '0');
+      const monthlyInvoices = printedInvoices.filter(invoice => {
+        const invoiceDate = new Date(invoice.date);
+        const invoiceMonth = invoiceDate.getFullYear() + '-' + String(invoiceDate.getMonth() + 1).padStart(2, '0');
+        return invoiceMonth === currentMonth;
+      });
+
+      let monthlyTotalSales = 0;
+      let monthlyCashSales = 0;
+      let monthlyVisaSales = 0;
+      const monthlyWorkerSales = {};
+
+      monthlyInvoices.forEach(invoice => {
+        const total = parseFloat(invoice.total);
+        monthlyTotalSales += total;
+
+        if (invoice.paymentMethod === 'cash') {
+          monthlyCashSales += total;
+        } else if (invoice.paymentMethod === 'visa') {
+          monthlyVisaSales += total;
+        }
+
+        const workerName = invoice.worker || 'غير محدد';
+        if (!monthlyWorkerSales[workerName]) {
+          monthlyWorkerSales[workerName] = 0;
+        }
+        monthlyWorkerSales[workerName] += total;
+      });
+
       // Payroll calculations totals for print
       const payrollRows = payrollRecords.map((record) => {
-        const workerName = workers.find((w) => w.id === record.workerId)?.name || 'غير معروف';
         return `
           <tr>
-            <td style="border: 1px solid #000; padding: 8px;">${workerName}</td>
+            <td style="border: 1px solid #000; padding: 8px;">${record.workerName}</td>
             <td style="border: 1px solid #000; padding: 8px;">${record.baseSalary.toFixed(2)}</td>
             <td style="border: 1px solid #000; padding: 8px;">${record.percentage.toFixed(2)}</td>
             <td style="border: 1px solid #000; padding: 8px;">${record.additionalAmount.toFixed(2)}</td>
@@ -3274,6 +4157,35 @@
             <h1 style="font-size: 24px; font-weight: bold;">مركز الفارس للعناية بالرجل</h1>
             <h2 style="font-size: 20px; margin-top: 10px;">تقرير شامل</h2>
             <p style="margin-top: 10px;">التاريخ: ${new Date().toLocaleDateString('ar-EG')}</p>
+          </div>
+
+          <div style="margin-bottom: 30px;">
+            <h3 style="font-size: 18px; font-weight: bold; border-bottom: 2px solid #000; padding-bottom: 5px;">تقرير الدخل الشهري (${currentMonth})</h3>
+            <p style="margin: 10px 0;">إجمالي المبيعات الشهرية: ${monthlyTotalSales.toFixed(2)} ريال</p>
+            <p style="margin: 10px 0;">مبيعات كاش: ${monthlyCashSales.toFixed(2)} ريال</p>
+            <p style="margin: 10px 0;">مبيعات فيزا: ${monthlyVisaSales.toFixed(2)} ريال</p>
+            <p style="margin: 10px 0;">عدد الفواتير: ${monthlyInvoices.length}</p>
+
+            <h4 style="font-size: 16px; font-weight: bold; margin-top: 20px;">مبيعات حسب العامل (الشهر الحالي):</h4>
+            <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+              <thead>
+                <tr style="background-color: #f0f0f0;">
+                  <th style="border: 1px solid #000; padding: 8px;">اسم العامل</th>
+                  <th style="border: 1px solid #000; padding: 8px;">إجمالي المبيعات (ريال)</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${Object.entries(monthlyWorkerSales)
+                  .map(
+                    ([workerName, amount]) => `
+                  <tr>
+                    <td style="border: 1px solid #000; padding: 8px;">${workerName}</td>
+                    <td style="border: 1px solid #000; padding: 8px;">${amount.toFixed(2)}</td>
+                  </tr>`
+                  )
+                  .join('')}
+              </tbody>
+            </table>
           </div>
 
           <div style="margin-bottom: 30px;">
@@ -3336,8 +4248,7 @@
               <tbody>
                 ${Object.entries(withdrawalTotals)
                   .map(([key, amount]) => {
-                    const [workerId, month] = key.split('|');
-                    const workerName = workers.find((w) => w.id === workerId)?.name || 'غير معروف';
+                    const [workerName, month] = key.split('|');
                     return `
                   <tr>
                     <td style="border: 1px solid #000; padding: 8px;">${workerName}</td>
@@ -3351,13 +4262,13 @@
           </div>
 
           <div style="margin-bottom: 30px;">
-            <h3 style="font-size: 18px; font-weight: bold; border-bottom: 2px solid #000; padding-bottom: 5px;">تقرير الفواتير</h3>
+            <h3 style="font-size: 18px; font-weight: bold; border-bottom: 2px solid #000; padding-bottom: 5px;">تقرير الفواتير (إجمالي)</h3>
             <p style="margin: 10px 0;">عدد الفواتير: ${invoiceStats.totalInvoices}</p>
             <p style="margin: 10px 0;">إجمالي مبيعات الفواتير: ${invoiceStats.totalAmount.toFixed(2)} ريال</p>
             <p style="margin: 10px 0;">المبالغ المدفوعة كاش: ${invoiceStats.cashAmount.toFixed(2)} ريال</p>
             <p style="margin: 10px 0;">المبالغ المدفوعة فيزا: ${invoiceStats.visaAmount.toFixed(2)} ريال</p>
 
-            <h4 style="font-size: 16px; font-weight: bold; margin-top: 20px;">مبيعات حسب العامل:</h4>
+            <h4 style="font-size: 16px; font-weight: bold; margin-top: 20px;">مبيعات حسب العامل (إجمالي):</h4>
             <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
               <thead>
                 <tr style="background-color: #f0f0f0;">
@@ -3380,7 +4291,7 @@
           </div>
 
           <div style="margin-top: 30px; border-top: 2px solid #000; padding-top: 10px; text-align: center;">
-            <p style="font-size: 14px; color: #666;">© 2025 جميع الحقوق محفوظة | تصميم وتطوير بواسطة Eng-A7med-ra</p>
+            <p style="font-size: 14px; color: #666;">© 2025 جميع الحقوق محفوظة | تصميم وتطوير بواسطة Eng-A7med-ra مع دعم واتساب</p>
           </div>
         </div>
       `;
@@ -3415,13 +4326,11 @@
       document.getElementById('printAllReportsBtn').addEventListener('click', printAllReports);
     }
 
-    // Daily Salary Functions
-    function calculateAndDisplayDailySalary(workerId, date) {
+    // Daily Salary Functions - MODIFIED FOR MANUAL INPUT
+    function calculateAndDisplayDailySalary(workerName, date) {
       const filteredInvoices = printedInvoices.filter(inv => {
         if (!inv.worker) return false;
-        const invWorker = workers.find(w => w.name === inv.worker);
-        if (!invWorker) return false;
-        if (invWorker.id !== workerId) return false;
+        if (inv.worker !== workerName) return false;
         
         const invDateObj = new Date(inv.date);
         const invDateStr = invDateObj.getFullYear() + '-' + 
@@ -3436,7 +4345,7 @@
       });
 
       const totalWithdrawals = withdrawals.reduce((sum, wd) => {
-        if (wd.workerId === workerId && wd.date === date) {
+        if (wd.workerName === workerName && wd.date === date) {
           return sum + parseFloat(wd.amount);
         }
         return sum;
@@ -3445,7 +4354,7 @@
       const netSalary = totalServicesSalary - totalWithdrawals;
 
       document.getElementById('dailySalaryText').textContent = 
-        `العامل: ${workers.find(w => w.id === workerId)?.name || 'غير معروف'}\n` +
+        `العامل: ${workerName}\n` +
         `التاريخ: ${date}\n` +
         `إجمالي رواتب الخدمات: ${totalServicesSalary.toFixed(2)} ريال\n` +
         `إجمالي السحب: ${totalWithdrawals.toFixed(2)} ريال\n` +
@@ -3466,11 +4375,8 @@
       let firstInvoice = null;
       for (let inv of printedInvoices) {
         if (inv.worker && inv.date) {
-          const invWorker = workers.find(w => w.name === inv.worker);
-          if (invWorker) {
-            firstInvoice = inv;
-            break;
-          }
+          firstInvoice = inv;
+          break;
         }
       }
 
@@ -3482,31 +4388,30 @@
         return;
       }
 
-      const invWorker = workers.find(w => w.name === firstInvoice.worker);
       const invDateObj = new Date(firstInvoice.date);
       const invDateStr = invDateObj.getFullYear() + '-' + 
                         String(invDateObj.getMonth() + 1).padStart(2, '0') + '-' + 
                         String(invDateObj.getDate()).padStart(2, '0');
 
-      document.getElementById('dailyWorkerSelect').value = invWorker.id;
+      document.getElementById('dailyWorkerSelect').value = firstInvoice.worker;
       document.getElementById('dailyDateInput').value = invDateStr;
 
-      calculateAndDisplayDailySalary(invWorker.id, invDateStr);
+      calculateAndDisplayDailySalary(firstInvoice.worker, invDateStr);
     }
 
     function initializeDailySalary() {
       const dailySalaryForm = document.getElementById('dailySalaryForm');
       dailySalaryForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        const workerId = document.getElementById('dailyWorkerSelect').value;
+        const workerName = document.getElementById('dailyWorkerSelect').value.trim();
         const date = document.getElementById('dailyDateInput').value;
 
-        if (!workerId || !date) {
+        if (!workerName || !date) {
           alert('يرجى ملء جميع الحقول بشكل صحيح.');
           return;
         }
 
-        calculateAndDisplayDailySalary(workerId, date);
+        calculateAndDisplayDailySalary(workerName, date);
       });
 
       document.getElementById('deleteAllDailySalaryBtn').addEventListener('click', () => {
@@ -3520,25 +4425,23 @@
       });
     }
 
-    // Monthly Salary Functions
+    // Monthly Salary Functions - MODIFIED FOR MANUAL INPUT
     function initializeMonthlySalary() {
       const monthlySalaryForm = document.getElementById('monthlySalaryForm');
       monthlySalaryForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        const workerId = document.getElementById('monthlyWorkerSelect').value;
+        const workerName = document.getElementById('monthlyWorkerSelect').value.trim();
         const year = document.getElementById('monthlyYearInput').value;
         const month = document.getElementById('monthlyMonthInput').value;
 
-        if (!workerId || !year || !month) {
+        if (!workerName || !year || !month) {
           alert('يرجى ملء جميع الحقول بشكل صحيح.');
           return;
         }
 
         const filteredInvoices = printedInvoices.filter(inv => {
           if (!inv.worker) return false;
-          const invWorker = workers.find(w => w.name === inv.worker);
-          if (!invWorker) return false;
-          if (invWorker.id !== workerId) return false;
+          if (inv.worker !== workerName) return false;
           const invDate = new Date(inv.date);
           return invDate.getFullYear() === parseInt(year) && (invDate.getMonth() + 1) === parseInt(month);
         });
@@ -3549,7 +4452,7 @@
         });
 
         const totalWithdrawals = withdrawals.reduce((sum, wd) => {
-          if (wd.workerId === workerId && wd.date.startsWith(`${year}-${month}`)) {
+          if (wd.workerName === workerName && wd.date.startsWith(`${year}-${month}`)) {
             return sum + parseFloat(wd.amount);
           }
           return sum;
@@ -3558,7 +4461,7 @@
         const netSalary = totalServicesSalary - totalWithdrawals;
 
         document.getElementById('monthlySalaryText').textContent = 
-          `العامل: ${workers.find(w => w.id === workerId)?.name || 'غير معروف'}\n` +
+          `العامل: ${workerName}\n` +
           `الشهر: ${year}-${month}\n` +
           `إجمالي رواتب الخدمات: ${totalServicesSalary.toFixed(2)} ريال\n` +
           `إجمالي السحب: ${totalWithdrawals.toFixed(2)} ريال\n` +
@@ -3732,7 +4635,13 @@
       }
       
       const paymentMethod = document.getElementById("paymentMethod").value;
-      printInvoice(paymentMethod);
+      const invoiceData = printInvoice(paymentMethod);
+      
+      // Send WhatsApp message with invoice data
+      if (invoiceData) {
+        sendWhatsAppMessage(invoiceData);
+      }
+      
       alert("تم إتمام البيع بنجاح!\nشكراً لاستخدامك نظام مركز الفارس.");
       
       invoiceItems = [];
@@ -3793,6 +4702,9 @@
       receiptDiv.classList.remove("hidden");
       window.print();
       receiptDiv.classList.add("hidden");
+
+      // Return invoice data for WhatsApp
+      return printedInvoice;
     }
 
     function filterProducts() {
@@ -3939,14 +4851,11 @@
       // Initialize navigation
       initializeNavigation();
       
-      // Populate worker selects
-      populateWorkerSelects();
-      
       // Initialize all modules
       initializeExpenses();
       initializePayrollManagement();
       initializeWithdrawals();
-      initializeAppointments();
+      initializeEnhancedAppointments();
       initializeServices();
       initializeInventory();
       initializeReports();
